@@ -1,0 +1,20 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Выбор квартир"]
+block content
+	.choose-flat.block
+		.wrapper-content
+			.block-header
+				.block-title.__title-only
+					h1 Выбор квартир
+			.block-content
+				.choose-flat-content.choose-flat-asides(data-uniformheight=".js-choose-flat-uniformheight")
+					.choose-flat-aside-content
+						.choose-flat-list-counter.js-choose-flat-slider-counter
+						.choose-flat-list.js-choose-flat-slider
+							for item in flatboxList
+								+flatbox(item)
+									+setElementAttributes('inner', {class: 'js-choose-flat-uniformheight'})
+					.choose-flat-aside-block
+						+choose-flat-filter

@@ -1,0 +1,39 @@
+.socials
+	white-space nowrap
+	&-list
+		margin -5px
+	&-item
+		display inline-block
+		vertical-align middle
+		margin 5px
+	&-link
+		display block
+		size 23px
+		border-radius 50%
+		font-size 14px
+		line-height 24px
+		background #777
+		text-align center
+		opacity 0.5
+		&,
+		&:hover,
+		&:active
+			color #fff
+		&:hover
+			opacity 1
+	&-item
+		&.__vk .socials-link
+			background #4d76a1
+		&.__facebook .socials-link
+			line-height 25px
+			background #3b5998
+		&.__instagram .socials-link
+			background #6a453b
+	+MEDIA("TABLET")
+		&-link
+			size 36px
+			font-size 24px
+			line-height 36px
+		&-item
+			&.__facebook .socials-link
+				line-height 38px

@@ -1,0 +1,66 @@
+mixin building()
+	+namespace("building")
+		+el().block
+			.wrapper-content
+				.block-header.__title-only
+					.block-title корпус 5
+				.block-content
+					.wrapper-inner-content
+						+el("content")(data-uniformheight=".js-building-column").js-building-content
+							+el("title") Доступные квартиры
+							+el("info")
+								+el("info-inner").js-building-column
+									+el("table").__info
+										for row in buildingInfo
+											+el("table-row")
+												+el("table-cell").__label
+													span!= row.label
+												+el("table-cell").__text
+													span!= row.text
+									+el("stock")
+										p: b Доступные квартиры
+										+el("table").__stock
+											for row in buildingStock
+												+el("table-row")
+													+el("table-cell").__label
+														span!= row.label
+													+el("table-cell").__text
+														span!= row.text
+									+el("button")
+										a(href="#" data-button="" data-button-size="huge" data-button-mod="wide") Ход строительства
+							+el("top")
+								+el("image").js-building-column
+									+uitooltip({addClass: 'js-buildingmap-tooltip __building'})
+										+el("title")(data-type="title")
+										+el("bottom")
+											div(data-type="left")
+												p Осталось квартир
+												+el("table")
+													for row, index in [["студии", "room0"], ["1 к. кв", "room1"], ["2 к. кв", "room2"], ["3 к. кв", "room3"]]
+														+el("table-row")(data-type="#{ row[1] }")
+															+el("table-cell")
+																span!= row[0]
+															+el("table-cell")
+																span(data-type="room-left")
+											div(data-type="sold")
+												p Не осталось квартир
+									+img("example/building.png")(usemap="#building-map")
+									+building-map()
+								+el("floors").js-building-floors
+									+el("floors-arrow", "a")(href="#").__up.js-building-floors-up
+									+el("floors-list").js-building-floors-list
+										for i in range(1, 27)
+											-var sold = (i % 5 == 0)
+											+el("floor", "a")(href="#" class="#{ sold ? '__sold' : '' }")
+												+el("floor-cell")!= (28 - i) + " этаж"
+												+el("floor-cell")
+													if sold
+														+el("floor-item")
+															span._empty Все квартиры распроданы
+													else
+														for t, index in ["С", "1к", "2к", "3к"]
+															if i%6 == index + 1
+																+el("floor-item")
+															else
+																+el("floor-item") #[span._type!= t ]#[span!= random(6, 50) ]
+									+el("floors-arrow", "a")(href="#").__down.js-building-floors-down

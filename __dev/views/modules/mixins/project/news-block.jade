@@ -1,0 +1,15 @@
+mixin news-block(options)
+	-if(options == null){
+		-options = {}
+	-}
+	.block(data-block-mod="slim-padding" class="#{ options['addClass'] ? options['addClass'] : '' }").news-block.js-news-block
+		.wrapper-content
+			.block-header
+				.block-title
+					h2 Новости
+				.block-subtitle
+					a(href="#") все новости
+			.block-content
+				.news-list.js-news-list(data-clearwhitespace="" data-uniformheight=".news-item-inner,.news-subscribe-inner")
+					for item in newsList
+						+news-item(item)

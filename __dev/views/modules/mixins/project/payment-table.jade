@@ -1,0 +1,33 @@
+mixin payment-table(data)
+	+namespace("payment-table")
+		+el()
+			for row, index in data
+				if index == 0
+					+el("row").__head
+						for cell, cellIndex in row
+							+el("cell")(class="#{ cellIndex == 0 ? '__first' : '' } #{ cellIndex == (row.length-1) ? '__last' : '' }")
+								span!= cell
+				else
+					+el("row")
+						+el("toggle", "a")(href="#").js-payment-table-toggle
+
+						+el("cell")(data-label="#{ data[0][0] }").__bank.__first.__image
+							+img("example/banks/" + row['cell-0'])
+						+el('breaker')
+						+el("cell")(data-label="#{ data[0][1] }").__percent
+							b!= row['cell-1']
+						+el('breaker')
+						+el("cell")(data-label="#{ data[0][2] }").__time
+							b!= row['cell-2']
+						+el('breaker')
+						+el("cell")(data-label="#{ data[0][3] }").__pay
+							b!= row['cell-3']
+						+el('breaker')
+						+el("cell")(data-label="#{ data[0][4] }").__info.__text
+							.small!= row['cell-4']
+						+el('breaker')
+						+el("cell")(data-label="#{ data[0][5] }").__documents.__last.__documents
+							ul
+								for item in row['cell-5']
+									li.small
+										a(href="#")!= item

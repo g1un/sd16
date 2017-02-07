@@ -1,0 +1,199 @@
+mixin breadcrumbs()
+	.breadcrumbs-wrapper
+		.wrapper-content
+			-breadcrumbs('', {hideLast: true}).add(currentPageTitle).render()
+
+mixin page-title(text)
+	if text == null
+		-text = currentPageTitle[currentPageTitle.length - 1]
+		if Array.isArray(text)
+			-text = text[0]
+	.page-title-wrapper
+		.wrapper-content
+			block
+			.page-title: h1!= text
+
+mixin numeric(mode2)
+	+namespace("numeric")
+		+el()(class="#{ mode2 ? '__mode-2' : '__mode-1' }")
+			+el("down", "a")(href="#" disabled="" data-disabled="")
+			+el("input").form-item
+				input(type="text")
+			+el("up", "a")(href="#")
+
+
+
+mixin main-banner()
+	+namespace("main-banner")
+		+el()
+			.wrapper-content
+				+el("wrapper")
+					+el("image")
+						+img('example/main-banner.jpg')(data-cover-image="")
+					+el("content")
+						+el("inner")
+							+el("title") Самые востребованные
+							+el("subtitle") квартиры на Парнасе
+							+el("text")
+								a(href="#" data-button="transparent-black" data-button-size="middle" data-scrollto="#anchor-about-project") подробнее о проекте
+
+
+mixin choose-panel()
+	+namespace("choose-panel")
+		+el()
+			.wrapper-content
+				+el("content")
+					+el("links")
+						+el("links-list")
+							for item in ["Однокомнатные квартиры", "Двухкомнатные квартиры", "Трехкомнатные квартиры", "Квартиры-студии", "Паркинги"]
+								+el("links-item")
+									+el("link", "a")(href="#")!= item
+					+el("button")
+						a(href="#" data-button="" data-button-mod="wide") Подобрать квартиру
+
+mixin banners()
+	+namespace("banners")
+		+el()
+			.wrapper-content
+				+el("wrapper")
+					+el("list").js-banners-list
+						-var titles = ["Военная ипотека", "Коммерческая недвижимость", "Lorem ipsum dolor", "Molestiae minima suscipit"]
+						-var boxes = [["<span class=\"big\">2.1</span> млн.руб."], ["<span class=\"big\">150 000</span>", "руб./м2"], ["<span class=\"big\">999 999</span>", "руб./м2"], ["<span class=\"big\">99.9</span>", "млн.руб."]]
+						for title, index in titles
+							+el("item")
+								+el("item-inner")
+									+el("item-link", "a")(href="#")
+									+el("item-image")
+										if index < 2
+											+img("example/main-banner-" + (index + 2) + ".jpg")(data-cover-image="")
+										else
+											img(src="#{ getImage(840, 267) }", alt="" data-cover-image="")
+									+el("item-content")
+										+el("item-aside")
+											+el("item-aside-inner")
+												+el("item-title")!= title
+												+el("item-detail")
+													a(href="#" data-button="style2" data-button-size="small" data-button-mod="wide") подробнее
+										+el("item-box")
+											+el("item-box-inner")
+												+el("item-box-line")
+													if index == 0
+														span.icon-star.__left
+													span от
+													if index == 0
+														span.icon-star.__right
+												for line in boxes[index]
+													+el("item-box-line")!= line
+
+
+mixin news-block(options)
+	-if(options == null){
+		-options = {}
+	-}
+	.block(data-block-mod="slim-padding" class="#{ options['addClass'] ? options['addClass'] : '' }").news-block.js-news-block
+		.wrapper-content
+			.block-header
+				.block-title
+					h2 Новости
+				.block-subtitle
+					a(href="#") все новости
+			.block-content
+				.news-list.js-news-list(data-clearwhitespace="")
+					for item in newsList
+						+news-item(item)
+
+mixin news-item(item)
+	+namespace("news-item")
+		+el()
+			+el("inner").block-box
+				+el("date")!= getRandomDate()
+				+el("title")
+					a(href="#")!= item.title
+				+el("text")
+					+repeat(4)
+						p!= getTextru( random(20, 50) )
+				+el("detail")
+					a(href="#") Подробнее
+
+mixin about-item(item)
+	+namespace("about-item")
+		+el()
+			+el("inner", "a")(href="#").js-about-item-inner
+				+el("image")
+					+img(item.image)(data-cover-image="")
+				+el("content-wrapper")
+					+el("content")
+						+el("content-inner")
+							+el("title")!= item.title
+							+el("text")
+								+repeat(random(1,3))
+									p!= getTextru(random(30,50))
+mixin about-block()
+	.block(data-block-mod="slim-padding").about-block
+		.wrapper-content
+			.block-content
+				.about-list(data-clearwhitespace="")
+					for item in aboutList
+						+about-item(item)
+
+
+mixin flats(options)
+	-if(options == null){
+		-options = {}
+	-}
+	.block.flats.js-flats(class="#{ options['addClass'] ? options['addClass'] : '' }")
+		.wrapper-content
+			.block-header
+				.block-title популярные квартиры
+			.block-content
+				.flats-list.js-flats-list(data-clearwhitespace="")
+					for item in flatsList
+						+flat(item)
+			.block-text
+				h5 В жилом комплексе «Северная долина» открыта вторая школа на 975 учащихся
+				p Компания «Главстрой-СПб» сообщает об открытии второй общеобразовательной школы на 975 мест на территории жилого комплекса «Северная долина». В ЖК «Северная долина» состоялось торжественное открытие второй общеобразовательной школы. В церемонии приняли участие глава администрации Выборгского района Валерий Гарнец, заместитель главы администрации Выборгского района Наталия Никишина, председатель Комитета по энергетике и инженерному обеспечению Андрей Бондарчук и генеральный директор «Главстрой-СПб» Андрей Васильев.
+				p Мы внимательно относимся к развитию образовательной инфраструктуры внутри своих комплексов. Сегодня в «Северной долине» работают два государственных детских сада и одна общеобразовательная школа. До конца года планируется завершить строительство еще двух детских дошкольных учреждений на 190 воспитанников каждый и вторую общеобразовательную школу на 975 учеников. По мере реализации проекта в жилом районе появятся еще 9 детских садов и 8 общеобразовательных школ.
+				p До проведения конкурса на определение эксплуатирующей организации или выбора данной компании на собрании собственников жилья ООО «Эксплуатация Главстрой-СПб» осуществляет временное управление построенными объектами. Компания участвует в процессе сдачи-приемки жилых домов, её специалисты досконально исследуют все инженерные системы зданий. В дальнейшем это позволяет не только обеспечивать качественное обслуживание домов комплекса, но и оперативно устранять возникающие неполадки.
+
+
+mixin flat(item)
+	+namespace("flat")
+		+el().js-flat
+			+el("inner").js-flat-inner
+				+el("aside")
+					+el("image", "a")(href="#")
+						+img(item.image)
+				+el("content").js-flat-content
+					+el("content-inner").js-flat-content-inner
+						+el("title")
+							a(href="#")!= item.title
+						+el("info")
+							+el("info-table")
+								for info in item.info
+									+el("info-row")
+										+el("info-cell").__left
+											span!= info.label
+										+el("info-cell").__right
+											span!= info.value
+						+el("info-toggle")
+							+el("info-toggle-link", "a")(href="#" data-label="Показать детали" data-shown-label="Скрыть детали").js-flat-info-toggle-link
+						+el("price")
+							+el("price-value")!= price( random(2000000, 5000000) )
+							+el("price-label") Стоимость квартиры с учетом скидок
+						+el("button")
+							a(href="#" data-button="" data-button-size="huge") Забронировать квартиру
+
+
+mixin socials()
+	+namespace("socials")
+		+el()
+			+el("list")
+				+el("item").__instagram
+					+el("link", "a")(href="#")
+						+fa("instagram")
+				+el("item").__facebook
+					+el("link", "a")(href="#")
+						+fa("facebook")
+				+el("item").__vk
+					+el("link", "a")(href="#")
+						+fa("vk")

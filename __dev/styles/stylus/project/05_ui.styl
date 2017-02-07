@@ -1,0 +1,499 @@
+.ui-widget
+	font-family inherit
+.ui-selectmenu-button span.ui-selectmenu-text
+	resetStyle()
+.ui-selectmenu-button
+	resetStyle()
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br
+	border-radius 0
+
+
+.slick-arrow
+	position absolute
+	pos 0 10px 0 auto
+	margin auto
+	size 79px
+	reset-button()
+	z-index 1
+	color #fff
+	trans()
+	background getColor('base')
+	&:after
+		content ''
+		position absolute
+		size 22px 42px
+		background images('elements/slider-arrows.png') 0 0 no-repeat
+		margin auto
+		pos 0
+	&:hover
+		background getColor('base') + 10%
+	&:active
+		background getColor('base') + 10%
+		opacity 0.8
+	&[aria-disabled="true"]
+		opacity 0.5
+		background getColor('base')
+		cursor default
+
+.slick-prev
+	bottom -(79px + 10px)
+	&:after
+		background-position 0 0
+.slick-next
+	top -(79px + 10px)
+	&:after
+		background-position -22px 0
+// +MEDIA("PHONE")
+// 	.slick-arrow
+// 		size 55px
+// 		&:after
+// 			size 17px 32px
+// 			background-image images('elements/slider-arrows__small.png')
+// 	.slick-prev
+// 		bottom -(55px + 10px)
+// 		&:after
+// 			background-position 0 0
+// 	.slick-next
+// 		top -(55px + 10px)
+// 		&:after
+// 			background-position -17px 0
+
+
+.slick-arrow.__aside
+	pos 0 auto
+	amrgin auto
+	size 55px
+	&,
+	&:hover,
+	&:active
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkSJpRDwAC3wF7WF8SLgAAAABJRU5ErkJggg==') center repeat; /* #006298 0.5 */
+	&:after
+		background-image images('elements/slider-arrows__small.png')
+		size 17px 32px
+.slick-prev.__aside
+	left 0
+	&:after
+		background-position 0 0
+.slick-next.__aside
+	right 0
+	&:after
+		background-position -17px 0
+
++MEDIA("PHONE")
+	.slick-arrow
+		pos 0 auto
+		amrgin auto
+		size 55px
+		&,
+		&:hover,
+		&:active
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkSJpRDwAC3wF7WF8SLgAAAABJRU5ErkJggg==') center repeat; /* #006298 0.5 */
+		&:after
+			background-image images('elements/slider-arrows__small.png')
+			size 17px 32px
+	.slick-prev
+		left 0
+		&:after
+			background-position 0 0
+	.slick-next
+		right 0
+		&:after
+			background-position -17px 0
+
+.slick-dots
+	list-style none
+	pos _ 0 0
+	text-align center
+	margin 10px 0 0
+	padding 0
+	trans()
+
+	li:before,
+	li:after
+		display none
+	
+	li
+		display inline-block
+		vertical-align middle
+		margin 3px
+		padding 0
+		button
+			reset-button()
+			padding 0
+			background #c4c4c4
+			border-radius 50%
+			size 9px
+			display block
+			trans()
+			transition-property background
+			span
+				display none
+			&:hover
+				background #385ca3 + 20%
+		&.slick-active button
+			background #385ca3
+			cursor default
+
+.bx-ui-slider
+	&-part
+		position: absolute;
+		top: 0;
+		width: 100px;
+		white-space nowrap
+		line-height 1
+		font-size 15px
+		display none
+		&.p1
+			left: -1px;
+			text-align left
+			// display block
+		&.p2
+			left: 25%;
+		&.p3
+			left: 50%;
+		&.p4
+			left: 75%;
+		&.p5
+			right: -1px;
+			text-align right
+			// display block
+		> span
+			display block
+			position relative
+			margin-top 27px
+
+	&-range,
+	&-pricebar,
+	&-pricebar-vd,
+	&-pricebar-vn,
+	&-pricebar-v
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	&-pricebar-vn
+		display none;
+
+	&-track
+		position: relative;
+		height: 5px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+
+		background: transparent;
+		z-index 1
+		&:after
+			background #ffffff
+			content ''
+			display block
+			position absolute
+			pos 0
+			z-index 50
+
+	&-pricebar-vd
+		z-index: 60;
+		background: #888b8d + 10%;
+		border-radius 5px
+
+
+	&-pricebar-v
+		z-index: 80;
+		background: #888b8d;
+		border-radius 5px
+
+
+	&-range
+		z-index: 90;
+
+	&-handle
+		position: absolute;
+		top -15px
+		size 15px 35px
+		border 0
+		background: #006298;
+		border-radius 7px
+
+		&.left
+			left 0
+			margin-left -7px;
+		&.right
+			right 0
+			margin-right -7px;
+
+
+main input[type="checkbox"],
+main input[type="radio"]
+	position absolute
+	opacity 0
+	size 0
+	overflow hidden
+	margin auto
+	pos auto
+	& + label
+		position relative
+		font-size 15px
+		line-height 15px
+		color #000000
+		padding-left 25px
+		&:before
+			content ''
+			size 15px
+			position absolute
+			top 0
+			left 0
+			background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=') center no-repeat
+			background-color #fff
+			border 2px solid #e7e5e1
+			border-radius 1px
+			trans()
+		&:hover
+			&:before
+				border-color getColor('base')
+	&:checked,
+	&.-checked
+		& + label
+			&:before
+				background-color getColor('base')
+				border-color getColor('base')
+				border-width 0
+main input[type="radio"]
+	& + label
+		&:before
+			border-radius 50%
+	&:checked,
+	&.-checked
+		& + label
+			cursor default
+			&:before
+				background-image images('icons/checkbox-arrow.png')
+main input[type="checkbox"]
+	&:checked,
+	&.-checked
+		& + label
+			&:before
+				background-image images('icons/checkbox-arrow.png')
+
+.lb-outerContainer,
+.lb-container,
+.lightbox .lb-image
+	border-radius 0
+
+.lb-container
+	padding 20px
+
+.lb-dataContainer
+	pos _ 0 100%
+	margin-bottom 10px
+	position absolute
+	padding-top 0
+
+
+select[id^="ui-id"]
+	padding-right 70px
+.ui-selectmenu-button
+	&,
+	.form-item &
+		padding-right 60px
+	span.ui-icon
+		size 60px auto
+		background transparent
+		position absolute
+		pos -1px -1px -1px auto
+		margin 0
+		&:after
+			content ''
+			background images('elements/select-arrow.png') 0 -10px no-repeat
+			size 16px 10px
+			position absolute
+			pos 0
+			margin auto
+	&[aria-expanded="true"]
+		span.ui-icon
+			&:after
+				background-position 0 0
+	select.__colored + .ui-selectmenu-wrapper &
+		text-transform uppercase
+		span.ui-icon
+			&:after
+				background-image images('elements/select-arrow__white.png')
+		&:focus
+			span.ui-icon:after
+				background-image images('elements/select-arrow.png')
+select.__colored
+	font-size 16px
+	line-height 20px
+	padding 8px 10px
+	text-transform uppercase
+	padding-right 60px
+select.__colored + .ui-selectmenu-wrapper
+	.ui-menu
+		border 0
+		background getColor('base')
+		padding 10px
+		.ui-menu-item
+			background transparent
+			color #fff
+			font-size 16px
+			line-height 20px
+			padding 8px 10px
+			text-transform uppercase
+			&.ui-state-focus
+				background getColor('base') - 10%
+.ui-menu
+	max-height 300px
+	text-align left
+	.ui-menu-item
+		padding 5px 15px
+		margin 0
+		border 0
+		&:before,
+		&:after
+			display none
+		&.ui-state-focus
+			font-weight inherit
+
+.ui-selectmenu-menu
+	.ui-menu
+		padding 0
+
+.select-autocomplete
+	select
+		display none
+.custom-combobox
+	position relative
+	& &-input
+		padding-right 70px
+	&-toggle
+		resetStyle()
+		position absolute
+		size 60px auto
+		background images('icons/select-arrow.png') center no-repeat
+		position absolute
+		display block
+		pos 0 0 0 auto
+		&:hover
+			background-color #dededd
+		&:active
+			background-color #dededd - 10%
+			opacity 0.8
+		> *
+			display none
+main
+	*
+		&::-webkit-scrollbar
+			size 6px
+		&::-webkit-scrollbar-track
+			background-color #eee
+			border-left 1px solid #eee
+		&::-webkit-scrollbar-thumb
+			background-color getColor('light') - 10%
+			transition background-color TRANS_SPEED
+		&::-webkit-scrollbar-thumb:hover
+			background-color getColor('base')
+		&::-webkit-scrollbar-thumb:active
+			background-color getColor('base') - 20%
+
+
+.ui-slider
+	background #fff
+	border 0
+	border-radius 0
+	height 5px
+	margin 15px 0
+	.ui-slider-handle
+		border 0
+		size 15px 35px
+		margin-left -7px
+		pos -14px auto auto
+		background getColor('base')
+		border-radius 6px
+		cursor pointer
+		cursor grab
+		&:active
+			cursor grabbing
+
+
+
+.uicheckbox.__tabstyle input[type="checkbox"],
+.uiradio.__tabstyle input[type="radio"]
+	& + label
+		&:before
+			display none
+		&
+			display block
+			font-size 14px
+			line-height 16px
+			padding 12px 12px
+			background #fff
+			color #242424
+			min-width 40px
+			text-align center
+			font-weight 700
+			user-select none
+			trans()
+			transition-property color, background, border-color, opacity, filter, box-shadow, transform
+		&:hover
+			background #eee
+	&:checked + label,
+	&.-checked + label
+		color #fff
+		background getColor('base')
+
+.uiradio.__tabstyle input[type="radio"]
+	&:checked + label,
+	&.-checked + label
+		cursor default
+.uicheckbox.__tabstyle input[type="checkbox"]
+	&:checked + label,
+	&.-checked + label
+		&:hover
+			background getColor('base') + 10%
+
+.radio
+	display inline-block
+	vertical-align top
+	margin-right 10px
+
+
+.file-input
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	cursor: default;
+	input[type="file"]
+		position: absolute;
+		top: -20px;
+		right: 1px;
+		font-size: 200px;
+		cursor: pointer;
+		border: 0;
+		width: auto;
+		opacity: 0;
+	&-button
+		display block
+		background #006298
+		font-size 14px
+		line-height 20px
+		color #fff
+		padding 10px 15px
+		transition 0.3s background
+		transition-property: background, color;
+		&[data-file-name]
+			font-size: 10px;
+		&[data-file-name] span
+			display: none;
+		&[data-file-name]:before
+			content: '\0412\044b\0431\0440\0430\043d\0020\0444\0430\0439\043b\003a';
+			margin-right: 5px;
+		&[data-file-name]:after
+			content: attr(data-file-name);
+			font-size: 10px;
+		&[data-file-name][data-file-size]:after
+			content: attr(data-file-name) " ["attr(data-file-size)attr(data-file-size-label)"]";
+	&:hover &-button
+		background-color: (MAIN_COLOR + 20%)
+	&:active &-button
+		background-color: (MAIN_COLOR - 20%)

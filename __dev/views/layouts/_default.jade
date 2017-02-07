@@ -1,0 +1,121 @@
+block vars
+include ../modules/___include
+doctype html
+html(lang="ru" class="#{ htmlClass ? htmlClass : '' } #{ isCurrentElement('Главная')[0] ? 'MAIN_PAGE' : '' }").no-js
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
+		//- meta(name="viewport" content="user-scalable=yes")
+		link(rel="icon" href="_index/favicon.ico")
+		block title
+			-var _current = ( currentPageTitle && currentPageTitle.length > 0 ? currentPageTitle[currentPageTitle.length - 1] : "Заголовок страницы" )
+			if Array.isArray(_current)
+				-_current = _current[ _current.length - 1 ]
+			title!= _current
+
+
+		// [ START ] Стили библиотек
+		-appModules.renderStyles()
+		
+
+		link(rel="stylesheet", type="text/css", href="#{ __STATIC_DIR }styles/vendors.css")
+		// [  END  ] Стили библиотек
+
+		// [ START ] Стили проекта
+		-appProject.renderStyles()
+		link(rel="stylesheet", type="text/css", href="#{ __STATIC_DIR }template_styles.css")
+		link(rel="stylesheet", type="text/css", href="#{ __STATIC_DIR }styles/additional.css")
+		// [  END  ] Стили проекта
+
+		//- | <!--[if IE 8]>
+		//- | 	<script type="text/javascript">
+		//- | 		window.isIE8 = true;
+		//- | 	</script>
+		//- | <![endif]-->
+
+		// [ START ] Переменные bitrix
+		script.
+			window.App = window.App || {}
+			App.BX = {
+				TEMPLATE_PATH: './template/'
+			}
+		// [  END  ] Переменные bitrix
+
+
+		+scriptsBlock()
+
+
+		// [START] IE8 polyfills
+		| <!--[if lt IE 9]><script src="#{ libs() + 'html5shiv.min.js' }"></script><![endif]-->
+		//- <!--[if lt IE 9]><script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+		| <script src="#{ libs() + 'respond.min.js'}"></script>
+		// [END] IE8 polyfills
+	body
+		.blackout
+		.debug-media-screen
+			-
+				var _css = '';
+				VARS.SCREENS.forEach(function(screen, index){
+					var screen = VARS.SCREENS[index];
+					var _min = false;
+					var _max = false;
+
+					if(index == 0)
+						_min = screen[1];
+					else if(index < VARS.SCREENS.length - 1)
+						_min = screen[index + 1]
+					if(index > 0)
+						_max = screen[1]
+					var _label = ''
+					if(_max)
+						_label = '<=' + _max + 'px'
+					else
+						_label = '>' + _min + 'px'
+
+					_min = _min ? ' and (min-width: ' + _min + 'px)' : ''
+					_max = _max ? ' and (max-width: ' + _max + 'px)' : ''
+
+					_css += "@media screen" + _min + _max + " { .debug-media-screen:before { content: '" + screen[0] + " ( " + _label + " )'; } }"
+				})
+			style.
+				!{ _css }
+				.debug-media-screen {
+					position: fixed;
+					right: 0;
+					top: 0;
+					left: 0;
+					font-size: 15px;
+					line-height: 15px;
+					padding-top: 5px;
+					padding-right: 15px;
+					padding-bottom: 5px;
+					padding-left: 15px;
+					background: #000;
+					color: #fff;
+					border-radius: 0 0 10px 10px;
+					z-index: 999999999999;
+					opacity: 0.7;
+					pointer-events: none;
+					text-align: center;
+					width:  250px;
+					margin:  auto;
+				}
+
+		block prepend-body
+		main
+			.spritePreloading
+			if !hideHeader
+				header#header.header.js-header
+					include header.jade
+
+			section#content.content.js-content
+				block before-content
+				block content
+				block after-content
+			if !hideFooter
+				footer#footer.footer.js-footer
+					include footer.jade
+
+			include ../modules/pops.jade
+
+		block append-body

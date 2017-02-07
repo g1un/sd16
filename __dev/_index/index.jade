@@ -1,0 +1,116 @@
+doctype
+html
+	head
+		title Макеты верстки Realweb
+		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+		link(rel="shortcut icon", href="_index/favicon.ico", type="image/x-icon")
+		link(rel="icon", href="_index/favicon.ico", type="image/x-icon")
+		link(rel="stylesheet", type="text/css", href="_index/style.css")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0")
+
+		//if lt IE 9
+			<script>
+				document.createElement('header');
+				document.createElement('nav');
+				document.createElement('section');
+				document.createElement('article');
+				document.createElement('aside');
+				document.createElement('footer');
+			</script>
+
+	body
+		-var SHOW_DOCUMENTATION = false
+
+
+
+		-var devPages = []
+		-var sitePages = []
+		-var devPrefix = '--dev--'
+		each page in locals.pages
+			-if(page.file.indexOf(devPrefix) == 0)
+				-devPages.push(page)
+			-else
+				-sitePages.push(page)
+		-
+			var sortPage = function(a, b){
+				if(a.name > b.name) return 1;
+				if(a.name < b.name) return -1;
+				return 0;
+			}
+			devPages.sort(sortPage);
+			sitePages.sort(sortPage);
+
+		header
+			a(href="http://www.realweb.ru", target="_blank", class="left")
+				img(src="_index/realweb.png", alt="realweb", width="250")
+			.right Профессиональная разработка сайтов 
+				a(href="http://sites.realweb.ru/contacts.html", target="_blank") Контактная информация
+			.clear
+		section
+			.block-text
+				table.table-pages
+					tr.__filter-ignore
+						th(width="30%") Ссылка
+						th Название страницы
+					tr.__filter-ignore
+						td(colspan="2")#filter
+							input(type="text", name="" placeholder="Фильтрация (активируется при нажатии клавиши буквы)")#filter-input
+
+					if devPages.length > 0
+						tr.__filter-ignore
+							th(width="30%" colspan="2" class="") Страницы разработки
+						each page in devPages
+							if (SHOW_DOCUMENTATION) || (page.file != '--dev--documentation')
+								tr
+									td.__links
+										a(href="#{page.file}.html").js-look-link.look-link
+											img(src="_index/see.png", alt="")
+										a(href="#{page.file}.html", target="_blank") #{page.file}.html
+									td!= page.name
+					if sitePages.length > 0
+						tr.__blank.__filter-ignore
+							td(colspan="2")
+						tr.__filter-ignore
+							th(width="30%" colspan="2" class="") Основные страницы
+						each page in sitePages
+							tr
+								td.__links
+									a(href="#{page.file}.html").js-look-link.look-link
+										img(src="_index/see.png", alt="")
+									a(href="#{page.file}.html", target="_blank") #{page.file}.html
+								td!= page.name
+
+
+
+
+
+
+
+
+
+
+
+		script(src="https://code.jquery.com/jquery-1.12.3.min.js")
+		script.
+			$('#filter-input').on('input', function(){
+				var $this = $(this);
+				$('.table-pages .hidden').removeClass('hidden');
+
+				if($this.val().length < 1) return;
+
+				$('.table-pages tr:not(.__filter-ignore)').each(function(){
+					if( $(this).text().toLowerCase().indexOf( $.trim($this.val().toLowerCase()) ) == -1 ) $(this).addClass('hidden');
+				});
+			})
+
+			$('body').on('keydown', function(e){
+				if(e.originalEvent.ctrlKey) return
+				if(e.originalEvent.altKey) return
+				if( $('#filter-input').is(':focus') ){
+					if( e.originalEvent.code.toLowerCase() == "escape" )
+						$('#filter-input').blur();
+					return;
+				}
+				if(e.originalEvent.code.toLowerCase().indexOf('key') != 0) return
+				$('#filter-input').focus();
+			})

@@ -1,0 +1,162 @@
+.flat
+	&-inner
+		display table
+		width 100%
+		table-layout fixed
+		> *
+			display table-cell
+			padding 30px 25px
+	&-aside
+		vertical-align middle
+		background #ffffff
+	&-content
+		vertical-align top
+		background COLORS['light'];
+		&-inner
+			padding-bottom 55px
+			position relative
+	&-image
+		position relative
+		display block
+		overflow hidden
+		&:before
+			padding-top 137.4%
+			content ''
+			display block
+		img
+			position absolute
+			pos 0
+			margin auto
+			max-size 100%
+			display block
+	&-button
+		position absolute
+		pos _ -25px -30px
+		[data-button]
+			display block
+			width 100%
+			padding _ 10px
+
+	&-title
+		font-size 20px
+		line-height 30px
+		font-weight 900
+		text-transform uppercase
+		margin-bottom 35px
+		a
+			color inherit
+
+	&-info
+		margin 25px _
+		&-table
+			display table
+			width 100%
+			font-size 12px
+			line-height 14px
+			font-weight 700
+			color #242424
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			overflow hidden
+			text-align left
+			padding 8px 0
+			&:first-child
+				padding-right 15px
+				width 68.5%
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					font-size 9px
+					line-height 14px
+					margin-bottom -5px
+					letter-spacing -4px
+					color getColor('light') - 7%
+				span
+					padding-right 3px
+					background getColor('light')
+	&-price
+		text-align center
+		color #000
+		margin 25px _ 20px
+		&-value
+			font-size 44px
+			line-height 1.1
+			font-weight 900
+		&-label
+			font-size 12px
+			line-height 16px
+			font-weight 300
+			margin-top 5px
+	&-info-toggle
+		display none
+		margin-top -15px
+		&-link
+			&:after
+				content attr(data-label)
+				.flat.__show-info &
+					content attr(data-shown-label)
+		.flat.__show-info &
+			margin-bottom 25px
+
+	+MEDIA("DESKTOP")
+		&-price
+			&-value
+				font-size 30px
+	+MEDIA("SMALL_DESKTOP", true)
+		&-inner,
+		&-inner > *
+			display block
+		&-image
+			&:before
+				padding-top 60%
+		.choose-flat-list &
+			&-info
+				display none
+				margin _ _ 25px
+			&.__show-info .flat-info
+				display block
+			&-info-toggle
+				display block
+	+MEDIA("SMALL_TABLET")
+		&-inner,
+		&-inner > *
+			display block
+		&-image
+			&:before
+				padding-top 60%
+		&-info
+			display none
+			margin _ _ 25px
+			.flat.__show-info &
+				display block
+		&-info-toggle
+			display block
+		&-price
+			text-align left
+			margin-top 10px
+		&-title
+			margin-bottom 25px
+		&-aside
+			padding 10px
+	+MEDIA("PHONE")
+		&-image
+			&:before
+				padding-top 100%
+	+MEDIA("SMALL_PHONE")
+		padding _ 0
+		&-price
+			&-value
+				font-size 26px
+		&-info
+			&-cell
+				&:first-child
+					width 50%
+		&-content
+			&-inner
+				padding-bottom 39px

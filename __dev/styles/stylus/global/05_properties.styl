@@ -1,0 +1,207 @@
+size(_width, _height = _width)
+	if isNumber(_width)
+		if isRem(_width) && ENABLE_REM_POLYFILL
+			width unrem(_width)
+			add-adaptive-property('width', _width)
+		width _width
+	if isNumber(_height)
+		if isRem(_height) && ENABLE_REM_POLYFILL
+			height unrem(_height)
+			add-adaptive-property('height', _height)
+		height _height
+	// relative-prop('width' width, 'height' height)
+
+max-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			max-width unrem(width)
+			add-adaptive-property('max-width', width)
+		max-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			max-height unrem(height)
+			add-adaptive-property('max-height', height)
+		max-height height
+
+	// relative-prop('max-width' width, 'max-height' height)
+
+min-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			min-width unrem(width)
+			add-adaptive-property('min-width', width)
+		min-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			min-height unrem(height)
+			add-adaptive-property('min-height', height)
+		min-height height
+	// relative-prop('min-width' width, 'min-height' height)
+
+pos(top, right = top, bottom = top, left = right)
+	if isNumber(top)
+		if isRem(top) && ENABLE_REM_POLYFILL
+			top unrem(top)
+			add-adaptive-property('top', top, true)
+		top top
+	if isNumber(right)
+		if isRem(right) && ENABLE_REM_POLYFILL
+			right unrem(right)
+			add-adaptive-property('right', right)
+		right right
+	if isNumber(left)
+		if isRem(left) && ENABLE_REM_POLYFILL
+			left unrem(left)
+			add-adaptive-property('left', left)
+		left left
+	if isNumber(bottom)
+		if isRem(bottom) && ENABLE_REM_POLYFILL
+			bottom unrem(bottom)
+			add-adaptive-property('bottom', bottom)
+		bottom bottom
+	// relative-prop('top' top, 'right' right, 'bottom' bottom, 'left' left )
+
+margin()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		add-adaptive-property('margin', arguments)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('margin-top', top)
+			if !allIsNumber(arguments)
+				margin-top unrem(top)
+
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('margin-right', right)
+			if !allIsNumber(arguments)
+				margin-right unrem(right)
+
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('margin-bottom', bottom)
+			if !allIsNumber(arguments)
+				margin-bottom unrem(bottom)
+
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('margin-left', left)
+			if !allIsNumber(arguments)
+				margin-left unrem(left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		margin arguments
+	else
+		if isNumber(top)
+			margin-top top
+		if isNumber(right)
+			margin-right right
+		if isNumber(bottom)
+			margin-bottom bottom
+		if isNumber(left)
+			margin-left left
+
+padding()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		if allIsRem(arguments)
+			add-adaptive-property('padding', arguments)
+			padding unrem(top) unrem(right) unrem(bottom) unrem(left)
+		else
+			if isRem(top)
+				padding-top unrem(top)
+			if isRem(right)
+				padding-right unrem(right)
+			if isRem(left)
+				padding-left unrem(left)
+			if isRem(bottom)
+				padding-bottom unrem(bottom)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('padding-top', top)
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('padding-right', right)
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('padding-bottom', bottom)
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('padding-left', left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		padding arguments
+	else
+		if isNumber(top)
+			padding-top top
+		if isNumber(right)
+			padding-right right
+		if isNumber(bottom)
+			padding-bottom bottom
+		if isNumber(left)
+			padding-left left
+
+opacity(val)
+	if( val >= 0 )
+		if val > 1
+			val = val/100
+		zoom 1
+		-ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity="' + val*100 + '")')
+		filter unquote('alpha(opacity=' + val*100 + ')')
+		opacity val
+	else
+		opacity val
+
+gr(startColor, endColor)
+	background: -moz-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,startColor), color-stop(100%, endColor));
+	background: -webkit-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -o-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -ms-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: linear-gradient(to bottom,  startColor 0%, endColor 100%);
+
+// font-size(val)
+// 	if(typeof(val) == 'unit' && unit(val) == 'rem')
+// 		add-adaptive-property('font-size', val)
+// 		add-property('font-size', unrem(val))
+// 	add-property('font-size', val)

@@ -1,0 +1,228 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Viewer"]
+	-var hideHeader = true
+	-var hideFooter = true
+block content
+	style.
+		.debug-media-screen {
+			display:  none;
+		}
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: auto;
+		}
+		html {
+			font-family: 'Open Sans', sans-serif;
+			width: 100%;
+			height: 100%;
+		}
+		html.js body {
+			padding: 0;
+		}
+		*,
+		*:before,
+		*:after {
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #dadada;
+			min-height: 100%;
+		}
+
+		#layout {
+			height: 840px;
+			width: 80%;
+			margin: auto;
+			display: block;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+			border-radius: 0 0 5px 5px;
+			margin-bottom: 140px;
+		}
+		.controls {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index 3;
+			background: rgba(255, 255, 255, 0.3);
+			text-align: center;
+			padding: 30px 0;
+		}
+		.view-modes,
+		.sizes {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.view-modes {
+			width: 600px;
+		}
+		.sizes {
+			width: 200px;
+		}
+		.sizes .control + .control {
+			margin-top: 10px;
+		}
+		.control-label {
+			margin-bottom: 5px;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		.view-mode {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 10px;
+			width: 64px;
+			height: 64px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			opacity: 0.4;
+		}
+		.view-mode:hover {
+			opacity: 0.8;	
+		}
+		.view-mode.__current {
+			opacity: 1;
+		}
+		.view-mode.__desktop { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA4CAMAAAB6xg5AAAACalBMVEVOTk5QUFBUVFTb29vi4uLl5eXn5+fo6Ojs7Ozt7e3x8fHy8vL29vb4+Pj9/f3///9QUFBQUFBQUFDQ0NBQUFBQUFBQUFDBwcFQUFC+vr5QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFC3t7dQUFC9vb1QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCkpKRPT09QUFBSUlKcnJykpKRQUFBQUFBQUFBQUFBQUFBQUFCkpKRQUFBQUFCenp5QUFBQUFBQUFBQUFBQUFBQUFBRUVFxcXFQUFBQUFBQUFBQUFBQUFBQUFBxcXFQUFBQUFBRUVFnZ2dQUFBQUFBPT09QUFBra2t7e3tQUFBQUFBQUFBkZGRQUFBQUFBQUFBubm5QUFBQUFBRUVFQUFBQUFBQUFBQUFBpaWlQUFBQUFBQUFBQUFBYWFhPT09QUFBQUFBQUFBhYWFQUFBRUVFQUFBQUFBPT09QUFBSUlKQkJCXl5dQUFBaWlpgYGBQUFBQUFBcXFxQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBNTU1QUFBNTU1QUFBQUFBQUFBQUFBQUFBQUFBwcHBzc3NaWlpdXV1QUFBubm5xcXFQUFBQUFBQUFBQUFBeXl5BQUFQUFBBQUFQUFBQUFBQUFBQUFBFRUVQUFBQUFBQUFBcXFxQUFBQUFBQUFBQUFBQUFBISEhQUFBERERERERFRUVQUFBJSUlQUFBFRUVLS0tQUFBMTExOTk5QUFBFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExNTU1OTk5QUFBRUVEyOSoQAAAAwnRSTlMAAAAAAAAAAAAAAAAAAAAAAQIDAwQFBgYICAkKDxAVFxgZHR4fISIjJissLzEzNDU2NjY2Njg5Ojs9Pj5AQ0RFRkdISUtLTE5QUlRXWFlaXV1eX2JjZGRpamtub3BxdHR1dnZ3eHt8fH1+g4WGiYqLjI2QkpSVmJiYmJicnKCho6Snqa2vsrS2uLu8v8TFyMjJysvNzs/Q0NHS0tPT09XW193d3t7f3+Di5+np6uvt7u/y9vf4+fr7+/v8/P39/f7+/p6ciLIAAAISSURBVHgB7dVnU9RAHMfxXTsWl9MDu2LBgr2DYhF7UexFEVGwK2cv2EXsWLzDrgE7igqnWMRiop4Qf3lPZu4mDne4yWV94oN8H/0zm/lMdvdBCNUbleXJtZ1n68JujDEdSDxWLgv1WVpSXwd6lkCsalVTtjQhruNAcWa6/ebOO/hB+ziapFSgOIHaj9Rr1nDFF/UQyQYyqBAQw9o91C6QbTJmiQINbtT4iEfGHFGA3Ql4/w24/f8BDuAADuAADjBVDGjB2LUQcHavQHv27c/Le6EGAcG+KcovBIGqyvcivXv75msI2NBvMLek3v3/vjBoyNBhA++FtjCD8hswP87kEK//8Fr83ru/xGb+NTa6WeMjG4FlfKDrY+TwgTb3tUtknB9FHflCwnDKA5rHLP6kHiXuAuDKgkm8xqSmcVYmT9n+WlPGEtrnGcQKVGvfdzYmlPY9B6F+Bp6ub810gLpSlmavjihrbQVK12UG55X5wMmMyDfWrJrdoyXTAU6Jfpwy5mRgd91DbMr0+MByYJMxd36Okg51r9EUcJ0HRhgPsfnANJvAeBmX46nRTOBMrC0grhBYRP/U/i4w3RaQA1ytvet04EEXG0DaK1RNoLVynwYK4qMGksuAXBpWr1LggDtKYGIZcKJV5KmWA0c6WQIjL0qSVAng0S0pvCI/gCf6sKOtGXAY1iWZAamFPq9Fu8K/4Dd8Q7nPuQ+QDwAAAABJRU5ErkJggg==); }
+		.view-mode.__notebook { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAsCAMAAADigU7NAAAAqFBMVEVQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBRzEwKAAAAN3RSTlMABRAaHCEuMDE3ODk7PD9AQUNTXWNwco+Zmpyipqu5ury+v8DBxcjMz9XZ4Obo6e3v8/T3+fz+6QJVZQAAAMBJREFUeNrt1scOwjAQRdFHDd30Xh1K6J33/3+GFGVhoViagNj57OdK480YkeaeibzGaZgqZyY1SsEwYV8l0jyxAMOSZSSzYB0GTYWelvPCiY/AmnKNuIBmR8kEVPGBImTmtoCCjHYBF3ABF3ABFzDov12mQMtcqP5ynT0ll/4MzEX7x0740VaBFjMnfPBH8DktVq0/kZDt51IrtR9HNG7XNiymUSCPeLkZh0CX3Fn3DNneZ3XnNgugtXnyO4dBBm9xQaQ4oKwGMwAAAABJRU5ErkJggg==); }
+		.view-mode.__ipad-1 { width: 50px; height:50px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABWCAMAAABIOGBqAAAAzFBMVEVQUFD////39/dQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCmpqZQUFBQUFCnp6dQUFBQUFCSkpKQkJBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBVVVVQUFBQUFBTU1NQUFBQUFBQUFBQUFBQUFBQUFBQUFBRUVFQUFBQUFBQUFBQUFBQUFBJSUlOTk5QUFBEREROTk5PT09QUFBqB61DAAAAQHRSTlMAAAEFBwoODxIqMj9BSFZcXV9fYHl8fpOZmpudn6eoqba9vr/Bzc/S19vc3d3e3+Lj5Obo6uvs7u/3+Pv9/v7+vZ8KtwAAALNJREFUeNrt2DUSw0AQRNE2MzPKJLNlZpT2/ndyOVSyVdpV4KB/3i+ZbIDURKhmr3MBpE9CPedZhCl0spd4CK1eEJr5BViNtsfqpgvowHNlF2AQIECAAAECBAgQIECAAAECBAj8PdDVBQ6Dkcf6K9/eQPLeu6MWsMhEoqWLOnBNAkBWHejhV3imALiuO1YGrBgAJG6SlyTmUqEVAuJDyX6Pwl0qTGvNrWT/qQL5jVDNOVeCX/eJ9Wd3GRjqAAAAAElFTkSuQmCC); }
+		.view-mode.__ipad-2 { width: 50px; height:50px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAvCAMAAABkFTxjAAAAn1BMVEVQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFDY2NjMzMxQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBra2tQUFBQUFBbW1tQUFBQUFBQUFBgYGBXV1dQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBNTU1OTk5QUFBLS0tMTExNTU1OTk5QUFAWBDesAAAAMHRSTlMAAQQICQ0VFhodICMjMz5CiY6WoKyut76/v8DCxMXMzdDT2Nnb3eHu7/L4+vv8/f1RzqHrAAAAlUlEQVR4Ae3Stw7CQBCE4TE5Z3OAySYY22DCvv+zIVEgoFtPQ7F/P590p0XFl/zd5y34wnSdIhGqM4TsBaS7UNl2n30Ch7JX0IVa9AWUoK16NMAAA/4HcP0lAUTSA7xRfuAU1wF0CCBpAOgyTxgAxTH1iathaJdogAEG/ABx4Ca63CJ9A2TIuP0FAbW/rdGcEfvHpv0E0ZLS6YK2jp0AAAAASUVORK5CYII=); }
+		.view-mode.__phone-1 { width:40px; height:40px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAABACAMAAACujJ7lAAABQVBMVEVQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCzU38AAAAAanRSTlMAAQIDBAYICgsNDxASFBcYGRobHSAlJikqKy8yNDg6RkdKTlNYWlxdYGZpbG1wcXV8fYGDiI2PlZaXmZqen6ChoqWusbKzvb6/wsPFx8vMztDR0tPU1djb3d/k5efp6u3y8/T19vn6+/z93XP8xgAAASVJREFUeNrt1WkzQmEYxvHLkiVLlrIvhawhRPatiA4SyRKJSrq+/wdwzGSe88yc85Tp7fm9vOf/+rqh69t6pbXvxHwjfk0milT6PHYB8BbIlGbtKkPGO9CT5Ju/BQrubXIdm+WvGVQRZQoZ3jnEpSuuVYQgeJkHGYPQzz9xCB4S5AWEzshZRRDCgNzJ6ulOHxT8oktTYVl0t3w8MHdS4pKx24WFnNwdwpzzw+7szu7szu7+0+3VuLs3q+bWisbungoB0Wk5hQXRtbUrOOr8g2OhFWcN3cQ7GW2t3u1TN27SxSAJUzcKIw+JEi8hGUyTO80wGmYZ13xxQdI752uAZJFZzBYYhpr7iedoOiIjviFrI4Fncgro1lhVEDrnRjJPa+VsbBr4AcySUnl2xh0DAAAAAElFTkSuQmCC); }
+		.view-mode.__phone-2 { width:40px; height:40px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAnCAMAAACIRr4OAAABqlBMVEVERERJSUlQUFC9vb2+vr7BwcHDw8Pm5ubu7u7y8vL39/f9/f3///+9vb1QUFDGxsZERERQUFBQUFBQUFBQUFBQUFBQUFDU1NRQUFBQUFBQUFBQUFC1tbVQUFBQUFCUlJS9vb1QUFBQUFBQUFCsrKxQUFBQUFBEREROTk65ubni4uKOjo5QUFBQUFBQUFBxcXG9vb2NjY2Li4tHR0dQUFBQUFC9vb1QUFBQUFBoaGhQUFBycnJQUFBQUFBQUFBQUFBQUFBQUFBSUlJfX19QUFBQUFBQUFBQUFBQUFBQUFBgYGBERERQUFBQUFBQUFBQUFBmZmZQUFBQUFBQUFBQUFBQUFBQUFBQUFBaWlpQUFBJSUlQUFBQUFBRUVFCQkJQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBMTExQUFBQUFBQUFBQUFBERERQUFBQUFBNTU1LS0tQUFBJSUlQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBMTExQUFBQUFBQUFBQUFBQUFBQUFBERERHR0dISEhJSUlKSkpLS0tMTExNTU1PT09QUFBRUVFOPgmOAAAAg3RSTlMAAAAAAAAAAAAAAAAAAgMDBQYHCAoLDQ4PEBIUFxgZGRkbHR8fJSYoKioqLjM4RUpKUFRaWlxcYGZobGxtcHJ1fH1+goOIio2TlZaYmZqcn5+go6WusLGzs7S+vr/Cw8PExcfIzM3P0NDT1NXX2Nvc3uPk5efq6+3y8/T19vn6+/z9/hRaqfUAAAFESURBVHja7dVVU0JhEIDhdW09dmIXJmBhd2B3i4GYIHYgiqiohLD+Z8c544x4IYfvUy/U93IvnpudnQVEzO47JoZuNmrjBAEQVQY7sXU9kRUFqLLSjXE58JZWTjye1TTI36JzdSIyFJQ75HrqgX4b1SFTEBa+4NmBM9pNEgcz+wZJGfUpIhAsVD5agUiPYiaSmCX1DShzkQ9wMDLpt9HNd0C52xcYRwl1/APfBGQWZPABOprjA/Q0/9OAcmyghAdQXBDt5XEAGiJ6qOcA2l+BKg5Atkg0HMMBYLJSEf+Va9ToOv/8Nf4eYBrT/YZdnwC3lku/WWwfgDtaZ39tFQ47bNNpoQio25ol1dqYIAIhQovDDA1XNIhMQWjREWkhdopoViUvDjh5adOh11kDmLNGbD27vc7uCECU9ZqsLMC9WVsdGf0CJvfMoWw7xRkAAAAASUVORK5CYII=); }
+	div.
+		<div class="controls">
+			<div class="view-modes">
+				<a href="#" data-setview="1900:989" title="ПК" class="view-mode __desktop"></a>
+				<a href="#" data-setview="1580:800" title="Нуотбук" class="view-mode __notebook"></a>
+				<a href="#" data-setview="1024:670" title="Ipad" class="view-mode __ipad-2"></a>
+				<a href="#" data-setview="768:1024" title="Ipad" class="view-mode __ipad-1"></a>
+				<a href="#" data-setview="598:335" title="Смартфон" class="view-mode __phone-2"></a>
+				<a href="#" data-setview="360:567" title="Смартфон" class="view-mode __phone-1"></a>
+			</div>
+			<div class="sizes">
+				<div class="control">
+					<div class="control-label">Ширина <span class="js-iframe-width"></span></div>
+					<div class="js-slide-width" data-ui="slider::{min: 320, max: 1920, value: 1920}" data-ui-events="slidechange:set-page-width,slide:set-page-width,slidecreate:slideinit-width"></div>
+				</div>
+				<div class="control">
+					<div class="control-label">Высота <span class="js-iframe-height"></span></div>
+					<div class="js-slide-height" data-ui="slider::{min: 320, max: 1920, value: 1920}" data-ui-events="slidechange:set-page-height,slide:set-page-height,slidecreate:slideinit-height"></div>
+				</div>
+			</div>
+		</div>
+
+		<iframe src="" frameborder="0" id="layout"></iframe>
+	script.
+		(function(){
+			'use strict';
+
+			$(window).on('load', function(){
+				setTimeout(function(){
+					if(window.___browserSync___){ window.___browserSync___.socket.close(); }
+				}, 1000);
+			})
+			var ui = function(){
+				$('[data-ui]').each(function(){
+					var $el = $(this);
+					var options = $el.attr('data-ui').split('::');
+					var method = options[0];
+					options = eval( "[" + options[1] + "]")[0];
+					var events = $el.attr('data-ui-events');
+					if(events){
+						events = events.split(',');
+						events.forEach(function(event){
+							event = event.split(':');
+							$el.on(event[0], uiEvents[event[1]]);
+						})
+					}
+					$el[method](options);
+				})
+			}
+
+			var uiEvents = {
+				'set-page-width': function(e, ui){
+					$('#layout').css('width', ui.value);
+					$('.js-iframe-width').html( ui.value + "px" );
+					$('html').trigger('sizechanged');
+				},
+				'set-page-height': function(e, ui){
+					$('#layout').css('height', ui.value);
+					$('.js-iframe-height').html( ui.value + "px" );
+					$('html').trigger('sizechanged');
+				},
+				'slideinit-width': function(){
+					$(this).slider("value", $('#layout').width());
+				},
+				'slideinit-height': function(){
+					$(this).slider("value", $('#layout').height());
+				}
+			}
+
+
+			var setView = function(width, height){
+				$('.js-slide-width').slider("value", width);
+				$('.js-slide-height').slider("value", height);
+			}
+
+			$(document).ready(function(){
+				ui();
+				$('#layout').attr('src', (location.hash.replace('#', '') || 'index.html') );
+			});
+
+			$(document).on('hashchange', function(){
+				$('#layout').attr('src', (location.hash.replace('#', '') || 'index.html') );
+			});
+
+			$('html').on('sizechanged', function(){
+				var width = $('#layout').width();
+				var height = $('#layout').height();
+				$('.__current[data-setview]').removeClass('__current');
+				//- console.log('[data-setview="' + width + ':' + height + '"]')
+				$('[data-setview="' + width + ':' + height + '"]').addClass('__current');
+			})
+
+			$('html').on('click', '[data-setview]', function(e){
+				e.preventDefault();
+				var size = $(this).attr('data-setview').split(':');
+				size[0] = parseInt(size[0]);
+				size[1] = parseInt(size[1]);
+				setView(size[0], size[1]);
+			});
+
+			$('#layout').on('load', function(){
+				$( this.contentDocument.body ).find('a[target]').each(function(){
+					$(this).attr('target', '_self');
+				});
+
+				var newLocation = '#' + this.contentWindow.location.href.split('/').pop();
+	
+				if( newLocation != location.hash ){
+					location.hash = newLocation;
+				}
+
+				if( this.contentWindow.location.href.indexOf('index.html') === -1 ){
+					var $btn = $('<a href="index.html" data-button="" data-button-size="small" style="padding: 10px;"></a').html('<img src="_index/list.png" style="max-height: 20px;" />').css({
+						'position': 'fixed',
+						'left': '10px',
+						'bottom': '10px',
+						'z-index': 99999999,
+						'box-shadow': '0 0 4px rgba(0,0,0,0.5)'
+					}).appendTo($( this.contentDocument.body ).find('main'));
+				}
+
+				$('<a href="' + this.contentWindow.location.href + '" data-button="" data-button-size="small" onclick="location.reload();" style="padding: 10px;"></a').html('<img src="_index/refresh.png" style="max-height: 20px;" />').css({
+					'position': 'fixed',
+					'right': '10px',
+					'bottom': '10px',
+					'z-index': 99999999,
+					'box-shadow': '0 0 4px rgba(0,0,0,0.5)'
+				}).appendTo($( this.contentDocument.body ).find('main'));
+			})
+		})();

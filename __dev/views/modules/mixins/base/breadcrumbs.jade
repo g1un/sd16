@@ -1,0 +1,50 @@
+-var breadcrumbs = function(sep, params){
+	if params == null
+		-params = {}
+	if params['main'] == null
+		-params['main'] = 'Главная'
+
+	-var list = [  ]
+	if params['main']
+		-list.push({label: params['main'], url: 'main.html'})
+
+	-var addHandle = function(el) {
+		-if(Array.isArray(el))
+			-each _el in el
+				if Array.isArray(_el)
+					-list.push({label: _el[0], url: _el[1]})
+				else
+					-list.push({label: _el, url: _el})
+		-else
+			-list.push({label: el, url: el})
+		-return _breadcrumbs
+	- }
+
+	-var renderHandle = function(lastLink) {
+		nav.breadcrumbs
+			div.breadcrumbs-list
+				-var isFirst = true
+				-var isLast = false
+				-each item, index in list
+					-isLast = (index == (list.length - 1))
+					-if (!isFirst)
+						div.breadcrumbs-sep!= sep
+					-else
+						-isFirst = false
+					div.breadcrumbs-item
+						if isLast
+							if params['hideLast'] != true
+								span.breadcrumbs-link.__current!= item.label
+						else
+							a(href="#{ url(item.url) }").breadcrumbs-link!= item.label
+		-return _breadcrumbs
+	- }
+
+
+	-var _breadcrumbs = {}
+	-_breadcrumbs.add = addHandle
+	-_breadcrumbs.render = renderHandle
+
+
+	-return _breadcrumbs
+- }

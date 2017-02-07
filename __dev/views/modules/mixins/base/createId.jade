@@ -1,0 +1,9 @@
+-var CreateID = function() {
+	-var perfix = 'uniqid-'
+	-var lastIndex = 100000
+	-return function() {
+		-lastIndex++
+		-return perfix + lastIndex
+	- }
+- }
+-var createId = CreateID()

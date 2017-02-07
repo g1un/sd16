@@ -1,0 +1,19 @@
+-
+	var getRandomDate = function(){
+		var self = function(showDay, showMonth, showYear){
+			var result = [];
+			if(showDay   !== false){ result.push( self.day   ); }
+			if(showMonth !== false){ result.push( self.month ); }
+			if(showYear  !== false){ result.push( self.year  ); }
+
+			return result.join(' ');
+		}
+		self.day = random(1, 28) 
+		self.month = (["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"])[ random(0,11) ]
+		self.year = (new Date()).getFullYear() - 1;
+		self.toString = function(){
+			return self.day + " " + self.month + " " + self.year;
+		}
+
+		return self;
+	}

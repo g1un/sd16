@@ -1,0 +1,22 @@
+mixin news()
+	+namespace("news")
+		+el().block.__page
+			.wrapper-content
+				.block-header
+					.block-title
+						h1 Новости
+					.tab-list.__invert.__small
+						for year, index in [2016,2015,2014,2013,2012,2011,2010]
+							if index == 0
+								span.tab.__current: span!= year
+							else
+								a(href="#").tab: span!= year
+				.block-content
+					.news-list.js-news-list(data-clearwhitespace="" data-uniformheight=".news-item-inner,.news-subscribe-inner")
+						for item, index in newsList
+							if index >= 5
+								+news-subscribe()
+								-break
+							+news-item(item)
+
+					+pagination(range(1,5), 'Назад', 'Вперёд')

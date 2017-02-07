@@ -1,0 +1,238 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Статьи"]
+	-var inner = true
+block content
+	+breadcrumbs()
+
+	+page-title()
+
+	.wrapper-content
+		for t in range(1,6)
+			!= '<h' + t + ' class="js-title">Заголовок тег ' + t + ' [ h' + t + ' || class="title-' + t + '" ]</h' + t + '>'
+		script.
+			$('.js-title').each(function(){
+				$(this).append('<span> font-size: ' + $(this).css('font-size') + 'px</span>')
+			});
+		
+		-var textTags = []
+		-textTags[0] = ["Жирный", "b", "bold"]
+		-textTags[1] = ["Жирный", "strong", "bold"]
+		-textTags[2] = ["Курсивный", "i", "italic"]
+		-textTags[3] = ["Выделенный", "em", "em"]
+		-textTags[4] = ["выделенный", "mark", "mark"]
+		-textTags[5] = ["Подчёркнутый", "u", "underline"]
+		-textTags[6] = ["Короткий цитированный", "q"]
+		-textTags[7] = ["Код", "code"]
+		-textTags[8] = ["Удаленный", "del"]
+		-textTags[9] = ["Вставленный", "ins"]
+		-textTags[10] = ["Устаревший", "s"]
+		-textTags[11] = ["Маленький", "small", "small"]
+		-textTags[12] = ["Нижнего индекса", "sub"]
+		-textTags[13] = ["Верхнего индекса", "sup"]
+		-textTags[14] = ["", ""]
+		-textTags[15] = ["", ""]
+		-textTags[16] = ["", ""]
+		-textTags[17] = ["", ""]
+		-textTags[18] = ["", ""]
+
+		for txt in textTags
+			if txt[0].length > 0 && txt[1].length
+				p!= "<" + txt[1] + ">" + txt[0] + "</" + txt[1] + "> текст <br>тег &#60;" + txt[1] + "&#62;" + (txt[2] ? ' || class="' + txt[2] + '"' : '')
+
+		p #[span.big Большой] текст <br>тег &#60;span class="big"&#62;
+
+		p: a(href="#") Ссылка
+
+		br
+
+		blockquote
+			p Текст цитаты
+			p Lorem ipsum dolor sit amet.
+			p Ipsum atque amet, quas sint.
+			p Incidunt, perspiciatis sequi veritatis nobis.
+			p Distinctio laudantium sit, modi impedit!
+			p A beatae recusandae nihil cum.
+
+		p
+			b линия
+		hr
+		p
+			b разделения
+
+		ul
+			li Lorem ipsum dolor.
+			li Eum, dolores, quia?
+			li Doloremque, itaque, nostrum.
+				ol
+					li Obcaecati, delectus, sapiente.
+					li Officia dolorem, vitae.
+					li Fugiat, vitae, maxime.
+					li Accusamus doloribus, consequatur?
+					li Deleniti, dicta, ipsum?
+			li Impedit, eaque, saepe.
+			li Alias aut, dolorum.
+				ul
+					li Dignissimos in, voluptate.
+					li Nulla, possimus, vel.
+					li Optio, cumque, quam.
+					li Et rerum, enim!
+					li Itaque, accusamus, quasi.
+		ol
+			li Iure, nihil, debitis.
+			li Mollitia, reiciendis excepturi.
+				ul
+					li Earum aperiam, doloribus.
+					li Dignissimos, sed laborum!
+					li Ex, ut, iusto.
+					li Saepe, laborum labore.
+					li Eaque nam, expedita!
+			li Ipsam, neque, velit!
+				ol
+					li Ad, eius veniam?
+					li Eaque, dolor, ducimus.
+					li Perferendis, quos, explicabo.
+					li Qui, et porro!
+						ol
+							li Praesentium, minima, aliquid.
+							li Quia odit, omnis.
+							li Molestiae, ullam suscipit.
+					li Porro, minima, quos.
+			li Aliquid, repellendus. Accusamus?
+			li Et, doloribus labore?
+
+		table
+			tr
+				th(colspan="2").__title Lorem ipsum dolor.
+			tr
+				th Lorem ipsum dolor.
+				td Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			tr
+				th Veniam, qui, est?
+				td Sequi, sapiente, rem. Est deserunt possimus illo quisquam.
+			tr
+				th Alias sed, numquam.
+				td Illum, vel? Fugiat temporibus adipisci minus dolorem totam.
+
+		table
+			tr
+				th Lorem ipsum dolor.
+				th Soluta, nam, officiis.
+			tr
+				td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, doloribus.
+				td Recusandae deleniti aut error, explicabo, veniam fugit molestias? Deleniti, perspiciatis.
+			tr
+				td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, dicta.
+				td Debitis tempore vitae accusantium accusamus dolor, voluptas tenetur quaerat, earum.
+			tr
+				td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, non.
+				td Ut dolorum natus quod distinctio aut excepturi dicta harum omnis.
+
+		table
+			thead
+				tr
+					th Lorem ipsum dolor.
+					th Soluta, nam, officiis.
+			tbody
+				tr
+					td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, doloribus.
+					td Recusandae deleniti aut error, explicabo, veniam fugit molestias? Deleniti, perspiciatis.
+				tr
+					td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, dicta.
+					td Debitis tempore vitae accusantium accusamus dolor, voluptas tenetur quaerat, earum.
+				tr
+					td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, non.
+					td Ut dolorum natus quod distinctio aut excepturi dicta harum omnis.
+		.table-wrapper
+			table
+				tr
+					td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur minima qui reiciendis sit id est nihil suscipit aut cupiditate quas.
+					td Reprehenderit voluptatum nesciunt quasi in dolorem voluptas atque? Veniam tenetur natus reiciendis dicta incidunt magni nihil aliquid suscipit, quia praesentium!
+					td Ipsam repudiandae iste assumenda saepe optio, totam quibusdam ut vel velit in quisquam eligendi facere, nisi dolor quam delectus autem?
+					td Accusantium commodi repudiandae dolore deserunt cum mollitia dolor voluptatem nulla quod in. Animi harum dolorum labore nemo libero corporis repellat!
+					td Autem magni, perspiciatis numquam quaerat amet porro illo ab dolorem quidem id dolor dolore eius aliquid nostrum maxime delectus nam.
+					td Saepe ullam nostrum, vitae laboriosam repudiandae quam qui consectetur ducimus pariatur necessitatibus veniam! Repudiandae voluptatum deleniti molestias perspiciatis nihil quaerat!
+					td Vitae corporis perferendis, harum, mollitia dicta eveniet a tenetur numquam! Omnis veritatis, eligendi unde iste nemo natus at adipisci pariatur.
+					td Officiis pariatur molestiae quisquam sed modi similique iste neque, quaerat quam labore tempora possimus quasi eligendi numquam amet, aperiam facilis.
+					td Hic maxime recusandae aliquam cum voluptates. Dicta eveniet, at expedita, est sapiente consequuntur voluptatum quos atque nostrum, officia officiis autem.
+					td Veniam deserunt doloribus accusamus ipsa consequatur id suscipit vel, voluptate dolore, eaque, dolores voluptatum, cupiditate illum fugiat omnis nostrum dolorem!
+				tr
+					td Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur magni beatae, atque eligendi quidem repellat, voluptatem hic iste explicabo dolore.
+					td Suscipit in iusto earum pariatur officiis, dicta? Reprehenderit modi blanditiis, quos repudiandae optio iste, veniam ut delectus, aliquid dolorem deleniti.
+					td Enim temporibus illum natus perspiciatis atque ad cupiditate ullam, corrupti voluptatibus, ipsam totam. Eius libero dicta, at vel architecto cum.
+					td Laudantium laborum illum sunt quasi, illo architecto porro, labore dolorum error id minima. Possimus accusamus, illo labore alias perspiciatis nemo?
+					td Adipisci ducimus distinctio quo nemo fugiat saepe sapiente, tempore est dolorum harum placeat? Unde et at in animi accusamus architecto!
+					td Ipsa cum unde sequi autem, adipisci quo commodi rerum at dolorum non, saepe iusto officiis, nulla minima? Facilis quae, magni!
+					td Qui amet quo quaerat praesentium quis. Iusto itaque, minima animi cum, id tempore voluptatum aliquam molestias voluptates. Ducimus, culpa, saepe.
+					td Quo temporibus assumenda numquam cumque, saepe, voluptatibus officia blanditiis facere porro! Animi nulla mollitia sunt deserunt expedita iste error enim.
+					td Doloremque pariatur ipsum optio dolores, eligendi, amet quam? Eum architecto aliquid velit nobis sed labore hic earum optio? Impedit, fugiat.
+					td Esse temporibus commodi, iure, aliquam beatae nisi, facilis ea quaerat accusamus mollitia dolor voluptates placeat possimus saepe doloribus quia laborum!
+
+		table.__dotted
+			tr
+				th
+					span Lorem ipsum dolor sit amet.
+				td
+					span Lorem ipsum.
+			tr
+				th
+					span Iure quisquam, velit aliquam ipsam.
+				td
+					span Officia, omnis!
+			tr
+				th
+					span Cupiditate animi soluta sit ullam!
+				td
+					span Tempore, voluptate.
+			tr
+				th
+					span Necessitatibus quam, molestias obcaecati illo.
+				td
+					span Repellendus, nihil!
+			tr
+				th
+					span Quod hic delectus, numquam cum.
+				td
+					span Ad, aperiam.
+			tr
+				th
+					span Sed, consectetur sit veniam cum.
+				td
+					span Impedit, veritatis.
+			tr
+				th
+					span Laborum corrupti ipsum sed iusto.
+				td
+					span At, ea.
+			tr
+				th
+					span Nobis voluptatum voluptatem facilis fuga.
+				td
+					span Porro, ea!
+			tr
+				th
+					span Dolorum, pariatur voluptates! Sed, id.
+				td
+					span Esse, nesciunt.
+			tr
+				th
+					span Nemo maxime porro dolor voluptas.
+				td
+					span Molestias, perferendis.
+
+		h2 Демо текст
+
+		p
+			img(src="#{ getImage(2000, random(400, 600)) }", alt="" align="center")
+		p
+			img(src="#{ getImage(random(100, 300), random(100, 300)) }", alt="" align="left")
+			!= getText(random(100, 150)) + '.'
+		p
+			img(src="#{ getImage(random(100, 300), random(100, 300)) }", alt="" align="right")
+			!= getText(random(100, 150)) + '.'
+
+		p
+			+repeat(10)
+				a(href="#")
+					img(src="#{ getImage(200, 200) }", alt="")

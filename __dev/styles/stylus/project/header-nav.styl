@@ -1,0 +1,229 @@
+.header-nav
+	text-align center
+	font-size 12px
+	font-weight 500
+	text-transform uppercase
+	&-button-block
+		display none
+		line-height 1px
+		font-size 1px
+
+	&-button
+		&,
+		&[data-button]
+			position relative
+			size 71px 68px
+			display block
+			padding 0
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 33px
+				background images('icons/menu__small.png') center no-repeat
+				border-color transparent
+				trans()
+				transition-property background, opacity TRANS_SPEED
+				html.__header-nav &
+					background-image images('icons/menu-close.png')
+			&:active:after
+				opacity 0.8
+		html.modernizr-csstransforms &
+			&:after,
+			&:before
+				display none
+			&-line
+				position absolute
+				size 100% 3px
+				pos 0
+				margin auto
+				background #fff
+				trans()
+				&-wrapper
+					position absolute
+					size 33px
+					pos 0
+					margin auto
+				&.__first
+					top -18px
+				&.__second
+					pos 0 _
+				&.__third
+					bottom -18px
+		
+		html.modernizr-csstransforms.__header-nav &
+			&-line
+				&.__second
+					opacity 0
+				&.__first
+					transform rotate(45deg)
+					top 0
+				&.__third
+					transform rotate(-45deg)
+					bottom 0
+
+
+	&.__left,
+	&.__right
+		width 50%
+	&.__left
+		float left
+		padding-right 235px
+	&.__right
+		float right
+		padding-left 235px
+	&.__left &-list
+		margin-right 0
+	&.__right &-list
+		margin-left 0
+	&-wrapper
+		clear()
+	&-list
+		display table
+		margin auto
+	&-item
+		display table-cell
+		vertical-align middle
+		padding 0 15px
+	&-link
+		color #000000
+		&.__current
+			color MAIN_COLOR
+
+	+MEDIA("WIDE_DESKTOP")
+		&-wrapper
+			> .wrapper-content
+				width auto
+				padding 0
+				max-size none
+				min-size 0
+	+MEDIA("DESKTOP")
+		padding-top 25px
+		&.__right,
+		&.__left
+			padding _ 0
+			text-align center
+			width auto
+			float none
+		&-wrapper-content
+			text-align center
+		&,
+		&-item,
+		&-list
+			display inline-block
+			vertical-align middle
+	+MEDIA("SMALL_DESKTOP")
+		&-item
+			padding _ 5px
+
+	+MEDIA("TABLET")
+		&-wrapper
+			display none
+			position fixed
+			pos 68px 0 0
+			z-index 11
+			html.__header-nav &
+				display block
+			&-content
+				background #fff
+				padding 45px 30px
+				clear()
+				text-align center
+			.wrapper-content
+				padding _ 0
+				height 100%
+		&-button-block
+			display inline-block
+			vertical-align middle
+		&.__left,
+		&.__right
+			float none
+			width auto
+			display inline-block
+			vertical-align top
+			text-align left
+			padding 0
+		&-list,
+		&-item
+			margin 0
+			padding 0
+			display block
+		&-list
+			text-align center
+		&-item
+			display inline-block
+			vertical-align middle
+			white-space nowrap
+			font-size 14px
+			line-height 18px
+			font-weight 500
+			text-transform uppercase
+			margin _ 10px 10px
+		&-link
+			display block
+	+MEDIA("TABLET")
+		&,
+		&.__left,
+		&.__right,
+		&-item
+			display block
+		&-item
+			text-align left
+			margin 0
+		&
+			margin _ -15px
+		&.__left
+			margin-top -15px
+		&-link
+			padding 15px
+		&-wrapper
+			&-content
+				padding 30px
+				position relative
+				max-height 100%
+				overflow auto
+			.wrapper-content
+				padding-bottom 30px
+			.header
+				&-phone-number
+					display block
+					float left
+					font-size 18px
+					line-height 19px
+					padding 10px _
+					margin-top 20px
+				&-glavstr
+					display block
+					float right
+					margin-top 20px
+	+MEDIA("PHONE")
+		&-wrapper
+			top 0
+			&-content
+				padding-right 80px
+		&-wrapper &
+			&-button
+				position absolute
+				top 0
+				right 0
+	+MEDIA("SMALL_PHONE")
+		&-wrapper
+			&-content
+				height 100%
+				position static
+				padding-bottom 0
+			.wrapper-content
+				position relative
+				padding-bottom 80px
+				background #fff
+			.header
+				&-phone-number
+					position absolute
+					bottom 30px
+					left 30px
+				&-glavstr
+					position absolute
+					bottom 30px
+					right 30px

@@ -1,0 +1,12 @@
+-var images = function(file) {
+	if checkUrl(file)
+		-return file
+	-return IMAGE_PATH + file
+- }
+
+-var IMAGES = function(name){
+	if !name
+		-name = ''
+	-name = 'images/' + name
+	-return fileUrl(name)
+- }

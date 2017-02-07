@@ -1,0 +1,81 @@
+script
+	display none !important
+html,body
+	min-width WRAPPER_MIN_WIDTH
+
+html
+	base-font()
+	line-height 1.1
+	size 100%
+	background BACKGROUND_COLOR
+	font-size unit(round(FONT_SIZE*100/BASE_WIDTH, 3), 'vw')
+	overflow scroll
+	overflow-x auto
+	overflow-y scroll
+body
+	min-height 100%
+	position relative
+	font-size FONT_SIZE
+	background BACKGROUND_COLOR
+	html.js &
+		padding-bottom 346px
+
+.wrapper-content
+	//min-width WRAPPER_MIN_WIDTH
+	border-box()
+	margin 0 auto
+	padding 0 (WRAPPER_PADDING)
+	// width 1260px
+	// max-width WRAPPER_MAX_WIDTH
+
+	// for _screen, index in SCREENS
+	// 	+MEDIA( _screen[0], true )
+	// 		if( index < (length(SCREENS) - 1))
+	// 			_width = SCREENS[index + 1][1] - MEDIA_MARGIN
+	// 			max-width _width
+	+MEDIA("SMALL_PHONE")
+		padding _ 10px
+.wrapper-text
+	max-width 780px
+	margin auto
+	table
+		width 100%
+main
+	// overflow hidden
+	cursor default
+	// min-height 100vh
+	p
+		cursor initial
+html,
+body,
+main,
+main *
+	border-box()
+
+html.__not-ready body:before
+	content ''
+	display block
+	position absolute
+	pos 0
+	background BACKGROUND_COLOR
+	z-index 99999999999
+
+.js-popup-margin
+	display none
+
++MEDIA("DESKTOP")
+	html
+		font-size 20px
+
+
+.MEDIA_SCREENS
+	for _screen, index in SCREENS
+		+MEDIA( _screen[0], true )
+			z-index index
+			_screen-width = _screen[1]
+			&-screen-width
+				width unit(_screen-width, 'px')
+			if( index < (length(SCREENS) - 1))
+				_wrapper-width = SCREENS[index + 1][1] - MEDIA_MARGIN
+				&-wrapper-width
+					width unit(_wrapper-width, 'px')

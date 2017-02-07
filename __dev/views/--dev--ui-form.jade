@@ -1,0 +1,151 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Forms"]
+	-var hideHeader = true
+	-var hideFooter = true
+block content
+	.wrapper-content
+		h4 Стандартный вид
+
+		.form-title Заголовок формы
+		.form-item
+			label.form-label Заголовок поля
+			input(type="text", name="" placeholder="Подпись поля")
+		.form-line.columns
+			+repeat(3)
+				.form-item.column.__1-3
+					label.form-label Заголовок поля
+					input(type="text", name="" placeholder="Подпись поля")
+		.form-line.columns
+			-var titles = ["Стилизованный select", "Combobox", "Автокомплит", "Дефолтный select"]
+			for i in range(4)
+				.form-item.column.__1-4
+					label.form-label!= titles[i]
+					-var attrs = {}
+					if i == 1
+						-attrs = {'data-select-custom': 'combobox'}
+					else if i == 2
+						-attrs = {'data-select-custom': 'autocomplete'}
+					else if i == 3
+						-attrs = {'data-gui-native': ''}
+					//- [data-select-custom="combobox"]
+					select&attributes(attrs)
+						option(value="1") Lorem ipsum dolor.
+						option(value="2") Magnam, laboriosam, non.
+						option(value="3") Quisquam, rerum tempora!
+		.form-item
+			label.form-label radio-кнопки
+			.form-line
+				for i in range(4)
+					-var attrs = {}
+					if i > 1
+						-attrs = {'data-gui-native': ''}
+					.form-item
+						if i == 0
+							input(type="radio" name="radio-#{ i > 1 ? '00' : '11' }" id="radio-#{ i }" checked)
+						else
+							input(type="radio" name="radio-#{ i > 1 ? '00' : '11' }" id="radio-#{ i }")&attributes(attrs)
+						label(for="radio-#{ i }") radio-кнопка
+
+		.form-item
+			label.form-label checkbox'ы
+			.form-line
+				for i in range(4)
+					-var attrs = {}
+					if i > 1
+						-attrs = {'data-gui-native': ''}
+					.form-item
+						if i == 0
+							input(type="checkbox" name="checkbox-#{ i }" id="checkbox-#{ i }" checked)&attributes(attrs)
+						else
+							input(type="checkbox" name="checkbox-#{ i }" id="checkbox-#{ i }")&attributes(attrs)
+						label(for="checkbox-#{ i }") checkbox
+		br
+		br
+		hr
+		br
+		br
+
+		for _class, index in ['good', 'error']
+			h4!= ({good: 'Правильное заполнение', error: 'Ошибка заполнения'})[_class]
+
+			.form-line.columns
+				.form-item.column.__1-3(class="#{ _class }")
+					input(type="text", name="" placeholder="Подпись поля")
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+				.form-item.column.__1-3(class="#{ _class }")
+					select
+						option(value="1") Lorem ipsum dolor.
+						option(value="2") Magnam, laboriosam, non.
+						option(value="3") Quisquam, rerum tempora!
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+				.form-item.column.__1-3(class="#{ _class }")
+					select(data-gui-native="")
+						option(value="1") Lorem ipsum dolor.
+						option(value="2") Magnam, laboriosam, non.
+						option(value="3") Quisquam, rerum tempora!
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+			.form-line.columns
+				.form-item.column.__1-4(class="#{ _class }")
+					input(type="checkbox" name="checkbox-0-1" id="checkbox-0-1-#{ index }")
+					label(for="checkbox-0-1-#{ index }") checkbox
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+				.form-item.column.__1-4(class="#{ _class }")
+					input(type="radio" name="radio-0-1" id="radio-0-1-#{ index }")
+					label(for="radio-0-1-#{ index }") radio-кнопка
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+				.form-item.column.__1-4(class="#{ _class }")
+					input(type="checkbox" name="checkbox-1-1" id="checkbox-1-1-#{ index }" data-gui-native="")
+					label(for="checkbox-1-1-#{ index }") checkbox
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+				.form-item.column.__1-4(class="#{ _class }")
+					input(type="radio" name="radio-1-1" id="radio-1-1-#{ index }" data-gui-native="")
+					label(for="radio-1-1-#{ index }") radio-кнопка
+					if _class == 'error'
+						.error-msg Поле обязательно для заполнения
+
+			.form-item(class="#{ _class }")
+				input(type="text", name="" placeholder="Подпись поля")
+				if _class == 'error'
+					.error-msg Поле обязательно для заполнения
+			br
+			br
+			hr
+			br
+			br
+
+
+		form(action="")
+			.form-line.columns
+				.form-item.column.__1-2
+					input(type="text", name="" placeholder="Поле ввода")
+				.form-item.column.__1-2
+					input(type="text", name="" placeholder="Поле ввода")
+			.form-submit
+				input(type="submit", value="Отправить" data-button="")
+		br
+		br
+		hr
+		br
+		br
+		form(action="")
+			.form-line.columns
+				.form-item.column.__1-3
+					input(type="text", name="" placeholder="Поле ввода")
+				.form-item.column.__1-3
+					input(type="text", name="" placeholder="Поле ввода")
+				.form-item.column.__1-3
+					input(type="submit", value="Отправить" data-button="")
+
+		br
+		br
+		hr
+		br
+		br

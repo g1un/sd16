@@ -1,0 +1,218 @@
+.choose-flat
+	&-list
+		padding-bottom 90px
+		position relative
+		margin _ _ -5px
+		overflow hidden
+		.slick-list
+			margin _ -5px
+		&-counter
+			size 0
+			position absolute
+			z-index 4
+			left 0
+			top 0
+			visibility hidden
+		.flatbox,
+		.flat
+			padding _ 5px 5px
+		.flatbox
+			display inline-block
+			vertical-align top
+			width 410px
+		.slick-arrow
+			pos auto
+			bottom 5px
+			right 0
+		.slick-prev
+			margin-right 91px
+		> .flatbox,
+		> .flat
+			display inline-block
+			vertical-align top
+			width 25%
+			margin-right -6px
+		> .flatbox .flatbox-inner,
+		> .flat .flat-inner
+				border-bottom 1px solid #f5f5f5
+	&-content.__flats &-list-counter
+		z-index 2
+	&-content.__flats &-list
+		> .flatbox,
+		> .flat
+			width 50%
+	&-asides
+		clear()
+	&-aside
+		&-block
+			float left
+			width 440px
+			position relative
+			z-index 1
+			html[data-blackout="choose-flat-filter"] &
+				z-index 10
+		&-content
+			float right
+			width 100%
+			padding-left 450px
+			margin-left -440px
+	&-filter
+		width 440px
+		html.__filter-fixed &
+			position fixed
+			top 68px + 20px
+		&-content
+			padding 30px
+			background getColor('light')
+		.form-item
+			> .form-label
+				text-transform uppercase
+				font-size 14px
+				font-weight 700
+			&.__extend
+				display none
+		.form-line
+			margin-bottom 0
+			> .form-item
+				margin 0 0 2px 0
+			&[data-clearwhitespace="cleared"]
+				> .form-item
+					margin-right 2px
+		&-columns
+			clear()
+
+		&-extend-button
+			&:after
+				content attr(data-label)
+		&.__extended
+			.form-item
+				&.__extend
+					display block
+		&.__extended &
+			&-content
+				width 200%
+			&-column
+				float left
+				width 50%
+				position relative
+				&:before
+					content ''
+					display block
+					position absolute
+					size 1px auto
+					pos 0 _
+					background blend(rgba(#000, 0.1), getColor('light'))
+				&:first-child
+					padding-right 30px
+					&:before
+						right 0
+				.form-item:last-child
+					margin-bottom 0
+			&-column ~ .choose-flat-filter-column
+				padding-left 30px
+				&:before
+					left -1px
+			&-extend-button
+				&:after
+					content attr(data-extended-label)
+		.form-controls
+			+MIN_MEDIA('SMALL_DESKTOP')
+				margin-right -20px
+
+
+	+MEDIA("DESKTOP")
+		&-list
+			&-counter
+				z-index 3
+			> .flatbox,
+			> .flat
+				width 33.3%
+		&-content.__flats &-list-counter
+			z-index 1
+		&-content.__flats &-list
+			> .flatbox,
+			> .flat
+				width 100%
+
+	+MEDIA("SMALL_DESKTOP")
+		&-list
+			&-counter
+				.choose-flat-aside-content &
+					z-index 2
+			> .flatbox,
+			> .flat
+				width 50%
+	+MEDIA("TABLET")
+		&-list
+			padding-bottom 0
+			&-counter
+				z-index 2
+			> .flatbox,
+			> .flat
+				width 50%
+			.slick-arrow
+				pos -40px auto auto
+				margin 28.75% auto auto
+			.slick-prev
+				left 0
+			.slick-next
+				right 0
+		&-aside
+			&-block,
+			&-content
+				float none
+				width auto
+				padding 0
+				margin auto
+			&-block
+				margin-top 35px
+		&-filter
+			width auto
+			&.__extended &
+				&-content
+					width auto
+				&-column
+					width auto
+					float none
+					&:before
+						display none
+					&:first-child,
+					& ~ .choose-flat-filter-column
+						padding _ 0
+					& ~ .choose-flat-filter-column
+						margin-top 20px
+	+MEDIA("PHONE")
+		&-list
+			&-counter
+				&,
+				.choose-flat-aside-content &
+					z-index 1
+			.slick-arrow
+				margin-top 57.5%
+			> .flatbox,
+			> .flat
+				width 100%
+		&-filter
+			&-content
+				padding 20px
+				margin _ -20px
+			.form-submit
+				margin _ -20px
+				[data-button]
+					display block
+					width 100%
+			.form-item input
+				padding _ 10px
+			.range-input > *
+				padding-right 3px
+			.range-input * ~ *
+				padding-left 3px
+			.range-input .form-label:last-child
+				padding-left 3px
+			.range-input .form-label
+				width 28px
+				padding _ 1px
+	+MEDIA("SMALL_PHONE")
+		&-filter
+			&-content
+				margin _ -10px

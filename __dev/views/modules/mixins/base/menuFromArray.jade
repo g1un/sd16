@@ -1,0 +1,85 @@
+-var menuFromArray = function(arr, className, moreClass, params)
+	-if (!params)
+		-params = {}
+
+	-var _class = function(str) {
+		-if(str)
+			-str = "-" + str + " _" + str
+		-else
+			-str = ""
+		-return className + "-nav" + str
+	- }
+
+	mixin item-link(item, attrs)
+		#{ isLink ? 'a' : 'span' }&attributes(attrs)
+			if params['itemLabelBefore']
+				-params.itemLabelBefore(item)
+			span(class="#{ _class('label') }")!= item.label
+			if typeof item['labelAfter'] == 'string'
+				!= item.labelAfter
+			if params['itemLabelAfter']
+				if typeof params['itemLabelAfter'] == 'function'
+					-params.itemLabelAfter
+
+	mixin item-wrapper()
+		if params['item-wrapper']
+			div(class="#{ _class('item-wrapper') }")
+				block
+		else
+			block
+
+	mixin item-content(item, hasSub)
+		-isCurrent = isCurrentElement(item.label)
+		-isLink = !(isCurrent[0] && isCurrent[1]) && item['href']
+		-isCurrent = isCurrent[0]
+		-attrs = (item.attrs || {})
+		if attrs.class == null
+			-attrs.class = ''
+		-attrs.class += ' ' + _class('link') + ( isCurrent ? ' __current' : '' )
+		if isLink
+			-attrs.href = (item.href == '#' ? url(item.label) : url(item.href))
+		if params['wrapItemAttrs']
+			-params.wrapItemAttrs({item: item, subLevel: subLevel, isCurrent: isCurrent, isLink: isLink}, attrs)
+		if params['beforeItem']
+			-params['beforeItem'](item, {createClass: _class})
+
+		+item-link(item, attrs)
+
+		if params['afterItem']
+			-params['afterItem'](item, {createClass: _class})
+		block
+
+	mixin item-self(hasSub)
+		if params['item-link-only']
+			block
+		else
+			div(class="#{ _class('item') } #{ ( hasSub ? '__sub-inside' : '' ) }")
+				block
+
+	mixin item(item, hasSub)
+		+item-self(hasSub)
+			+item-wrapper()
+				+item-content(item, hasSub)
+					block
+
+	mixin list(arr, subLevel)
+		div(class="#{ _class( subLevel ? 'sub' : 'list' ) }")
+			-for(var i = 0, _len = arr.length; i < _len; i++)
+				-var item = arr[i]
+				-var hasSub = Array.isArray(arr[i + 1])
+				if item['html']
+					+parseJsonHtml(item)
+				else
+					+item(item, hasSub)
+						if hasSub
+							+menu( arr[++i], (subLevel + 1) )
+
+	mixin menu(arr, subLevel)
+		if subLevel && params['subWrapper']
+			div(class="#{ _class('sub-wrapper') }")
+				+list(arr, subLevel)
+		else
+			+list(arr, subLevel)
+
+	nav(class="#{ _class() } #{ moreClass ? moreClass : '' }")
+		+menu(arr, 0)

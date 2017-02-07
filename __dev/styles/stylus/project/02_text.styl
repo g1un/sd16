@@ -1,0 +1,378 @@
+h1Size = (48px)
+h2Size = (36px)
+h3Size = (30px)
+h4Size = (24px)
+h5Size = (20px)
+h6Size = (18px)
+
+main
+	+$title()
+		line-height 1
+		resetTitle()
+		font-weight 900
+		color #242424
+		margin-bottom (30px)
+		small
+			font-weight 400
+	+$h1()
+		font-size h1Size
+	+$h2()
+		font-size h2Size
+	+$h3()
+		font-size h3Size
+	+$h4()
+		font-size h4Size
+	+$h5()
+		font-size h5Size
+	+$h6()
+		font-size h6Size
+		text-transform uppercase
+		font-weight 400
+
+	+MEDIA("TABLET")
+		+$h1()
+			font-size h1Size*0.75
+		+$h2()
+			font-size h2Size*0.75
+		+$h3()
+			font-size h3Size*0.75
+		+$h4()
+			font-size h4Size*0.75
+		+$h5()
+			font-size h5Size*0.75
+		+$h6()
+			font-size h6Size*0.75
+	// +MEDIA("SMALL_PHONE")
+	// 	+$title()
+	// 		margin-bottom (20px)
+	// 	+$h1()
+	// 		font-size h1Size*0.5
+	// 	+$h2()
+	// 		font-size h2Size*0.5
+	// 	+$h3()
+	// 		font-size h3Size*0.5
+	// 	+$h4()
+	// 		font-size h4Size*0.5
+	// 	+$h5()
+	// 		font-size h5Size*0.5
+	// 	+$h6()
+	// 		font-size h6Size*0.5
+	p,
+	td,
+	th,
+	li
+		font-size (BASE_SIZE)
+		line-height LINE_HEIGHT
+		font-weight 300
+		+MEDIA("PHONE")
+			font-size MOBILE_SIZE
+	p,
+	ol,
+	ul,
+	table,
+	.table-wrapper
+		margin-bottom round(BASE_SIZE*LINE_HEIGHT)
+		+MEDIA("PHONE")
+			margin-bottom round(MOBILE_SIZE*LINE_HEIGHT)
+	* + p,
+	* + ol,
+	* + ul,
+	* + table,
+	* + .table-wrapper
+		margin-top round(BASE_SIZE*LINE_HEIGHT)
+		+MEDIA("PHONE")
+			margin-top round(MOBILE_SIZE*LINE_HEIGHT)
+	p
+		clear()
+		a
+			// text-decoration underline
+			&[href^="tel"]
+				text-decoration none
+		img
+			display inline-block
+			vertical-align top
+		img[align="center"]
+			display block
+			margin 0 auto (BASE_SIZE)
+		img[align="left"],
+		img.left,
+		img.to-left,
+		img[align="right"],
+		img.right,
+		img.to-right
+			max-width 50%
+			* + &
+				margin-top 20px
+		img[align="left"],
+		img.left,
+		img.to-left
+			margin 0 (BASE_SIZE) (BASE_SIZE) 0
+		img[align="right"],
+		img.right,
+		img.to-right
+			margin 0 0 (BASE_SIZE) (BASE_SIZE)
+		img[align]
+			&:last-child
+				margin-bottom 0
+		&.__big
+			font-size (BASE_SIZE)
+	* + ul,
+	* + ol
+		margin-top 15px
+	ul,
+	ol
+		padding-left (24px)
+		margin (BASE_SIZE) _ _
+	li
+		margin (10px) _
+	a
+		text-decoration none
+		color TEXT_LINK_COLOR
+		transition color TRANS_SPEED
+		transition-property color, background, border-color, box-shadow, opacity, filter, transform
+		&:hover
+			color TEXT_LINK_COLOR_HOVER
+	em,
+	.em
+		color SELECT_COLOR
+	mark,
+	.mark
+		background-color SELECT_COLOR
+		color #fff
+		padding _ 5px
+	+$bold()
+		font-weight 600
+	q
+		font-style italic
+		&:before
+			content "\00ab"
+		&:after
+			content "\00bb"
+	code
+		font-family Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace
+	ins
+		color #12A66D
+		font-weight 600
+	s,
+	.italic
+		font-style italic
+	u,
+	.underline
+		text-decoration underline
+	
+	+$big()
+		font-size 120%
+		font-size 1.2em
+	+$small()
+		font-size 88%
+		font-size 0.88em
+
+	sub
+		vertical-align sub
+		font-size 70%
+		font-size 0.7em
+	sup
+		vertical-align super
+		font-size 70%
+		font-size 0.7em
+	blockquote
+		border-left 5px solid MAIN_COLOR
+		padding 15px 20px
+		background-color #f6f6f6
+		color #868686
+		margin-left 30px
+		&,
+		p
+			font-weight 300
+		p
+			margin 0
+		* + p
+			margin-top BASE_SIZE
+	ol,
+	ul
+		margin-bottom 15px
+		ol,
+		ul
+			margin-top 10px
+		// > li
+		// 	z-index 0
+	ol
+		counter-reset item
+		list-style none
+		padding-left 15px
+		> li
+			position relative
+			&:before
+				content counters(item, ".")
+				counter-increment item
+				position absolute
+				right 100%
+				top 0
+				font-weight 700
+				margin-right 5px
+	ul
+		list-style none
+		padding 0
+		> li
+			padding-left 7px
+			position relative
+			&:before
+				content ''
+				display block
+				position absolute
+				left 0
+				top 9px
+				size 4px
+				background getColor('base')
+				border-radius 50%
+
+	hr
+		margin 25px auto
+		border 0
+		size auto 1px
+		background SELECT_COLOR
+		&.__small
+			size 68px 3px
+	th,
+	td
+		border 1px solid #ddd
+		padding 10px 20px
+	th
+		text-align left
+		font-weight 700
+		&.__title
+			font-size 18px
+			padding 10px 20px
+			background #fafafa
+	td
+		font-weight 400
+	th[colspan]
+		text-align center
+	table
+		border-spacing 5px 0
+		border-collapse separate
+		th,
+		th.__title
+			border 0
+			border-bottom 1px solid #dededd
+			background transparent
+			padding-left 0
+			color #818181
+			font-weight 400
+		td
+			background #fff
+			border 0
+			border-bottom 1px solid #f7f7f6
+		th + td
+			border-left 1px solid #dededd
+		thead
+			padding-bottom 20px
+		&.__lines
+			border-spacing 0
+			background #f7f7f6
+			td
+				background transparent
+				border 0
+			tr ~ tr
+				td
+					border-top 1px solid #fff
+			tr:nth-child(odd)
+				td
+					background #fff
+	table
+		&.__dotted
+			table-layout fixed
+			font-weight 500
+			border-spacing 0
+			td,
+			th
+				border 0
+				padding 7px 0 7px 15px
+				line-height 20px
+				// color #000
+				overflow hidden
+				text-align right
+				background transparent
+				&:before
+					float right
+					content ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . "
+					white-space nowrap
+					width 0
+					font-size 9px
+					line-height 24px
+					direction rtl
+					margin-bottom -5px
+				span
+					background BACKGROUND_COLOR
+					padding-left 3px
+				&:first-child
+					padding-right 15px
+					padding-left 0
+					text-align left
+					&:before
+						float left
+						direction ltr
+					span
+						padding-right 3px
+						padding-left 0
+
+			th
+				// width 45%
+				font-size BASE_SIZE
+				font-weight 400
+				&.__title
+					background transparent
+					padding 0 0 20px
+					font-weight 600
+					color #415d68
+					&:before
+						display none
+			td
+				font-weight 500
+				text-align right
+	figure
+		margin-bottom 15px
+		img
+			display block
+			width 100%
+		&,
+		figcaption
+			font-size 14px
+			color #a9c9d1
+			line-height 16px
+		* + figcaption
+			margin-top 5px
+	* + figure
+		margin-top 20px
+	
+	.table-wrapper
+		overflow auto
+		> table
+			margin 0
+		td,th
+			min-width 200px
+		
+.falseLink
+	color MAIN_COLOR
+	border-bottom 1px dotted
+	cursor pointer
+	text-decoration none
+
++$h1()
+	main * + &
+		margin-top 20px
++$h2()
+	main * + &
+		margin-top 15px
++$h3()
+	main * + &
+		margin-top 15px//(h3Size*1.3)
++$h4()
+	main * + &
+		margin-top 15px//(h4Size*1.3)
++$h5()
+	main * + &
+		margin-top 15px//(h5Size*1.3)
++$h6()
+	main * + &
+		margin-top 15px//(h6Size*1.3)

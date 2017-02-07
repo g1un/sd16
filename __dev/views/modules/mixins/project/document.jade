@@ -1,0 +1,8 @@
+mixin document(item)
+	+namespace("document")
+		+el("", "a")(href="#")
+			+el("title", "span")!= item.title
+			|  
+			+el("info", "span")!= item.info
+			|  
+			+el("download", "span") Скачать

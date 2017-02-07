@@ -1,0 +1,12 @@
+-var range = function(start, end) {
+	if !end
+		-end = start
+		-start = 0
+	else
+		if start < end
+			-end++
+	-var res = []
+	-for(var i = start; (start > end ? i >= end : i < end); (start > end ? i-- : i++))
+		-res.push(i)
+	-return res
+- }

@@ -1,0 +1,101 @@
+.choose-panel
+	margin 10px 0
+	position relative
+	z-index 0
+	&-content
+		display table
+		width 100%
+		> *
+			display table-cell
+			vertical-align middle
+	&-links
+		width 100%
+		line-height 17px
+		padding _ 40px
+		&-list
+			display table
+			width 100%
+		&-item
+			display table-cell
+			vertical-align middle
+			text-align center
+			padding _ 20px
+			white-space nowrap
+			width 1%
+			font-size 14px
+			line-height 1.2
+			font-weight 700
+			text-transform uppercase
+			& ~ &
+				border-left 1px solid LINK_COLOR
+				border-left-color rgba(LINK_COLOR, 0.45)
+				+MEDIA("SMALL_DESKTOP")
+					border-left 0
+	&-link
+		display block
+	&-button
+		white-space nowrap
+	.wrapper-content
+		padding _ 0
+	
+	.main-banner + &
+		margin-top -70px
+		.choose-panel
+			&-content
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+			&-link
+				color #fff
+				&:hover
+					color #ccc
+			&-links-item ~ .choose-panel-links-item
+				border-left-color #fff
+				border-left-color rgba(#fff, 0.45)
+		+MEDIA("SMALL_DESKTOP")
+			margin-top -130px
+			.choose-panel
+				&-content
+					background transparent
+
+	+MEDIA("DESKTOP")
+		&-links
+			padding _ 10px
+			&-item
+				padding _ 10px
+		&-button
+			[data-button]
+				padding _ 20px
+				display block
+	+MEDIA("SMALL_DESKTOP")
+		&-content
+			display block
+			clear()
+			> *
+				display block
+		&-links
+			padding 0
+			&-list
+				display block
+		&-links-item,
+		&-button
+			display block
+			float left
+			width 33.3333%
+		&-link
+			padding 22px _
+			background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+			color #fff
+			&:hover
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkmAkAAJ8AmzsOXcYAAAAASUVORK5CYII=') center repeat
+				color #fff
+		&-links-item
+			padding 0
+	+MEDIA("SMALL_TABLET")
+		&-links-item,
+		&-button
+			float none
+			width auto
+			margin 0 0 2px
+		&-button
+			margin 2px 0 0
+		.main-banner + &
+			margin-top -380px

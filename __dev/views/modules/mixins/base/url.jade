@@ -1,0 +1,21 @@
+-var url = function(pageName) {
+	if pageName == null
+		-return "#"
+	-var result;
+	-for(var key in urlList)
+		if key.toLowerCase() == pageName.toLowerCase()
+			-result = urlList[key]
+			-break
+	-if(result == null)
+		-result = urlList['_default'];
+		-if(result == null)
+			if (pageName.indexOf('http') > -1 || pageName.indexOf('html') > -1 || pageName[0] == '#' )
+				-result = pageName
+			else
+				-result = '#'
+	-else
+		if result.indexOf('html') == -1 && result.indexOf('http') == -1 && result.indexOf('#') != 0
+			-result = result + ".html"
+
+	-return result
+- }

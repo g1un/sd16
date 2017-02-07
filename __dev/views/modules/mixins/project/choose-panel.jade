@@ -1,0 +1,12 @@
+mixin choose-panel()
+	+namespace("choose-panel")
+		+el()
+			.wrapper-content
+				+el("content")
+					+el("links")
+						+el("links-list")
+							for item in ["Однокомнатные квартиры", "Двухкомнатные квартиры", "Трехкомнатные квартиры", "Квартиры-студии", "Паркинги"]
+								+el("links-item")
+									+el("link", "a")(href="#")!= item
+					+el("button")
+						a(href="#" data-button="" data-button-mod="wide") Подобрать квартиру

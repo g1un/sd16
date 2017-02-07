@@ -1,0 +1,530 @@
+__customthis = false
+this()
+	// p(__customthis)
+	if __customthis != false
+		return __customthis
+	return selector()
+
+reset-this()
+	__customthis = false
+
+set-this(_selector)
+	__customthis = _selector
+
+// __options = {
+// 	type: 'set-options',
+// 	value: {BASE_SIZE: BASE_SIZE, RESPONSIVE_START_WIDTH: RESPONSIVE_START_WIDTH, RESPONSIVE_END_WIDTH: RESPONSIVE_END_WIDTH, RESPONSIVE_AUTO_ACCURACY: RESPONSIVE_AUTO_ACCURACY}
+// }
+// __addAdaptiveProperty(__options)
+
+add-adaptive-property(prop, value)
+	if ENABLE_REM_POLYFILL
+		__add = {type: 'add', value: {selector: selector(), property: prop, value: value}}
+		// __addAdaptiveProperty(__add)
+		if(__ADAPTIVE_PROPERTIES[selector()] == null)
+			__ADAPTIVE_PROPERTIES[selector()] = 0
+		push(__ADAPTIVE_PROPERTIES[selector()], {property: prop, value: value})
+
+set-html-font-size(val)
+	html
+		font-size val
+
+set-polyfill-adaptive(val)
+	if !ENABLE_REM_POLYFILL
+		return
+	for _selector, props in __ADAPTIVE_PROPERTIES
+		// p(_selector)
+		{ selector('html.modernizr-no-cssremunit', _selector) }
+			for prop in props
+				if prop != 0
+					if length(prop['value']) > 1
+						_newValues = ()
+						for _val, index in prop['value']
+							push(_newValues, unrem(_val, val))
+						add-property( prop['property'], _newValues )
+						// { prop['property'] } _newValues
+					else
+						add-property( prop['property'], unrem(prop['value'], val) )
+
+
+__INLINE_MEDIA_LIST = ( 0 )
+
+_on-width(args...)
+	push(__INLINE_MEDIA_LIST, {selector: selector(), query: args})
+	return
+
+render_on-width()
+	for query in __INLINE_MEDIA_LIST
+		p(query)
+
+content-center(w = 100%, h = w, important = false )
+	important = (important == true ? !important : )
+	position relative
+	width w important
+	height h important
+
+	> *
+		position absolute
+		top 0 important
+		bottom 0 important
+		left 0 important
+		right 0 important
+		margin auto important
+		max-height 100%
+		max-width 100%
+
+
+isNumber(val)
+	if( !(val < 0 || val >= 0) && val != 'auto' && val != 'none' )
+		false
+	else
+		true
+
+allIsNumber(vals)
+	all = true
+	for _val in vals
+		all = all && isNumber(_val)
+	return all
+
+border-box()
+	box-sizing padding-box
+	box-sizing border-box
+	
+background-clip()
+	background-clip padding-box
+
+
+
+// in css -> width-perc(15)
+width-perc(perc)
+	.perc-{perc}
+		width: (perc)%
+		
+anim-link(type = $type_anim_link)
+	position relative
+	text-decoration none !important
+	overflow hidden
+	
+	if( type == 1)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+		
+	if (type == 2)
+		&:after,
+		&:before
+			content ''
+			display block
+			position absolute
+			bottom 0
+			size(50%, 0)
+			max-width 50%
+			border-bottom 1px solid
+			trans()
+		&:after
+			right 0
+		&:before
+			left 0
+			
+		&:hover
+			text-decoration none
+			&:after,
+			&:before
+				size(0)
+	
+	if( type == 3)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+
+Button(params, btnName = '')
+	_bg = params.background
+	_color = params.color
+	_bgHover = params.hover.background
+	_colorHover = params.hover.color
+	_bgActive = params.active.background
+	_colorActive = params.active.color
+	_colorName = ''
+	if(btnName != '')
+		_colorName = '="' + btnName + '"'
+		btnName = '.__' + btnName
+	else
+		_colorName = ""
+
+	&{btnName},
+	&[data-button-color{ _colorName }]
+		background-color _bg
+		color _color
+
+	&{btnName}:hover,
+	&{btnName}:focus,
+	&[data-button-color{ _colorName }]:hover,
+	&[data-button-color{ _colorName }]:focus
+		if(_bgHover)
+			background-color _bgHover
+		if(_colorHover)
+			color _colorHover
+	&{btnName}:active,
+	&[data-button-color{ _colorName }]:active
+		if(_bgActive)
+			background-color _bgActive
+		if(_colorActive)
+			color _colorActive
+
+	&{btnName}[disabled],
+	&{btnName}.disabled,
+	&{btnName}.__loading
+		background-color _bg !important
+		color _color !important
+
+	&[data-button-color{ _colorName }].__border,
+	&{btnName}.__border
+		background-color transparent
+		color _bg
+		_borderColor = _bg
+		if( params.border && params.border['border-color'] )
+			_borderColor = params.border['border-color']
+		border 2px solid _borderColor
+		&:hover,
+		&:focus
+			_borderColor = _bgHover
+			if( params.border && params.border.hover && params.border.hover['border-color'] )
+				_borderColor = params.border.hover['border-color']
+			color _colorHover
+			border-color _bgHover
+			background-color _bgHover
+		&:active
+			_borderColor = _bgActive
+			if( params.border && params.border.active && params.border.active['border-color'] )
+				_borderColor = params.border.active['border-color']
+			color _colorActive
+			border-color _bgActive
+			background-color _bgActive
+		&[disabled],
+		&.__loading,
+		&.disabled
+			background-color #fff !important
+			border-color _bg !important
+Buttons(styles)
+	for _btnName, _btnParams in styles
+		if(_btnName == 'default')
+			_btnName = ''
+		Button(_btnParams, _btnName )
+
+
+replace(expr, str, val)
+	expr = "'" + clone(expr) + "'"
+	// return typeof(expr)
+	for e, i in expr
+		if str == e
+			expr[i] = val
+	return expr
+
+catStr(str, start, end = false)
+	// res = ''
+	res = ''
+	_str = "'" + str + "'"
+	return _str[0][0]
+	return length(_str[0][0])
+	for i in _str
+		res = res + ' ' + i
+		if i >= start
+			if(end == false || i < end)
+				res = res + _str[i]
+	return res
+
+rem(val)
+	// p(selector())
+	// p(called-from)
+	// p(val)
+	// _selector = selector()
+	// add-adaptive-property
+
+	_rem = (round((val/BASE_SIZE)*1000)/1000)rem
+	if ENABLE_REM_POLYFILL
+		if __ADAPTIVE_PROPERTIES__DEFAULTS[current-property[0]]
+			add-property(current-property[0], val)
+			add-adaptive-property(current-property[0], _rem)
+
+	return _rem
+
+unrem(val, _size = BASE_SIZE)
+	if(unit(val) == 'rem')
+		return (round((val*_size)*10)/10)px
+	else
+		return val
+
+isRem(val)
+	// p(val)
+	// p(typeof(val) + ' ' + (typeof(val) == 'unit'))
+	// // p(unit(val))
+	// // return
+	if(typeof(val) != 'unit')
+		return false
+	if(unit(val) != 'rem')
+		return false
+	return true
+
+remExis(values)
+	for val in values
+		if(isRem(val))
+			return true
+	return false
+
+allIsRem(values)
+	for val in values
+		if(!isRem(val))
+			return false
+	return true
+
+ifLandscape(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth) and (orientation: landscape)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth) and (orientation: landscape)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth) and (orientation: landscape)
+					{block}
+			else
+				@media screen and (orientation: landscape)
+					{block}
+
+screenWidth(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth)
+					{block}
+
+STYLES(file)
+	return STYLES_PATH + file
+LIBS(file)
+	return LIBS_PATH + file
+IMAGES(file)
+	return IMAGES_PATH + file
+
+// in css -> images("test.png")
+images(file)
+	return url( IMAGES( file ) )
+
+
+autoResponse()
+	_lastFont = {}
+
+	_countResponse = ( 0 )
+	_start = RESPONSIVE_END_WIDTH
+	_end = RESPONSIVE_START_WIDTH
+
+	_lastWidth = (0)
+	for i in _start.._end
+		newSize =  BASE_SIZE*(i/RESPONSIVE_START_WIDTH)
+		newSize = round( newSize*RESPONSIVE_AUTO_ACCURACY )/RESPONSIVE_AUTO_ACCURACY
+		newSize = round( newSize*10 )/10
+		if(!_lastFont[newSize])
+			_countResponse[0] = _countResponse[0] + 1
+			_lastFont[newSize] = true
+			if _lastWidth[0] == 0
+				@media screen and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			else
+				@media screen and (min-width: ( (_lastWidth[0])px) ) and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			_lastWidth[0] = i
+	p('\nTotal breakpoints: ' + _countResponse[0] + '\n')
+
+
+_Sprite($$arr, name, spriteName, width = false, height = false)
+	$sprite = $$arr[ 's-' + spriteName]
+	if $sprite == null
+		p( '\n\n\n    ' + name + ' "' + spriteName + '" not found in: \n\n    ' + selector() + '\n\n\n')
+		return
+	else
+		_isDefaultWidth = false
+		_isDefaultHeight = false
+
+		_defaultWidth = $sprite[4]
+		_defaultHeight = $sprite[5]
+
+		if width == false
+			width = _defaultWidth
+			_isDefaultWidth = true
+
+		if height == false
+			height = _defaultHeight
+			_isDefaultHeight = true
+
+		_widthKoef = width/_defaultWidth
+		_heightKoef = height/_defaultHeight
+
+		if _isDefaultHeight && !_isDefaultWidth
+			_heightKoef = _widthKoef
+			height = height*_heightKoef
+
+		if !_isDefaultHeight && _isDefaultWidth
+			_widthKoef = _heightKoef
+			width = width*_widthKoef
+
+		// width = round(width*_widthKoef*1000)/1000
+		// height = round(height*_heightKoef*1000)/1000
+
+		_backgroundWidth = $sprite[6]
+		_backgroundHeight = $sprite[7]
+
+		_backgroundWidth = _backgroundWidth*_widthKoef
+		_backgroundHeight = _backgroundHeight*_heightKoef
+
+		_positionLeft = $sprite[2]
+		_positionTop = $sprite[3]
+
+		_positionLeft = _positionLeft*_widthKoef
+		_positionTop = _positionTop*_heightKoef
+
+		background-image url($sprite[8])
+		width (width)
+		height (height)
+		background-position (_positionLeft) (_positionTop)
+		background-size (_backgroundWidth) (_backgroundHeight)
+		background-repeat no-repeat
+
+sprite(spriteName, width = false, height = false)
+	_Sprite($$sprite, 'sprite', spriteName, width, height)
+
+icon(spriteName, width = false, height = false)
+	_Sprite($$icons, 'icon', spriteName, width, height)
+
+px64()
+	_color = (0 0 0)
+	for item, index in arguments
+		_color[index] = item
+	p(_color)
+	s(__px64(_color))
+
+
+
+MEDIA( type, onlyThis = false )
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if(onlyThis && _currentIndex != 0 && _currentIndex != (length(SCREENS) - 1))
+		@media screen and (min-width: unit(SCREENS[ _currentIndex + 1 ][1] + 1, 'px')) and (max-width: unit(_currentValue, 'px'))
+			{block}
+	else
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+MIN_MEDIA(type)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if index < (length(SCREENS) - 2) && _screen[0] == type
+			_currentIndex = index
+			_currentValue = (SCREENS[index + 1][1] + 1)
+
+	_type = 'min-width'
+
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if _currentIndex != -1
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+
+MEDIA_WIDTH(type, margin)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	if margin
+		return _currentValue - MEDIA_MARGIN
+	else
+		return _currentValue
+
+
+reset-wrapper-content(inner = true)
+	_values = 
+		padding-left 0
+		padding-right 0
+		max-width none
+		min-width 0
+		width auto
+	_selector = '.wrapper-content'
+
+	if(true)
+		> .wrapper-content
+			{_values}
+	else
+		.wrapper-content
+			{_values}
+
+
+
+// in css -> text-ellipsis(100px) or text-ellipsis(80%)
+_text-overflow(width_value = 'none')
+	white-space: nowrap
+	text-overflow: ellipsis
+	line-height: normal;
+	overflow: hidden
+	if width_value != 'none'
+		width: width_value
+	else
+		max-width 100%
+
+
+getInputSize(sizes)
+	_lineHeight = 1.2
+	return {
+		font-size: sizes['font-size'],
+		line-height: _lineHeight,
+		height: sizes['height'],
+		padding-top: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2),
+		padding-bottom: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2)
+	}

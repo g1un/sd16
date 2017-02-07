@@ -1,0 +1,37 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Bitrix ui"]
+block prepend-body
+	include modules/bitrixPanel
+block content
+	script.
+		$('html').on('click', '.js-show-loading', function(e){
+			e.preventDefault()
+			var $btn = $(this)
+			$btn.attr('disabled', 'true')
+			$('[id="wait_0.7319092185948863"]').show();
+			var count = _.random(2, 5);
+			var oldLabel = $btn.html();
+
+			var _tick = function(){
+				$btn.html('Закроется через ' + count + ' сек.');
+				setTimeout(function(){
+					count--;
+					if(count == 0){
+						$btn.html(oldLabel);
+						$btn.removeAttr('disabled')
+						$('[id="wait_0.7319092185948863"]').hide();
+					} else {
+						_tick();
+					}
+				}, 1000)
+			}
+			_tick();
+		});
+	.wrapper-content
+		.align-center
+			a(href="#" data-button="").js-show-loading Показать загрузку
+
+
+	<div id="wait_0.7319092185948863">Загрузка...</div>

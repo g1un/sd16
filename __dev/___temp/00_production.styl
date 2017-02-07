@@ -1,0 +1,7091 @@
+
+$iconsCount = 19
+$$icons = {
+	's-___': 256px 124px -256px -124px 1px 1px 257px 253px 'images/icons/__sprite.png'
+	's-callback': 106px 179px -106px -179px 32px 32px 257px 253px 'images/icons/__sprite.png'
+	's-callback__small': 76px 123px -76px -123px 16px 16px 257px 253px 'images/icons/__sprite.png'
+	's-checkbox-arrow': 121px 232px -121px -232px 11px 8px 257px 253px 'images/icons/__sprite.png'
+	's-favorite': 119px 0px -119px 0px 64px 64px 257px 253px 'images/icons/__sprite.png'
+	's-favorite__small': 158px 179px -158px -179px 32px 32px 257px 253px 'images/icons/__sprite.png'
+	's-map-target': 119px 84px -119px -84px 50px 50px 257px 253px 'images/icons/__sprite.png'
+	's-map-target__small': 76px 83px -76px -83px 20px 20px 257px 253px 'images/icons/__sprite.png'
+	's-map-target_marker': 0px 83px 0px -83px 56px 76px 257px 253px 'images/icons/__sprite.png'
+	's-menu-close': 203px 124px -203px -124px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-menu': 0px 0px 0px 0px 99px 63px 257px 253px 'images/icons/__sprite.png'
+	's-menu__small': 210px 179px -210px -179px 33px 21px 257px 253px 'images/icons/__sprite.png'
+	's-popup-close': 53px 179px -53px -179px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-popup-close__black': 0px 179px 0px -179px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-select-arrow': 49px 232px -49px -232px 16px 10px 257px 253px 'images/icons/__sprite.png'
+	's-select-arrow__white': 85px 232px -85px -232px 16px 10px 257px 253px 'images/icons/__sprite.png'
+	's-share': 0px 232px 0px -232px 29px 21px 257px 253px 'images/icons/__sprite.png'
+	's-star__left': 203px 62px -203px -62px 54px 42px 257px 253px 'images/icons/__sprite.png'
+	's-star__right': 203px 0px -203px 0px 54px 42px 257px 253px 'images/icons/__sprite.png'
+}
+$spritesCount = 6
+$$sprite = {
+	's-___': 82px 28px -82px -28px 1px 1px 93px 62px 'images/sprites/__sprite.png'
+	's-arrow-tab-active': 41px 41px -41px -41px 11px 8px 93px 62px 'images/sprites/__sprite.png'
+	's-arrow-tab': 82px 0px -82px 0px 11px 8px 93px 62px 'images/sprites/__sprite.png'
+	's-type-list': 0px 0px 0px 0px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+	's-type-preview': 41px 0px -41px 0px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+	's-type-table': 0px 41px 0px -41px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+}
+// BASE
+TITLE_CLASS = 'title'
+
+// Paths
+IMAGES_PATH = 'images/'
+LIBS_PATH = 'scripts/libs/'
+STYLES_PATH = 'styles/'
+
+DEFAULT_WIDTH = 1200px
+
+MEDIA_MARGIN = 30px
+
+// LAYOUT
+WRAPPER_PADDING = 20px
+WRAPPER_PADDING_PHONE = 10px
+WRAPPER_WIDTH = 1200px
+
+WRAPPER_MIN_WIDTH = 300px
+WRAPPER_MAX_WIDTH = WRAPPER_WIDTH + (WRAPPER_PADDING*2)
+
+// TEXT
+BASE_SIZE = 16px
+
+MOBILE_SIZE = 16px
+
+FONT_SIZE = BASE_SIZE
+LINE_HEIGHT = 30px
+LINE_HEIGHT = unit(round(LINE_HEIGHT/FONT_SIZE, 3), '')
+
+FONT_COLOR = #242424
+
+
+MAIN_COLOR = #006298
+
+LINK_COLOR = MAIN_COLOR
+LINK_COLOR_HOVER = MAIN_COLOR + 40%
+
+LINK_COLOR_INVERT = FONT_COLOR
+LINK_COLOR_INVERT_HOVER = LINK_COLOR
+
+TEXT_LINK_COLOR = LINK_COLOR
+TEXT_LINK_COLOR_HOVER = LINK_COLOR_HOVER
+
+SELECT_COLOR = MAIN_COLOR
+
+
+ERROR_COLOR = #FF5959
+ERROR_BORDER_COLOR = #FF5959
+
+GOOD_COLOR = #44cd5e
+GOOD_BORDER_COLOR = #44cd5e
+
+BACKGROUND_COLOR = #f5f5f5
+
+// OTHER
+TRANS_SPEED = 0.2s
+
+FORM_ITEM_MARGIN = 20px
+
+COLUMN_MARGIN = 20px
+
+ENABLE_REM_POLYFILL = false
+
+
+BASE_WIDTH = 2560
+
+
+SCREENS = VARS.SCREENS
+
+
+COLORS = {
+	base: MAIN_COLOR,
+	light: #e7f0f7,
+	banners-item-box: #667c87,
+	button-style2: {
+		background: #f9a62c,
+		color: #000000
+	},
+	similarFlatButton: #b7312c,
+	progress: #d5e1ef
+}
+
+
+getColor(name, subname = false)
+	if subname
+		return COLORS[name][subname];
+	else
+		return COLORS[name];
+
+
+INPUT_SIZE = {
+	default: {
+		font-size: 16px,
+		height: 60px
+	}
+}
+__customthis = false
+this()
+	// p(__customthis)
+	if __customthis != false
+		return __customthis
+	return selector()
+
+reset-this()
+	__customthis = false
+
+set-this(_selector)
+	__customthis = _selector
+
+// __options = {
+// 	type: 'set-options',
+// 	value: {BASE_SIZE: BASE_SIZE, RESPONSIVE_START_WIDTH: RESPONSIVE_START_WIDTH, RESPONSIVE_END_WIDTH: RESPONSIVE_END_WIDTH, RESPONSIVE_AUTO_ACCURACY: RESPONSIVE_AUTO_ACCURACY}
+// }
+// __addAdaptiveProperty(__options)
+
+add-adaptive-property(prop, value)
+	if ENABLE_REM_POLYFILL
+		__add = {type: 'add', value: {selector: selector(), property: prop, value: value}}
+		// __addAdaptiveProperty(__add)
+		if(__ADAPTIVE_PROPERTIES[selector()] == null)
+			__ADAPTIVE_PROPERTIES[selector()] = 0
+		push(__ADAPTIVE_PROPERTIES[selector()], {property: prop, value: value})
+
+set-html-font-size(val)
+	html
+		font-size val
+
+set-polyfill-adaptive(val)
+	if !ENABLE_REM_POLYFILL
+		return
+	for _selector, props in __ADAPTIVE_PROPERTIES
+		// p(_selector)
+		{ selector('html.modernizr-no-cssremunit', _selector) }
+			for prop in props
+				if prop != 0
+					if length(prop['value']) > 1
+						_newValues = ()
+						for _val, index in prop['value']
+							push(_newValues, unrem(_val, val))
+						add-property( prop['property'], _newValues )
+						// { prop['property'] } _newValues
+					else
+						add-property( prop['property'], unrem(prop['value'], val) )
+
+
+__INLINE_MEDIA_LIST = ( 0 )
+
+_on-width(args...)
+	push(__INLINE_MEDIA_LIST, {selector: selector(), query: args})
+	return
+
+render_on-width()
+	for query in __INLINE_MEDIA_LIST
+		p(query)
+
+content-center(w = 100%, h = w, important = false )
+	important = (important == true ? !important : )
+	position relative
+	width w important
+	height h important
+
+	> *
+		position absolute
+		top 0 important
+		bottom 0 important
+		left 0 important
+		right 0 important
+		margin auto important
+		max-height 100%
+		max-width 100%
+
+
+isNumber(val)
+	if( !(val < 0 || val >= 0) && val != 'auto' && val != 'none' )
+		false
+	else
+		true
+
+allIsNumber(vals)
+	all = true
+	for _val in vals
+		all = all && isNumber(_val)
+	return all
+
+border-box()
+	box-sizing padding-box
+	box-sizing border-box
+	
+background-clip()
+	background-clip padding-box
+
+
+
+// in css -> width-perc(15)
+width-perc(perc)
+	.perc-{perc}
+		width: (perc)%
+		
+anim-link(type = $type_anim_link)
+	position relative
+	text-decoration none !important
+	overflow hidden
+	
+	if( type == 1)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+		
+	if (type == 2)
+		&:after,
+		&:before
+			content ''
+			display block
+			position absolute
+			bottom 0
+			size(50%, 0)
+			max-width 50%
+			border-bottom 1px solid
+			trans()
+		&:after
+			right 0
+		&:before
+			left 0
+			
+		&:hover
+			text-decoration none
+			&:after,
+			&:before
+				size(0)
+	
+	if( type == 3)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+
+Button(params, btnName = '')
+	_bg = params.background
+	_color = params.color
+	_bgHover = params.hover.background
+	_colorHover = params.hover.color
+	_bgActive = params.active.background
+	_colorActive = params.active.color
+	_colorName = ''
+	if(btnName != '')
+		_colorName = '="' + btnName + '"'
+		btnName = '.__' + btnName
+	else
+		_colorName = ""
+
+	&{btnName},
+	&[data-button-color{ _colorName }]
+		background-color _bg
+		color _color
+
+	&{btnName}:hover,
+	&{btnName}:focus,
+	&[data-button-color{ _colorName }]:hover,
+	&[data-button-color{ _colorName }]:focus
+		if(_bgHover)
+			background-color _bgHover
+		if(_colorHover)
+			color _colorHover
+	&{btnName}:active,
+	&[data-button-color{ _colorName }]:active
+		if(_bgActive)
+			background-color _bgActive
+		if(_colorActive)
+			color _colorActive
+
+	&{btnName}[disabled],
+	&{btnName}.disabled,
+	&{btnName}.__loading
+		background-color _bg !important
+		color _color !important
+
+	&[data-button-color{ _colorName }].__border,
+	&{btnName}.__border
+		background-color transparent
+		color _bg
+		_borderColor = _bg
+		if( params.border && params.border['border-color'] )
+			_borderColor = params.border['border-color']
+		border 2px solid _borderColor
+		&:hover,
+		&:focus
+			_borderColor = _bgHover
+			if( params.border && params.border.hover && params.border.hover['border-color'] )
+				_borderColor = params.border.hover['border-color']
+			color _colorHover
+			border-color _bgHover
+			background-color _bgHover
+		&:active
+			_borderColor = _bgActive
+			if( params.border && params.border.active && params.border.active['border-color'] )
+				_borderColor = params.border.active['border-color']
+			color _colorActive
+			border-color _bgActive
+			background-color _bgActive
+		&[disabled],
+		&.__loading,
+		&.disabled
+			background-color #fff !important
+			border-color _bg !important
+Buttons(styles)
+	for _btnName, _btnParams in styles
+		if(_btnName == 'default')
+			_btnName = ''
+		Button(_btnParams, _btnName )
+
+
+replace(expr, str, val)
+	expr = "'" + clone(expr) + "'"
+	// return typeof(expr)
+	for e, i in expr
+		if str == e
+			expr[i] = val
+	return expr
+
+catStr(str, start, end = false)
+	// res = ''
+	res = ''
+	_str = "'" + str + "'"
+	return _str[0][0]
+	return length(_str[0][0])
+	for i in _str
+		res = res + ' ' + i
+		if i >= start
+			if(end == false || i < end)
+				res = res + _str[i]
+	return res
+
+rem(val)
+	// p(selector())
+	// p(called-from)
+	// p(val)
+	// _selector = selector()
+	// add-adaptive-property
+
+	_rem = (round((val/BASE_SIZE)*1000)/1000)rem
+	if ENABLE_REM_POLYFILL
+		if __ADAPTIVE_PROPERTIES__DEFAULTS[current-property[0]]
+			add-property(current-property[0], val)
+			add-adaptive-property(current-property[0], _rem)
+
+	return _rem
+
+unrem(val, _size = BASE_SIZE)
+	if(unit(val) == 'rem')
+		return (round((val*_size)*10)/10)px
+	else
+		return val
+
+isRem(val)
+	// p(val)
+	// p(typeof(val) + ' ' + (typeof(val) == 'unit'))
+	// // p(unit(val))
+	// // return
+	if(typeof(val) != 'unit')
+		return false
+	if(unit(val) != 'rem')
+		return false
+	return true
+
+remExis(values)
+	for val in values
+		if(isRem(val))
+			return true
+	return false
+
+allIsRem(values)
+	for val in values
+		if(!isRem(val))
+			return false
+	return true
+
+ifLandscape(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth) and (orientation: landscape)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth) and (orientation: landscape)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth) and (orientation: landscape)
+					{block}
+			else
+				@media screen and (orientation: landscape)
+					{block}
+
+screenWidth(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth)
+					{block}
+
+STYLES(file)
+	return STYLES_PATH + file
+LIBS(file)
+	return LIBS_PATH + file
+IMAGES(file)
+	return IMAGES_PATH + file
+
+// in css -> images("test.png")
+images(file)
+	return url( IMAGES( file ) )
+
+
+autoResponse()
+	_lastFont = {}
+
+	_countResponse = ( 0 )
+	_start = RESPONSIVE_END_WIDTH
+	_end = RESPONSIVE_START_WIDTH
+
+	_lastWidth = (0)
+	for i in _start.._end
+		newSize =  BASE_SIZE*(i/RESPONSIVE_START_WIDTH)
+		newSize = round( newSize*RESPONSIVE_AUTO_ACCURACY )/RESPONSIVE_AUTO_ACCURACY
+		newSize = round( newSize*10 )/10
+		if(!_lastFont[newSize])
+			_countResponse[0] = _countResponse[0] + 1
+			_lastFont[newSize] = true
+			if _lastWidth[0] == 0
+				@media screen and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			else
+				@media screen and (min-width: ( (_lastWidth[0])px) ) and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			_lastWidth[0] = i
+	p('\nTotal breakpoints: ' + _countResponse[0] + '\n')
+
+
+_Sprite($$arr, name, spriteName, width = false, height = false)
+	$sprite = $$arr[ 's-' + spriteName]
+	if $sprite == null
+		p( '\n\n\n    ' + name + ' "' + spriteName + '" not found in: \n\n    ' + selector() + '\n\n\n')
+		return
+	else
+		_isDefaultWidth = false
+		_isDefaultHeight = false
+
+		_defaultWidth = $sprite[4]
+		_defaultHeight = $sprite[5]
+
+		if width == false
+			width = _defaultWidth
+			_isDefaultWidth = true
+
+		if height == false
+			height = _defaultHeight
+			_isDefaultHeight = true
+
+		_widthKoef = width/_defaultWidth
+		_heightKoef = height/_defaultHeight
+
+		if _isDefaultHeight && !_isDefaultWidth
+			_heightKoef = _widthKoef
+			height = height*_heightKoef
+
+		if !_isDefaultHeight && _isDefaultWidth
+			_widthKoef = _heightKoef
+			width = width*_widthKoef
+
+		// width = round(width*_widthKoef*1000)/1000
+		// height = round(height*_heightKoef*1000)/1000
+
+		_backgroundWidth = $sprite[6]
+		_backgroundHeight = $sprite[7]
+
+		_backgroundWidth = _backgroundWidth*_widthKoef
+		_backgroundHeight = _backgroundHeight*_heightKoef
+
+		_positionLeft = $sprite[2]
+		_positionTop = $sprite[3]
+
+		_positionLeft = _positionLeft*_widthKoef
+		_positionTop = _positionTop*_heightKoef
+
+		background-image url($sprite[8])
+		width (width)
+		height (height)
+		background-position (_positionLeft) (_positionTop)
+		background-size (_backgroundWidth) (_backgroundHeight)
+		background-repeat no-repeat
+
+sprite(spriteName, width = false, height = false)
+	_Sprite($$sprite, 'sprite', spriteName, width, height)
+
+icon(spriteName, width = false, height = false)
+	_Sprite($$icons, 'icon', spriteName, width, height)
+
+px64()
+	_color = (0 0 0)
+	for item, index in arguments
+		_color[index] = item
+	p(_color)
+	s(__px64(_color))
+
+
+
+MEDIA( type, onlyThis = false )
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if(onlyThis && _currentIndex != 0 && _currentIndex != (length(SCREENS) - 1))
+		@media screen and (min-width: unit(SCREENS[ _currentIndex + 1 ][1] + 1, 'px')) and (max-width: unit(_currentValue, 'px'))
+			{block}
+	else
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+MIN_MEDIA(type)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if index < (length(SCREENS) - 2) && _screen[0] == type
+			_currentIndex = index
+			_currentValue = (SCREENS[index + 1][1] + 1)
+
+	_type = 'min-width'
+
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if _currentIndex != -1
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+
+MEDIA_WIDTH(type, margin)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	if margin
+		return _currentValue - MEDIA_MARGIN
+	else
+		return _currentValue
+
+
+reset-wrapper-content(inner = true)
+	_values = 
+		padding-left 0
+		padding-right 0
+		max-width none
+		min-width 0
+		width auto
+	_selector = '.wrapper-content'
+
+	if(true)
+		> .wrapper-content
+			{_values}
+	else
+		.wrapper-content
+			{_values}
+
+
+
+// in css -> text-ellipsis(100px) or text-ellipsis(80%)
+_text-overflow(width_value = 'none')
+	white-space: nowrap
+	text-overflow: ellipsis
+	line-height: normal;
+	overflow: hidden
+	if width_value != 'none'
+		width: width_value
+	else
+		max-width 100%
+
+
+getInputSize(sizes)
+	_lineHeight = 1.2
+	return {
+		font-size: sizes['font-size'],
+		line-height: _lineHeight,
+		height: sizes['height'],
+		padding-top: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2),
+		padding-bottom: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2)
+	}
+$button()
+	[type="submit"],
+	[type="button"],
+	[type="reset"],
+	button
+		{block}
+
+button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button')
+
+all_button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button, [data-button]')
+
+textbox(onlyInput = false)
+	if onlyInput
+		return selector('&', '[type="text"], textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .input-style')
+	return selector('&', '[type="text"], select, textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .ui-selectmenu-button, .input-style')
+
+$textbox(onlyInput = false)
+	if(onlyInput)
+		[type="text"], textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.input-style
+			{block}
+	else
+		[type="text"], select, textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.ui-selectmenu-button,
+		.input-style
+			{block}
+
+$hN(n)
+	h{ n },
+	.{ TITLE_CLASS }-{n}
+		{block}
+
+$title()
+	h{ 1 },
+	.{ TITLE_CLASS }-{1},
+	h{ 2 },
+	.{ TITLE_CLASS }-{2},
+	h{ 3 },
+	.{ TITLE_CLASS }-{3},
+	h{ 4 },
+	.{ TITLE_CLASS }-{4},
+	h{ 5 },
+	.{ TITLE_CLASS }-{5},
+	h{ 6 },
+	.{ TITLE_CLASS }-{6}
+		{block}
+
+$h1()
+	+$hN(1)
+		{block}
+$h2()
+	+$hN(2)
+		{block}
+$h3()
+	+$hN(3)
+		{block}
+$h4()
+	+$hN(4)
+		{block}
+$h5()
+	+$hN(5)
+		{block}
+$h6()
+	+$hN(6)
+		{block}
+$title-1()
+	.{ TITLE_CLASS }-1
+		{block}
+$title-2()
+	.{ TITLE_CLASS }-2
+		{block}
+$title-3()
+	.{ TITLE_CLASS }-3
+		{block}
+$title-4()
+	.{ TITLE_CLASS }-4
+		{block}
+$title-5()
+	.{ TITLE_CLASS }-5
+		{block}
+$title-6()
+	.{ TITLE_CLASS }-6
+		{block}
+$title-all()
+	.{ TITLE_CLASS }-1,
+	.{ TITLE_CLASS }-2,
+	.{ TITLE_CLASS }-3,
+	.{ TITLE_CLASS }-4,
+	.{ TITLE_CLASS }-5,
+	.{ TITLE_CLASS }-6
+		{block}
+$h-all()
+	h1,h2,h3,h4,h5,h6
+		{block}
+
+
+$big()
+	.big
+		{block}
+$small()
+	small,
+	.small
+		{block}
+$bold()
+	.bold,
+	b,
+	strong
+		{block}
+$italic()
+	i,
+	.italic
+		{block}
+
+
+$_noopacity()
+	html.modernizr-no-opacity &
+		{block}
+
+$_nofilter()
+	html.modernizr-no-cssfilters &
+		{block}
+$$clear
+	&:after
+		content ''
+		display table
+		clear both
+		border-spacing 0
+		border-collapse collapse
+		border 0
+
+clear(arg = false)
+	if (arg != false)
+		clear arg
+	else
+		@extend $$clear
+
+$$resetTitle
+	font inherit
+	color inherit
+	border 0
+	outline none
+	border-radius 0
+	text-transform inherit
+$$resetStyle
+	@extends $$resetTitle
+	margin 0
+	padding 0
+	background transparent
+
+resetStyle()
+	&
+		@extend $$resetStyle
+
+resetTitle()
+	&
+		+$title()
+			&
+				@extend $$resetStyle
+
+$$reset-button
+	padding 0
+	margin 0
+	border 0
+	box-shadow none
+	background transparent
+	outline none
+	text-decoration none
+	display inline-block
+	vertical-align top
+	cursor pointer
+	text-align center
+	user-select none
+
+reset-button()
+	@extend $$reset-button
+
+$$trans
+	transition all TRANS_SPEED
+
+trans(_speed = false)
+	if(!_speed)
+		@extend $$trans
+	else
+		transition all _speed
+
+trans-none()
+	transition all 0s
+size(_width, _height = _width)
+	if isNumber(_width)
+		if isRem(_width) && ENABLE_REM_POLYFILL
+			width unrem(_width)
+			add-adaptive-property('width', _width)
+		width _width
+	if isNumber(_height)
+		if isRem(_height) && ENABLE_REM_POLYFILL
+			height unrem(_height)
+			add-adaptive-property('height', _height)
+		height _height
+	// relative-prop('width' width, 'height' height)
+
+max-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			max-width unrem(width)
+			add-adaptive-property('max-width', width)
+		max-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			max-height unrem(height)
+			add-adaptive-property('max-height', height)
+		max-height height
+
+	// relative-prop('max-width' width, 'max-height' height)
+
+min-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			min-width unrem(width)
+			add-adaptive-property('min-width', width)
+		min-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			min-height unrem(height)
+			add-adaptive-property('min-height', height)
+		min-height height
+	// relative-prop('min-width' width, 'min-height' height)
+
+pos(top, right = top, bottom = top, left = right)
+	if isNumber(top)
+		if isRem(top) && ENABLE_REM_POLYFILL
+			top unrem(top)
+			add-adaptive-property('top', top, true)
+		top top
+	if isNumber(right)
+		if isRem(right) && ENABLE_REM_POLYFILL
+			right unrem(right)
+			add-adaptive-property('right', right)
+		right right
+	if isNumber(left)
+		if isRem(left) && ENABLE_REM_POLYFILL
+			left unrem(left)
+			add-adaptive-property('left', left)
+		left left
+	if isNumber(bottom)
+		if isRem(bottom) && ENABLE_REM_POLYFILL
+			bottom unrem(bottom)
+			add-adaptive-property('bottom', bottom)
+		bottom bottom
+	// relative-prop('top' top, 'right' right, 'bottom' bottom, 'left' left )
+
+margin()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		add-adaptive-property('margin', arguments)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('margin-top', top)
+			if !allIsNumber(arguments)
+				margin-top unrem(top)
+
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('margin-right', right)
+			if !allIsNumber(arguments)
+				margin-right unrem(right)
+
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('margin-bottom', bottom)
+			if !allIsNumber(arguments)
+				margin-bottom unrem(bottom)
+
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('margin-left', left)
+			if !allIsNumber(arguments)
+				margin-left unrem(left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		margin arguments
+	else
+		if isNumber(top)
+			margin-top top
+		if isNumber(right)
+			margin-right right
+		if isNumber(bottom)
+			margin-bottom bottom
+		if isNumber(left)
+			margin-left left
+
+padding()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		if allIsRem(arguments)
+			add-adaptive-property('padding', arguments)
+			padding unrem(top) unrem(right) unrem(bottom) unrem(left)
+		else
+			if isRem(top)
+				padding-top unrem(top)
+			if isRem(right)
+				padding-right unrem(right)
+			if isRem(left)
+				padding-left unrem(left)
+			if isRem(bottom)
+				padding-bottom unrem(bottom)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('padding-top', top)
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('padding-right', right)
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('padding-bottom', bottom)
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('padding-left', left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		padding arguments
+	else
+		if isNumber(top)
+			padding-top top
+		if isNumber(right)
+			padding-right right
+		if isNumber(bottom)
+			padding-bottom bottom
+		if isNumber(left)
+			padding-left left
+
+opacity(val)
+	if( val >= 0 )
+		if val > 1
+			val = val/100
+		zoom 1
+		-ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity="' + val*100 + '")')
+		filter unquote('alpha(opacity=' + val*100 + ')')
+		opacity val
+	else
+		opacity val
+
+gr(startColor, endColor)
+	background: -moz-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,startColor), color-stop(100%, endColor));
+	background: -webkit-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -o-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -ms-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: linear-gradient(to bottom,  startColor 0%, endColor 100%);
+
+// font-size(val)
+// 	if(typeof(val) == 'unit' && unit(val) == 'rem')
+// 		add-adaptive-property('font-size', val)
+// 		add-property('font-size', unrem(val))
+// 	add-property('font-size', val)
+
+base-font()
+	font-1()
+	font-weight 300
+	font-size FONT_SIZE
+	color FONT_COLOR
+font-1()
+	font-family 'MuseoSansCyrl', Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif
+script
+	display none !important
+html,body
+	min-width WRAPPER_MIN_WIDTH
+
+html
+	base-font()
+	line-height 1.1
+	size 100%
+	background BACKGROUND_COLOR
+	font-size unit(round(FONT_SIZE*100/BASE_WIDTH, 3), 'vw')
+	overflow scroll
+	overflow-x auto
+	overflow-y scroll
+body
+	min-height 100%
+	position relative
+	font-size FONT_SIZE
+	background BACKGROUND_COLOR
+	html.js &
+		padding-bottom 346px
+
+.wrapper-content
+	//min-width WRAPPER_MIN_WIDTH
+	border-box()
+	margin 0 auto
+	padding 0 (WRAPPER_PADDING)
+	// width 1260px
+	// max-width WRAPPER_MAX_WIDTH
+
+	// for _screen, index in SCREENS
+	// 	+MEDIA( _screen[0], true )
+	// 		if( index < (length(SCREENS) - 1))
+	// 			_width = SCREENS[index + 1][1] - MEDIA_MARGIN
+	// 			max-width _width
+	+MEDIA("SMALL_PHONE")
+		padding _ 10px
+.wrapper-text
+	max-width 780px
+	margin auto
+	table
+		width 100%
+main
+	// overflow hidden
+	cursor default
+	// min-height 100vh
+	p
+		cursor initial
+html,
+body,
+main,
+main *
+	border-box()
+
+html.__not-ready body:before
+	content ''
+	display block
+	position absolute
+	pos 0
+	background BACKGROUND_COLOR
+	z-index 99999999999
+
+.js-popup-margin
+	display none
+
++MEDIA("DESKTOP")
+	html
+		font-size 20px
+
+
+.MEDIA_SCREENS
+	for _screen, index in SCREENS
+		+MEDIA( _screen[0], true )
+			z-index index
+			_screen-width = _screen[1]
+			&-screen-width
+				width unit(_screen-width, 'px')
+			if( index < (length(SCREENS) - 1))
+				_wrapper-width = SCREENS[index + 1][1] - MEDIA_MARGIN
+				&-wrapper-width
+					width unit(_wrapper-width, 'px')
+[data-text-column]
+	column-gap 100px
+	column-width 400px
+	> *
+		break-inside avoid
+for i in 1..10
+	[data-text-column={ '"' + i + '"' }]
+		column-count i
+
+[data-text-column]
+	+MEDIA("SMALL_DESKTOP")
+		columns auto
+
+.wrapper-info
+	background #fff
+	padding 45px
+	box-shadow 0 3px 3px rgba(0, 0, 0, 0.02)
+	+MEDIA("PHONE")
+		padding 30px 20px 20px
+	+MEDIA("SMALL_PHONE")
+		margin _ (-(WRAPPER_PADDING))
+
+.left-column-big, .left-column-small
+	float left
+	position relative
+.right-column-small, .right-column-big
+	float right
+	position relative
+.left-column-big,.right-column-big
+	width 66%
+.left-column-small, .right-column-small
+	width 33%
++MEDIA("TABLET")
+	.left-column-big,
+	.right-column-big,
+	.left-column-small,
+	.right-column-small
+		flaot none
+		width auto
+
+.content
+	margin-bottom 30px
+
+.wrapper-inner-content
+	max-width 1380px
+	margin auto
+
+area
+	cursor default
+	&[href]
+		cursor pointer
+
+
+[data-ajax-content]
+	padding 100px 0
+	margin 50px 0
+	&.__loading
+		&:after
+			size 100px
+			margin auto
+			display block
+			background images('preloader-48.gif') center no-repeat
+			background-color #fff
+			content ''
+	&.__fail
+		text-align center
+
+.pattern-bg {
+    background: #cddff0;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
++MEDIA("SMALL_TABLET")
+	.column[class]
+		width 100%
+// // *
+// // 	outline 1px solid rgba(#a00, 0.1) !important
+// html
+// 	&:before
+// 		z-index 9999999
+// 		position fixed
+// 		content 'DESKTOP'
+// 		bottom 0
+// 		right 0
+// 		padding 20px
+// 		font-size 16px
+// 		background rgba(0, 0, 0, 0.3)
+// 		color #fff
+// 		+MEDIA_TABLET()
+// 			content 'TABLET'
+// 		+MEDIA_SMALL_TABLET()
+// 			content 'SMALL_TABLET'
+// 		+MEDIA_MOBILE()
+// 			content 'MOBILE'
+// 		+MEDIA_SMALL_MOBILE()
+// 			content 'SMALL_MOBILE'
+h1Size = (48px)
+h2Size = (36px)
+h3Size = (30px)
+h4Size = (24px)
+h5Size = (20px)
+h6Size = (18px)
+
+main
+	+$title()
+		line-height 1
+		resetTitle()
+		font-weight 900
+		color #242424
+		margin-bottom (30px)
+		small
+			font-weight 400
+	+$h1()
+		font-size h1Size
+	+$h2()
+		font-size h2Size
+	+$h3()
+		font-size h3Size
+	+$h4()
+		font-size h4Size
+	+$h5()
+		font-size h5Size
+	+$h6()
+		font-size h6Size
+		text-transform uppercase
+		font-weight 400
+
+	+MEDIA("TABLET")
+		+$h1()
+			font-size h1Size*0.75
+		+$h2()
+			font-size h2Size*0.75
+		+$h3()
+			font-size h3Size*0.75
+		+$h4()
+			font-size h4Size*0.75
+		+$h5()
+			font-size h5Size*0.75
+		+$h6()
+			font-size h6Size*0.75
+	// +MEDIA("SMALL_PHONE")
+	// 	+$title()
+	// 		margin-bottom (20px)
+	// 	+$h1()
+	// 		font-size h1Size*0.5
+	// 	+$h2()
+	// 		font-size h2Size*0.5
+	// 	+$h3()
+	// 		font-size h3Size*0.5
+	// 	+$h4()
+	// 		font-size h4Size*0.5
+	// 	+$h5()
+	// 		font-size h5Size*0.5
+	// 	+$h6()
+	// 		font-size h6Size*0.5
+	p,
+	td,
+	th,
+	li
+		font-size (BASE_SIZE)
+		line-height LINE_HEIGHT
+		font-weight 300
+		+MEDIA("PHONE")
+			font-size MOBILE_SIZE
+	p,
+	ol,
+	ul,
+	table,
+	.table-wrapper
+		margin-bottom round(BASE_SIZE*LINE_HEIGHT)
+		+MEDIA("PHONE")
+			margin-bottom round(MOBILE_SIZE*LINE_HEIGHT)
+	* + p,
+	* + ol,
+	* + ul,
+	* + table,
+	* + .table-wrapper
+		margin-top round(BASE_SIZE*LINE_HEIGHT)
+		+MEDIA("PHONE")
+			margin-top round(MOBILE_SIZE*LINE_HEIGHT)
+	p
+		clear()
+		a
+			// text-decoration underline
+			&[href^="tel"]
+				text-decoration none
+		img
+			display inline-block
+			vertical-align top
+		img[align="center"]
+			display block
+			margin 0 auto (BASE_SIZE)
+		img[align="left"],
+		img.left,
+		img.to-left,
+		img[align="right"],
+		img.right,
+		img.to-right
+			max-width 50%
+			* + &
+				margin-top 20px
+		img[align="left"],
+		img.left,
+		img.to-left
+			margin 0 (BASE_SIZE) (BASE_SIZE) 0
+		img[align="right"],
+		img.right,
+		img.to-right
+			margin 0 0 (BASE_SIZE) (BASE_SIZE)
+		img[align]
+			&:last-child
+				margin-bottom 0
+		&.__big
+			font-size (BASE_SIZE)
+	* + ul,
+	* + ol
+		margin-top 15px
+	ul,
+	ol
+		padding-left (24px)
+		margin (BASE_SIZE) _ _
+	li
+		margin (10px) _
+	a
+		text-decoration none
+		color TEXT_LINK_COLOR
+		transition color TRANS_SPEED
+		transition-property color, background, border-color, box-shadow, opacity, filter, transform
+		&:hover
+			color TEXT_LINK_COLOR_HOVER
+	em,
+	.em
+		color SELECT_COLOR
+	mark,
+	.mark
+		background-color SELECT_COLOR
+		color #fff
+		padding _ 5px
+	+$bold()
+		font-weight 600
+	q
+		font-style italic
+		&:before
+			content "\00ab"
+		&:after
+			content "\00bb"
+	code
+		font-family Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace
+	ins
+		color #12A66D
+		font-weight 600
+	s,
+	.italic
+		font-style italic
+	u,
+	.underline
+		text-decoration underline
+	
+	+$big()
+		font-size 120%
+		font-size 1.2em
+	+$small()
+		font-size 88%
+		font-size 0.88em
+
+	sub
+		vertical-align sub
+		font-size 70%
+		font-size 0.7em
+	sup
+		vertical-align super
+		font-size 70%
+		font-size 0.7em
+	blockquote
+		border-left 5px solid MAIN_COLOR
+		padding 15px 20px
+		background-color #f6f6f6
+		color #868686
+		margin-left 30px
+		&,
+		p
+			font-weight 300
+		p
+			margin 0
+		* + p
+			margin-top BASE_SIZE
+	ol,
+	ul
+		margin-bottom 15px
+		ol,
+		ul
+			margin-top 10px
+		// > li
+		// 	z-index 0
+	ol
+		counter-reset item
+		list-style none
+		padding-left 15px
+		> li
+			position relative
+			&:before
+				content counters(item, ".")
+				counter-increment item
+				position absolute
+				right 100%
+				top 0
+				font-weight 700
+				margin-right 5px
+	ul
+		list-style none
+		padding 0
+		> li
+			padding-left 7px
+			position relative
+			&:before
+				content ''
+				display block
+				position absolute
+				left 0
+				top 9px
+				size 4px
+				background getColor('base')
+				border-radius 50%
+
+	hr
+		margin 25px auto
+		border 0
+		size auto 1px
+		background SELECT_COLOR
+		&.__small
+			size 68px 3px
+	th,
+	td
+		border 1px solid #ddd
+		padding 10px 20px
+	th
+		text-align left
+		font-weight 700
+		&.__title
+			font-size 18px
+			padding 10px 20px
+			background #fafafa
+	td
+		font-weight 400
+	th[colspan]
+		text-align center
+	table
+		border-spacing 5px 0
+		border-collapse separate
+		th,
+		th.__title
+			border 0
+			border-bottom 1px solid #dededd
+			background transparent
+			padding-left 0
+			color #818181
+			font-weight 400
+		td
+			background #fff
+			border 0
+			border-bottom 1px solid #f7f7f6
+		th + td
+			border-left 1px solid #dededd
+		thead
+			padding-bottom 20px
+		&.__lines
+			border-spacing 0
+			background #f7f7f6
+			td
+				background transparent
+				border 0
+			tr ~ tr
+				td
+					border-top 1px solid #fff
+			tr:nth-child(odd)
+				td
+					background #fff
+	table
+		&.__dotted
+			table-layout fixed
+			font-weight 500
+			border-spacing 0
+			td,
+			th
+				border 0
+				padding 7px 0 7px 15px
+				line-height 20px
+				// color #000
+				overflow hidden
+				text-align right
+				background transparent
+				&:before
+					float right
+					content ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . "
+					white-space nowrap
+					width 0
+					font-size 9px
+					line-height 24px
+					direction rtl
+					margin-bottom -5px
+				span
+					background BACKGROUND_COLOR
+					padding-left 3px
+				&:first-child
+					padding-right 15px
+					padding-left 0
+					text-align left
+					&:before
+						float left
+						direction ltr
+					span
+						padding-right 3px
+						padding-left 0
+
+			th
+				// width 45%
+				font-size BASE_SIZE
+				font-weight 400
+				&.__title
+					background transparent
+					padding 0 0 20px
+					font-weight 600
+					color #415d68
+					&:before
+						display none
+			td
+				font-weight 500
+				text-align right
+	figure
+		margin-bottom 15px
+		img
+			display block
+			width 100%
+		&,
+		figcaption
+			font-size 14px
+			color #a9c9d1
+			line-height 16px
+		* + figcaption
+			margin-top 5px
+	* + figure
+		margin-top 20px
+	
+	.table-wrapper
+		overflow auto
+		> table
+			margin 0
+		td,th
+			min-width 200px
+		
+.falseLink
+	color MAIN_COLOR
+	border-bottom 1px dotted
+	cursor pointer
+	text-decoration none
+
++$h1()
+	main * + &
+		margin-top 20px
++$h2()
+	main * + &
+		margin-top 15px
++$h3()
+	main * + &
+		margin-top 15px//(h3Size*1.3)
++$h4()
+	main * + &
+		margin-top 15px//(h4Size*1.3)
++$h5()
+	main * + &
+		margin-top 15px//(h5Size*1.3)
++$h6()
+	main * + &
+		margin-top 15px//(h6Size*1.3)
+_$formItemMargin = 20px
+
+.form-controls
+	margin-top _$formItemMargin
+	> .form-submit,
+	> .form-reset
+		display inline-block
+		vertical-align middle
+		margin 0 _
+	> * + .form-submit,
+	> * + .form-reset
+		margin-left 15px
+	+MEDIA("PHONE")
+		> .form-submit,
+		> .form-reset
+			display block
+			text-align center
+		> * + .form-submit,
+		> * + .form-reset
+			margin-left 0
+			margin-top 20px
+
+.error-msg
+	&,
+	.form-item &
+		display block
+		color ERROR_COLOR
+		margin-top (5px)
+		margin-left 16px
+		font-size (12px)
+		line-height (14px)
+
+.form-title
+	font-size 24px
+	line-height 1
+	font-weight 700
+	color #000
+	margin-bottom 20px
+	font-2()
+	* + &
+		margin-top 30px
+	& + .form-subtitle
+		margin-top 15px
+	&.__big
+		font-size 26px
+
+.form-subitem
+	font-size 10px
+	margin-bottom 12px
+	p
+		margin 0
+		* + p
+			margin-top 10px
+	.form-item + &
+		margin-top -12px
+	.form-item &
+		margin-top 8px
+		margin-bottom 0
+
+.form-info
+	margin-bottom (_$formItemMargin)
+	.form-item + &
+		margin-top (-(_$formItemMargin/2))
+	p
+		text-align left
+		margin 0
+		font-size 10px
+		line-height 12px
+		color #404040
+		font-weight 300
+	* + p
+		margin-top 10px
+
+.form-subtitle
+	font-size 18px
+	line-height 24px
+	font-weight 400
+	color #000
+	margin-bottom (_$formItemMargin/2)
+	* + &
+		margin-top (_$formItemMargin*1.5)
+
+.form-item
+	margin-bottom (_$formItemMargin)
+	_inputSize = getInputSize( INPUT_SIZE['default'] );
+
+	/{ textbox() }
+		border 1px solid #e5e6e7
+		width 100%
+
+		background #fff
+		border-color #fff
+		font-size _inputSize['font-size'];
+		line-height _inputSize['line-height'];
+		_paddingTop = (_inputSize['padding-top'] - 1px);
+		_paddingBottom = (_inputSize['padding-bottom'] - 1px);
+		padding (_paddingTop) (15px) _paddingBottom;
+		height _inputSize['height'];
+
+		font-weight 300
+		color #343435
+		trans()
+		transition-property color, background, border, transform, filter, box-shadow
+		display block
+		&:hover
+			border-color #ccc
+			color #343435
+		&:focus
+			background #fff
+			color #343435
+			border-color #eee - 20%
+	
+	select.__colored,
+	select.__colored + .ui-selectmenu-wrapper .ui-selectmenu-button
+		background getColor('base')
+		color #fff
+		font-weight 900
+		border-color transparent
+		&:hover
+			background getColor('base') + 10%
+		&:focus
+			background #fff
+			color getColor('base')
+
+	textarea
+		resize none
+		_height = round((_inputSize['font-size']*_inputSize['line-height']) * 4) + ( _inputSize['padding-top'] + _inputSize['padding-bottom'] + 2 );
+		height _height
+		overflow auto
+
+	&.column
+		padding _ (_$formItemMargin/2)
+		display block
+		margin-right 0
+	> .form-line
+		margin-bottom (-(_$formItemMargin))
+	
+	> [data-button],
+	> [type="submit"]
+		display block
+		width 100%
+
+/{ textbox() }
+	main &.error,
+	main .error &
+		border-color ERROR_BORDER_COLOR
+		color ERROR_COLOR
+		box-shadow none
+		&::-webkit-input-placeholder
+			color ERROR_COLOR
+		&::-moz-placeholder
+			color ERROR_COLOR
+		&::placeholder
+			color ERROR_COLOR
+		&:-ms-input-placeholder
+			color ERROR_COLOR
+		&:-moz-placeholder
+			color ERROR_COLOR
+		&:placeholder
+			color ERROR_COLOR
+
+/{ textbox() }
+	main &.good,
+	main .good &
+		border-color GOOD_BORDER_COLOR
+		color GOOD_COLOR
+		box-shadow none
+		&::-webkit-input-placeholder
+			color GOOD_COLOR
+		&::-moz-placeholder
+			color GOOD_COLOR
+		&::placeholder
+			color GOOD_COLOR
+		&:-ms-input-placeholder
+			color GOOD_COLOR
+		&:-moz-placeholder
+			color GOOD_COLOR
+		&:placeholder
+			color GOOD_COLOR
+
+.form-line
+	&.columns
+		margin (-(_$formItemMargin)) (-( _$formItemMargin/2 )) (_$formItemMargin)
+		> .form-item.column
+			margin-right 0
+			margin-bottom 0
+			margin-top (_$formItemMargin)
+	> .form-item,
+	> .form-submit
+		display inline-block
+		vertical-align top
+		margin-right (_$formItemMargin - 3px)
+		margin-bottom (_$formItemMargin)
+		margin-top 0
+	&[data-clearwhitespace="cleared"]
+		> .form-item,
+		> .form-submit
+			margin-right (_$formItemMargin)
+	> .error-msg
+		margin-bottom (_$formItemMargin)
+		margin-top (-(_$formItemMargin/2))
+
+.form-label
+	margin-bottom 5px
+	font-weight 400
+	display block
+	font-size (16px)
+	line-height (20px)
+
+.form-item
+	position relative
+	.ui-state-default
+		a,
+		a:link
+			color LINK_COLOR
+			text-decoration underline
+			&:hover
+				color LINK_COLOR_HOVER
+main
+	[type="radio"],
+	[type="checkbox"]
+		&,
+		label &
+			display block
+			position absolute
+			pos auto
+			margin 0
+			cursor pointer
+		& + label,
+		label & + span
+			display inline-block
+			vertical-align top
+			max-width 100%
+			padding-left 22px
+			text-align left
+			cursor pointer
+			font-size 14px
+			line-height 16px
+			.error &
+				color ERROR_COLOR
+
+
+.form-submit
+	margin-top 20px
+.form-reset
+	text-align center
+	margin-top (_$formItemMargin*1.5)
+	/{ all_button() }
+		reset-button()
+		font-size (16px)
+		line-height (20px)
+		font-weight 300
+		color getColor('base')
+		&:hover
+			color getColor('base') + 20%
+		&:active
+			color getColor('base') - 10%
+Button(params)
+	add-property('border-color', params['default']['background-color'])
+	for propKey,propVal in params['default']
+		add-property(propKey, propVal)
+
+	&[data-button-mod*="border"]
+		__prop = {
+			'background-color': transparent,
+			'color': params['default']['background-color']
+		}
+		if(params['border'] != null)
+			for propKey,propVal in params['border']
+				if((propKey != 'hover') && (propKey != 'active'))
+					__prop[propKey] = propVal
+
+		for propKey,propVal in __prop
+			add-property(propKey, propVal)
+
+		&:hover,
+		&.-hover
+			__hover = {
+				'background-color': params['default']['background-color'],
+				'border-color': params['default']['background-color']
+			}
+			if(params['border'] != null && params['border']['hover'] != null)
+				for propKey,propVal in params['border']['hover']
+					__hover[propKey] = propVal
+			for propKey,propVal in __hover
+				add-property(propKey, propVal)
+		&:active,
+		&.-active
+			__active = {
+				'background-color': params['active']['background-color'],
+				'border-color': params['active']['background-color']
+			}
+			if(params['border'] != null && params['border']['active'] != null)
+				for propKey,propVal in params['border']['active']
+					__active[propKey] = propVal
+			for propKey,propVal in __active
+				add-property(propKey, propVal)
+
+		&.__loading
+			&:hover,
+			&:active,
+			&.-hover,
+			&.-active
+				for propKey,propVal in __prop
+					add-property(propKey, propVal)
+
+
+	&:hover
+		add-property('border-color', params['hover']['background-color'])
+		for propKey,propVal in params['hover']
+			add-property(propKey, propVal)
+
+	&:active
+		add-property('border-color', params['active']['background-color'])
+		for propKey,propVal in params['active']
+			add-property(propKey, propVal)
+
+	&.__loading
+		&:hover,
+		&:active,
+		&.-hover,
+		&.-active
+			for propKey,propVal in params['default']
+				add-property(propKey, propVal)
+
+buttons = {
+	default: {
+		default: {
+			background-color: MAIN_COLOR,
+			color: #fff
+		},
+		hover: {
+			background-color: (MAIN_COLOR + 20%),
+			color: #fff
+		},
+		active: {
+			background-color: (MAIN_COLOR - 20%),
+			color: (#fff - 20%)
+		},
+		border: {
+			border-color: MAIN_COLOR,
+			color: MAIN_COLOR,
+			hover: {
+				background-color: (MAIN_COLOR + 20%),
+				color: #fff,
+				border-color: (MAIN_COLOR + 20%)
+			},
+			active: {
+				background-color: (MAIN_COLOR - 20%),
+				color: (#fff - 20%),
+				border-color: (MAIN_COLOR - 20%)
+			}
+		}
+	},
+	gray: {
+		default: {
+			background-color: #f0f0f0,
+			color: #232834
+		},
+		hover: {
+			background-color: #f0f0f0 + 40%,
+			color: #232834
+		},
+		active: {
+			background-color: #f0f0f0 - 20%,
+			color: #232834 - 20%
+		},
+		border: {
+			border-color: #bcc4d3,
+			color: #232834,
+			hover: {
+				background-color: #f0f0f0 + 40%,
+				color: #232834,
+				border-color: #f0f0f0 + 40%
+			},
+			active: {
+				background-color: #f0f0f0 - 20%,
+				color: #232834 - 20%,
+				border-color: #f0f0f0 - 20%
+			}
+		}
+	},
+	darkgray: {
+		default: {
+			background-color: #acacac,
+			color: #fff
+		},
+		hover: {
+			background-color: #acacac + 20%,
+			color: #fff
+		},
+		active: {
+			background-color: #acacac - 20%,
+			color: #ccc
+		},
+		border: {
+			border-color: #acacac - 20%,
+			color: #acacac - 20%,
+			hover: {
+				background-color: #acacac + 20%,
+				color: #fff,
+				border-color: #acacac + 20%
+			},
+			active: {
+				background-color: #acacac - 20%,
+				color: #ccc,
+				border-color: #acacac - 20%
+			}
+		}
+	},
+	black: {
+		default: {
+			background-color: rgba(#09151b, 1),
+			color: #fff,
+			border-color: transparent
+		},
+		hover: {
+			background-color: rgba(#09151b + 20%, 1),
+			color: #fff,
+			border-color: transparent
+		},
+		active: {
+			background-color: rgba(#09151b - 20%, 1),
+			color: #fff - 20%,
+			border-color: transparent
+		},
+		border: {
+			border-color: rgba(#09151b, 1),
+			color: rgba(#09151b, 1),
+			hover: {
+				background-color: rgba(#09151b + 20%, 1),
+				color: #fff,
+				border-color: rgba(#09151b + 20%, 1)
+			},
+			active: {
+				background-color: rgba(#09151b - 20%, 1),
+				color: #fff - 20%,
+				border-color: rgba(#09151b - 20%, 1)
+			}
+		}
+	},
+	transparent-black: {
+		default: {
+			background-color: rgba(#09151b, 0.6),
+			color: #fff,
+			border-color: transparent
+		},
+		hover: {
+			background-color: rgba(#09151b + 20%, 0.6),
+			color: #fff,
+			border-color: transparent
+		},
+		active: {
+			background-color: rgba(#09151b - 20%, 0.6),
+			color: #fff - 20%,
+			border-color: transparent
+		},
+		border: {
+			border-color: rgba(#09151b, 0.6),
+			color: rgba(#09151b, 0.6),
+			hover: {
+				background-color: rgba(#09151b + 20%, 0.6),
+				color: #fff,
+				border-color: rgba(#09151b + 20%, 0.6)
+			},
+			active: {
+				background-color: rgba(#09151b - 20%, 0.6),
+				color: #fff - 20%,
+				border-color: rgba(#09151b - 20%, 0.6)
+			}
+		}
+	},
+	style2: {
+		default: {
+			background-color: #f9a62c,
+			color: #000
+		},
+		hover: {
+			background-color: (#f9a62c + 20%),
+			color: #000
+		},
+		active: {
+			background-color: (#f9a62c - 20%),
+			color: (#000 + 20%)
+		},
+		border: {
+			border-color: #f9a62c,
+			color: #f9a62c,
+			hover: {
+				background-color: (#f9a62c + 20%),
+				color: #000,
+				border-color: (#f9a62c + 20%)
+			},
+			active: {
+				background-color: (#f9a62c - 20%),
+				color: (#000 + 20%),
+				border-color: (#f9a62c - 20%)
+			}
+		}
+	}
+}
+
+VARS_ADD('BUTTONS', buttons)
+
+main
+	[data-button],
+	.button
+		reset-button()
+		trans()
+
+
+
+		&[disabled],
+		&.disabled
+			background (#f2f2f2 - 5%) !important
+			color rgba(0, 0, 0, 0.4) !important
+			cursor default !important
+			border-color transparent !important
+			text-shadow 1px 1px 0 rgba(255, 255, 255, 1)
+			box-shadow inset 1px 1px 0 rgba(0, 0, 0, 0.1)
+
+		border 1px solid transparent
+
+		_inputSize = getInputSize( INPUT_SIZE['default'] );
+		_paddingTop = (_inputSize['padding-top'] - 1px);
+		_paddingBottom = (_inputSize['padding-bottom'] - 1px);
+		
+		getValue(val, _name)
+			return val[_name]
+
+		font-size getValue(_inputSize, 'font-size')
+		line-height getValue(_inputSize, 'height') - (_paddingTop + _paddingBottom + 2)
+		padding (_paddingTop) (30px) (_paddingBottom)
+
+		max-width 100%
+		
+		text-transform uppercase
+
+		font-weight 700
+
+		> *
+			display inline-block
+			vertical-align middle
+
+		img:first-child,
+		i:first-child
+			margin-right 10px
+		img:last-child,
+		i:last-child
+			margin-left 10px
+		img:last-child:first-child,
+		i:last-child:first-child
+			margin 0
+
+		img,
+		img + *
+			display inline-block
+			vertical-align middle
+		img
+			trans()
+			transition-property opacity
+			max-height (24px)
+
+		img:last-child:first-child
+			margin 0
+
+		&:active,
+		&.-active
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset
+			img
+				opacity 0.7
+
+		background-position center
+		background-repeat no-repeat
+
+	for buttonName, buttonParams in buttons
+		if buttonName == 'default'
+			buttonName = ''
+			[data-button],
+			.button
+				Button(buttonParams)
+		else
+			[data-button={ '"' + buttonName + '"' }]
+				Button(buttonParams)
+
+	[data-button]
+		&.__loading
+			background-image images('preloader-48.gif')
+			background-color #fff !important
+			color transparent !important
+			background-size auto 50%
+			// pointer-events none
+			cursor progress
+
+	[data-button-mod*="wide"]
+		padding _ (50px)
+
+
+	[data-button-size="small"]
+		padding (8px) (20px)
+		font-size (12px)
+		line-height (14px)
+		font-weight 500
+		img
+			max-height (13px)
+
+		img:first-child,
+		i:first-child
+			margin-right 3px
+		img:last-child,
+		i:last-child
+			margin-left 3px
+		img:last-child:first-child,
+		i:last-child:first-child
+			margin 0
+		&[data-button-mod*="wide"]
+			padding _ 30px
+
+	[data-button-size="middle"]
+		font-size 10px
+		line-height 12px
+		padding 17px 30px 16px
+		font-weight 900
+		&[data-button-mod*="wide"]
+			padding _ 40px
+
+	[data-button-size="big"]
+		font-size 18px
+		line-height 24px
+		padding 23px 30px
+		font-weight 900
+		img
+			max-height 24px
+		&[data-button-mod*="wide"]
+			padding _ 40px
+		+MEDIA("SMALL_PHONE")
+			font-size 16px
+			line-height 22px
+			padding 15px 25px
+			&[data-button-mod*="wide"]
+				padding _ 35px
+
+	[data-button-size="huge"]
+		font-size 18px
+		line-height 24px
+		padding 27px 40px
+		font-weight 900
+		img
+			max-height 24px
+		&[data-button-mod*="wide"]
+			padding _ 45px
+		+MEDIA("SMALL_PHONE")
+			font-size 16px
+			line-height 22px
+			padding 20px 30px
+			&[data-button-mod*="wide"]
+				padding _ 40px
+
+	[data-button-mod*="border"]
+		border-style solid
+
+
+	[data-button="reset"]
+		padding _ 15px
+		&:after
+			content ''
+			display inline-block
+			vertical-align baseline
+			size 8px
+			background images('icons/reset.png') center no-repeat
+			margin-left 8px
+
+	+MEDIA("SMALL_DESKTOP")
+		[data-button-size="huge"]
+			padding _ 35px
+			&[data-button-mod*="wide"]
+				padding _ 40px
+.ui-widget
+	font-family inherit
+.ui-selectmenu-button span.ui-selectmenu-text
+	resetStyle()
+.ui-selectmenu-button
+	resetStyle()
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br
+	border-radius 0
+
+
+.slick-arrow
+	position absolute
+	pos 0 10px 0 auto
+	margin auto
+	size 79px
+	reset-button()
+	z-index 1
+	color #fff
+	trans()
+	background getColor('base')
+	&:after
+		content ''
+		position absolute
+		size 22px 42px
+		background images('elements/slider-arrows.png') 0 0 no-repeat
+		margin auto
+		pos 0
+	&:hover
+		background getColor('base') + 10%
+	&:active
+		background getColor('base') + 10%
+		opacity 0.8
+	&[aria-disabled="true"]
+		opacity 0.5
+		background getColor('base')
+		cursor default
+
+.slick-prev
+	bottom -(79px + 10px)
+	&:after
+		background-position 0 0
+.slick-next
+	top -(79px + 10px)
+	&:after
+		background-position -22px 0
+// +MEDIA("PHONE")
+// 	.slick-arrow
+// 		size 55px
+// 		&:after
+// 			size 17px 32px
+// 			background-image images('elements/slider-arrows__small.png')
+// 	.slick-prev
+// 		bottom -(55px + 10px)
+// 		&:after
+// 			background-position 0 0
+// 	.slick-next
+// 		top -(55px + 10px)
+// 		&:after
+// 			background-position -17px 0
+
+
+.slick-arrow.__aside
+	pos 0 auto
+	amrgin auto
+	size 55px
+	&,
+	&:hover,
+	&:active
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkSJpRDwAC3wF7WF8SLgAAAABJRU5ErkJggg==') center repeat; /* #006298 0.5 */
+	&:after
+		background-image images('elements/slider-arrows__small.png')
+		size 17px 32px
+.slick-prev.__aside
+	left 0
+	&:after
+		background-position 0 0
+.slick-next.__aside
+	right 0
+	&:after
+		background-position -17px 0
+
++MEDIA("PHONE")
+	.slick-arrow
+		pos 0 auto
+		amrgin auto
+		size 55px
+		&,
+		&:hover,
+		&:active
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkSJpRDwAC3wF7WF8SLgAAAABJRU5ErkJggg==') center repeat; /* #006298 0.5 */
+		&:after
+			background-image images('elements/slider-arrows__small.png')
+			size 17px 32px
+	.slick-prev
+		left 0
+		&:after
+			background-position 0 0
+	.slick-next
+		right 0
+		&:after
+			background-position -17px 0
+
+.slick-dots
+	list-style none
+	pos _ 0 0
+	text-align center
+	margin 10px 0 0
+	padding 0
+	trans()
+
+	li:before,
+	li:after
+		display none
+	
+	li
+		display inline-block
+		vertical-align middle
+		margin 3px
+		padding 0
+		button
+			reset-button()
+			padding 0
+			background #c4c4c4
+			border-radius 50%
+			size 9px
+			display block
+			trans()
+			transition-property background
+			span
+				display none
+			&:hover
+				background #385ca3 + 20%
+		&.slick-active button
+			background #385ca3
+			cursor default
+
+.bx-ui-slider
+	&-part
+		position: absolute;
+		top: 0;
+		width: 100px;
+		white-space nowrap
+		line-height 1
+		font-size 15px
+		display none
+		&.p1
+			left: -1px;
+			text-align left
+			// display block
+		&.p2
+			left: 25%;
+		&.p3
+			left: 50%;
+		&.p4
+			left: 75%;
+		&.p5
+			right: -1px;
+			text-align right
+			// display block
+		> span
+			display block
+			position relative
+			margin-top 27px
+
+	&-range,
+	&-pricebar,
+	&-pricebar-vd,
+	&-pricebar-vn,
+	&-pricebar-v
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	&-pricebar-vn
+		display none;
+
+	&-track
+		position: relative;
+		height: 5px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+
+		background: transparent;
+		z-index 1
+		&:after
+			background #ffffff
+			content ''
+			display block
+			position absolute
+			pos 0
+			z-index 50
+
+	&-pricebar-vd
+		z-index: 60;
+		background: #888b8d + 10%;
+		border-radius 5px
+
+
+	&-pricebar-v
+		z-index: 80;
+		background: #888b8d;
+		border-radius 5px
+
+
+	&-range
+		z-index: 90;
+
+	&-handle
+		position: absolute;
+		top -15px
+		size 15px 35px
+		border 0
+		background: #006298;
+		border-radius 7px
+
+		&.left
+			left 0
+			margin-left -7px;
+		&.right
+			right 0
+			margin-right -7px;
+
+
+main input[type="checkbox"],
+main input[type="radio"]
+	position absolute
+	opacity 0
+	size 0
+	overflow hidden
+	margin auto
+	pos auto
+	& + label
+		position relative
+		font-size 15px
+		line-height 15px
+		color #000000
+		padding-left 25px
+		&:before
+			content ''
+			size 15px
+			position absolute
+			top 0
+			left 0
+			background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=') center no-repeat
+			background-color #fff
+			border 2px solid #e7e5e1
+			border-radius 1px
+			trans()
+		&:hover
+			&:before
+				border-color getColor('base')
+	&:checked,
+	&.-checked
+		& + label
+			&:before
+				background-color getColor('base')
+				border-color getColor('base')
+				border-width 0
+main input[type="radio"]
+	& + label
+		&:before
+			border-radius 50%
+	&:checked,
+	&.-checked
+		& + label
+			cursor default
+			&:before
+				background-image images('icons/checkbox-arrow.png')
+main input[type="checkbox"]
+	&:checked,
+	&.-checked
+		& + label
+			&:before
+				background-image images('icons/checkbox-arrow.png')
+
+.lb-outerContainer,
+.lb-container,
+.lightbox .lb-image
+	border-radius 0
+
+.lb-container
+	padding 20px
+
+.lb-dataContainer
+	pos _ 0 100%
+	margin-bottom 10px
+	position absolute
+	padding-top 0
+
+
+select[id^="ui-id"]
+	padding-right 70px
+.ui-selectmenu-button
+	&,
+	.form-item &
+		padding-right 60px
+	span.ui-icon
+		size 60px auto
+		background transparent
+		position absolute
+		pos -1px -1px -1px auto
+		margin 0
+		&:after
+			content ''
+			background images('elements/select-arrow.png') 0 -10px no-repeat
+			size 16px 10px
+			position absolute
+			pos 0
+			margin auto
+	&[aria-expanded="true"]
+		span.ui-icon
+			&:after
+				background-position 0 0
+	select.__colored + .ui-selectmenu-wrapper &
+		text-transform uppercase
+		span.ui-icon
+			&:after
+				background-image images('elements/select-arrow__white.png')
+		&:focus
+			span.ui-icon:after
+				background-image images('elements/select-arrow.png')
+select.__colored
+	font-size 16px
+	line-height 20px
+	padding 8px 10px
+	text-transform uppercase
+	padding-right 60px
+select.__colored + .ui-selectmenu-wrapper
+	.ui-menu
+		border 0
+		background getColor('base')
+		padding 10px
+		.ui-menu-item
+			background transparent
+			color #fff
+			font-size 16px
+			line-height 20px
+			padding 8px 10px
+			text-transform uppercase
+			&.ui-state-focus
+				background getColor('base') - 10%
+.ui-menu
+	max-height 300px
+	text-align left
+	.ui-menu-item
+		padding 5px 15px
+		margin 0
+		border 0
+		&:before,
+		&:after
+			display none
+		&.ui-state-focus
+			font-weight inherit
+
+.ui-selectmenu-menu
+	.ui-menu
+		padding 0
+
+.select-autocomplete
+	select
+		display none
+.custom-combobox
+	position relative
+	& &-input
+		padding-right 70px
+	&-toggle
+		resetStyle()
+		position absolute
+		size 60px auto
+		background images('icons/select-arrow.png') center no-repeat
+		position absolute
+		display block
+		pos 0 0 0 auto
+		&:hover
+			background-color #dededd
+		&:active
+			background-color #dededd - 10%
+			opacity 0.8
+		> *
+			display none
+main
+	*
+		&::-webkit-scrollbar
+			size 6px
+		&::-webkit-scrollbar-track
+			background-color #eee
+			border-left 1px solid #eee
+		&::-webkit-scrollbar-thumb
+			background-color getColor('light') - 10%
+			transition background-color TRANS_SPEED
+		&::-webkit-scrollbar-thumb:hover
+			background-color getColor('base')
+		&::-webkit-scrollbar-thumb:active
+			background-color getColor('base') - 20%
+
+
+.ui-slider
+	background #fff
+	border 0
+	border-radius 0
+	height 5px
+	margin 15px 0
+	.ui-slider-handle
+		border 0
+		size 15px 35px
+		margin-left -7px
+		pos -14px auto auto
+		background getColor('base')
+		border-radius 6px
+		cursor pointer
+		cursor grab
+		&:active
+			cursor grabbing
+
+
+
+.uicheckbox.__tabstyle input[type="checkbox"],
+.uiradio.__tabstyle input[type="radio"]
+	& + label
+		&:before
+			display none
+		&
+			display block
+			font-size 14px
+			line-height 16px
+			padding 12px 12px
+			background #fff
+			color #242424
+			min-width 40px
+			text-align center
+			font-weight 700
+			user-select none
+			trans()
+			transition-property color, background, border-color, opacity, filter, box-shadow, transform
+		&:hover
+			background #eee
+	&:checked + label,
+	&.-checked + label
+		color #fff
+		background getColor('base')
+
+.uiradio.__tabstyle input[type="radio"]
+	&:checked + label,
+	&.-checked + label
+		cursor default
+.uicheckbox.__tabstyle input[type="checkbox"]
+	&:checked + label,
+	&.-checked + label
+		&:hover
+			background getColor('base') + 10%
+
+.radio
+	display inline-block
+	vertical-align top
+	margin-right 10px
+
+
+.file-input
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	cursor: default;
+	input[type="file"]
+		position: absolute;
+		top: -20px;
+		right: 1px;
+		font-size: 200px;
+		cursor: pointer;
+		border: 0;
+		width: auto;
+		opacity: 0;
+	&-button
+		display block
+		background #006298
+		font-size 14px
+		line-height 20px
+		color #fff
+		padding 10px 15px
+		transition 0.3s background
+		transition-property: background, color;
+		&[data-file-name]
+			font-size: 10px;
+		&[data-file-name] span
+			display: none;
+		&[data-file-name]:before
+			content: '\0412\044b\0431\0440\0430\043d\0020\0444\0430\0439\043b\003a';
+			margin-right: 5px;
+		&[data-file-name]:after
+			content: attr(data-file-name);
+			font-size: 10px;
+		&[data-file-name][data-file-size]:after
+			content: attr(data-file-name) " ["attr(data-file-size)attr(data-file-size-label)"]";
+	&:hover &-button
+		background-color: (MAIN_COLOR + 20%)
+	&:active &-button
+		background-color: (MAIN_COLOR - 20%)
+.ya-share2
+	& &__item
+		font-family inherit
+	& &__list
+		margin-bottom -5px
+	& &__list &__item
+		padding 0
+		margin-right 5px
+		margin-bottom 5px
+		&:before
+			display none
+	&__item
+		z-index auto
+	&__badge,
+	&__icon,
+	&__link
+		display block
+	&__badge
+		padding 5px 10px
+	&__link_more &
+		&__badge
+			padding 0
+			background #fff
+		&__icon
+			padding 4px 9px
+			box-sizing content-box
+			background transparent
+			&:before
+				height 24px
+				margin auto
+	& &__title,
+	& &__badge
+		vertical-align middle
+	&__popup
+		max-height 54px*5
+		overflow auto
+	& &__item_more .ya-share2__popup_direction_bottom
+		top 34px
+	&__link:active &__badge
+		box-shadow inset 0 2px 0 0 rgba(0,0,0,0.1)
+	&__icon:active
+		box-shadow none
+	& &__counter&__counter_visible
+		margin -5px -10px -5px 10px
+		padding 5px 8px
+		font-size 16px
+		background #fff
+		color #242424
+		position relative
+		&:before
+			content ''
+			position absolute
+			pos 0 100% 0 auto
+			size 0
+			border 0
+			border-top 3px solid transparent
+			border-bottom 3px solid transparent
+			border-right 3px solid #fff
+			margin auto
+			background transparent
+.popup
+	position absolute
+	pos 0
+	size 100%
+	z-index 99999
+	display none
+	background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkSAMAAGwAaKJgE8oAAAAASUVORK5CYII=") center repeat
+
+	&.__visible
+		&.__last
+			display block
+
+	&-box
+		position absolute
+		pos 0
+		margin auto
+		max-height 100%
+		width 700px
+		max-width 95%
+		min-width 260px
+		max-height 90%
+		max-height calc(100vh - 100px)
+		padding 10px 0
+		background #e7f0f7
+	&-inner
+		max-height 100%
+		overflow auto
+		padding 20px 40px 40px
+	&-close
+		position absolute
+		top -40px
+		right -40px
+		size 35px
+		background images('icons/popup-close.png') center no-repeat
+	&-title
+		margin-bottom 20px
+		font-size 24px
+		line-height 30px
+		padding-right 30px
+	&-subtitle
+		margin-bottom 20px
+	&-title + &-subtitle
+		margin-top -20px
+	&-content
+		&,
+		p
+			font-size (14px)
+			line-height (17px)
+		p
+			margin 0 0 20px
+
+		.form-submit
+			text-align right
+	&-bottom
+		margin-top 30px
+		text-align center
+
+	&.__loading
+		cursor progress
+		.popup-inner:after
+			display block
+			content ''
+			size 48px
+			margin 40px auto
+			background images('preloader-48.gif') center no-repeat
+		.popup-inner > *
+			display none
+	+MEDIA("TABLET")
+		&-close
+			right 0
+	+MEDIA("PHONE")
+		&-box
+			max-size 100%
+			size 100%
+			min-size 0
+		&-close
+			top 25px
+			right 10px
+			background-image images('icons/popup-close__black.png')
+html #bx-panel
+	position absolute !important
+	pos 0 0 _
+
+	
+@css {
+	[id^="wait_"]{
+		display: none;
+		position: fixed !important;
+		top: 0 !important;
+		right: 0 !important;
+		left: 0 !important;
+		bottom: 0 !important;
+		margin-top: auto !important;
+		margin-right: auto !important;
+		margin-bottom: auto !important;
+		margin-left: auto !important;
+		z-index: 9999999 !important;
+		width: 130px !important;
+		height: 20px !important;
+		background: #000 !important;
+		font-size: 16px !important;
+		line-height: 20px !important;
+		text-align: center !important;
+		color: #fff !important;
+		padding-top: 120px !important;
+		padding-right: 0 !important;
+		padding-bottom: 20px !important;
+		padding-left: 0 !important;
+		-webkit-box-sizing: content-box !important;
+		-moz-box-sizing: content-box !important;
+		box-sizing: content-box !important;
+		font-weight: 300 !important;
+		zoom: 1 !important;
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity="90") !important;
+		filter: alpha(opacity=90) !important;
+		opacity: 0.9 !important;
+		-webkit-border-radius:5px !important;
+		-moz-border-radius: 5px !important;
+		border-radius: 5px !important;
+		-webkit-box-shadow: 0 0 15px #000 !important;
+		-moz-box-shadow: 0 0 15px #000 !important;
+		box-shadow: 0 0 15px #000 !important;
+	}
+}
+[id^="wait_"]
+	&[style]
+		display block
+	// display none
+	// position fixed
+	// pos 0
+	// margin auto
+	// z-index 9999999
+	// size rem(120px) rem(20px)
+	// background #000
+	// font-size rem(14px)
+	// line-height rem(20px)
+	// text-align center
+	// color #fff
+	// padding rem(64px + 20px + 10px) 0 rem(20px)
+	// box-sizing content-box
+	// font-weight 300
+	// opacity 0.9
+	// border-radius rem(5px)
+	// box-shadow 0 0 15px rgba(0, 0, 0, 1)
+	&:before
+		content ''
+		display block
+		position absolute
+		pos 15px 0 _
+		margin auto
+		size 96px
+		background images('preloader_circle.gif') center no-repeat
+// .preloader
+// 	size 48px
+// 	margin auto
+// 	border 3px solid #fae301
+// 	border-radius 50%
+// 	border-left-color transparent
+// 	border-right-color transparent
+// 	animation cssload-spin 1100ms infinite linear
+// 	filter drop-shadow(0 0 2px rgba(0,0,0,0.5))
+
+
+
+// @keyframes cssload-spin {
+// 	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+// }
+.tab
+	display inline-block
+	vertical-align top
+	font-size 18px
+	line-height 20px
+	padding 10px 20px
+	text-transform uppercase
+	font-weight 700
+	color getColor('base')
+	background getColor('light')
+	&:hover
+		color getColor('base') - 20%
+		background getColor('light') + 20%
+	&.__current
+		background #fff
+		color #000
+	.tab-list.__small &
+		font-size 12px
+		line-height 16px
+		padding 12px 15px
+	.tab-list.__invert &
+		color getColor('base')
+		background transparent
+		&:hover
+			background getColor('light')
+		&.__current
+			color #fff
+			background getColor('base')
+
+.tab-list
+	overflow auto
+	white-space nowrap
+
+.tab-page
+	&.__hidden
+		display none
+	html.__not-ready &
+		display none
+.block
+	margin 35px _ 70px
+	&-header
+		text-align center
+		margin-bottom 25px
+	&-title
+		margin-bottom 10px
+		font-size 30px
+		line-height 40px
+		font-weight 700
+		color #242424
+		text-transform uppercase
+		resetTitle()
+	&-subtitle
+		font-size 10px
+		line-height 14px
+		font-weight 700
+		text-transform uppercase
+	&-box
+		background #fff
+		padding 35px 20px
+		margin 10px _
+		&:first-child
+			margin-top 0
+		&.__wide-padding
+			padding 40px 30px
+	&-text
+		* + &
+			margin-top 65px
+	&-content
+		clear()
+		&.__bg-white
+			background #fff
+	&-back-link
+		margin-bottom 20px
+	&-aside
+		float right
+		width 550px
+		position relative
+		z-index 1
+	&-aside-content
+		float left
+		padding-right 560px
+		margin-right -550px
+		width 100%
+
+	&[data-block-mod*="slim-padding"]
+		> .wrapper-content
+			padding _ 10px
+	&.__page
+		margin-top 27px
+
+	+MEDIA("SMALL_DESKTOP")
+		&-aside
+			width 500px
+		&-aside-content
+			padding-right 510px
+			margin-right -500px
+
+	+MEDIA("TABLET")
+		margin-bottom 50px
+		&-aside,
+		&-aside-content
+			float none
+			width auto
+			padding 0
+			margin 0
+		&-aside
+			margin-top 20px
+	+MEDIA("PHONE")
+		&-box
+			padding 20px 10px
+			&.__wide-padding
+				padding 25px 15px
+.range
+	&-input
+		display table
+		table-layout fixed
+		> *
+			display table-cell
+			vertical-align middle
+			padding-right 7px
+		* ~ *
+			padding-left 7px
+		.form-label
+			text-align center
+			white-space nowrap
+			width 65px
+			padding _ 3px
+			font-size 16px
+			line-height 1
+			&:last-child
+				text-align left
+				padding-left 7px
+	&-line
+		padding 15px 0
+		margin-top 15px
+.about
+	&-list
+		margin -5px -5px 20px
+		.about-item
+			display inline-block
+			vertical-align top
+			width 33.3%
+			margin 0 -6px 0 0
+			padding 5px
+		&[data-clearwhitespace="cleared"]
+			.about-item
+				margin-right 0
+		+MEDIA("DESKTOP")
+			.about-item
+				width 50%
+		+MEDIA("TABLET")
+			.about-item
+				display block
+				width auto
+				margin-right 0
+	&-item
+		&-inner
+			display block
+			position relative
+			z-index 0
+			&:before
+				content ''
+				display block
+				padding-top 68%
+		&-image
+			overflow hidden
+			position absolute
+			z-index 0
+			pos 0
+			img
+				position absolute
+				pos -1000px
+				margin auto
+				max-size none
+				size 100% auto
+				&[data-cover-image="not-fill"]
+					size auto 100%
+			&:before,
+			&:after
+				content ''
+				position absolute
+				pos 0
+				z-index 1
+				transition opacity TRANS_SPEED
+			&:before
+				background images('elements/about-item-shadow.png') center bottom repeat
+				background-size cover
+		&-content
+			color #fff
+			display table
+			margin auto
+			width 100%
+			&-wrapper
+				position absolute
+				pos _ 0 0
+			&-inner
+				display table-cell
+				vertical-align middle
+				padding 25px 30px
+		&-title
+			font-size 20px
+			line-height 30px
+			font-weight 900
+			text-transform uppercase
+		&-text
+			display none
+			margin-top 35px
+			&,
+			p
+				font-size 16px
+				line-height 30px
+			p
+				margin 0
+			* + p
+				margin-top 30px
+		&-inner:hover &
+			&-image
+				&:before
+					opacity 0
+				&:after
+					opacity 1
+		&-inner.__open
+			z-index 1
+		&-inner.__open &
+			&-image
+				&:before
+					opacity 0
+				&:after
+					opacity 1
+			&-text
+				display block
+			&-content
+				position absolute
+				pos 0
+				size 100%
+				background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkmAcAAKQAoJgx3+MAAAAASUVORK5CYII=')
+				&-wrapper
+					pos 0
+				&-inner
+					padding _ 25%
+
+		+MIN_MEDIA("WIDE_DESKTOP")
+			&:nth-child(3n + 1) &-inner.__open &
+				&-image,
+				&-content-wrapper
+					right -200%
+					margin-right -20px
+			&:nth-child(3n + 2) &-inner.__open &
+				&-image,
+				&-content-wrapper
+					left -100%
+					right -100%
+					margin-right -10px
+					margin-left -10px
+			&:nth-child(3n + 3) &-inner.__open &
+				&-image,
+				&-content-wrapper
+					left -200%
+					right 0
+					margin-right 0
+					margin-left -20px
+
+		+MEDIA("DESKTOP", true)
+			&:nth-child(odd) &-inner.__open &,
+			&.__odd &-inner.__open &
+				&-image,
+				&-content-wrapper
+					right -100%
+					margin-right -10px
+			&:nth-child(even) &-inner.__open &,
+			&.__even &-inner.__open &
+				&-image,
+				&-content-wrapper
+					left -100%
+					margin-left -10px
+		+MEDIA("SMALL_DESKTOP", true)
+			&:nth-child(odd) &-inner.__open &,
+			&.__odd &-inner.__open &
+				&-image,
+				&-content-wrapper
+					right -100%
+					margin-right -10px
+			&:nth-child(even) &-inner.__open &,
+			&.__even &-inner.__open &
+				&-image,
+				&-content-wrapper
+					left -100%
+					margin-left -10px
+
+		+MEDIA("TABLET")
+			&-inner.__open .about-item-content-inner
+				padding _ 10%
+	+MEDIA("SMALL_PHONE")
+		&-list
+			margin _ 0
+		&-item,
+		&-list &-item,
+		&-list[data-clearwhitespace="cleared"] &-item
+			margin _ -(WRAPPER_PADDING_PHONE)
+			padding 1px 0
+.accordion
+	&-title
+		display block
+		font-size 16px
+		line-height 18px
+		padding 13px 23px
+		color #242424
+		font-weight 300
+		padding-right 70px
+		position relative
+		&:after
+			content ''
+			display block
+			position absolute
+			pos 18px 30px _ _
+			size 16px 10px
+			background images('elements/select-arrow.png') 0 -10px no-repeat
+			trans()
+			transition-property background-image
+			margin auto
+		&:hover
+			background getColor('base')
+			color #fff
+			&:after
+				background-image images('elements/select-arrow__white.png')
+	&-content
+		padding 13px 23px
+		background getColor('light') + 10%
+		background rgba( getColor('base'), 0.09 )
+		display none
+	&.__open &
+		&-title
+			background getColor('base')
+			color #fff
+			&:after
+				background-image images('elements/select-arrow__white.png')
+				background-position 0 0
+.banners
+	margin 10px 0
+	padding _ 10px
+	.wrapper-content
+		padding _ 0
+	&-list
+		clear()
+		margin -5px -5px 0
+	&-wrapper
+		overflow hidden
+	&-item
+		width 50%
+		float left
+		padding 5px
+		&-inner
+			position relative
+			margin _ 50px
+			z-index 0
+		&-image
+			position relative
+			overflow hidden
+			z-index 0
+			margin _ -50px
+			&:before
+				padding-top 31.8%
+				content ''
+				display block
+			img
+				position absolute
+				pos -1000px
+				margin auto
+				max-size none
+				size 100% auto
+				&[data-cover-image="not-fill"]
+					size auto 100%
+			&:after
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAYAAAD0In+KAAAAD0lEQVR42mPkE1HsYwACAASaANO3jkFvAAAAAElFTkSuQmCC') center repeat
+				content ''
+				display block
+				position absolute
+				pos 0
+				z-index 1
+		&-content
+			position absolute
+			pos 0
+			margin auto
+			display table
+			size 100%
+			table-layout fixed
+			color #fff
+			html[data-browser="firefox"] &
+				top 50%
+				bottom auto
+				transform translate(0, -50%)
+			> *
+				display table-cell
+				vertical-align middle
+		&-title
+			font-size 46px
+			line-height 40px
+			font-weight 700
+		&-title ~ &-detail
+			margin-top 30px
+		&-aside
+			padding-right 50px
+		&-box
+			background COLORS['banners-item-box'];
+			min-height 165px
+			padding 20px 30px
+			width 45%
+			&-inner
+				font-size 30px
+				line-height 45px
+				font-weight 700
+				text-align center
+				letter-spacing 3px
+				.big
+					font-size 52px
+
+				.icon-star.__left,
+				.icon-star.__right
+					margin _ _ 10px
+				.icon-star.__left
+					margin-right 30px
+				.icon-star.__right
+					margin-left 30px
+		&-link
+			position absolute
+			pos 0 -50px
+			z-index 2
+		&-detail
+			position relative
+			z-index 3
+	+MEDIA("WIDE_DESKTOP")
+		&-item
+			&-title
+				font-size 34px
+				line-height 36px
+			&-box
+				&-inner
+					font-size 24px
+					line-height 30px
+					.big
+						font-size 30px
+					.icon-star.__left
+						margin-right 15px
+					.icon-star.__right
+						margin-left 15px
+			&-inner
+				margin _ 20px
+			&-image
+				margin _ -20px
+			&-link
+				pos _ -20px
+			&-title ~ &-detail
+				margin-top 15px
+	+MEDIA("SMALL_DESKTOP", true)
+		&-item
+			&-title
+				font-size 26px
+				line-height 30px
+			&-box
+				&-inner
+					font-size 20px
+					line-height 24px
+					.big
+						font-size 24px
+					.icon-star
+						&[class]
+							display none
+			&-title ~ &-detail
+				margin-top 10px
+	+MEDIA("TABLET")
+		&-item
+			&-inner
+				margin _ 0
+			&-image
+				margin _ 0
+			&-link
+				pos _ 0
+			&-content
+				&,
+				& > *
+					display block
+				&,
+				html[data-browser="firefox"] &
+					position relative
+					pos auto
+					margin auto
+				html[data-browser="firefox"] &
+					transform none
+			&-box
+				display table
+				size 100% 165px
+				padding 0
+				&-inner
+					display table-cell
+					vertical-align middle
+					padding 0 20px
+
+					font-size 30px
+					line-height 40px
+					.big
+						font-size 52px
+			&-image
+				height 200px
+				position absolute
+				pos 0 0 _
+				z-index 0
+			&-aside
+				display table
+				size 100% 200px
+				padding 0
+				&-inner
+					display table-cell
+					vertical-align middle
+					padding 0 20px
+.blackout
+	position absolute
+	pos 0
+	background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk2AQAALgAtFVIVl0AAAAASUVORK5CYII=') center repeat /* rgba(0, 0, 0, 0.7) */
+	background rgba(0, 0, 0, 0.7)
+	z-index 9
+	transition opacity TRANS_SPEED
+	transform translate3d(0,0,0)
+	&.__show
+		display block
+	html.modernizr-csspointerevents.modernizr-opacity &.__show
+		pointer-events all
+		opacity 1
+
+	&
+		display none
+		html.modernizr-csspointerevents.modernizr-opacity &
+			display block
+			pointer-events none
+			opacity 0
+	+MEDIA("TABLET")
+		&[data-blackout-name="choose-flat-filter"]
+			display none
+			html.modernizr-csspointerevents.modernizr-opacity &
+				display block
+				pointer-events none
+				opacity 0
+
+	&[data-blackout-name="choose-flat-filter"]
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=') center repeat
+		background rgba(0, 0, 0, 0.1)
+.building
+	&-content
+		clear()
+	
+	&-title
+		display none
+		color #7f7f7f
+		font-size 16px
+		line-height 20px
+		font-weight 300
+		padding 10px 0 10px 25px
+	&-image
+		float left
+		width 64.23%
+		position relative
+		&:before
+			padding-top 75.3%
+			content ''
+			display block
+		img
+			position absolute
+			display block
+			margin auto
+			pos 0
+			max-size 100%
+	&-info
+		width 35.77%
+		float right
+		padding-left 10px
+		&-inner
+			background #e7f0f7
+			padding 30px
+		&,
+		p
+			font-size 16px
+			line-height 24px
+		p
+			margin 0 0 15px
+		* + p
+			margin-top 15px
+	&-table
+		display table
+		width 100%
+		table-layout fixed
+		margin-bottom 35px
+		font-size 16px
+		line-height 24px
+		margin-top -6px
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			padding 6px 0
+			& ~ &
+				padding-left 10px
+			&:first-child
+				padding-right 15px
+				overflow hidden
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					font-size 9px
+					letter-spacing -4px
+					color getColor('light') - 7%
+				span
+					padding-right 3px
+					background getColor('light')
+	&-button
+		margin-top 40px
+	
+	&-top
+		position relative
+	&-floors
+		// position absolute
+		// pos 0
+		display none
+		&-arrow
+			// position absolute
+			display none
+			// pos _ 0
+			// size auto 60px
+			// background #006298
+			// z-index 1
+			// &.__up
+			// 	top 0
+			// &.__down
+			// 	bottom 0
+			// &:after
+			// 	content ''
+			// 	display block
+			// 	position absolute
+			// 	size 32px 17px
+			// 	background images('elements/arrows-vertical__small.png') 0 0 no-repeat
+			// 	pos 0
+			// 	margin auto
+			// &.__up
+			// 	&:after
+			// 		background-position 0 0
+			// &.__down
+			// 	&:after
+			// 		background-position 0 -17px
+		// &.__scroll-top &-arrow.__up
+		// 	display block
+		// &.__scroll-bottom &-arrow.__down
+		// 	display block
+		// &-list
+		// 	position absolute
+		// 	pos 0
+		// 	overflow auto
+
+	&-floor
+		display table
+		width 100%
+		// background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat; /* #000000 0.45 */
+		background getColor('base')
+		color #fff
+		& ~ &
+			margin-top 2px
+		&-cell
+			display table-cell
+			text-align right
+			font-size 14px
+			font-weight 700
+			line-height 20px
+			padding 20px 0
+			&:first-child
+				text-align left
+				padding-left 20px
+		&-item
+			display inline-block
+			vertical-align middle
+			width 25%
+			margin-left -6px
+			padding _ 5px
+			text-align center
+			font-size 16px
+			white-space nowrap
+			span
+				display inline-block
+				vertical-align middle
+			._type
+				font-size 14px
+				line-height 16px
+				text-align center
+				padding 3px 0
+				size 22px
+				background #fff
+				color #006298
+				font-weight 300
+				margin-right 3px
+				border-radius 50%
+			._empty
+				font-weight 300
+				opacity 0.7
+		&.__sold &-item
+			width 100%
+
+
+	+MEDIA("TABLET")
+		&-content
+			margin _ -20px
+		&-image,
+		&-info
+			float none
+			width auto
+			padding 0
+		&-image
+			display none
+			&:before
+				display none
+			img
+				position static
+		&-floors
+			display block
+			// &,
+			// &-list
+			// 	position static
+			// &-arrow
+			// 	display none
+		&-title
+			display block
+		&-top
+			margin-top 10px
+		// 	height 460px
+	+MEDIA("PHONE")
+		&-stock
+			display none
+		&-button
+			margin _ -30px
+			[data-button]
+				display block
+				width 100%
+	+MEDIA("SMALL_PHONE")
+		&-content
+			margin _ -10px
+		&-info
+			&-inner
+				padding _ 20px 0
+		&-button
+			margin _ -20px
+		&-image
+			height 310px
+			overflow hidden
+			img
+				position absolute
+				pos _ -1000px
+				margin auto
+				max-size none
+				size auto 100%
+.calculator
+	clear()
+	&-line
+		float left
+		width 100%
+		clear()
+		margin-bottom 20px
+		.form-input.__has-label .form-input
+			&-wrapper,
+			&-label
+				display inline-block
+				vertical-align middle
+			&-wrapper
+				padding-right 75px
+				margin-right -63px
+				width 100%
+			&-label
+				width 58px
+		.form-item
+			margin 0
+			&.__has-slider
+				display table
+				width 100%
+				> *
+					display table-cell
+					vertical-align middle
+				.form-input
+					width 210px
+					padding-right 15px
+		.form-label
+			text-transform uppercase
+			font-weight 700
+			font-size 14px
+		// &.__queue,
+		// &.__object
+		// 	width 50%
+		// &.__queue
+		// 	padding-right 10px
+		// &.__object
+		// 	padding-left 10px
+	.form-submit
+		margin-top 20px
+		float left
+		width 100%
+	+MEDIA("SMALL_DESKTOP")
+		&-line
+			margin-bottom 25px
+			float none
+			&:after
+				display none
+			.form-item.__has-slider
+				display block
+				> *
+					display block
+				.form-input
+					width auto
+					padding-right 0
+			.form-slider
+				padding 1px 0
+				margin 19px 0
+			.form-input
+				&.__has-label
+					max-width 195px
+			// &.__queue,
+			// &.__object
+			// 	width auto
+			// 	padding 0
+	+MEDIA("TABLET")
+		&-line
+			float left
+			&:after
+				display table
+			// &.__queue,
+			// &.__object
+			// 	width 50%
+			// &.__queue
+			// 	padding-right 10px
+			// &.__object
+			// 	padding-left 10px
+			.form-item
+				&.__has-slider
+					display table
+					width 100%
+					> *
+						display table-cell
+						vertical-align middle
+					.form-input
+						width 250px
+						padding-right 30px
+	+MEDIA("PHONE")
+		&-line
+			.form-item.__has-slider
+				display block
+				> *
+					display block
+				.form-input
+					width auto
+					padding-right 0
+	// +MEDIA("SMALL_PHONE")
+	// 		&.__queue,
+	// 		&.__object
+	// 			width 100%
+	// 		&.__queue
+	// 			padding-right 0
+	// 		&.__object
+	// 			padding-left 0
+.choose-flat
+	&-list
+		padding-bottom 90px
+		position relative
+		margin _ _ -5px
+		overflow hidden
+		.slick-list
+			margin _ -5px
+		&-counter
+			size 0
+			position absolute
+			z-index 4
+			left 0
+			top 0
+			visibility hidden
+		.flatbox,
+		.flat
+			padding _ 5px 5px
+		.flatbox
+			display inline-block
+			vertical-align top
+			width 410px
+		.slick-arrow
+			pos auto
+			bottom 5px
+			right 0
+		.slick-prev
+			margin-right 91px
+		> .flatbox,
+		> .flat
+			display inline-block
+			vertical-align top
+			width 25%
+			margin-right -6px
+		> .flatbox .flatbox-inner,
+		> .flat .flat-inner
+				border-bottom 1px solid #f5f5f5
+	&-content.__flats &-list-counter
+		z-index 2
+	&-content.__flats &-list
+		> .flatbox,
+		> .flat
+			width 50%
+	&-asides
+		clear()
+	&-aside
+		&-block
+			float left
+			width 440px
+			position relative
+			z-index 1
+			html[data-blackout="choose-flat-filter"] &
+				z-index 10
+		&-content
+			float right
+			width 100%
+			padding-left 450px
+			margin-left -440px
+	&-filter
+		width 440px
+		html.__filter-fixed &
+			position fixed
+			top 68px + 20px
+		&-content
+			padding 30px
+			background getColor('light')
+		.form-item
+			> .form-label
+				text-transform uppercase
+				font-size 14px
+				font-weight 700
+			&.__extend
+				display none
+		.form-line
+			margin-bottom 0
+			> .form-item
+				margin 0 0 2px 0
+			&[data-clearwhitespace="cleared"]
+				> .form-item
+					margin-right 2px
+		&-columns
+			clear()
+
+		&-extend-button
+			&:after
+				content attr(data-label)
+		&.__extended
+			.form-item
+				&.__extend
+					display block
+		&.__extended &
+			&-content
+				width 200%
+			&-column
+				float left
+				width 50%
+				position relative
+				&:before
+					content ''
+					display block
+					position absolute
+					size 1px auto
+					pos 0 _
+					background blend(rgba(#000, 0.1), getColor('light'))
+				&:first-child
+					padding-right 30px
+					&:before
+						right 0
+				.form-item:last-child
+					margin-bottom 0
+			&-column ~ .choose-flat-filter-column
+				padding-left 30px
+				&:before
+					left -1px
+			&-extend-button
+				&:after
+					content attr(data-extended-label)
+		.form-controls
+			+MIN_MEDIA('SMALL_DESKTOP')
+				margin-right -20px
+
+
+	+MEDIA("DESKTOP")
+		&-list
+			&-counter
+				z-index 3
+			> .flatbox,
+			> .flat
+				width 33.3%
+		&-content.__flats &-list-counter
+			z-index 1
+		&-content.__flats &-list
+			> .flatbox,
+			> .flat
+				width 100%
+
+	+MEDIA("SMALL_DESKTOP")
+		&-list
+			&-counter
+				.choose-flat-aside-content &
+					z-index 2
+			> .flatbox,
+			> .flat
+				width 50%
+	+MEDIA("TABLET")
+		&-list
+			padding-bottom 0
+			&-counter
+				z-index 2
+			> .flatbox,
+			> .flat
+				width 50%
+			.slick-arrow
+				pos -40px auto auto
+				margin 28.75% auto auto
+			.slick-prev
+				left 0
+			.slick-next
+				right 0
+		&-aside
+			&-block,
+			&-content
+				float none
+				width auto
+				padding 0
+				margin auto
+			&-block
+				margin-top 35px
+		&-filter
+			width auto
+			&.__extended &
+				&-content
+					width auto
+				&-column
+					width auto
+					float none
+					&:before
+						display none
+					&:first-child,
+					& ~ .choose-flat-filter-column
+						padding _ 0
+					& ~ .choose-flat-filter-column
+						margin-top 20px
+	+MEDIA("PHONE")
+		&-list
+			&-counter
+				&,
+				.choose-flat-aside-content &
+					z-index 1
+			.slick-arrow
+				margin-top 57.5%
+			> .flatbox,
+			> .flat
+				width 100%
+		&-filter
+			&-content
+				padding 20px
+				margin _ -20px
+			.form-submit
+				margin _ -20px
+				[data-button]
+					display block
+					width 100%
+			.form-item input
+				padding _ 10px
+			.range-input > *
+				padding-right 3px
+			.range-input * ~ *
+				padding-left 3px
+			.range-input .form-label:last-child
+				padding-left 3px
+			.range-input .form-label
+				width 28px
+				padding _ 1px
+	+MEDIA("SMALL_PHONE")
+		&-filter
+			&-content
+				margin _ -10px
+.choose-panel
+	margin 10px 0
+	position relative
+	z-index 0
+	&-content
+		display table
+		width 100%
+		> *
+			display table-cell
+			vertical-align middle
+	&-links
+		width 100%
+		line-height 17px
+		padding _ 40px
+		&-list
+			display table
+			width 100%
+		&-item
+			display table-cell
+			vertical-align middle
+			text-align center
+			padding _ 20px
+			white-space nowrap
+			width 1%
+			font-size 14px
+			line-height 1.2
+			font-weight 700
+			text-transform uppercase
+			& ~ &
+				border-left 1px solid LINK_COLOR
+				border-left-color rgba(LINK_COLOR, 0.45)
+				+MEDIA("SMALL_DESKTOP")
+					border-left 0
+	&-link
+		display block
+	&-button
+		white-space nowrap
+	.wrapper-content
+		padding _ 0
+	
+	.main-banner + &
+		margin-top -70px
+		.choose-panel
+			&-content
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+			&-link
+				color #fff
+				&:hover
+					color #ccc
+			&-links-item ~ .choose-panel-links-item
+				border-left-color #fff
+				border-left-color rgba(#fff, 0.45)
+		+MEDIA("SMALL_DESKTOP")
+			margin-top -130px
+			.choose-panel
+				&-content
+					background transparent
+
+	+MEDIA("DESKTOP")
+		&-links
+			padding _ 10px
+			&-item
+				padding _ 10px
+		&-button
+			[data-button]
+				padding _ 20px
+				display block
+	+MEDIA("SMALL_DESKTOP")
+		&-content
+			display block
+			clear()
+			> *
+				display block
+		&-links
+			padding 0
+			&-list
+				display block
+		&-links-item,
+		&-button
+			display block
+			float left
+			width 33.3333%
+		&-link
+			padding 22px _
+			background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+			color #fff
+			&:hover
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkmAkAAJ8AmzsOXcYAAAAASUVORK5CYII=') center repeat
+				color #fff
+		&-links-item
+			padding 0
+	+MEDIA("SMALL_TABLET")
+		&-links-item,
+		&-button
+			float none
+			width auto
+			margin 0 0 2px
+		&-button
+			margin 2px 0 0
+		.main-banner + &
+			margin-top -380px
+.complexmap
+	&-map
+		&-block
+			position relative
+			z-index 0
+			max-height 390px
+			overflow hidden
+			&:before
+				content ''
+				display block
+				padding-top 100%
+			area
+				cursor default
+				&[href]
+					cursor pointer
+			img
+				display block
+				margin auto
+				size 100% auto
+				position absolute
+				top 0
+				left 0
+			canvas
+				position absolute
+				top 0
+				left 0
+		&-inner
+			position absolute
+			pos 0 -1000px
+			margin auto
+			img
+				max-size none
+				size auto
+	&-icons
+		position absolute
+		pos 0
+	&-image
+		&,
+		img&
+			position relative
+			z-index 2
+	&-content
+		padding 70px
+		max-width (1350px + 70px*2)
+		margin auto
+		&-inner
+			position relative
+	&-legend
+		margin-top 20px
+		&[data-clearwhitespace="cleared"] &-item
+			margin-right 0
+		&-item
+			width 16.666%
+			margin-right -6px
+			padding-right 10px
+			display inline-block
+			vertical-align top
+			margin-bottom 15px
+			min-width 180px
+			&-icon,
+			&-label
+				display inline-block
+				vertical-align middle
+			&-icon
+				width 22px
+				trans()
+				img
+					display block
+			&-label
+				padding-left 36px
+				margin-left -28px
+				width 100%
+			a
+				color #474747
+			a:hover &-icon
+				opacity 0.8
+	&-selected-pointer
+		position absolute
+		size 107px
+		margin-top -(round((107px + 0px)/2))
+		margin-left -(round((107px + 0px)/2))
+		display none
+		&[style]
+			display block
+		// &:before,
+		&:after
+			position absolute
+			content ''
+			display block
+		// &:before
+		// 	pos -10px
+		// 	border 10px solid #0072bc
+		// 	border-radius 50%
+		// 	background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=') center repeat;/* rgba(0, 0, 0, 0.4) */
+		&:after
+			pos -76px 0 0
+			size 56px 76px
+			background images('icons/map-target_marker.png') center no-repeat
+			margin auto
+	+MEDIA("TABLET")
+		&-content
+			padding 40px
+		&-selected-pointer
+			position absolute
+			size 50px
+			margin-top -(round((50px + 10px)/2))
+			margin-left -(round((50px + 10px)/2))
+			&:before
+				pos -5px
+				border-width 5px
+			&:after
+				size 20px
+				background-image images('icons/map-target__small.png')
+	+MEDIA("PHONE")
+		&-content
+			padding 20px 0
+		&-legend
+			font-size 13px
+			&-item
+				min-width 140px
+.construction-progress
+	position relative
+	z-index 0
+	.block-header
+		position absolute
+		pos 45px 0 _
+		z-index 1
+	&-filter
+		margin-top 25px
+		&-item
+			&,
+			&.form-item
+				margin 0 3px
+				display inline-block
+				vertical-align middle
+	.gallery
+		margin _ -20px
+	// &-gallery
+	// 	margin _ -20px
+	// 	position relative
+	// 	z-index 0
+	// 	&-item
+	// 		display block
+	// 		position relative
+	// 		overflow hidden
+	// 		background #fff
+	// 		&:before
+	// 			display block
+	// 			padding-top 46.2%
+	// 			content ''
+	// 		img
+	// 			position absolute
+	// 			pos 0
+	// 			max-size none
+	// 			margin auto
+	// 			size auto 100%
+	// 			&[data-cover-image="fill"]
+	// 				size 100% auto
+	// 	html.js &-list > &-item ~ &-item
+	// 		display none
+	+MEDIA("TABLET")
+		.block-header
+			position static
+			margin-bottom 10px
+		&-filter
+			.ui-selectmenu-button
+				padding 12px 45px 13px 10px
+				height 45px
+				.span.ui-icon
+					width 45px
+		.gallery
+			margin-top 10px
+	+MEDIA("PHONE")
+		&-filter
+			.form-item
+				&.__month
+					width 160px
+				&.__year
+					width 105px
+	+MEDIA("SMALL_PHONE")
+		.gallery
+			margin _ -10px
+.document
+	font-size 16px
+	line-height 18px
+	padding 13px 85px 13px 23px
+	trans()
+	color #242424
+	font-weight 300
+	clear()
+	position relative
+	display block
+	&:hover
+		color #242424
+		background getColor('light')
+		background rgba( getColor('base'), 0.09 )
+	&-info
+		color getColor('base')
+		font-size 12px
+		&:before
+			content '\0028'
+		&:after
+			content '\0029'
+	&-download
+		float right
+		font-size 12px
+		position absolute
+		pos 0 30px 0 _
+		margin auto
+		height 18px
+		opacity 0
+		color getColor('base')
+	&:hover &-download
+		opacity 1
+.documentation
+	&-content-height
+		position absolute
+		pos 0
+		size 0
+		overflow hidden
+		visibility hidden
+		z-index 585
+	.documents-content
+		height 585px
+	+MEDIA("TABLET")
+		&-content-height
+			z-index 300
+		.documents-content
+			height 300px
+	+MEDIA("PHONE")
+		&-content-height
+			z-index 150
+		.documents-content
+			height 150px
+.documents
+	.documentation-list &
+		display inline-block
+		vertical-align top
+		width 20%
+		margin-right -6px
+		margin-top -5px
+		padding 5px
+	.documentation-list[data-clearwhitespace="cleared"] &
+		margin-right 0
+	&-title
+		font-size 20px
+		line-height 30px
+		font-weight 900
+		color #242424
+		border-bottom 1px dotted #c3cfe5
+		padding 22px 25px
+		min-height 105px
+	&-list
+		.accordion-content &
+			margin -13px -23px
+	._hidden
+		display none
+	&.__open,
+	&.__accordion-open
+		._hidden
+			display block
+		.documents
+			&-content
+				height auto
+
+	&-more
+		margin-top 20px
+		&-button
+			display block
+			color getColor('base')
+			background getColor('light')
+			font-size 18px
+			line-height 1.33
+			padding 28px 30px
+			text-align center
+			font-weight 900
+			text-transform uppercase
+			&:before
+				content attr(data-label)
+				display inline-block
+				vertical-align middle
+			&:after
+				content ''
+				display inline-block
+				vertical-align middle
+				size 16px 10px
+				background images('elements/select-arrow.png') 0 -10px no-repeat
+				margin-left 10px
+			&:hover
+				color getColor('base') + 10%
+				background getColor('light') + 20%
+			.documents.__open &,
+			.documents.__accordion-open &
+				&:before
+					content attr(data-label-open)
+				&:after
+					background-position 0 0
+
+	&.__hasHidden &-more
+		display block
+
+	+MEDIA("DESKTOP")
+		.documentation-list &
+			width 25%
+	+MEDIA("SMALL_DESKTOP")
+		.documentation-list &
+			width 33.3%
+	+MEDIA("TABLET")
+		.documentation-list &
+			width 50%
+	+MEDIA("SMALL_TABLET")
+		&-title
+			font-size 16px
+			line-height 26px
+			padding 18px 25px
+			min-height (18px*2 + 26px*2)
+		&-more
+			&-button
+				padding 20px 25px
+				font-size 16px
+	+MEDIA("PHONE")
+		&-more
+			margin-top 10px
+		&-title
+			min-height 0
+		.documentation-list &
+			width 100%
+.flat
+	&-inner
+		display table
+		width 100%
+		table-layout fixed
+		> *
+			display table-cell
+			padding 30px 25px
+	&-aside
+		vertical-align middle
+		background #ffffff
+	&-content
+		vertical-align top
+		background COLORS['light'];
+		&-inner
+			padding-bottom 55px
+			position relative
+	&-image
+		position relative
+		display block
+		overflow hidden
+		&:before
+			padding-top 137.4%
+			content ''
+			display block
+		img
+			position absolute
+			pos 0
+			margin auto
+			max-size 100%
+			display block
+	&-button
+		position absolute
+		pos _ -25px -30px
+		[data-button]
+			display block
+			width 100%
+			padding _ 10px
+
+	&-title
+		font-size 20px
+		line-height 30px
+		font-weight 900
+		text-transform uppercase
+		margin-bottom 35px
+		a
+			color inherit
+
+	&-info
+		margin 25px _
+		&-table
+			display table
+			width 100%
+			font-size 12px
+			line-height 14px
+			font-weight 700
+			color #242424
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			overflow hidden
+			text-align left
+			padding 8px 0
+			&:first-child
+				padding-right 15px
+				width 68.5%
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					font-size 9px
+					line-height 14px
+					margin-bottom -5px
+					letter-spacing -4px
+					color getColor('light') - 7%
+				span
+					padding-right 3px
+					background getColor('light')
+	&-price
+		text-align center
+		color #000
+		margin 25px _ 20px
+		&-value
+			font-size 44px
+			line-height 1.1
+			font-weight 900
+		&-label
+			font-size 12px
+			line-height 16px
+			font-weight 300
+			margin-top 5px
+	&-info-toggle
+		display none
+		margin-top -15px
+		&-link
+			&:after
+				content attr(data-label)
+				.flat.__show-info &
+					content attr(data-shown-label)
+		.flat.__show-info &
+			margin-bottom 25px
+
+	+MEDIA("DESKTOP")
+		&-price
+			&-value
+				font-size 30px
+	+MEDIA("SMALL_DESKTOP", true)
+		&-inner,
+		&-inner > *
+			display block
+		&-image
+			&:before
+				padding-top 60%
+		.choose-flat-list &
+			&-info
+				display none
+				margin _ _ 25px
+			&.__show-info .flat-info
+				display block
+			&-info-toggle
+				display block
+	+MEDIA("SMALL_TABLET")
+		&-inner,
+		&-inner > *
+			display block
+		&-image
+			&:before
+				padding-top 60%
+		&-info
+			display none
+			margin _ _ 25px
+			.flat.__show-info &
+				display block
+		&-info-toggle
+			display block
+		&-price
+			text-align left
+			margin-top 10px
+		&-title
+			margin-bottom 25px
+		&-aside
+			padding 10px
+	+MEDIA("PHONE")
+		&-image
+			&:before
+				padding-top 100%
+	+MEDIA("SMALL_PHONE")
+		padding _ 0
+		&-price
+			&-value
+				font-size 26px
+		&-info
+			&-cell
+				&:first-child
+					width 50%
+		&-content
+			&-inner
+				padding-bottom 39px
+.flatbox
+	&-inner
+		background #fff
+	&-image ~ &-content
+		border-top 2px solid #f5f5f5
+	&-content
+		padding 25px
+	&-image
+		position relative
+		display block
+		a&
+			&:hover
+				opacity 0.7
+		&:before
+			padding-top 115%
+			content ''
+			display block
+		img
+			position absolute
+			pos 0
+			margin auto
+			max-size 90%
+	&-detail
+		display table
+		width 100%
+		overflow hidden
+		font-size 12px
+		font-weight 700
+		line-height 14px
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			padding 8px 0
+			> span
+				background #fff
+			& ~ &
+				text-align right
+				padding-left 10px
+
+			&:first-child
+				& > span
+					padding-right 5px
+				&:before
+					float left
+					content "________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					letter-spacing -5px
+					margin-top -1px
+					color getColor('light') - 10%
+
+	&-more
+		margin-top 20px
+		font-size 18px
+		line-height 24px
+		font-weight 900
+		&-link
+			text-transform uppercase
+.flatcard
+	background #fff
+	&.block
+		margin-top 0
+		padding-top 35px
+	&-top
+		&-content
+			clear()
+			margin-right -10px
+	&-navigation
+		display none
+		&-wrapper
+			position relative
+		&-prev,
+		&-next
+			display none
+			size 40px
+			position absolute
+			top 0
+			background #006298
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 10px 16px
+				background images('elements/arrows-vertical--small__white.png') 0 0 no-repeat
+		&-prev
+			left 0
+			&:after
+				background-position 0 0
+		&-next
+			right 0
+			&:after
+				background-position -10px 0
+		&-wrapper.__start &-prev
+			display none
+		&-wrapper.__end &-next
+			display none
+
+	+MEDIA("TABLET")
+		margin-top 0
+		&-navigation
+			display block
+			padding _ 42px 
+			&-prev,
+			&-next
+				display block
+		&-top-content
+			padding-top 10px
+			margin _ -20px
+			padding _ 20px
+		&-page
+			background #fff
+			html.js &
+				display none
+			> .block
+				margin-top 0
+			html.js &.__visible
+				display block
+			&.__hidden
+				display none
+			.block-header
+				padding-top 10px
+				margin-bottom 10px
+				&.__title-only,
+				.block-title
+					display none
+				.construction-progress-filter
+					margin-top 0
+				.tablink
+					padding-top 10px
+
+	+MEDIA("PHONE")
+		&-top-content
+			background #fff
+	+MEDIA("SMALL_PHONE")
+		&-top-content
+			margin _ -10px
+			padding _ 10px
+.flatcard-detail
+	float left
+	width 50%
+	padding-right 162px
+	margin-right -152px
+	.progress
+		float right
+		text-align right
+		.progress-bar
+			margin-right 0
+			margin-left auto
+	&-content
+		background getColor('light')
+		padding 35px 20px (35px + 34px + 20px)
+		position relative
+	&-group
+		margin-bottom 30px
+		p
+			color #74787b
+			color rgba(0, 0, 0, 0.7)
+		&:last-of-type
+			margin-bottom 0
+		&.__buttons
+			margin-top -15px
+		&.__share
+			margin-top -10px
+			position absolute
+			pos _ 20px 35px
+	&-table
+		display table
+	&-row
+		display table-row
+	&-cell
+		display table-cell
+		vertical-align top
+		color #242424
+		font-size 16px
+		line-height 18px
+		font-weight 300
+		padding 6px 0
+		> span
+			background getColor('light')
+			// padding-left 10px
+			// display inline-block
+			// vertical-align top
+		&:first-child
+			padding-right 15px
+			padding-left 0
+			text-align left
+			overflow hidden
+			&:before
+				float right
+				content "______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+				white-space nowrap
+				width 0
+				line-height 18px
+				direction rtl
+				margin-bottom -5px
+				letter-spacing -5px
+				float left
+				direction ltr
+				color getColor('light') - 10%
+			> span
+				padding-right 10px
+				padding-left 0
+		&.__value
+			font-weight 700
+	&-buttons
+		display table
+		width 100%
+	&-button
+		display table-cell
+		&:first-child
+			padding-right 20px
+		[data-button]
+			display block
+			padding _ 10px
+			width 100%
+		.fa
+			line-height inherit
+			font-size 32px
+
+	&-price
+		&-value
+			font-size 44px
+			line-height 50px
+			font-weight 900
+		&-bottom
+			margin-top 5px
+			font-size 16px
+			line-height 20px
+			font-weight 300
+		&-label,
+		&-payment
+			display inline-block
+			vertical-align top
+		&-label
+			margin-right 25px
+
+	+MEDIA("DESKTOP")
+		padding-right 120px
+		margin-right -110px
+		width 55%
+		&-button
+			&:first-child
+				padding-right 10px
+			[data-button]
+				font-size 14px
+			.fa
+				font-size 26px
+	+MEDIA("SMALL_DESKTOP")
+		padding-right 0
+		margin-right 0
+	+MEDIA("TABLET")
+		float none
+		width auto
+		margin _ -20px
+		&-content
+			padding-top (105px + 20px + 91px + 20px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+		&-group
+			&.__buttons
+				position absolute
+				pos 20px 20px _
+				margin 0
+				margin-left 50%
+			&.__price
+				position absolute
+				pos 20px 20px _
+				margin 0
+				margin-right 50%
+		&-price
+			&-label,
+			&-payment
+				display block
+				margin 0
+			&-payment
+				margin-top 10px
+		&-buttons,
+		&-button
+			display block
+		&-button
+			&:first-child
+				padding 0
+	+MEDIA("SMALL_TABLET")
+		&-price
+			&-value
+				font-size 32px
+				line-height 40px
+		&-group
+			&.__buttons
+				margin-left 48%
+	+MEDIA("PHONE")
+		&-group
+			&.__buttons
+				pos 115px 0 _
+				margin 0
+				background BACKGROUND_COLOR
+				padding-bottom 10px
+			&.__price
+				pos 0 0 _
+				padding _ 20px 20px
+				margin 0
+				background #fff
+		&-content
+			padding-top (115px + 20px + 162px + 20px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+			margin _ 0
+			padding _ 20px
+		&-price
+			&-value
+				color #000000
+		.progress
+			display none
+	+MEDIA("SMALL_PHONE")
+		margin _ -10px
+		&-content
+			padding _ 20px
+			padding-top (115px + 20px + 140px + 10px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+			padding-bottom 140px
+		&-cell
+			&.__value
+				width 1256px
+.flatcard-gallery
+	width 50%
+	float left
+	clear()
+	padding-right 10px
+	// &-preview
+	// 	width 135px
+	// 	float left
+	// 	position relative
+	// 	z-index 1
+	// 	overflow hidden
+	// 	max-height 400px
+	// 	overflow auto
+	// 	padding-right 5px
+	// 	margin-right -5px
+	// 	&-item
+	// 		width 100%
+	// 		& ~ &
+	// 			margin-top 20px
+	// 	&-image
+	// 		display block
+	// 		position relative
+	// 		background #fff
+	// 		border 2px solid transparent
+	// 		trans()
+	// 		&:before
+	// 			padding-top 100%
+	// 			content ''
+	// 			display block
+	// 		img
+	// 			position absolute
+	// 			pos 0
+	// 			max-size 100%
+	// 			margin auto
+	// 		&:hover
+	// 			border-color getColor('base') + 20%
+	// 	&-item.__current &-image
+	// 		border-color getColor('base')
+	// 		cursor default
+	&-big
+		width 100%
+		// padding-left 140px
+		// margin-left -130px
+		// float left
+		background #fff
+		&-list
+			position relative
+			&:before
+				padding-top 96.67%
+				content ''
+				display block
+			.slick-dots
+				margin-top 0
+				li
+					margin-top 0
+		&-item
+			position absolute
+			pos 0
+			background #fff
+			display none
+			&.__current
+				display block
+		&-image
+			position absolute
+			pos 0
+			margin auto
+			display block
+			size 80%
+			img
+				position absolute
+				pos 0
+				margin auto
+				max-size 100%
+		&-list
+			background #fff
+
+	&-big
+		margin-left 0
+		padding-left 0
+		// max-width 500px
+		margin auto
+		float none
+		&-list
+			&:before
+				display none
+		&-item
+			position relative
+			display block
+			overflow hidden
+			&:before
+				padding-top 96.67%
+				content ''
+				display block
+		&-image
+			size auto
+			pos 20px
+	+MEDIA("DESKTOP")
+		width 45%
+		// &-preview
+		// 	width 115px
+		// &-big
+		// 	margin-left -110px
+		// 	padding-left 120px
+	+MIN_MEDIA("SMALL_DESKTOP")
+		&-big-list
+			padding-bottom 20px
+	+MEDIA("TABLET")
+		float none
+		width auto
+		padding-right 0
+		padding-bottom 20px
+		background #fff
+		// &-preview
+		// 	display none
+		// &-big
+		// 	margin-left 0
+		// 	padding-left 0
+		// 	max-width 500px
+		// 	margin auto
+		// 	float none
+		// 	&-list
+		// 		&:before
+		// 			display none
+		// 	&-item
+		// 		position relative
+		// 		display block
+		// 		&:before
+		// 			padding-top 96.67%
+		// 			content ''
+		// 			display block
+		// 	&-image
+		// 		size auto
+		// 		pos 20px
+		// &-big
+		// 	max-width 500px
+		&-big
+			&-item
+				max-height 500px
+	+MEDIA("PHONE")
+		margin-top 20px
+		&-big
+			&-image
+				pos 0
+			&-list
+				.slick-dots
+					margin-top 15px
+.flats
+	margin 20px 0 60px
+	&-list
+		margin -5px -5px 10px
+		.flat
+			display inline-block
+			vertical-align top
+			width 50%
+			margin-right -6px
+			padding 5px
+		&[data-clearwhitespace="cleared"] .flat
+			margin-right 0
+		+MEDIA("TABLET")
+			.flat
+				display block
+				width auto
+				margin-right 0
+		+MEDIA("SMALL_PHONE")
+			margin _ (-(WRAPPER_PADDING_PHONE))
+			.flat,
+			&[data-clearwhitespace="cleared"] .flat
+				padding _ 0
+.floor
+	&-content
+		clear()
+		&-inner
+			width 100%
+			padding-right 172px
+			margin-right -152px
+			float left
+			+MEDIA("DESKTOP")
+				padding-right 130px
+				margin-right -110px
+	&-image
+		position relative
+		background #fff
+		padding 100px 250px
+		img
+			display block
+			margin auto
+	&-compas
+		position absolute
+		top 50px
+		right 70px
+
+	+MEDIA("SMALL_DESKTOP")
+		&-compas
+			top 20px
+			right 20px
+			width 100px
+		&-image
+			padding 50px 150px
+	+MEDIA("TABLET")
+		&-content
+			padding-top 10px
+			&-inner
+				padding-right 0
+				margin-right 0
+				float none
+		&-compas
+			top auto
+			bottom 25px
+			right 15px
+			width 100px
+		&-image
+			padding 15px 10px 135px
+.floor-info
+	float right
+	width 152px
+	position relative
+	z-index 1
+	&-inner
+		margin-bottom -20px
+	&-item
+		display block
+		margin-bottom 20px
+		position relative
+		&-inner
+			display table
+			background getColor("base")
+			color #fff
+			font-size 18px
+			line-height 30px
+			font-weight 900
+			text-transform uppercase
+			size 152px
+			a&
+				&:hover
+					background getColor("base") + 10%
+					color #fff
+				&:active
+					background getColor("base") - 20%
+					color #ccc
+		& ~ & &-arrow ~ &-inner
+			margin 70px _
+		&-content
+			display table-cell
+			vertical-align middle
+			text-align center
+			padding _ 10px
+		&-title
+			font-size 72px
+			line-height 80px
+		&-label
+			font-size 10px
+			line-height 14px
+		&.__similarflat
+			.floor-info-item-inner
+				background getColor("similarFlatButton")
+			a.floor-info-item-inner
+				&:hover
+					background getColor("similarFlatButton") + 10%
+					color #fff
+				&:active
+					background getColor("similarFlatButton") - 20%
+					color #ccc
+		&-arrow
+			position absolute
+			pos _ 0
+			background #888b8d
+			display none
+			z-index 1
+			height 70px
+			overflow hidden
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 42px 22px
+				background images('elements/arrows-vertical.png') 0 0 no-repeat
+				trans()
+				transition-property opacity
+			&.__up
+				bottom 100%
+				&:after
+					background-position 0 0
+			&.__down
+				top 100%
+				&:after
+					background-position 0 -22px
+			&:hover
+				background #888b8d + 10%
+			&:active
+				background #888b8d - 20%
+				&:after
+					opacity 0.7
+			&.__disabled,
+			&[disabled]
+				background #888b8d
+				opacity 0.3
+				cursor default
+				&:after
+					opacity 1
+		&:hover &-arrow
+			display block
+
+
+	+MEDIA("DESKTOP")
+		width 110px
+		&-item
+			&-inner
+				size 110px
+				font-size 14px
+				line-height 20px
+			&-title
+				font-size 55px
+				line-height 65px
+			&-label
+				font-size 10px
+				line-height 14px
+	+MEDIA("SMALL_DESKTOP")
+		.flatcard-top &
+			float none
+			width auto
+			text-align right
+			margin-left auto
+			margin-right 0
+			margin-bottom 10px
+			&-inner
+				margin _ -5px 0
+				clear()
+			&-item
+				display block
+				float left
+				margin-bottom 0
+				width 25%
+				padding _ 5px
+				&-inner
+					width 100%
+					height 50px
+				&-title,
+				&-label
+					display inline-block
+					vertical-align middle
+					margin _ 5px
+				&-title
+					font-size 40px
+					line-height 50px
+				&-arrow
+					pos _ 5px
+	+MEDIA("TABLET")
+		.floor &
+			float none
+			width auto
+			text-align right
+			margin-left auto
+			margin-right 0
+			margin-bottom 10px
+			&-inner
+				margin 60px -5px
+				clear()
+			&-item
+				display block
+				float left
+				margin-bottom 0
+				width 33.3%
+				padding _ 5px
+				&-inner
+					width 100%
+					height 50px
+				&-title,
+				&-label
+					display inline-block
+					vertical-align middle
+					margin _ 5px
+				&-title
+					font-size 40px
+					line-height 50px
+				&-arrow
+					pos _ 5px
+					height 60px
+					display block
+					html.modernizr-csscalc &
+						width calc(100% - 10px)
+						display table
+					&:before
+						display none
+			// html.modernizr-csscalc &-item:hover .floor-info-item-arrow
+			// 	display table
+			// 	width calc(100% - 10px)
+			// 	vertical-align middle
+			// 	&:before
+			// 		display none
+		&-item
+			& ~ & &-arrow ~ &-inner
+				margin 0 _
+	+MEDIA("PHONE")
+		.flatcard-top &,
+		.floor &
+			&-item
+				font-size 8px
+				line-height 11px
+				&-inner
+					height 35px
+				&-title
+					font-size 18px
+					line-height 20px
+				&-inner,
+				&-label
+					font-size 8px
+					line-height 11px
+		.floor &
+			&-inner
+				margin 30px _
+			&-item
+				&-arrow
+					height 30px
+					&:after
+						size 32px 17px
+						background-image images('elements/arrows-vertical__small.png')
+					&.__up
+						&:after
+							background-position 0 0
+					&.__down
+						&:after
+							background-position 0 -17px
+.footer
+	position absolute
+	pos _ 0 0
+	font-size 12px
+	line-height 14px
+	padding _ 0 35px
+	&-content
+		display table
+		width 100%
+		color #242424
+		> *
+			display table-cell
+			vertical-align middle
+		> * + *
+			padding-left 40px
+		p
+			font-size 12px
+			line-height 14px
+			margin 0
+		* + p
+			margin-top 12px
+	&-copyright
+		width 245px
+		vertical-align top
+		img
+			display block
+	&-realweb
+		width 140px
+		text-align right
+	&-social
+		width 300px
+		text-align center
+	&-phone
+		width 200px
+		text-align center
+		font-size 16px
+		white-space nowrap
+		&-link
+			&:before,
+			span
+				display inline-block
+				vertical-align middle
+			&:before
+				size 16px
+				content ''
+				background images('icons/callback.png') center no-repeat
+				background-size 16px
+				trans()
+				transition-property opacity
+				margin-right 8px
+				html.modernizr-no-backgroundsize &
+					background-image images('icons/callback__small.png')
+			a&:hover:before
+				opacity 0.8
+		a
+			color inherit
+	&-info
+		width 330px
+		&.__center
+			text-align center
+			width 220px
+		&-inner
+			max-width 300px
+	&-glavstr
+		img
+			max-width none
+
+	+MEDIA("SMALL_DESKTOP")
+		&-content
+			display block
+			text-align center
+			margin _ -20px -20px
+			clear()
+			> *
+				display inline-block
+				vertical-align middle
+				text-align left
+				margin _ -3px
+				width auto
+			> *,
+			> * + *
+				padding _ 20px 20px
+			&[data-clearwhitespace="cleared"] > *
+				margin _ 0
+		&-copyright
+			width 25%
+		&-info
+			width 30%
+			&.__center
+				width 20%
+				text-align center
+		&-phone
+			width 25%
+			text-align right
+		&-glavstr
+			float left
+		&-realweb
+			float right
+	+MEDIA("TABLET")
+		&-content
+			position relative
+			padding 68px _ 75px
+			margin 0
+			> *,
+			> * + *
+				padding 0
+				margin 0
+				display block
+				width auto
+
+			p
+				font-size 16px
+				line-height 18px
+				margin 0
+			* + p
+				margin-top 14px
+		&-social
+			position absolute
+			pos 0 0 _
+			padding 0
+			text-align center
+		&-copyright
+			pos _ 120px 0 0
+			position absolute
+			* + p
+				margin-top 8px
+			img
+				max-width 140px
+		&-glavstr
+			pos _ 0 0 _
+			position absolute
+		&-info.__center
+			width auto
+			text-align left
+			margin-top 14px
+		&-phone,
+		&-realweb
+			text-align left
+			float none
+		&-phone
+			display none
+		&-realweb
+			display none
+		&-link
+			font-weight 700
+	+MEDIA("SMALL_PHONE")
+		&-copyright
+			right 70px
+.gallery
+	position relative
+	&-slider
+		overflow hidden
+	&-item
+		position relative
+		overflow hidden
+		&:before
+			padding-top 46.2%
+			content ''
+			display block
+		img
+			position absolute
+			pos 0
+			size 100%
+			// &[data-cover-image="not-fill"]
+			// 	size auto 100%
+	&-content
+		position absolute
+		pos _ 0 0
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat /* rgba(0, 0, 0, 0.45) */
+		color #ffffff
+		.wrapper-content
+			padding 0
+		&-wrapper
+			padding 60px 120px 60px 60px
+		&-inner
+			display table
+			> *
+				display table-cell
+				vertical-align top
+		&-title
+			font-size 30px
+			line-height 30px
+			font-weight 700
+			padding 7px 0
+			padding-right 25px
+			text-transform uppercase
+		&-text
+			&,
+			p
+				font-size 16px
+				line-height 30px
+			p
+				margin 0
+			* + p
+				margin-top 30px
+	&-filter
+		margin-top 25px
+		&-item
+			&,
+			&.form-item
+				margin 0 3px 6px
+				display inline-block
+				vertical-align middle
+	&-page
+		position relative
+		z-index 0
+		&,
+		.gallery
+			margin 0
+		.block-header
+			position absolute
+			pos 45px 90px _
+			z-index 1
+		> .wrapper-content
+			padding _ 0
+	&-share
+		position absolute
+		right 10px
+		bottom 10px
+		.ya-share2 .ya-share2__item_more .ya-share2__popup
+			top auto
+			bottom 100%
+	html.js &-slider > &-item ~ &-item
+		display none
+	+MEDIA("TABLET")
+		&-content
+			position relative
+			background getColor('light')
+			color #242424
+			&-inner
+				&,
+				& > *
+					display block
+			&-title
+				padding 0
+				margin-bottom 10px
+		&-filter
+			.ui-selectmenu-button
+				padding 12px 45px 13px 10px
+				height 45px
+				.span.ui-icon
+					width 45px
+		&-page
+			.block-title
+				display none
+			.block-header
+				position static
+				margin-bottom 10px
+			.gallery-share
+				position static
+				.share
+					text-align center
+					white-space normal
+					.share-links
+						text-align left
+			.gallery-filter-item
+				width 25%
+				margin _ -3px
+				padding _ 4px
+			.gallery-filter-item.__category
+				display block
+				width 100%
+				margin 0 0 10px
+				select
+					display block
+				.ui-selectmenu-wrapper
+					.ui-selectmenu-button
+						background #fff
+						color #242424
+						font-weight 400
+						&:hover
+							background #eee
+							color #242424
+						.ui-icon
+							background #dee7ee
+							&:after
+								background-image url("images/elements/select-arrow.png")
+	+MEDIA("SMALL_TABLET")
+		&-page
+			.gallery-filter-item
+				width 50%
+	+MEDIA("PHONE")
+		&-content
+			&-wrapper
+				padding 20px
+		&-page
+			.gallery-share
+				.share
+					padding 20px 18px
+					.share-label
+						display inline-block
+						vertical-align top
+						padding 10px
+						margin 0
+					.share-links
+						padding 0
+				.share-links,
+				.share.__minimizable.__open .share-links
+					display block
+.header
+	background #fff
+	position fixed
+	pos 0 0 _
+	z-index 20
+	min-width 300px
+	&-top
+		z-index 20
+		background #fff
+		min-width 300px
+	html.__scrolled &
+		&-top
+			box-shadow 0 0 10px rgba(0, 0, 0, 0.2)
+	.wrapper-content
+		padding _ 0
+	&-content
+		height 68px
+		overflow hidden
+		position relative
+		&-inner
+			display table
+			size 100% 68px
+			table-layout fixed
+			> *
+				display table-cell
+				vertical-align middle
+	// &-left,
+	// &-right
+	// 	width 260px
+	&-left
+		text-align left
+	&-right
+		text-align right
+		&-inner
+			background COLORS['light'];
+			display inline-block
+			vertical-align middle
+			text-align center
+			padding 20px 20px 13px
+	&-center
+		text-align center
+		width 72%
+		&-inner
+			position relative
+	&-logo
+		position absolute
+		pos 0
+		margin auto
+		size 420px auto
+		a,
+		span
+			position absolute
+			pos 0
+			display block
+		&-image
+			width 410px
+			position absolute
+			pos -1000px
+			margin auto
+	&-callback
+		font-size 10px
+		line-height 14px
+		font-weight 900
+		text-transform uppercase
+	&-phone
+		line-height 1
+		margin-top 5px
+		&-number,
+		&-call
+			font-size 12px
+			font-weight 500
+			line-height 16px
+			padding-left 25px
+			display inline-block
+			vertical-align top
+			color #000000
+			position relative
+		&-call
+			display none
+		&-number
+			&:before
+				content ''
+				display block
+				position absolute
+				pos 0 _ 0 0
+				margin auto
+				size 16px
+				background images('icons/callback__small.png') center no-repeat
+				trans()
+				html.modernizr-backgroundsize &
+					background-image images('icons/callback.png')
+					background-size auto 16px
+
+			a&:hover
+				&:before
+					opacity 0.8
+	&-glavstr
+		display inline-block
+		vertical-align middle
+	&-favorite
+		display inline-block
+		vertical-align middle
+		&-button
+			display block
+			font-size 10px
+			line-height 34px
+			padding 17px 20px
+			background getColor('light')
+			white-space nowrap
+			color #000
+			text-transform uppercase
+			&:before,
+			span
+				display inline-block
+				vertical-align top
+			span
+				margin-left 10px
+			&:before
+				content ''
+				size 32px
+				background images('icons/favorite__small.png') center no-repeat
+				trans()
+				transition-property opacity
+				html.modernizr-backgroundsize &
+					background-image images('icons/favorite.png')
+					background-size auto 32px
+			&:hover
+				background getColor('light') - 10%
+				color #000
+			&:active
+				background getColor('light') - 30%
+				&:before
+					opacity 0.5
+	&-glavstr
+		margin-left 20px
+		*
+			display block
+		a img
+			trans()
+			transition-property opacity
+		a:hover img
+			opacity 0.8
+	+MEDIA("DESKTOP")
+		&-center
+			width 55%
+		&-logo
+			text-align center
+			height 25px
+			top 5px
+			bottom auto
+			a,
+			img
+				position static
+				display inline-block
+				vertical-align top
+			img
+				size auto 25px
+	+MEDIA("SMALL_DESKTOP")
+		// &-logo
+		// 	width 210px
+		&-favorite
+			&-button
+				span
+					display none
+	+MEDIA("TABLET")
+		&-center
+			width 220px
+		&-logo
+			top 0
+			bottom 0
+			height auto
+			width 210px
+			a,
+			img
+				size auto
+				position absolute
+		&-glavstr
+			display none
+		&-callback
+			display none
+		&-phone
+			margin 0
+			&-number
+				display none
+			&-call
+				display block
+				background getColor('light')
+				color getColor('base')
+				padding 0
+
+				font-size 14px
+				line-height 18px
+				padding 25px 40px
+				font-weight 900
+				text-transform uppercase
+
+				&:before
+					display none
+				&:hover
+					background getColor('light') - 10%
+					color getColor('base')
+				&:active
+					background getColor('light') - 30%
+					color getColor('base') - 20%
+		&-right
+			&-inner
+				background transparent
+				padding 0
+	+MEDIA("PHONE")
+		position absolute
+		pos 0 0 auto
+		padding-top 68px
+		z-index auto
+		&-top
+			position fixed
+			pos 0 0 _
+		&-logo
+			position relative
+			width auto
+			padding 20px
+			a,
+			span,
+			img
+				position static
+				pos auto
+				size auto
+				display block
+		&-center
+			display none
+		html.__header-nav &
+			&-top
+				z-index 9
+.header-nav
+	text-align center
+	font-size 12px
+	font-weight 500
+	text-transform uppercase
+	&-button-block
+		display none
+		line-height 1px
+		font-size 1px
+
+	&-button
+		&,
+		&[data-button]
+			position relative
+			size 71px 68px
+			display block
+			padding 0
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 33px
+				background images('icons/menu__small.png') center no-repeat
+				border-color transparent
+				trans()
+				transition-property background, opacity TRANS_SPEED
+				html.__header-nav &
+					background-image images('icons/menu-close.png')
+			&:active:after
+				opacity 0.8
+		html.modernizr-csstransforms &
+			&:after,
+			&:before
+				display none
+			&-line
+				position absolute
+				size 100% 3px
+				pos 0
+				margin auto
+				background #fff
+				trans()
+				&-wrapper
+					position absolute
+					size 33px
+					pos 0
+					margin auto
+				&.__first
+					top -18px
+				&.__second
+					pos 0 _
+				&.__third
+					bottom -18px
+		
+		html.modernizr-csstransforms.__header-nav &
+			&-line
+				&.__second
+					opacity 0
+				&.__first
+					transform rotate(45deg)
+					top 0
+				&.__third
+					transform rotate(-45deg)
+					bottom 0
+
+
+	&.__left,
+	&.__right
+		width 50%
+	&.__left
+		float left
+		padding-right 235px
+	&.__right
+		float right
+		padding-left 235px
+	&.__left &-list
+		margin-right 0
+	&.__right &-list
+		margin-left 0
+	&-wrapper
+		clear()
+	&-list
+		display table
+		margin auto
+	&-item
+		display table-cell
+		vertical-align middle
+		padding 0 15px
+	&-link
+		color #000000
+		&.__current
+			color MAIN_COLOR
+
+	+MEDIA("WIDE_DESKTOP")
+		&-wrapper
+			> .wrapper-content
+				width auto
+				padding 0
+				max-size none
+				min-size 0
+	+MEDIA("DESKTOP")
+		padding-top 25px
+		&.__right,
+		&.__left
+			padding _ 0
+			text-align center
+			width auto
+			float none
+		&-wrapper-content
+			text-align center
+		&,
+		&-item,
+		&-list
+			display inline-block
+			vertical-align middle
+	+MEDIA("SMALL_DESKTOP")
+		&-item
+			padding _ 5px
+
+	+MEDIA("TABLET")
+		&-wrapper
+			display none
+			position fixed
+			pos 68px 0 0
+			z-index 11
+			html.__header-nav &
+				display block
+			&-content
+				background #fff
+				padding 45px 30px
+				clear()
+				text-align center
+			.wrapper-content
+				padding _ 0
+				height 100%
+		&-button-block
+			display inline-block
+			vertical-align middle
+		&.__left,
+		&.__right
+			float none
+			width auto
+			display inline-block
+			vertical-align top
+			text-align left
+			padding 0
+		&-list,
+		&-item
+			margin 0
+			padding 0
+			display block
+		&-list
+			text-align center
+		&-item
+			display inline-block
+			vertical-align middle
+			white-space nowrap
+			font-size 14px
+			line-height 18px
+			font-weight 500
+			text-transform uppercase
+			margin _ 10px 10px
+		&-link
+			display block
+	+MEDIA("TABLET")
+		&,
+		&.__left,
+		&.__right,
+		&-item
+			display block
+		&-item
+			text-align left
+			margin 0
+		&
+			margin _ -15px
+		&.__left
+			margin-top -15px
+		&-link
+			padding 15px
+		&-wrapper
+			&-content
+				padding 30px
+				position relative
+				max-height 100%
+				overflow auto
+			.wrapper-content
+				padding-bottom 30px
+			.header
+				&-phone-number
+					display block
+					float left
+					font-size 18px
+					line-height 19px
+					padding 10px _
+					margin-top 20px
+				&-glavstr
+					display block
+					float right
+					margin-top 20px
+	+MEDIA("PHONE")
+		&-wrapper
+			top 0
+			&-content
+				padding-right 80px
+		&-wrapper &
+			&-button
+				position absolute
+				top 0
+				right 0
+	+MEDIA("SMALL_PHONE")
+		&-wrapper
+			&-content
+				height 100%
+				position static
+				padding-bottom 0
+			.wrapper-content
+				position relative
+				padding-bottom 80px
+				background #fff
+			.header
+				&-phone-number
+					position absolute
+					bottom 30px
+					left 30px
+				&-glavstr
+					position absolute
+					bottom 30px
+					right 30px
+.icon
+	&-star
+		&.__left,
+		&.__right
+			size 54px 42px
+			display inline-block
+			vertical-align middle
+		&.__left
+			background images('icons/star__left.png') center no-repeat
+		&.__right
+			background images('icons/star__right.png') center no-repeat
+.main-banner
+	margin-bottom 10px
+	.wrapper-content
+		padding _ 0
+	&-wrapper
+		position relative
+		z-index 0
+		&:before
+			padding-top 56.2%
+			content ''
+			display block
+	&-image
+		position absolute
+		pos 0
+		overflow hidden
+		img
+			position absolute
+			pos -1000px
+			margin auto
+			max-size none
+			size 100% auto
+			&[data-cover-image="not-fill"]
+				size auto 100%
+		&:after
+			content ''
+			position absolute
+			pos _ 0 0
+			size 100% 442px
+			background images('elements/main-banner-shadow.png') bottom center repeat-x
+	&-content
+		position absolute
+		pos 0
+		size 100%
+		display table
+		margin auto
+		text-align center
+		html[data-browser="firefox"] &
+			top 50%
+			bottom auto
+			transform translate(0, -50%)
+	&-inner
+		display table-cell
+		vertical-align middle
+		padding-bottom 80px
+	&-title
+		font-size 72px
+		line-height 80px
+		color #fff
+		font-weight 900
+		text-transform uppercase
+		letter-spacing 20px
+	&-subtitle
+		font-size 42px
+		line-height 50px
+		color #fff
+		font-weight 100
+		text-transform uppercase
+		padding 15px _
+	&-text
+		margin-top 20px
+	+MEDIA("TABLET")
+		&-title
+			font-size 40px
+			line-height 48px
+			letter-spacing 5px
+		&-subtitle
+			font-size 30px
+			line-height 40px
+	+MEDIA("SMALL_TABLET")
+		&-content
+			display none
+		&-wrapper
+			&:before
+				padding-top 370px
+.maparea
+	user-select none
+	border 1px solid #eee
+	&.__enable &-overlay
+		display none
+	&-overlay
+		position absolute
+		pos 0
+		display block
+		z-index 3
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+		&:after
+			content ''
+			display block
+			background images('elements/move.png') center no-repeat
+			size 123px 145px
+			pos 0
+			position absolute
+			margin auto
+	&-move
+		ms-touch-action none
+
+	@media screen and (min-width: 1350px)
+		border-color transparent
+		&-overlay,
+		&-close
+			display none
+		&-move
+			transform none !important
+.news
+	&-list
+		margin -5px -5px 20px
+		.news-item,
+		.news-subscribe
+			width 33.30%
+			margin 0
+			padding 5px
+			display inline-block
+			vertical-align top
+			margin-right -6px
+			&-inner
+				margin 0
+		.news-subscribe
+			&-inner
+				display table
+				width 100%
+			&-content
+				display table-cell
+				vertical-align middle
+		&[data-clearwhitespace="cleared"]
+			.news-item
+				margin-right 0
+
+	&-item
+		&-inner
+			padding-right 40px
+		&-date
+			font-size 16px
+			line-height 20px
+			font-weight 300
+			margin-bottom 15px
+		&-title
+			font-size 20px
+			line-height 30px
+			font-weight 900
+			overflow hidden
+			margin-bottom 30px
+			a
+				color inherit
+		&-text
+			height 30px*6
+			overflow hidden
+			&,
+			p
+				font-size 16px
+				line-height 30px
+			p
+				margin 0
+			* + p
+				margin-top 30px
+		&-detail
+			margin-top 15px
+			font-size 16px
+			font-weight 300
+	
+	&-subscribe
+		&-inner
+			background getColor('light')
+		&-content
+			padding 40px 40px 55px
+		&-title
+			resetTitle()
+			font-size 20px
+			line-height 30px
+			font-weight 900
+			color #242424
+			margin-bottom 15px
+		&-text
+			margin-bottom 20px
+			&,
+			p
+				font-size 16px
+				line-height 1.88
+			p
+				margin 0
+			* + p
+				margin-top 30px
+		&-form
+			clear()
+			.form-item,
+			.form-submit
+				margin 0
+				float left
+			.form-item
+				width 100%
+				padding-right 195px
+				margin-right -195px
+			.form-submit
+				width 195px
+				position relative
+				z-index 1
+				[data-button]
+					display block
+					padding _ 10px
+					width 100%
+
+	+MEDIA("DESKTOP")
+		&-list
+			.news-item,
+			.news-subscribe
+				width 50%
+	+MEDIA("TABLET", true)
+		&-list &
+			&-subscribe
+				&-form
+					.form-item
+						padding-right 0
+						margin-right 0
+						float none
+					.form-submit
+						margin 10px auto
+						float none
+
+	+MEDIA("SMALL_TABLET")
+		&-list
+			.news-item,
+			.news-subscribe
+				display block
+				width auto
+				margin-right 0
+
+	+MEDIA("PHONE")
+		&-subscribe
+			&-form
+				.form-item
+					padding-right 0
+					margin-right 0
+					float none
+				.form-submit
+					margin 10px auto
+					float none
+
+	+MEDIA("SMALL_PHONE")
+		&-list
+			margin _ -(WRAPPER_PADDING_PHONE)
+		&-item,
+		&-list &-item,
+		&-list[data-clearwhitespace="cleared"] &-item,
+		&-list &-subscribe
+			padding _ 0
+
+.news-detail
+	&-date
+		margin-bottom 15px
+	.block-header
+		text-align left
+		padding _ 20px
+	+MEDIA("PHONE")
+		.block-header
+			padding _ 10px
+.pagination
+	position relative
+	padding 22px (91px+79px+10px) 23px
+	margin-top 10px
+	&-list
+		text-align center
+	&-item
+		display inline-block
+		vertical-align top
+	&-link
+		display block
+		font-size 16px
+		line-height 25px
+		padding 5px
+		min-width 35px
+		color getColor('base')
+		&:hover
+			color #000
+			background #eee
+		&.__current
+			color #000
+			background #fff
+	&-prev,
+	&-next
+		.pagination-link
+			display block
+			position absolute
+			size 79px
+			background #006394
+			span
+				display none
+			&:after
+				size 22px 42px
+				content ''
+				position absolute
+				pos 0
+				margin auto
+				background images('elements/slider-arrows.png') 0 0 no-repeat
+				trans()
+			&:hover
+				background #006394 + 10%
+			&:active
+				background #006394 - 20%
+				&:after
+					opacity 0.8
+			&.__current
+				background #006394
+				opacity 0.5
+				cursor default
+				&:after
+					opacity 1
+	&-next
+		.pagination-link
+			right 0
+			top 0
+			&:after
+				background-position -22px 0
+	&-prev
+		.pagination-link
+			right (79px+12px)
+			top 0
+			&:after
+				background-position 0 0
+	+MEDIA("TABLET")
+		padding 12px (60px+10px) 13px
+		&-prev,
+		&-next
+			.pagination-link
+				size 60px
+				&:after
+					size 17px 32px
+					background-image images('elements/slider-arrows__small.png')
+		&-next
+			.pagination-link
+				&:after
+					background-position -17px 0
+		&-prev
+			.pagination-link
+				left 0
+				top 0
+				&:after
+					background-position 0 0
+	+MEDIA("SMALL_PHONE")
+		&-prev,
+		&-next
+			display none
+.payment
+	&-content,
+	&-page
+		clear()
+	&-aside-content
+		float left
+		width 67.4%
+		padding-right 10px
+		&-inner
+			background #fff
+	&-aside-block
+		float right
+		width 32.6%
+		padding-left 10px
+		&-inner
+			background getColor('light')
+			padding 40px 30px
+	&-page
+		.block-box
+			margin-bottom 0
+			&:first-child
+				margin-top 0
+	.block-title
+		margin-bottom 17px
+
+	&-fullpay
+		position relative
+		&-title
+			position absolute
+			pos 25px 30px _
+			text-align center
+			color #006298
+			font-size 24px
+			line-height 1.4
+			+$big()
+				color #fff
+				font-size 1.25
+				font-weight 700
+		&-image
+			img
+				display block
+
+	+MEDIA("TABLET")
+		&-aside-content,
+		&-aside-block
+			float none
+			width auto
+			padding 0
+		&-aside-block
+			&-inner
+				margin _ -20px
+				padding _ 20px
+		&-fullpay
+			margin-top 20px
+			&-title
+				margin-bottom 20px
+				position static
+				pos auto
+				color inherit
+				+$big()
+					color inherit
+	+MEDIA("PHONE")
+		&-fullpay
+			&-title
+				font-size 18px
+	+MEDIA("SMALL_PHONE")
+		&-aside-content
+			margin _ -10px
+		&-aside-block
+			&-inner
+				margin _ -10px
+.payment-table
+	display table
+	width 100%
+	&-row
+		display table-row
+	&-cell
+		display table-cell
+		vertical-align top
+		font-size 16px
+		line-height 18px
+		padding 15px 10px
+		.small
+			font-size 12px
+			line-height 18px
+		ul,
+		li
+			margin 0
+		* + ul
+			margin-top 18px
+		li
+			&:before
+				margin-top -1px
+	&-toggle
+		display none
+	&-breaker
+		display none
+	+MIN_MEDIA("DESKTOP")
+		&-row:first-of-type &-cell
+			padding-top 30px
+		&-row:last-of-type &-cell
+			padding-bottom 30px
+		&-row ~ &-row &-cell
+			border-top 1px dotted getColor('light')
+		&-cell
+			&.__text
+				width 20%
+			&.__documents
+				width 200px
+			&.__first
+				padding-left 25px
+			&.__last
+				padding-right 25px
+	+MEDIA("SMALL_DESKTOP")
+		display block
+		&-row
+			display block
+			clear()
+			padding 10px 0
+			&.__head
+				display none
+		&-cell
+			display inline-block
+			vertical-align middle
+			margin-right -6px
+			padding 10px 20px
+			&.__percent,
+			&.__time,
+			&.__pay,
+			&.__text,
+			&.__documents
+				&:before
+					display block
+					content attr(data-label)
+					font-size 12px
+					line-height 14px
+					margin-bottom 5px
+					color #777
+			&.__info,
+			&.__documents
+				vertical-align top
+				width 50%
+		&-row ~ &-row
+			border-top 1px dotted getColor('light')
+	+MEDIA("TABLET")
+		&-row
+			position relative
+			z-index 0
+			margin _ -20px
+			padding _ 36px _ 20px
+		&-toggle
+			display block
+			position absolute
+			pos 0
+			z-index 1
+			&:after
+				position absolute
+				top 36px
+				right 20px
+				size 16px 10px
+				background images('elements/select-arrow.png') 0 -10px no-repeat
+				content ''
+				display block
+		&-cell
+			a
+				position relative
+				z-index 2
+			&.__bank
+				width 190px
+				padding-left 0
+			&.__percent
+				width 110px
+			&.__time
+				width 120px
+			&.__info,
+			&.__documents
+				display none
+			&.__pay + .payment-table-breaker
+				display block
+		&-row.__open &-toggle
+			background-position 0 0
+		&-row.__open &-cell
+			display inline-block
+	+MEDIA("TABLET")
+		&-cell
+			&.__pay
+				display none
+	+MEDIA("PHONE")
+		&-cell
+			padding _ 10px
+			&.__time
+				display none
+	+MEDIA("SMALL_PHONE")
+		&-row
+			padding 20px _
+			padding _ 26px _ 10px
+			margin _ 0
+		&-cell
+			&.__bank
+				width 160px
+			&.__info,
+			&.__documents
+				width 100%
+.progress
+	&[data-mod*="vertical"]
+		.progress
+			&-bar
+				width 82px
+				&-value
+					display block
+					size 100% 10px
+					& ~ .progress-bar-value
+						margin-top 1px
+	&[data-mod*="horizontal"]
+		.progress
+			&-bar
+				height 20px
+				direction rtl
+				text-align left
+				&-value
+					size 20px 100%
+					display inline-block
+					vertical-align top
+	&-bar
+		position relative
+		text-align left
+		&-value
+			background getColor('progress')
+			&.__current
+				background getColor('base')
+	&-label
+		font-weight 300
+		font-size 16px
+		line-height 18px
+	&-label ~ &-bar
+		margin-top 15px
+.reserve
+	&-info
+		margin-bottom 25px
+	&-info-item
+		display inline-block
+		vertical-align top
+	&-info-item ._em
+		font-weight 700
+		color #004481
+		margin-right 20px
+	&-sex-radios
+		padding-top 5px
+		.radio
+			margin 0 0 5px
+			float left
+			& ~ .radio
+				margin-left 5px
+			label
+				padding 0
+				&:before
+					display none
+				span
+					font-size 20px
+					line-height 24px
+					text-transform uppercase
+					padding 12px 5px
+					min-width 50px
+					display block
+					size auto 50px
+					text-align center
+					border 1px solid #fff
+			input:checked + label,
+			input.-checked + label
+				span
+					background #cddff0
+					border-color #cddff0
+	&-real-adress
+		position: relative;
+		z-index 0
+	&-real-adress.disabled .reserve-real-adress-locker
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: block;
+		background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=") center repeat;
+		z-index: 99999;
+		cursor: default;
+		.popup-box &
+			background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/uH7JgAJFgOC2jI9yQAAAABJRU5ErkJggg==") center repeat;/*rgba(#e7f0f7, 0.7)*/
+.share
+	&-label,
+	&-links
+		display inline-block
+		vertical-align middle
+	&-label
+		font-size 16px
+		line-height 20px
+		color #242424
+		width 100px
+	&-links
+		padding-left 115px
+		margin-left -110px
+		width 100%
+	&.__minimizable
+		white-space nowrap
+		background #e7f0f7
+		.share
+			&-label
+				padding 29px 20px
+				width auto
+				background #e7f0f7
+				color #252324
+				&:before,
+				span
+					display inline-block
+					vertical-align middle
+				&:before
+					content ''
+					size 29px 21px
+					background images('icons/share.png') center no-repeat
+					margin-right 10px
+				&:hover
+					background #e7f0f7 - 10%
+					color #252324
+				&:active
+					background #e7f0f7 - 10%
+					color #252324
+					opacity 0.8
+			&-links
+				display none
+				padding-left 0
+				margin-left 0
+				padding-right 20px
+				width auto
+		&.__open .share
+			&-links
+				display inline-block
+	+MEDIA("PHONE")
+		&-label,
+		&-links
+			display block
+		&-label
+			width auto
+			margin-bottom 10px
+		&-links
+			padding-left 0
+			margin-left 0
+.socials
+	white-space nowrap
+	&-list
+		margin -5px
+	&-item
+		display inline-block
+		vertical-align middle
+		margin 5px
+	&-link
+		display block
+		size 23px
+		border-radius 50%
+		font-size 14px
+		line-height 24px
+		background #777
+		text-align center
+		opacity 0.5
+		&,
+		&:hover,
+		&:active
+			color #fff
+		&:hover
+			opacity 1
+	&-item
+		&.__vk .socials-link
+			background #4d76a1
+		&.__facebook .socials-link
+			line-height 25px
+			background #3b5998
+		&.__instagram .socials-link
+			background #6a453b
+	+MEDIA("TABLET")
+		&-link
+			size 36px
+			font-size 24px
+			line-height 36px
+		&-item
+			&.__facebook .socials-link
+				line-height 38px
+.tablink
+	overflow hidden
+	&-list
+		margin -5px -18px
+	&-item
+		display inline-block
+		vertical-align middle
+		padding 5px 18px
+		font-size 18px
+		line-height 20px
+		font-weight 700
+		text-transform uppercase
+	&-link
+		&.__current
+			color #242424
+			cursor default
+	+MEDIA("TABLET")
+		text-align left
+		&-list
+			margin _ -10px
+		&-item
+			padding _ 10px
+.uitooltip
+	position absolute
+	z-index 3
+	background #fff
+	padding 15px
+	margin-top -50px
+	margin-left -10px
+	filter drop-shadow(0 0 5px rgba(0, 0, 0, 0.3))
+	display none
+	max-width 250px
+	font-size 16px
+	line-height 1.1
+	&:before
+		position absolute
+		content ''
+		border-top 10px solid transparent
+		border-bottom 10px solid transparent
+		border-left 10px solid #fff
+		left 100%
+		top 40px
+	&-title
+		font-size 20px
+		font-weight 600
+		margin-bottom 10px
+	&,
+	p
+		font-size 14px
+	p
+		margin 0
+		line-height 1.1
+	* + p
+		margin-top 5px
+	&-bottom
+		margin 15px -13px -13px
+		// background getColor('base')
+		// color #fff
+		background #fff
+		color getColor('base')
+		border-top 1px solid #eee
+		padding 13px
+		a
+			color getColor('base')
+			text-decoration underline
+	&-settlement
+		margin-top 5px
+		text-align center
+	&-sold
+		text-align center
+	&-left
+		display table
+		width 100%
+		> *
+			display table-cell
+			vertical-align middle
+		&-count
+			padding-left 10px
+			font-size 200%
+			font-size 2em
+			font-weight 600
+	&-table
+		display table
+		width 100%
+		table-layout fixed
+		* + &
+			margin-top 5px
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			padding 5px 0
+			& ~ &
+				padding-left 5px
+			&:first-child
+				padding-right 15px
+				overflow hidden
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					letter-spacing -4px
+					color getColor('light') - 7%
+					font-size 85%
+					font-size 0.85em
+					.uitooltip-bottom &
+						color getColor('base') + 10%
+				span
+					padding-right 5px
+					background getColor('light')
+					.uitooltip-bottom &
+						background #fff
+	&.__building
+		width 180px
+		.uitooltip
+			&-table
+				table-layout initial
+				&-cell ~ .uitooltip-table-cell
+					text-align right
+					width 1%
+	
+	&.__from-right
+		margin-left 10px
+		&:before
+			left auto
+			right 100%
+			border-left 0
+			border-right 10px solid #fff
+body
+	background #fff
+.content
+	padding-bottom 1px
+	margin-bottom 0
+.footer
+	padding-top 35px
+	background BACKGROUND_COLOR
+.construction-progress.block
+	margin-bottom 0
+	.gallery
+		margin-bottom 0
+.flatcard
+	margin-bottom 0

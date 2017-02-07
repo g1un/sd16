@@ -1,0 +1,78 @@
+[data-text-column]
+	column-gap 100px
+	column-width 400px
+	> *
+		break-inside avoid
+for i in 1..10
+	[data-text-column={ '"' + i + '"' }]
+		column-count i
+
+[data-text-column]
+	+MEDIA("SMALL_DESKTOP")
+		columns auto
+
+.wrapper-info
+	background #fff
+	padding 45px
+	box-shadow 0 3px 3px rgba(0, 0, 0, 0.02)
+	+MEDIA("PHONE")
+		padding 30px 20px 20px
+	+MEDIA("SMALL_PHONE")
+		margin _ (-(WRAPPER_PADDING))
+
+.left-column-big, .left-column-small
+	float left
+	position relative
+.right-column-small, .right-column-big
+	float right
+	position relative
+.left-column-big,.right-column-big
+	width 66%
+.left-column-small, .right-column-small
+	width 33%
++MEDIA("TABLET")
+	.left-column-big,
+	.right-column-big,
+	.left-column-small,
+	.right-column-small
+		flaot none
+		width auto
+
+.content
+	margin-bottom 30px
+
+.wrapper-inner-content
+	max-width 1380px
+	margin auto
+
+area
+	cursor default
+	&[href]
+		cursor pointer
+
+
+[data-ajax-content]
+	padding 100px 0
+	margin 50px 0
+	&.__loading
+		&:after
+			size 100px
+			margin auto
+			display block
+			background images('preloader-48.gif') center no-repeat
+			background-color #fff
+			content ''
+	&.__fail
+		text-align center
+
+.pattern-bg {
+    background: #cddff0;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
++MEDIA("SMALL_TABLET")
+	.column[class]
+		width 100%

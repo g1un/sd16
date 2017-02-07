@@ -1,0 +1,21 @@
+mixin gallery(options)
+	-if(options == null){ options = {} }
+	+namespace("gallery")
+		+el().block&attributes(attributes)
+			+el("slider").js-gallery-slider
+				+el("item").js-gallery-item
+					+img("example/gallery/1.jpg")(data-cover-image="" title="#{ getText(3) }")
+				+repeat(10)
+					+el("item")
+						img(src="#{ getImage(1903, 879) }", alt="" data-cover-image="" title="#{ getText(3) }")
+			if options['hide-content'] !== true
+				+el("content")
+					.wrapper-content
+						+el("content-wrapper")
+							+el("content-inner")
+								+el("content-title") Отделка
+								+el("content-text")
+									p Приобретая квартиру с отделкой, Вы существенно сокращаете финансовые, временные и эмоциональные вложения в новое жилье. Светлые и лаконичные пространства, выполненные в современном европейском стиле, понравятся всем без исключения. Спокойная цветовая палитра, чистые линии и простые декоративные решения позволят создать в интерьере атмосферу гармонии и комфорта. Благодаря наличию отделки сразу же после получения ключей можно будет приступить к расстановке мебели и оформлению помещений. Вам не придется думать о ремонте, мешать соседям и не давать спать собственным детям. Все, что от Вас потребуется, - радоваться жизни в своей новой квартире.
+			if options['share'] === true
+				+el("share")
+					+share({minimize: true})

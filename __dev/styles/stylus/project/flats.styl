@@ -1,0 +1,22 @@
+.flats
+	margin 20px 0 60px
+	&-list
+		margin -5px -5px 10px
+		.flat
+			display inline-block
+			vertical-align top
+			width 50%
+			margin-right -6px
+			padding 5px
+		&[data-clearwhitespace="cleared"] .flat
+			margin-right 0
+		+MEDIA("TABLET")
+			.flat
+				display block
+				width auto
+				margin-right 0
+		+MEDIA("SMALL_PHONE")
+			margin _ (-(WRAPPER_PADDING_PHONE))
+			.flat,
+			&[data-clearwhitespace="cleared"] .flat
+				padding _ 0

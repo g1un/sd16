@@ -1,0 +1,13 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["UI"]
+	-var hideHeader = true
+	-var hideFooter = true
+block content
+	.wrapper-content
+		+repeat(1000)
+			-var id= createId()
+			.radio(style="display: inline-block;")
+				input(type="radio" name="radio" id="#{ id }")
+				label(for="#{ id }")!= createId()

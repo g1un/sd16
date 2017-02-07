@@ -1,0 +1,19 @@
+script(type="text/template" id="template-popup").
+	<div data-popup-name="<%- popupName %>" class="popup js-popup __<%- popupName %> js-popup-<%- popupName %> <%- addClass %>">
+		<% if( hideClose !== true ) { %><a href="#" data-popup-close="" class="popup-close"></a><% } %>
+		<div class="popup-box">
+			<div class="popup-inner">
+				<% if(title) { %>
+					<div class="popup-title">
+						<div class="popup-title-text"><%= title %></div>
+					</div>
+				<% } %>
+
+				<% if(subtitle) { %><div class="popup-subtitle"><%= subtitle %></div><% } %>
+
+				<div class="popup-content">
+					<%= content %>
+				</div>
+			</div>
+		</div>
+	</div>

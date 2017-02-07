@@ -1,0 +1,32 @@
+.document
+	font-size 16px
+	line-height 18px
+	padding 13px 85px 13px 23px
+	trans()
+	color #242424
+	font-weight 300
+	clear()
+	position relative
+	display block
+	&:hover
+		color #242424
+		background getColor('light')
+		background rgba( getColor('base'), 0.09 )
+	&-info
+		color getColor('base')
+		font-size 12px
+		&:before
+			content '\0028'
+		&:after
+			content '\0029'
+	&-download
+		float right
+		font-size 12px
+		position absolute
+		pos 0 30px 0 _
+		margin auto
+		height 18px
+		opacity 0
+		color getColor('base')
+	&:hover &-download
+		opacity 1

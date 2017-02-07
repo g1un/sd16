@@ -1,0 +1,63 @@
+mixin choose-flat-filter()
+	.choose-flat-filter.js-choose-flat-filter
+		form(action="")
+			.choose-flat-filter-content.js-choose-flat-uniformheight
+				.form-title Подобрать квартиру
+				.choose-flat-filter-columns
+					.choose-flat-filter-column
+						.form-item
+							.form-line
+								-var groupid = createId()
+								for item, index in ["ЛЮБАЯ", "Студия", "1-комнатная", "2-комнатная", "3-комнатная"]
+									.form-item
+										.uicheckbox.__tabstyle
+											-var id = createId()
+											input(type="checkbox", name="" id="input-#{ id }" data-group-checkbox="#{ groupid }")&attributes( index == 0 ? {"data-group-checkbox-all": ''} : {} )
+											label(for="input-#{ id }")!= item
+						.form-item
+							.form-label Площадь
+							+range({min: 20, max: 30, label: 'м<sup>2</sup>'})
+						.form-item
+							.form-label Стоимость
+							+range({min: '1 000 000', max: '99 999 999', label: rub()})
+						.form-item.__extend
+							.form-label Срок сдачи
+							.form-line
+								-var groupid = createId()
+								for item, index in ["ЛЮБОЙ", "II квартал 2017", "III квартал 2017", "IV квартал 2016", "Введён в эксплуатацию"]
+									.form-item
+										.uicheckbox.__tabstyle
+											-var id = createId()
+											input(type="checkbox", name="" id="input-#{ id }" data-group-checkbox="#{ groupid }")&attributes( index == 0 ? {"data-group-checkbox-all": ''} : {} )
+											label(for="input-#{ id }")!= item
+					.choose-flat-filter-column.__extend
+						.form-item.__extend
+							.form-label Этаж
+							+range({min: 1, max: 20, label: false})
+						.form-item.__extend
+							.form-label Корпус
+							.form-line
+								-var groupid = createId()
+								for item, index in ["ЛЮБОЙ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"]
+									.form-item
+										.uicheckbox.__tabstyle
+											-var id = createId()
+											input(type="checkbox", name="" id="input-#{ id }" data-group-checkbox="#{ groupid }")&attributes( index == 0 ? {"data-group-checkbox-all": ''} : {} )
+											label(for="input-#{ id }")!= item
+						.form-item.__extend
+							.form-label Срок сдачи
+							.form-line
+								-var groupid = createId()
+								for item, index in ["ВСЕ ОЧЕРЕДИ", "8"]
+									.form-item
+										.uicheckbox.__tabstyle
+											-var id = createId()
+											input(type="checkbox", name="" id="input-#{ id }" data-group-checkbox="#{ groupid }")&attributes( index == 0 ? {"data-group-checkbox-all": ''} : {} )
+											label(for="input-#{ id }")!= item
+						.form-item
+							a(href="#" data-label="+ Больше фильтров" data-extended-label="Свернуть дополнительные фильтры").choose-flat-filter-extend-button.js-choose-flat-filter-extend-button
+						.form-controls
+							.form-submit
+								input(type="submit", value="Подобрать квартиры" data-button="" data-button-size="big")
+							.form-reset
+								input(type="reset", value="Сбросить")

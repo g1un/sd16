@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'MyriadProCond';
+    font-weight: 400;
+    font-style: normal;
+    src: url('fonts/MyriadProCond.eot');
+    src: url('fonts/MyriadProCond.eot') format('embedded-opentype'),
+         url('fonts/MyriadProCond.woff2') format('woff2'),
+         url('fonts/MyriadProCond.woff') format('woff'),
+         url('fonts/MyriadProCond.ttf') format('truetype'),
+         url('fonts/MyriadProCond.svg#MyriadProCond') format('svg');
+}

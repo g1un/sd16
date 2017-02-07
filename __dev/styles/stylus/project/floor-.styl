@@ -1,0 +1,44 @@
+.floor
+	&-content
+		clear()
+		&-inner
+			width 100%
+			padding-right 172px
+			margin-right -152px
+			float left
+			+MEDIA("DESKTOP")
+				padding-right 130px
+				margin-right -110px
+	&-image
+		position relative
+		background #fff
+		padding 100px 250px
+		img
+			display block
+			margin auto
+	&-compas
+		position absolute
+		top 50px
+		right 70px
+
+	+MEDIA("SMALL_DESKTOP")
+		&-compas
+			top 20px
+			right 20px
+			width 100px
+		&-image
+			padding 50px 150px
+	+MEDIA("TABLET")
+		&-content
+			padding-top 10px
+			&-inner
+				padding-right 0
+				margin-right 0
+				float none
+		&-compas
+			top auto
+			bottom 25px
+			right 15px
+			width 100px
+		&-image
+			padding 15px 10px 135px

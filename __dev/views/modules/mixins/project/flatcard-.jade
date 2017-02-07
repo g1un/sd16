@@ -1,0 +1,25 @@
+mixin flatcard()
+	.flatcard.block.js-flatcard
+		-var pages = ["top", "gallery", "complexmap", "building", "floor", "payment", "construction-progress"]
+		.flatcard-navigation-wrapper.js-flatcard-navigation-wrapper
+			a(href="#").flatcard-navigation-prev.js-flatcard-navigation-prev
+			a(href="#").flatcard-navigation-next.js-flatcard-navigation-next
+			.flatcard-navigation.tab-list(data-tab-group="").js-flatcard-navigation
+				for tab,index in ["Квартира 261", "Отделка", "Карта проекта", "корпус 5", "Секция 2", "Оплата", "ход строительства"]
+					a(href="#" data-tab=".js-flat-page-#{ pages[index] }").flatcard-navigation-tab.tab
+						span!= tab
+
+		.flatcard-page.js-flat-page-top
+			+flatcard-top()
+
+
+		for item in ["gallery", "complexmap", "building", "floor", "payment", "construction-progress"]
+			.flatcard-page(class="js-flat-page-#{ item }")
+				div(data-ajax-content="--dev--flatcard-#{ item }.html")
+
+		//- +gallery()
+		//- +complexmap({flat: true})
+		//- +building()
+		//- +floor()
+		//- +payment()
+		//- +construction-progress()

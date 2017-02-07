@@ -1,0 +1,177 @@
+.banners
+	margin 10px 0
+	padding _ 10px
+	.wrapper-content
+		padding _ 0
+	&-list
+		clear()
+		margin -5px -5px 0
+	&-wrapper
+		overflow hidden
+	&-item
+		width 50%
+		float left
+		padding 5px
+		&-inner
+			position relative
+			margin _ 50px
+			z-index 0
+		&-image
+			position relative
+			overflow hidden
+			z-index 0
+			margin _ -50px
+			&:before
+				padding-top 31.8%
+				content ''
+				display block
+			img
+				position absolute
+				pos -1000px
+				margin auto
+				max-size none
+				size 100% auto
+				&[data-cover-image="not-fill"]
+					size auto 100%
+			&:after
+				background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAYAAAD0In+KAAAAD0lEQVR42mPkE1HsYwACAASaANO3jkFvAAAAAElFTkSuQmCC') center repeat
+				content ''
+				display block
+				position absolute
+				pos 0
+				z-index 1
+		&-content
+			position absolute
+			pos 0
+			margin auto
+			display table
+			size 100%
+			table-layout fixed
+			color #fff
+			html[data-browser="firefox"] &
+				top 50%
+				bottom auto
+				transform translate(0, -50%)
+			> *
+				display table-cell
+				vertical-align middle
+		&-title
+			font-size 46px
+			line-height 40px
+			font-weight 700
+		&-title ~ &-detail
+			margin-top 30px
+		&-aside
+			padding-right 50px
+		&-box
+			background COLORS['banners-item-box'];
+			min-height 165px
+			padding 20px 30px
+			width 45%
+			&-inner
+				font-size 30px
+				line-height 45px
+				font-weight 700
+				text-align center
+				letter-spacing 3px
+				.big
+					font-size 52px
+
+				.icon-star.__left,
+				.icon-star.__right
+					margin _ _ 10px
+				.icon-star.__left
+					margin-right 30px
+				.icon-star.__right
+					margin-left 30px
+		&-link
+			position absolute
+			pos 0 -50px
+			z-index 2
+		&-detail
+			position relative
+			z-index 3
+	+MEDIA("WIDE_DESKTOP")
+		&-item
+			&-title
+				font-size 34px
+				line-height 36px
+			&-box
+				&-inner
+					font-size 24px
+					line-height 30px
+					.big
+						font-size 30px
+					.icon-star.__left
+						margin-right 15px
+					.icon-star.__right
+						margin-left 15px
+			&-inner
+				margin _ 20px
+			&-image
+				margin _ -20px
+			&-link
+				pos _ -20px
+			&-title ~ &-detail
+				margin-top 15px
+	+MEDIA("SMALL_DESKTOP", true)
+		&-item
+			&-title
+				font-size 26px
+				line-height 30px
+			&-box
+				&-inner
+					font-size 20px
+					line-height 24px
+					.big
+						font-size 24px
+					.icon-star
+						&[class]
+							display none
+			&-title ~ &-detail
+				margin-top 10px
+	+MEDIA("TABLET")
+		&-item
+			&-inner
+				margin _ 0
+			&-image
+				margin _ 0
+			&-link
+				pos _ 0
+			&-content
+				&,
+				& > *
+					display block
+				&,
+				html[data-browser="firefox"] &
+					position relative
+					pos auto
+					margin auto
+				html[data-browser="firefox"] &
+					transform none
+			&-box
+				display table
+				size 100% 165px
+				padding 0
+				&-inner
+					display table-cell
+					vertical-align middle
+					padding 0 20px
+
+					font-size 30px
+					line-height 40px
+					.big
+						font-size 52px
+			&-image
+				height 200px
+				position absolute
+				pos 0 0 _
+				z-index 0
+			&-aside
+				display table
+				size 100% 200px
+				padding 0
+				&-inner
+					display table-cell
+					vertical-align middle
+					padding 0 20px

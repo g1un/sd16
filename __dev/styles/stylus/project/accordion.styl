@@ -1,0 +1,37 @@
+.accordion
+	&-title
+		display block
+		font-size 16px
+		line-height 18px
+		padding 13px 23px
+		color #242424
+		font-weight 300
+		padding-right 70px
+		position relative
+		&:after
+			content ''
+			display block
+			position absolute
+			pos 18px 30px _ _
+			size 16px 10px
+			background images('elements/select-arrow.png') 0 -10px no-repeat
+			trans()
+			transition-property background-image
+			margin auto
+		&:hover
+			background getColor('base')
+			color #fff
+			&:after
+				background-image images('elements/select-arrow__white.png')
+	&-content
+		padding 13px 23px
+		background getColor('light') + 10%
+		background rgba( getColor('base'), 0.09 )
+		display none
+	&.__open &
+		&-title
+			background getColor('base')
+			color #fff
+			&:after
+				background-image images('elements/select-arrow__white.png')
+				background-position 0 0

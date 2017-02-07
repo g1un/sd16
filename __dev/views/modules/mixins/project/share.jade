@@ -1,0 +1,19 @@
+mixin share(options)
+	-if(options == null){options = {}}
+	.share.js-share(class="#{ options['minimize'] ? '__minimizable' : '' }")
+		if options['minimize']
+			a(href="#").share-label.js-share-label: span Поделиться
+		else
+			.share-label: span Поделиться
+		.share-links.js-share-links
+		//- .share-links
+			//
+				\\\\\\
+				https://tech.yandex.ru/share/
+				
+				You can use:
+					
+					collections,vkontakte,facebook,odnoklassniki,moimir,gplus,pinterest,twitter,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,viber,whatsapp,skype,telegram
+
+				\\\\\\
+			<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,pinterest,twitter,collections,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,viber,whatsapp,skype,telegram" data-image="http://frontdev.realweb.ru/sevdol_new_2016/web/template/images/example/flatcard/1.jpg" data-limit="7"></div>

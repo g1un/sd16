@@ -1,0 +1,14 @@
+mixin flatcard-top()
+	.flatcard-top.js-flatcard-top
+		.wrapper-content
+			.block-header.__title-only
+				.block-title
+					h1 Квартира 261
+			.block-content
+				.flatcard-top-content
+					+floor-info()
+						+el("item").__similarflat
+							+el("item-inner", "a")(href="#")
+								+el("item-content") Похожие квартиры
+					+flatcard-gallery()
+					+flatcard-detail()

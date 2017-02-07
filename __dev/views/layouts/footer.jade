@@ -1,0 +1,24 @@
+.wrapper-content
+	.footer-content(data-clearwhitespace="")
+		.footer-copyright
+			p © 2016, Главстрой-СПб
+			p
+				+img('footer-logo.png')
+		.footer-info
+			.footer-info-inner
+				p: b Отдел продаж:
+				p: a(href="#") БЦ «Петровский форт», Атриум, уровень В, Финляндский пр., д. 4а, Санкт-Петербург, 194044
+				p: a(href="#").footer-link Отдел продаж на объекте
+		.footer-info.__center
+			.footer-info-inner
+				p: a(href="#").footer-link Экскурсии на объект
+		.footer-phone
+			a(href="tel: +7 (812) 680-40-40").footer-phone-link
+				span (812) 680-40-40
+		.footer-glavstr
+			a(href="#")
+				+img("glavstr.png")
+		.footer-social
+			+socials()
+		.footer-realweb
+			+realweb()

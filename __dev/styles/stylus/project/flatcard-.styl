@@ -1,0 +1,81 @@
+.flatcard
+	background #fff
+	&.block
+		margin-top 0
+		padding-top 35px
+	&-top
+		&-content
+			clear()
+			margin-right -10px
+	&-navigation
+		display none
+		&-wrapper
+			position relative
+		&-prev,
+		&-next
+			display none
+			size 40px
+			position absolute
+			top 0
+			background #006298
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 10px 16px
+				background images('elements/arrows-vertical--small__white.png') 0 0 no-repeat
+		&-prev
+			left 0
+			&:after
+				background-position 0 0
+		&-next
+			right 0
+			&:after
+				background-position -10px 0
+		&-wrapper.__start &-prev
+			display none
+		&-wrapper.__end &-next
+			display none
+
+	+MEDIA("TABLET")
+		margin-top 0
+		&-navigation
+			display block
+			padding _ 42px 
+			&-prev,
+			&-next
+				display block
+		&-top-content
+			padding-top 10px
+			margin _ -20px
+			padding _ 20px
+		&-page
+			background #fff
+			html.js &
+				display none
+			> .block
+				margin-top 0
+			html.js &.__visible
+				display block
+			&.__hidden
+				display none
+			.block-header
+				padding-top 10px
+				margin-bottom 10px
+				&.__title-only,
+				.block-title
+					display none
+				.construction-progress-filter
+					margin-top 0
+				.tablink
+					padding-top 10px
+
+	+MEDIA("PHONE")
+		&-top-content
+			background #fff
+	+MEDIA("SMALL_PHONE")
+		&-top-content
+			margin _ -10px
+			padding _ 10px

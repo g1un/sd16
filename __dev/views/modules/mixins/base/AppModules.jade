@@ -1,0 +1,37 @@
+-var AppModules = function() {
+	-var modules = {}
+	-modules.styles = []
+	-modules.scripts = []
+	-var self = {}
+	-self.addScript = function(scriptSrc, params) {
+		if params == null
+			-params = {}
+
+		-modules.scripts.push({src: fileUrl(scriptSrc), async: (params['async'] ? params['async'] : false), params: params})
+		-return self
+	- }
+	-self.addStyle = function(styleSrc) {
+		-modules.styles.push(styleSrc)
+		-return self
+	- }
+	-self.renderScripts = function() {
+		-each item in modules.scripts
+			+renderScript(item)
+		-return self
+	- }
+	-self.renderStyles = function() {
+		-each item in modules.styles
+			+renderStyle(item)
+		-return self
+	- }
+	-self.addModule = function(directory, files, params){
+		-each file in files
+			case getExtFile(file)
+				when 'js'
+					-self.addScript(checkEndDir(directory) + file, params)
+				when 'css'
+					-self.addStyle(checkEndDir(directory) + file, params)
+	- }
+	-return self
+- }
+-appModules = AppModules()

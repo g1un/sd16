@@ -1,0 +1,38 @@
+.tab
+	display inline-block
+	vertical-align top
+	font-size 18px
+	line-height 20px
+	padding 10px 20px
+	text-transform uppercase
+	font-weight 700
+	color getColor('base')
+	background getColor('light')
+	&:hover
+		color getColor('base') - 20%
+		background getColor('light') + 20%
+	&.__current
+		background #fff
+		color #000
+	.tab-list.__small &
+		font-size 12px
+		line-height 16px
+		padding 12px 15px
+	.tab-list.__invert &
+		color getColor('base')
+		background transparent
+		&:hover
+			background getColor('light')
+		&.__current
+			color #fff
+			background getColor('base')
+
+.tab-list
+	overflow auto
+	white-space nowrap
+
+.tab-page
+	&.__hidden
+		display none
+	html.__not-ready &
+		display none

@@ -1,0 +1,96 @@
+// BASE
+TITLE_CLASS = 'title'
+
+// Paths
+IMAGES_PATH = 'images/'
+LIBS_PATH = 'scripts/libs/'
+STYLES_PATH = 'styles/'
+
+DEFAULT_WIDTH = 1200px
+
+MEDIA_MARGIN = 30px
+
+// LAYOUT
+WRAPPER_PADDING = 20px
+WRAPPER_PADDING_PHONE = 10px
+WRAPPER_WIDTH = 1200px
+
+WRAPPER_MIN_WIDTH = 300px
+WRAPPER_MAX_WIDTH = WRAPPER_WIDTH + (WRAPPER_PADDING*2)
+
+// TEXT
+BASE_SIZE = 16px
+
+MOBILE_SIZE = 16px
+
+FONT_SIZE = BASE_SIZE
+LINE_HEIGHT = 30px
+LINE_HEIGHT = unit(round(LINE_HEIGHT/FONT_SIZE, 3), '')
+
+FONT_COLOR = #242424
+
+
+MAIN_COLOR = #006298
+
+LINK_COLOR = MAIN_COLOR
+LINK_COLOR_HOVER = MAIN_COLOR + 40%
+
+LINK_COLOR_INVERT = FONT_COLOR
+LINK_COLOR_INVERT_HOVER = LINK_COLOR
+
+TEXT_LINK_COLOR = LINK_COLOR
+TEXT_LINK_COLOR_HOVER = LINK_COLOR_HOVER
+
+SELECT_COLOR = MAIN_COLOR
+
+
+ERROR_COLOR = #FF5959
+ERROR_BORDER_COLOR = #FF5959
+
+GOOD_COLOR = #44cd5e
+GOOD_BORDER_COLOR = #44cd5e
+
+BACKGROUND_COLOR = #f5f5f5
+
+// OTHER
+TRANS_SPEED = 0.2s
+
+FORM_ITEM_MARGIN = 20px
+
+COLUMN_MARGIN = 20px
+
+ENABLE_REM_POLYFILL = false
+
+
+BASE_WIDTH = 2560
+
+
+SCREENS = VARS.SCREENS
+
+
+COLORS = {
+	base: MAIN_COLOR,
+	light: #e7f0f7,
+	banners-item-box: #667c87,
+	button-style2: {
+		background: #f9a62c,
+		color: #000000
+	},
+	similarFlatButton: #b7312c,
+	progress: #d5e1ef
+}
+
+
+getColor(name, subname = false)
+	if subname
+		return COLORS[name][subname];
+	else
+		return COLORS[name];
+
+
+INPUT_SIZE = {
+	default: {
+		font-size: 16px,
+		height: 60px
+	}
+}

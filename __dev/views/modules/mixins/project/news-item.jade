@@ -1,0 +1,12 @@
+mixin news-item(item)
+	+namespace("news-item")
+		+el()
+			+el("inner").block-box
+				+el("date")!= getRandomDate()
+				+el("title")
+					a(href="#")!= item.title
+				+el("text")
+					+repeat(4)
+						p!= getTextru( random(20, 50) )
+				+el("detail")
+					a(href="#") Подробнее

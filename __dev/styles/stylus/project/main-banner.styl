@@ -1,0 +1,74 @@
+.main-banner
+	margin-bottom 10px
+	.wrapper-content
+		padding _ 0
+	&-wrapper
+		position relative
+		z-index 0
+		&:before
+			padding-top 56.2%
+			content ''
+			display block
+	&-image
+		position absolute
+		pos 0
+		overflow hidden
+		img
+			position absolute
+			pos -1000px
+			margin auto
+			max-size none
+			size 100% auto
+			&[data-cover-image="not-fill"]
+				size auto 100%
+		&:after
+			content ''
+			position absolute
+			pos _ 0 0
+			size 100% 442px
+			background images('elements/main-banner-shadow.png') bottom center repeat-x
+	&-content
+		position absolute
+		pos 0
+		size 100%
+		display table
+		margin auto
+		text-align center
+		html[data-browser="firefox"] &
+			top 50%
+			bottom auto
+			transform translate(0, -50%)
+	&-inner
+		display table-cell
+		vertical-align middle
+		padding-bottom 80px
+	&-title
+		font-size 72px
+		line-height 80px
+		color #fff
+		font-weight 900
+		text-transform uppercase
+		letter-spacing 20px
+	&-subtitle
+		font-size 42px
+		line-height 50px
+		color #fff
+		font-weight 100
+		text-transform uppercase
+		padding 15px _
+	&-text
+		margin-top 20px
+	+MEDIA("TABLET")
+		&-title
+			font-size 40px
+			line-height 48px
+			letter-spacing 5px
+		&-subtitle
+			font-size 30px
+			line-height 40px
+	+MEDIA("SMALL_TABLET")
+		&-content
+			display none
+		&-wrapper
+			&:before
+				padding-top 370px

@@ -1,0 +1,157 @@
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 300;
+	font-style: normal;
+	src: url('fonts/MyriadProLight.eot');
+	src: url('fonts/MyriadProLight.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProLight.woff2') format('woff2'),
+		 url('fonts/MyriadProLight.woff') format('woff'),
+		 url('fonts/MyriadProLight.ttf') format('truetype'),
+		 url('fonts/MyriadProLight.svg#MyriadProLight') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 300;
+	font-style: italic;
+	src: url('fonts/MyriadProLightItalic.eot');
+	src: url('fonts/MyriadProLightItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProLightItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProLightItalic.woff') format('woff'),
+		 url('fonts/MyriadProLightItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProLightItalic.svg#MyriadProLightItalic') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 400;
+	font-style: normal;
+	src: url('fonts/MyriadProRegular.eot');
+	src: url('fonts/MyriadProRegular.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProRegular.woff2') format('woff2'),
+		 url('fonts/MyriadProRegular.woff') format('woff'),
+		 url('fonts/MyriadProRegular.ttf') format('truetype'),
+		 url('fonts/MyriadProRegular.svg#MyriadProRegular') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 400;
+	font-style: italic;
+	src: url('fonts/MyriadProItalic.eot');
+	src: url('fonts/MyriadProItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProItalic.woff') format('woff'),
+		 url('fonts/MyriadProItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProItalic.svg#MyriadProItalic') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 600;
+	font-style: normal;
+	src: url('fonts/MyriadProSemiBold.eot');
+	src: url('fonts/MyriadProSemiBold.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProSemiBold.woff2') format('woff2'),
+		 url('fonts/MyriadProSemiBold.woff') format('woff'),
+		 url('fonts/MyriadProSemiBold.ttf') format('truetype'),
+		 url('fonts/MyriadProSemiBold.svg#MyriadProSemiBold') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 600;
+	font-style: italic;
+	src: url('fonts/MyriadProSemiBoldItalic.eot');
+	src: url('fonts/MyriadProSemiBoldItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProSemiBoldItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProSemiBoldItalic.woff') format('woff'),
+		 url('fonts/MyriadProSemiBoldItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProSemiBoldItalic.svg#MyriadProSemiBoldItalic') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 700;
+	font-style: normal;
+	src: url('fonts/MyriadProBold.eot');
+	src: url('fonts/MyriadProBold.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProBold.woff2') format('woff2'),
+		 url('fonts/MyriadProBold.woff') format('woff'),
+		 url('fonts/MyriadProBold.ttf') format('truetype'),
+		 url('fonts/MyriadProBold.svg#MyriadProBold') format('svg');
+}
+@font-face {
+	font-family: 'MyriadPro';
+	font-weight: 700;
+	font-style: italic;
+	src: url('fonts/MyriadProBoldItalic.eot');
+	src: url('fonts/MyriadProBoldItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProBoldItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProBoldItalic.woff') format('woff'),
+		 url('fonts/MyriadProBoldItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProBoldItalic.svg#MyriadProBoldItalic') format('svg');
+}
+
+
+
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 300;
+	font-style: normal;
+	src: url('fonts/MyriadProCondLight.eot');
+	src: url('fonts/MyriadProCondLight.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCondLight.woff2') format('woff2'),
+		 url('fonts/MyriadProCondLight.woff') format('woff'),
+		 url('fonts/MyriadProCondLight.ttf') format('truetype'),
+		 url('fonts/MyriadProCondLight.svg#MyriadProCondLight') format('svg');
+}
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 300;
+	font-style: italic;
+	src: url('fonts/MyriadProCondLightItalic.eot');
+	src: url('fonts/MyriadProCondLightItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCondLightItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProCondLightItalic.woff') format('woff'),
+		 url('fonts/MyriadProCondLightItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProCondLightItalic.svg#MyriadProCondLightItalic') format('svg');
+}
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 400;
+	font-style: normal;
+	src: url('fonts/MyriadProCond.eot');
+	src: url('fonts/MyriadProCond.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCond.woff2') format('woff2'),
+		 url('fonts/MyriadProCond.woff') format('woff'),
+		 url('fonts/MyriadProCond.ttf') format('truetype'),
+		 url('fonts/MyriadProCond.svg#MyriadProCond') format('svg');
+}
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 400;
+	font-style: italic;
+	src: url('fonts/MyriadProCondItalic.eot');
+	src: url('fonts/MyriadProCondItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCondItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProCondItalic.woff') format('woff'),
+		 url('fonts/MyriadProCondItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProCondItalic.svg#MyriadProCondItalic') format('svg');
+}
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 700;
+	font-style: normal;
+	src: url('fonts/MyriadProCondBold.eot');
+	src: url('fonts/MyriadProCondBold.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCondBold.woff2') format('woff2'),
+		 url('fonts/MyriadProCondBold.woff') format('woff'),
+		 url('fonts/MyriadProCondBold.ttf') format('truetype'),
+		 url('fonts/MyriadProCondBold.svg#MyriadProCondBold') format('svg');
+}
+@font-face {
+	font-family: 'MyriadProCond';
+	font-weight: 700;
+	font-style: italic;
+	src: url('fonts/MyriadProCondBoldItalic.eot');
+	src: url('fonts/MyriadProCondBoldItalic.eot') format('embedded-opentype'),
+		 url('fonts/MyriadProCondBoldItalic.woff2') format('woff2'),
+		 url('fonts/MyriadProCondBoldItalic.woff') format('woff'),
+		 url('fonts/MyriadProCondBoldItalic.ttf') format('truetype'),
+		 url('fonts/MyriadProCondBoldItalic.svg#MyriadProCondBoldItalic') format('svg');
+}

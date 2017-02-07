@@ -1,0 +1,13 @@
+mixin about-item(item)
+	+namespace("about-item")
+		+el()
+			+el("inner", "a")(href="#").js-about-item-inner
+				+el("image")
+					+img(item.image)(data-cover-image="")
+				+el("content-wrapper")
+					+el("content")
+						+el("content-inner")
+							+el("title")!= item.title
+							+el("text")
+								+repeat(random(1,3))
+									p!= getTextru(random(30,50))

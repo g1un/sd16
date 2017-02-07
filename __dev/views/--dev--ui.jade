@@ -1,0 +1,85 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["UI"]
+	-var hideHeader = true
+	-var hideFooter = true
+block content
+	.wrapper-content
+		-var nav = []
+		-nav.push([ 'pagination', 'Пагинация' ])
+		-nav.push([ 'breadcrumbs', 'Хлебные крошки' ])
+		-nav.push([ 'captcha', 'Captcha' ])
+		-nav.push([ 'tabs', 'Табы' ])
+
+		nav.nav._nav
+			ul.nav-list._list
+				for item in nav
+					li.nav-item._item
+						a(href="##{ item[0] }").nav-link._link!= item[1]
+
+
+		+repeat(30)
+			br
+		h2#pagination Пагинация
+
+		+pagination( range(1, 4).concat( ['...'].concat( range(17, 20) ) ), null, 'Предыдущие →' )
+
+		+repeat(3)
+			br
+		hr
+		+repeat(3)
+			br
+
+		h2#breadcrumbs Хлебные крошки
+
+
+		-breadcrumbs('/').add(["Lorem ipsum dolor.", "Corporis, aspernatur earum?", "Ut nulla, exercitationem!", "Ipsa, repellendus, est."]).render()
+
+		+repeat(3)
+			br
+		hr
+		+repeat(3)
+			br
+
+
+		h2#captcha Captcha
+		.form-line.columns
+			.form-item.column.__1-2
+				.captcha
+					.captcha-image
+						a(href="#" title="Обновить картинку").captcha-refresh.js-captcha-refresh
+						img(src="#{ getImage(178, 38) }", alt="")
+					.captcha-input
+						.form-item
+							input(type="text", name="" placeholder="Код с картинки...")
+			.form-item.column.__1-2
+				.captcha
+					.captcha-image
+						img(src="#{ getImage(178, 38) }", alt="")
+					a(href="#" title="Обновить картинку").captcha-refresh.js-captcha-refresh
+					.captcha-input
+						.form-item
+							input(type="text", name="" placeholder="Код с картинки...")
+
+		+repeat(3)
+			br
+		hr
+		+repeat(3)
+			br
+
+
+		h2#tabs Табы
+		.box.box-content
+			for color in ['green', 'purple', 'pink', 'orange', 'blue']
+				.tabs(class="__#{ color }")
+					.tabs-inner
+						a(href="#" class="__current").tab!= "<<Актвный>>"
+						+repeat(3)
+							a(href="#").tab!= getText(2)
+
+		+repeat(3)
+			br
+		hr
+		+repeat(3)
+			br

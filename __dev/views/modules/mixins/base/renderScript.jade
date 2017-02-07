@@ -1,0 +1,16 @@
+mixin renderScript(script)
+	-if(script.params && script.params.ISIE)
+		!= "<!--[if IE]>"
+	if script.params && script.params.ISNOTIE
+		!= "<!--[if !IE]><!-->"
+	if typeof script == 'object'
+		if script.async != false
+			script(data-async-name="#{ script.async }" data-async-src="#{ script.src }", type="text/javascript")
+		else
+			script(src="#{ script.src }", type="text/javascript")
+	else
+		script(src="#{ script }", type="text/javascript")
+	if script.params && script.params.ISNOTIE
+		!= "<!--<![endif]-->"
+	if script.params && script.params.ISIE
+		!= "<![endif]-->"

@@ -1,0 +1,120 @@
+.complexmap
+	&-map
+		&-block
+			position relative
+			z-index 0
+			max-height 390px
+			overflow hidden
+			&:before
+				content ''
+				display block
+				padding-top 100%
+			area
+				cursor default
+				&[href]
+					cursor pointer
+			img
+				display block
+				margin auto
+				size 100% auto
+				position absolute
+				top 0
+				left 0
+			canvas
+				position absolute
+				top 0
+				left 0
+		&-inner
+			position absolute
+			pos 0 -1000px
+			margin auto
+			img
+				max-size none
+				size auto
+	&-icons
+		position absolute
+		pos 0
+	&-image
+		&,
+		img&
+			position relative
+			z-index 2
+	&-content
+		padding 70px
+		max-width (1350px + 70px*2)
+		margin auto
+		&-inner
+			position relative
+	&-legend
+		margin-top 20px
+		&[data-clearwhitespace="cleared"] &-item
+			margin-right 0
+		&-item
+			width 16.666%
+			margin-right -6px
+			padding-right 10px
+			display inline-block
+			vertical-align top
+			margin-bottom 15px
+			min-width 180px
+			&-icon,
+			&-label
+				display inline-block
+				vertical-align middle
+			&-icon
+				width 22px
+				trans()
+				img
+					display block
+			&-label
+				padding-left 36px
+				margin-left -28px
+				width 100%
+			a
+				color #474747
+			a:hover &-icon
+				opacity 0.8
+	&-selected-pointer
+		position absolute
+		size 107px
+		margin-top -(round((107px + 0px)/2))
+		margin-left -(round((107px + 0px)/2))
+		display none
+		&[style]
+			display block
+		// &:before,
+		&:after
+			position absolute
+			content ''
+			display block
+		// &:before
+		// 	pos -10px
+		// 	border 10px solid #0072bc
+		// 	border-radius 50%
+		// 	background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=') center repeat;/* rgba(0, 0, 0, 0.4) */
+		&:after
+			pos -76px 0 0
+			size 56px 76px
+			background images('icons/map-target_marker.png') center no-repeat
+			margin auto
+	+MEDIA("TABLET")
+		&-content
+			padding 40px
+		&-selected-pointer
+			position absolute
+			size 50px
+			margin-top -(round((50px + 10px)/2))
+			margin-left -(round((50px + 10px)/2))
+			&:before
+				pos -5px
+				border-width 5px
+			&:after
+				size 20px
+				background-image images('icons/map-target__small.png')
+	+MEDIA("PHONE")
+		&-content
+			padding 20px 0
+		&-legend
+			font-size 13px
+			&-item
+				min-width 140px

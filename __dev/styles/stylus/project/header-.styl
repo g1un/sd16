@@ -1,0 +1,232 @@
+.header
+	background #fff
+	position fixed
+	pos 0 0 _
+	z-index 20
+	min-width 300px
+	&-top
+		z-index 20
+		background #fff
+		min-width 300px
+	html.__scrolled &
+		&-top
+			box-shadow 0 0 10px rgba(0, 0, 0, 0.2)
+	.wrapper-content
+		padding _ 0
+	&-content
+		height 68px
+		overflow hidden
+		position relative
+		&-inner
+			display table
+			size 100% 68px
+			table-layout fixed
+			> *
+				display table-cell
+				vertical-align middle
+	// &-left,
+	// &-right
+	// 	width 260px
+	&-left
+		text-align left
+	&-right
+		text-align right
+		&-inner
+			background COLORS['light'];
+			display inline-block
+			vertical-align middle
+			text-align center
+			padding 20px 20px 13px
+	&-center
+		text-align center
+		width 72%
+		&-inner
+			position relative
+	&-logo
+		position absolute
+		pos 0
+		margin auto
+		size 420px auto
+		a,
+		span
+			position absolute
+			pos 0
+			display block
+		&-image
+			width 410px
+			position absolute
+			pos -1000px
+			margin auto
+	&-callback
+		font-size 10px
+		line-height 14px
+		font-weight 900
+		text-transform uppercase
+	&-phone
+		line-height 1
+		margin-top 5px
+		&-number,
+		&-call
+			font-size 12px
+			font-weight 500
+			line-height 16px
+			padding-left 25px
+			display inline-block
+			vertical-align top
+			color #000000
+			position relative
+		&-call
+			display none
+		&-number
+			&:before
+				content ''
+				display block
+				position absolute
+				pos 0 _ 0 0
+				margin auto
+				size 16px
+				background images('icons/callback__small.png') center no-repeat
+				trans()
+				html.modernizr-backgroundsize &
+					background-image images('icons/callback.png')
+					background-size auto 16px
+
+			a&:hover
+				&:before
+					opacity 0.8
+	&-glavstr
+		display inline-block
+		vertical-align middle
+	&-favorite
+		display inline-block
+		vertical-align middle
+		&-button
+			display block
+			font-size 10px
+			line-height 34px
+			padding 17px 20px
+			background getColor('light')
+			white-space nowrap
+			color #000
+			text-transform uppercase
+			&:before,
+			span
+				display inline-block
+				vertical-align top
+			span
+				margin-left 10px
+			&:before
+				content ''
+				size 32px
+				background images('icons/favorite__small.png') center no-repeat
+				trans()
+				transition-property opacity
+				html.modernizr-backgroundsize &
+					background-image images('icons/favorite.png')
+					background-size auto 32px
+			&:hover
+				background getColor('light') - 10%
+				color #000
+			&:active
+				background getColor('light') - 30%
+				&:before
+					opacity 0.5
+	&-glavstr
+		margin-left 20px
+		*
+			display block
+		a img
+			trans()
+			transition-property opacity
+		a:hover img
+			opacity 0.8
+	+MEDIA("DESKTOP")
+		&-center
+			width 55%
+		&-logo
+			text-align center
+			height 25px
+			top 5px
+			bottom auto
+			a,
+			img
+				position static
+				display inline-block
+				vertical-align top
+			img
+				size auto 25px
+	+MEDIA("SMALL_DESKTOP")
+		// &-logo
+		// 	width 210px
+		&-favorite
+			&-button
+				span
+					display none
+	+MEDIA("TABLET")
+		&-center
+			width 220px
+		&-logo
+			top 0
+			bottom 0
+			height auto
+			width 210px
+			a,
+			img
+				size auto
+				position absolute
+		&-glavstr
+			display none
+		&-callback
+			display none
+		&-phone
+			margin 0
+			&-number
+				display none
+			&-call
+				display block
+				background getColor('light')
+				color getColor('base')
+				padding 0
+
+				font-size 14px
+				line-height 18px
+				padding 25px 40px
+				font-weight 900
+				text-transform uppercase
+
+				&:before
+					display none
+				&:hover
+					background getColor('light') - 10%
+					color getColor('base')
+				&:active
+					background getColor('light') - 30%
+					color getColor('base') - 20%
+		&-right
+			&-inner
+				background transparent
+				padding 0
+	+MEDIA("PHONE")
+		position absolute
+		pos 0 0 auto
+		padding-top 68px
+		z-index auto
+		&-top
+			position fixed
+			pos 0 0 _
+		&-logo
+			position relative
+			width auto
+			padding 20px
+			a,
+			span,
+			img
+				position static
+				pos auto
+				size auto
+				display block
+		&-center
+			display none
+		html.__header-nav &
+			&-top
+				z-index 9

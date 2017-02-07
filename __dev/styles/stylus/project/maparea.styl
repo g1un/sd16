@@ -1,0 +1,29 @@
+.maparea
+	user-select none
+	border 1px solid #eee
+	&.__enable &-overlay
+		display none
+	&-overlay
+		position absolute
+		pos 0
+		display block
+		z-index 3
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat
+		&:after
+			content ''
+			display block
+			background images('elements/move.png') center no-repeat
+			size 123px 145px
+			pos 0
+			position absolute
+			margin auto
+	&-move
+		ms-touch-action none
+
+	@media screen and (min-width: 1350px)
+		border-color transparent
+		&-overlay,
+		&-close
+			display none
+		&-move
+			transform none !important

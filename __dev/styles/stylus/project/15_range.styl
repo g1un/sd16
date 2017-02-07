@@ -1,0 +1,23 @@
+.range
+	&-input
+		display table
+		table-layout fixed
+		> *
+			display table-cell
+			vertical-align middle
+			padding-right 7px
+		* ~ *
+			padding-left 7px
+		.form-label
+			text-align center
+			white-space nowrap
+			width 65px
+			padding _ 3px
+			font-size 16px
+			line-height 1
+			&:last-child
+				text-align left
+				padding-left 7px
+	&-line
+		padding 15px 0
+		margin-top 15px

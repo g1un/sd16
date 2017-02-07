@@ -1,0 +1,20 @@
+.documentation
+	&-content-height
+		position absolute
+		pos 0
+		size 0
+		overflow hidden
+		visibility hidden
+		z-index 585
+	.documents-content
+		height 585px
+	+MEDIA("TABLET")
+		&-content-height
+			z-index 300
+		.documents-content
+			height 300px
+	+MEDIA("PHONE")
+		&-content-height
+			z-index 150
+		.documents-content
+			height 150px

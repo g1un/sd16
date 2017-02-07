@@ -1,0 +1,14 @@
+mixin progress(value, mod)
+	if !(value > 0)
+		-value = 30
+	if mod == null
+		-mod = "vertical"
+	.progress(data-mod="#{ mod }")
+		.progress-label
+			| Готовность 
+			span.bold #{ value }%
+		.progress-bar
+			-var selected = 10-(value/10)
+
+			for i in range(1, 10)
+				.progress-bar-value(class="#{ i > selected ? '__current' : '' }")

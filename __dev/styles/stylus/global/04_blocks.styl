@@ -1,0 +1,66 @@
+$$clear
+	&:after
+		content ''
+		display table
+		clear both
+		border-spacing 0
+		border-collapse collapse
+		border 0
+
+clear(arg = false)
+	if (arg != false)
+		clear arg
+	else
+		@extend $$clear
+
+$$resetTitle
+	font inherit
+	color inherit
+	border 0
+	outline none
+	border-radius 0
+	text-transform inherit
+$$resetStyle
+	@extends $$resetTitle
+	margin 0
+	padding 0
+	background transparent
+
+resetStyle()
+	&
+		@extend $$resetStyle
+
+resetTitle()
+	&
+		+$title()
+			&
+				@extend $$resetStyle
+
+$$reset-button
+	padding 0
+	margin 0
+	border 0
+	box-shadow none
+	background transparent
+	outline none
+	text-decoration none
+	display inline-block
+	vertical-align top
+	cursor pointer
+	text-align center
+	user-select none
+
+reset-button()
+	@extend $$reset-button
+
+$$trans
+	transition all TRANS_SPEED
+
+trans(_speed = false)
+	if(!_speed)
+		@extend $$trans
+	else
+		transition all _speed
+
+trans-none()
+	transition all 0s

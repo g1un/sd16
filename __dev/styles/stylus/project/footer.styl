@@ -1,0 +1,148 @@
+.footer
+	position absolute
+	pos _ 0 0
+	font-size 12px
+	line-height 14px
+	padding _ 0 35px
+	&-content
+		display table
+		width 100%
+		color #242424
+		> *
+			display table-cell
+			vertical-align middle
+		> * + *
+			padding-left 40px
+		p
+			font-size 12px
+			line-height 14px
+			margin 0
+		* + p
+			margin-top 12px
+	&-copyright
+		width 245px
+		vertical-align top
+		img
+			display block
+	&-realweb
+		width 140px
+		text-align right
+	&-social
+		width 300px
+		text-align center
+	&-phone
+		width 200px
+		text-align center
+		font-size 16px
+		white-space nowrap
+		&-link
+			&:before,
+			span
+				display inline-block
+				vertical-align middle
+			&:before
+				size 16px
+				content ''
+				background images('icons/callback.png') center no-repeat
+				background-size 16px
+				trans()
+				transition-property opacity
+				margin-right 8px
+				html.modernizr-no-backgroundsize &
+					background-image images('icons/callback__small.png')
+			a&:hover:before
+				opacity 0.8
+		a
+			color inherit
+	&-info
+		width 330px
+		&.__center
+			text-align center
+			width 220px
+		&-inner
+			max-width 300px
+	&-glavstr
+		img
+			max-width none
+
+	+MEDIA("SMALL_DESKTOP")
+		&-content
+			display block
+			text-align center
+			margin _ -20px -20px
+			clear()
+			> *
+				display inline-block
+				vertical-align middle
+				text-align left
+				margin _ -3px
+				width auto
+			> *,
+			> * + *
+				padding _ 20px 20px
+			&[data-clearwhitespace="cleared"] > *
+				margin _ 0
+		&-copyright
+			width 25%
+		&-info
+			width 30%
+			&.__center
+				width 20%
+				text-align center
+		&-phone
+			width 25%
+			text-align right
+		&-glavstr
+			float left
+		&-realweb
+			float right
+	+MEDIA("TABLET")
+		&-content
+			position relative
+			padding 68px _ 75px
+			margin 0
+			> *,
+			> * + *
+				padding 0
+				margin 0
+				display block
+				width auto
+
+			p
+				font-size 16px
+				line-height 18px
+				margin 0
+			* + p
+				margin-top 14px
+		&-social
+			position absolute
+			pos 0 0 _
+			padding 0
+			text-align center
+		&-copyright
+			pos _ 120px 0 0
+			position absolute
+			* + p
+				margin-top 8px
+			img
+				max-width 140px
+		&-glavstr
+			pos _ 0 0 _
+			position absolute
+		&-info.__center
+			width auto
+			text-align left
+			margin-top 14px
+		&-phone,
+		&-realweb
+			text-align left
+			float none
+		&-phone
+			display none
+		&-realweb
+			display none
+		&-link
+			font-weight 700
+	+MEDIA("SMALL_PHONE")
+		&-copyright
+			right 70px

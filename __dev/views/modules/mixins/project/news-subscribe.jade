@@ -1,0 +1,15 @@
+mixin news-subscribe()
+	+namespace("news-subscribe")
+		+el()
+			+el("inner")
+				+el("content")
+					form(action="")
+						+el("title")
+							h3 Подписаться на новости
+						+el("text")
+							p Хотите получать все новости о жилом комплексе «Северная Долина» на свою электронную почту?
+						+el("form")
+							.form-item
+								input(type="text", name="" placeholder="Ваш электронный адрес")
+							.form-submit
+								input(type="submit", value="Подписаться" data-button="")

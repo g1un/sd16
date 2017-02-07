@@ -1,0 +1,32 @@
+mixin flatcard-gallery()
+	+namespace("flatcard-gallery")
+		-var big = []
+		+el()
+			for i in range(1, 8)
+				if i == 1
+					-big.push( images("example/flatcard/1.jpg") )
+				else if i == 2
+					-big.push( getImage(1000, 966) )
+				else
+					-big.push( getImage(random(500, 800), random(500, 800)) )
+			//- +el("preview").js-flatcard-gallery-preview
+			//- 	+el("preview-list")
+			//- 		for i in range(1, 8)
+			//- 			if i == 1
+			//- 				-big.push( images("example/flatcard/1.jpg") )
+			//- 			else if i == 2
+			//- 				-big.push( getImage(1000, 966) )
+			//- 			else
+			//- 				-big.push( getImage(random(500, 800), random(500, 800)) )
+			//- 			+el("preview-item").js-flatcard-gallery-preview-item(class="#{ i == 1 ? '__current' : '' }")
+			//- 				+el("preview-image", "a")(href="#{ big[i - 1] }" data-big-index="#{ (i - 1) }" target="_blank").js-flatcard-gallery-preview-link
+			//- 					if i < 4
+			//- 						+img("example/flatcard/small-" + i + ".jpg" )
+			//- 					else
+			//- 						img(src="#{ getImage(130, 130) }", alt="")
+			+el("big").js-flatcard-gallery-big
+				+el("big-list").js-flatcard-gallery-big-list
+					for item, i in big
+						+el("big-item")(class="#{ i == 0 ? '__current' : '' }").js-flatcard-gallery-big-item
+							+el("big-image", "a")(href="#{ item }" target="_blank" data-lightbox="flatcard-gallery")
+								img(src="#{ item }", alt="")

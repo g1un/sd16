@@ -1,0 +1,1474 @@
+// BASE
+TITLE_CLASS = 'title'
+
+// Paths
+IMAGES_PATH = 'images/'
+LIBS_PATH = 'scripts/libs/'
+STYLES_PATH = 'styles/'
+
+// LAYOUT
+WRAPPER_PADDING = 20px
+WRAPPER_WIDTH = 910px
+
+WRAPPER_MIN_WIDTH = WRAPPER_WIDTH[0]
+WRAPPER_MAX_WIDTH = WRAPPER_WIDTH[1]
+
+// TEXT
+BASE_SIZE = 14px
+FONT_SIZE = BASE_SIZE
+LINE_HEIGHT = 1.3
+FONT_COLOR = #000
+
+// MAIN_COLOR = #cb123e // Старый цвет
+
+MAIN_COLOR = #1e77c7
+MAIN_COLOR2 = #7ccd32
+
+LINK_COLOR = #0056a3
+LINK_COLOR_HOVER = LINK_COLOR + 20%
+
+TEXT_LINK_COLOR = LINK_COLOR
+TEXT_LINK_COLOR_HOVER = TEXT_LINK_COLOR + 20%
+
+SELECT_COLOR = MAIN_COLOR
+
+// OTHER
+TRANS_SPEED = 0.2s
+
+
+
+HEADER_HEIGHT = 52px
+relative-prop(arg1, args...)
+	_allIsNumber = true
+	_props = ()
+	_values = ()
+	baseProp = false
+	if length(arg1) == 1
+		baseProp = arg1
+	else
+		args = arguments
+
+	for arg in args
+		if(!isNumber(arg[1]))
+			_allIsNumber = false
+		else
+			push(_values, arg[1])
+			push(_props, arg[0])
+	if baseProp != false && _allIsNumber
+		add-property(baseProp, _values)
+	else
+		for _propValue, index in _values
+			_propName = ( baseProp != false ?  baseProp + '-' : '' ) + _props[index]
+			add-property(_propName, _propValue)
+
+content-center(w = 100%, h = w, important = false )
+	important = (important == true ? !important : )
+	position relative
+	width w important
+	height h important
+
+	> *
+		position absolute
+		top 0 important
+		bottom 0 important
+		left 0 important
+		right 0 important
+		margin auto important
+		max-height 100%
+		max-width 100%
+size(width, height = width)
+	relative-prop('width' width, 'height' height)
+
+max-size(width, height = width)
+	relative-prop('max-width' width, 'max-height' height)
+min-size(width, height = width)
+	relative-prop('min-width' width, 'min-height' height)
+
+pos(top, right = top, bottom = top, left = right)
+	relative-prop('top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// top top
+	// right right
+	// left left
+	// bottom bottom
+
+
+isNumber(val)
+	if( !(val < 0 || val >= 0) && val != 'auto' && val != 'none' )
+		false
+	else
+		true
+
+
+margin(top, right = top, bottom = top, left = right)
+	relative-prop('margin', 'top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// if(isNumber(top) && isNumber(right) && isNumber(bottom) && isNumber(left))
+	// 	margin arguments
+	// else
+	// 	if(isNumber(top))
+	// 		margin-top top
+	// 	if(isNumber(right))
+	// 		margin-right right
+	// 	if(isNumber(left))
+	// 		margin-left left
+	// 	if(isNumber(bottom))
+	// 		margin-bottom bottom
+
+
+padding(top, right = top, bottom = top, left = right)
+	relative-prop('padding', 'top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// if(isNumber(top) && isNumber(right) && isNumber(bottom) && isNumber(left))
+	// 	padding arguments
+	// else
+	// 	if(isNumber(top))
+	// 		padding-top top
+	// 	if(isNumber(right))
+	// 		padding-right right
+	// 	if(isNumber(left))
+	// 		padding-left left
+	// 	if(isNumber(bottom))
+	// 		padding-bottom bottom
+
+border-box()
+	box-sizing padding-box
+	box-sizing border-box
+	
+background-clip()
+	background-clip padding-box
+
+
+// in css -> columns(5)
+columns(count)
+	.column-{count}
+		width floor( (95% / count), 1 )
+		display inline-block
+		vertical-align top
+
+// in css -> width-perc(15)
+width-perc(perc)
+	.perc-{perc}
+		width: (perc)%
+		
+anim-link(type = $type_anim_link)
+	position relative
+	text-decoration none !important
+	overflow hidden
+	
+	if( type == 1)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+		
+	if (type == 2)
+		&:after,
+		&:before
+			content ''
+			display block
+			position absolute
+			bottom 0
+			size(50%, 0)
+			max-width 50%
+			border-bottom 1px solid
+			trans()
+		&:after
+			right 0
+		&:before
+			left 0
+			
+		&:hover
+			text-decoration none
+			&:after,
+			&:before
+				size(0)
+	
+	if( type == 3)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+
+opacity(val)
+	if val > 1
+		val = val/100
+	opacity val
+	zoom 1
+	-ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity="' + val*100 + '")')
+
+
+gr(startColor, endColor)
+	background: -moz-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,startColor), color-stop(100%, endColor));
+	background: -webkit-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -o-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -ms-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: linear-gradient(to bottom,  startColor 0%, endColor 100%);
+
+Button(params, btnName = '')
+	_bg = params.background
+	_color = params.color
+	_bgHover = params.hover.background
+	_colorHover = params.hover.color
+	_bgActive = params.active.background
+	_colorActive = params.active.color
+	_colorName = ''
+	if(btnName != '')
+		_colorName = '="' + btnName + '"'
+		btnName = '.__' + btnName
+	else
+		_colorName = ""
+
+	&{btnName},
+	&[data-button-color{ _colorName }]
+		background-color _bg
+		color _color
+
+	&{btnName}:hover,
+	&{btnName}:focus,
+	&[data-button-color{ _colorName }]:hover,
+	&[data-button-color{ _colorName }]:focus
+		if(_bgHover)
+			background-color _bgHover
+		if(_colorHover)
+			color _colorHover
+	&{btnName}:active,
+	&[data-button-color{ _colorName }]:active
+		if(_bgActive)
+			background-color _bgActive
+		if(_colorActive)
+			color _colorActive
+
+	&{btnName}[disabled],
+	&{btnName}.disabled,
+	&{btnName}.__loading
+		background-color _bg !important
+		color _color !important
+
+	&[data-button-color{ _colorName }].__border,
+	&{btnName}.__border
+		background-color transparent
+		color _bg
+		_borderColor = _bg
+		if( params.border && params.border['border-color'] )
+			_borderColor = params.border['border-color']
+		border 2px solid _borderColor
+		&:hover,
+		&:focus
+			_borderColor = _bgHover
+			if( params.border && params.border.hover && params.border.hover['border-color'] )
+				_borderColor = params.border.hover['border-color']
+			color _colorHover
+			border-color _bgHover
+			background-color _bgHover
+		&:active
+			_borderColor = _bgActive
+			if( params.border && params.border.active && params.border.active['border-color'] )
+				_borderColor = params.border.active['border-color']
+			color _colorActive
+			border-color _bgActive
+			background-color _bgActive
+		&[disabled],
+		&.__loading,
+		&.disabled
+			background-color #fff !important
+			border-color _bg !important
+Buttons(styles)
+	for _btnName, _btnParams in styles
+		if(_btnName == 'default')
+			_btnName = ''
+		Button(_btnParams, _btnName )
+
+
+replace(expr, str, val)
+	expr = "'" + clone(expr) + "'"
+	// return typeof(expr)
+	for e, i in expr
+		if str == e
+			expr[i] = val
+	return expr
+
+catStr(str, start, end = false)
+	// res = ''
+	res = ''
+	_str = "'" + str + "'"
+	return _str[0][0]
+	return length(_str[0][0])
+	for i in _str
+		res = res + ' ' + i
+		if i >= start
+			if(end == false || i < end)
+				res = res + _str[i]
+	return res
+
+rem(val)
+	return (round((val/BASE_SIZE)*1000)/1000)rem
+
+ifLandscape(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth) and (orientation: landscape)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth) and (orientation: landscape)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth) and (orientation: landscape)
+					{block}
+			else
+				@media screen and (orientation: landscape)
+					{block}
+
+screenWidth(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth)
+					{block}
+
+STYLES(file)
+	return STYLES_PATH + file
+LIBS(file)
+	return LIBS_PATH + file
+IMAGES(file)
+	return IMAGES_PATH + file
+
+// in css -> images("test.png")
+images(file)
+	return url( IMAGES( file ) )
+$button()
+	[type="submit"],
+	[type="button"],
+	[type="reset"],
+	button
+		{block}
+
+$textInput(onlyInput = false)
+	if(onlyInput)
+		[type="text"], textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"]
+			{block}
+	else
+		[type="text"], select, textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.ui-selectmenu-button
+			{block}
+
+
+$textbox(onlyInput = false)
+	+$textInput(onlyInput)
+		{block}
+
+$hN(n)
+	h{ n },
+	.{ TITLE_CLASS }-{n}
+		{block}
+
+$title()
+	h{ 1 },
+	.{ TITLE_CLASS }-{1},
+	h{ 2 },
+	.{ TITLE_CLASS }-{2},
+	h{ 3 },
+	.{ TITLE_CLASS }-{3},
+	h{ 4 },
+	.{ TITLE_CLASS }-{4},
+	h{ 5 },
+	.{ TITLE_CLASS }-{5},
+	h{ 6 },
+	.{ TITLE_CLASS }-{6}
+		{block}
+
+$h1()
+	+$hN(1)
+		{block}
+$h2()
+	+$hN(2)
+		{block}
+$h3()
+	+$hN(3)
+		{block}
+$h4()
+	+$hN(4)
+		{block}
+$h5()
+	+$hN(5)
+		{block}
+$h6()
+	+$hN(6)
+		{block}
+$title-1()
+	.{ TITLE_CLASS }-1
+		{block}
+$title-2()
+	.{ TITLE_CLASS }-2
+		{block}
+$title-3()
+	.{ TITLE_CLASS }-3
+		{block}
+$title-4()
+	.{ TITLE_CLASS }-4
+		{block}
+$title-5()
+	.{ TITLE_CLASS }-5
+		{block}
+$title-6()
+	.{ TITLE_CLASS }-6
+		{block}
+$title-all()
+	.{ TITLE_CLASS }-1,
+	.{ TITLE_CLASS }-2,
+	.{ TITLE_CLASS }-3,
+	.{ TITLE_CLASS }-4,
+	.{ TITLE_CLASS }-5,
+	.{ TITLE_CLASS }-6
+		{block}
+$h-all()
+	h1,h2,h3,h4,h5,h6
+		{block}
+
+
+$big()
+	.big
+		{block}
+$small()
+	small,
+	.small
+		{block}
+$bold()
+	.bold,
+	b,
+	strong
+		{block}
+$italic()
+	i,
+	.italic
+		{block}
+
+
+$_noopacity()
+	html.modernizr-no-opacity &
+		{block}
+
+$_nofilter()
+	html.modernizr-no-cssfilters &
+		{block}
+$$clear
+	&:after
+		content ''
+		display table
+		clear both
+		border-spacing 0
+		border-collapse collapse
+		border 0
+
+clear(arg = false)
+	if (arg != false)
+		clear arg
+	else
+		@extend $$clear
+
+$$resetStyle
+	font inherit
+	color inherit
+	margin 0
+	padding 0
+	background transparent
+	border 0
+	outline none
+	border-radius 0
+
+resetStyle()
+	&
+		@extend $$resetStyle
+
+resetTitle()
+	&
+		+$title()
+			resetStyle()
+
+$$reset-button
+	padding 0
+	margin 0
+	border 0
+	box-shadow none
+	background transparent
+	outline none
+	text-decoration none
+	display inline-block
+	vertical-align top
+	cursor pointer
+	text-align center
+	user-select none
+
+reset-button()
+	@extend $$reset-button
+
+$$trans
+	transition all TRANS_SPEED
+
+trans(_speed = false)
+	if(!_speed)
+		@extend $$trans
+	else
+		transition all _speed
+
+trans-none()
+	transition all 0s
+base-font()
+	font-family 'Open Sans', Century Gothic,CenturyGothic,AppleGothic,Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+	font-size FONT_SIZE
+	color FONT_COLOR
+	font-weight 500
+main
+	overflow hidden
+	// display none
+main *
+	border-box()
+.wrapper-content
+	clear()
+
+body
+	padding-top HEADER_HEIGHT
+	border-box()
+
+html.__not-ready
+	body
+		&:before
+			display block
+			position fixed
+			pos 0
+			background #fff
+			z-index 99999999
+			content ''
+main
+	+$h2()
+		font-size 30px
+		line-height 34px
+		font-weight 700
+		text-transform uppercase
+		color #3d3d3d
+main
+	+$textbox()
+		font-size 12px
+		line-height 20px
+		padding 10px 15px
+		color #4b4b4b
+		font-weight 400
+	.form-item
+		margin-bottom 14px
+.tab-page
+	&.__hidden
+		display none
+.ui-widget
+	font inherit
+
+
+.lb-dataContainer
+	position absolute
+	bottom 100%
+	left 0
+	right 0
+	margin auto
+	padding 0 0 5px
+Button(params)
+	add-property('border-color', params.default['background'])
+	for propKey,propVal in params.default
+		add-property(propKey, propVal)
+
+	&:hover
+		add-property('border-color', params.hover['background'])
+		for propKey,propVal in params.hover
+			add-property(propKey, propVal)
+
+	&:active
+		add-property('border-color', params.active['background'])
+		for propKey,propVal in params.active
+			add-property(propKey, propVal)
+
+buttons = {
+	default: {
+		default: {
+			background: MAIN_COLOR2,
+			color: #fff
+		},
+		hover: {
+			background: MAIN_COLOR2 - 10%,
+			color: #fff
+		},
+		active: {
+			background: MAIN_COLOR2 - 20%,
+			color: #ccc
+		}
+	}
+}
+
+
+[data-button]
+	reset-button()
+	trans()
+	&[disabled],
+	&.disabled
+		opacity 0.7
+		cursor default
+
+
+	font-size 16px
+	line-height 24px
+	font-weight 600
+	padding 10px 20px
+	border 1px solid transparent
+
+	img,
+	img + *
+		display inline-block
+		vertical-align middle
+	img + *
+		margin-left 15px
+	img
+		trans()
+		transition-property opacity
+	&:active
+		img
+			opacity 0.7
+
+
+for buttonName, buttonParams in buttons
+	if buttonName == 'default'
+		buttonName = ''
+	[data-button={ '"' + buttonName + '"' }]
+		Button(buttonParams)
+
+[data-button-mod*="wide"]
+	padding _ 45px
+
+[data-button-size="middle"]
+	font-size 14px
+	line-height 18px
+	padding 9px 16px
+	&[data-button-mod*="wide"]
+		padding _ 30px
+
+// [data-button-size="small"]
+// 	font-size 14px
+// 	line-height 20px
+// 	padding 5px 10px
+// 	font-weight 100
+// 	&[data-button-mod*="wide"]
+// 		padding _ 20px
+// 	img
+// 		max-height 21px
+// 	img + *
+// 		margin-left 8px
+
+// [data-button-mod*="basket"]
+// 	padding 12px _ 13px
+// 	img
+// 		margin -4px _
+
+// [data-button-mod*="border"]
+// 	border-width 1px
+// 	background #fff
+.slick-slider
+	.slick-arrow
+		size 45px
+		display block
+		reset-button()
+		position relative
+		background MAIN_COLOR2
+		trans()
+		&:after
+			content ''
+			display block
+			position absolute
+			pos 0
+			margin auto
+			border 8px solid #fff
+			border-top 6px solid transparent
+			border-bottom 6px solid transparent
+			size 0
+			trans()
+		&:hover
+			background MAIN_COLOR2 - 10%
+		&:active
+			background MAIN_COLOR2 - 20%
+			&:after
+				border-left-color #ccc
+				border-right-color #ccc
+		&.slick-disabled
+			opacity 0.5
+			cursor default
+			background MAIN_COLOR2
+			&:after
+				border-left-color #fff
+				border-right-color #fff
+
+		&.slick-prev
+			&:after
+				border-left 0
+		&.slick-next
+			&:after
+				border-right 0
+main
+	*[data-popup-open]
+		cursor pointer
+.popup
+	display none
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+	background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMQkBKqBwABNgC8qkuEXwAAAABJRU5ErkJggg==') center repeat
+	background rgba(16, 26, 18, 0.5)
+	z-index 999
+	transform translate3d(0,0,0)
+	overflow auto
+
+	&.__relative
+		position absolute
+		left auto
+		right auto
+		bottom auto
+		size(auto)
+		background transparent
+		overflow visible
+		margin-top 10px
+		border 1px solid #dfdfdf
+		border-box()
+		.popup-box
+			position relative
+			margin auto
+			width auto
+			padding 23px 30px 30px
+			width 410px
+		&.__relative-top
+			margin-top -10px
+		&.__relative-bottom
+			margin-top 0
+	&.__relative,
+	&.__small-title
+		.popup-title
+			font-size 18px
+			line-height 24px
+			margin-bottom 15px
+			padding-right 40px
+			font-2()
+
+	&-box
+		size(740px, auto)
+		position absolute
+		top 0
+		left 0
+		right 0
+		background #fff
+		border-box()
+		padding 25px 30px
+		max-width 100%
+		margin 60px auto
+
+	&-title
+		font-size 24px
+		line-height 30px
+		color #3d3d3d
+		margin-bottom 20px
+		padding-right 35px
+		text-transform uppercase
+
+	&-close
+		position absolute
+		size 32px
+		top 0
+		right 0
+		cursor pointer
+		z-index 1
+		display block
+		background images('icons/close.png') center no-repeat
+		opacity 0.8
+		trans()
+		&:hover
+			opacity 1
+		&:active
+			opacity 0.6
+	&.__message &
+		&-box
+			width 400px
+			text-align center
+		&-title
+			padding 0
+	
+	&-content
+		&,
+		p
+			font-size 14px
+			line-height 20px
+	&-content-close
+		margin-top 20px
+		text-align center
+	
+	&-faq-content
+		&.__loading
+			height 200px
+			background images('preloader-48.gif') center no-repeat
+.about
+	background #f5f5ed
+	padding 60px 10px 7px
+	margin-right -6px
+	&-title
+		text-align center
+		margin-bottom 34px
+	&-item
+		display inline-block
+		vertical-align top
+		width 33.3%
+		padding _ 20px 55px 70px
+		margin-right -6px
+		font-size 12px
+		line-height 18px
+		color #545351
+		&-title
+			font-weight 700
+			color #252422
+			position relative
+			&:before
+				content ''
+				display block
+				position absolute
+				size 10px 2px
+				background #02509b
+				left -25px
+				top 7px
+.contacts
+	position relative
+	background #0166b4
+	color #fff
+	z-index 0
+	a
+		color #fff
+		text-decoration none
+	// &-content
+	&-map
+		height 555px
+		position relative
+		z-index 4
+		background images('preloader-48.gif') center no-repeat
+		background-color #fff
+	&-feedback
+		width 248px
+		margin-left 83px
+		background #0254a0
+		padding 22px 30px 32px
+		position relative
+		z-index 5
+		&-wrapper
+			position absolute
+			pos 101px 0 _
+		.form-item,
+		.form-submit
+			input
+				display block
+				width 100%
+		.form-item
+			+$textbox()
+				border-color transparent
+		.form-title
+			font-size 28px
+			line-height 32px
+			font-weight 700
+			color #fff
+			text-transform uppercase
+			margin-bottom 22px
+		.form-submit
+			margin-top -4px
+	&-info
+		display table
+		width 100%
+		&-item
+			display table-cell
+			vertical-align middle
+			padding 24px 0 24px 82px
+			line-height 16px
+			&-icon,
+			&-content
+				display inline-block
+				vertical-align middle
+			&-icon
+				size 40px
+				position relative
+				background #9fa4aa
+				border-radius 50%
+				margin-right 5px
+				img
+					display block
+					position absolute
+					pos 0
+					margin auto
+					max-size 90%
+			&-title
+				font-weight 600
+			&-label
+				font-size 12px
+			&-title ~ &-label
+				margin-top 3px
+.faq
+	padding 65px 0 86px
+	&-title,
+	&-subtitle
+		text-align center
+	&-subtitle
+		margin-top 2px
+		font-size 11px
+		line-height 12px
+	&-content
+		clear()
+		margin-top 55px
+		&-left
+			float left
+			width 57%
+			padding-left 5px
+			margin-top 2px
+		&-right
+			float right
+			width 40.2%
+			padding 9px 15px 15px
+			background #f4f1e2
+			border-radius 8px
+			position relative
+			&,
+			p
+				font-size 11px
+				line-height 16px
+			&:after
+				content ''
+				position absolute
+				width 0
+				height 0
+				border-top 20px solid #f4f1e2
+				border-left 20px solid transparent
+				bottom -20px
+				right 20px
+				transform skewX(25deg)
+				
+	&-item
+		display inline-block
+		vertical-align top
+		width 50%
+		margin 0 -6px 0 0
+		padding 20px 10px 20px 40px
+		font-size 11px
+		line-height 14px
+		font-weight 700
+		&-text
+			display none
+	&-link
+		position relative
+		text-decoration none
+		border-bottom 1px dashed
+		&:before
+			position absolute
+			pos 0 _ 0 -40px
+			margin auto
+			content ''
+			display block
+			size 25px
+			background images('icons/question.png') center no-repeat
+	
+	&-text
+		&-title
+			text-align center
+			font-size 30px
+			line-height 34px
+			margin-bottom 20px
+			color #3d3d3d
+		&-content
+			max-height 500px
+			overflow auto
+			padding-right 30px
+			margin-right -30px
+			* + p
+				margin-top 20px
+.gallery
+	padding 0 0 75px
+	&-content
+		position relative
+	&-left
+		position absolute
+		pos 0 38.51% 0 0
+	&-big
+		display block
+		pos 0
+		margin auto
+		max-size 100%
+		position absolute
+		&-block
+			&.__loading
+				&:after
+					content ''
+					display block
+					position absolute
+					pos 0
+					size 70px
+					background images('preloader-48.gif') center no-repeat
+					background-color #fff
+					margin auto
+
+	&-right
+		width 43.68%
+		margin 0 0 0 auto
+		background #f5f5ed
+		padding 67px 55px 75px 70px
+	&-title
+		margin-bottom 15px
+	&-text
+		margin-top 15px
+		&,
+		p
+			font-size 12px
+			line-height 18px
+	&-previews
+		margin-top 15px
+		margin 20px -6px 0
+		position relative
+		padding-bottom 53px
+		&-list
+			clear()
+		&-item
+			display block
+			float left
+			size (75px + 7*2)
+			padding 7px
+			img
+				display block
+				trans()
+		&-link
+			display block
+			&:hover
+				img
+					opacity 0.8
+
+		.slick-arrow
+			position absolute
+			bottom -53px
+			&.slick-prev
+				left 7px
+			&.slick-next
+				left 67px
+.header,
+.footer
+	background #0254a0
+	color #fff
+	cursor default
+	&-content
+		display table
+		width 100%
+		> *
+			display table-cell
+			vertical-align middle
+	&-logo
+		width 105px
+		img
+			display block
+	&-phone
+		width 150px
+		text-align right
+		font-size 18px
+		font-weight 700
+		a
+			color #fff
+			text-decoration none
+	&-nav
+		&-list
+			padding 0 12px 0 18px
+		&-item
+			display inline-block
+			vertical-align middle
+			padding 0 20px 0 0
+			font-size 10px
+			text-transform uppercase
+			font-weight 700
+		&-link
+			color #fff
+			text-decoration none
+			&.__current
+				color #7ccd32
+				cursor default
+
+.header
+	position fixed
+	pos 0 0 _
+	transform translate3d(0,0,0)
+	z-index 10
+
+.footer
+	&-nav
+		padding-left 15px
+		&-item
+			padding-right 27px
+	&-phone
+		padding-right 32px
+		width 182px
+.products
+	padding 65px 0 21px
+	&-title
+		text-align center
+		margin-bottom 32px
+	&-switch
+		display table
+		margin 0 auto 38px
+		border 2px solid #015290
+		&-item
+			display table-cell
+			vertical-align middle
+			padding 11px 13px
+			font-size 12px
+			line-height 18px
+			color #015290
+			text-decoration none
+			font-weight 700
+			&.__current
+				background #015290
+				color #fff
+	&-page
+		&.__wait
+			visibility hidden
+	&-list
+		padding _ 60px
+		min-height 350px
+		.slick-arrow
+			top 0
+			bottom 0
+			position absolute
+			margin auto
+			&.slick-prev
+				left 0
+			&.slick-next
+				right 0
+	&-item
+		clear()
+		&-image,
+		&-content
+			display block
+			float left
+		$imageWidth = 57
+		&-image
+			size ($imageWidth)% auto
+			position relative
+			&:before
+				content ''
+				display block
+				padding-top 74.42%
+				size 100% 0
+			img
+				display block
+				position absolute
+				pos 0 0 _
+				margin auto
+				max-size 100%
+		&-content
+			width 41%
+			float right
+			margin-top -5px
+		&-title
+			font-size 14px
+			line-height 20px
+			font-weight 700
+		&-label
+			font-size 12px
+			line-height 18px
+		& &-info
+			margin-top 15px
+			&-line
+				padding-left 32px
+				margin-bottom 15px
+			&-title
+				reset-button()
+				font-size 12px
+				line-height 22px
+				font-weight 700
+				color #0067b4
+				position relative
+				display inline-block
+				vertical-align top
+				&,
+				a
+					text-decoration none
+				&:before
+					position absolute
+					top 0
+					bottom 0
+					left -30px
+					margin auto
+					size 22px
+					border-radius 50%
+					background #0067b4
+					content ''
+					display block
+				.ui-icon
+					display none
+			&-content
+				padding 0
+				overflow hidden
+				&,
+				p
+					font-size 10px
+					line-height 15px
+				p
+					margin 0
+				* + p
+					marign-top 15px
+.quote-banner
+	&-content
+		display block
+		position relative
+		margin 0 -1px*(WRAPPER_PADDING)
+		> img
+			display block
+	&-text
+		position absolute
+		pos 63px _ _ 71px
+		width 320px
+		text-align justify
+		&:before
+			content ''
+			display block
+			size 63px 55px
+			background images('icons/quote-double.png') center no-repeat
+			margin-bottom 20px
+		
+		&,
+		p
+			font-size 11px
+			line-height 18px
+			color #323234
+			font-style italic
+		p
+			margin 0
+	&-label
+		margin-top 10px
+		text-align right
+		font-style normal
+		font-weight 700
+.shop-points
+	padding 110px _ (115px - 48px)
+	&-title
+		text-align center
+	&-city
+		text-align center
+		font-size 12px
+		margin-top -2px
+		> *
+			display inline-block
+			vertical-align middle
+	&-cities
+		position relative
+		&:hover &-list
+			display block
+		&-list
+			position absolute
+			top 100%
+			left -20px
+			text-align left
+			border 1px solid #eee
+			background #fff
+			display none
+		&-current
+			font-weight 600
+			color #195db0
+			&:after
+				display inline-block
+				vertical-align middle
+				border-left 3px solid transparent
+				border-right 3px solid transparent
+				border-top 6px solid #195db0
+				margin-left 5px
+				content ''
+		&-item
+			display block
+			text-decoration none
+			padding 5px 20px
+			white-space nowrap
+			margin 0
+			color #444
+			&:hover,
+			&.__current
+				background #f8f8f8
+			&.__current
+				color #444
+				cursor default
+			& ~ &
+				margin-top 5px
+	&-list
+		padding 0 100px
+		margin-top 42px
+		&.__hidden
+			display none
+	&-item
+		display inline-block
+		vertical-align top
+		margin 0 -3px
+		padding 0 40px 48px
+		width 33.3333%
+		&-title
+			font-weight 700
+			margin-bottom 7px
+		&-adress,
+		&-phones
+			font-size 11px
+			line-height 14px
+		&-adress
+			margin 7px 0
+		&-phones
+			margin-top 7px
+.subscribe
+	padding 40px 0
+	background #0254a0
+	color #fff
+	&-content
+		display table
+		margin auto
+		> *
+			display table-cell
+			vertical-align middle
+			padding 0 7px
+		.form-item
+			+$textbox()
+				border-color transparent
+		.form-title
+			font-weight 600
+			width 210px
+.top-banner
+	margin-bottom 47px
+	&-columns
+		display table
+		width 100%
+	&-image,
+	&-switch
+		display table-cell
+	&-image
+		width 66.6%
+		vertical-align top
+		&-wrapper
+			position relative
+			display block
+			&:before
+				padding-top 60.34%
+				content ''
+				display block
+				size 100% 0
+			img
+				position absolute
+				pos 0 0 _
+				margin auto
+				max-size 100%
+	&-switch
+		width 33.2%
+		vertical-align middle
+		padding-top 36px
+		&-wrapper
+			display inline-block
+			vertical-align top
+		&-item
+			with 100%
+			&-link
+				display inline-block
+				font-size 12px
+				font-weight 700
+				line-height 16px
+				padding 10px 17px
+				text-decoration none
+				min-width 122px
+				width 100%
+				color #277bd1
+				position relative
+				&:hover
+					color #7fcc30
+				&.__current
+					color #fff
+					background #7fcc30
+					cursor default
+					&:before
+						content ''
+						position absolute
+						top 0
+						bottom 0
+						right 100%
+						size 0
+						border-top 6px solid transparent
+						border-bottom 6px solid transparent
+						border-right 7px solid #7fcc30
+						margin auto
+	&-info
+		margin 20px -20px 0
+		padding 0 25px 0 60px
+		&-inner
+			width 100%
+			display table
+			table-layout fixed
+		&-item
+			display table-cell
+			vertical-align top
+			padding 0 20px
+			&-icon,
+			&-content
+				display block
+				float left
+			&-icon
+				size 51px
+				position relative
+				z-index 1
+				img
+					display block
+					max-size 100%
+			&-content
+				width 100%
+				padding-left 66px
+				margin-left -51px
+				padding-top 10px
+				font-size 12px
+				line-height 14px
+			&-title
+				margin-bottom 5px
+				color #1e1e1e
+				font-weight 600
+			&-label
+				color #6b6b6b
+.where-buy
+	&-line
+		padding 7px 0
+		text-align center
+		background #0254a0

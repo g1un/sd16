@@ -1,0 +1,56 @@
+mixin payment(options)
+	-if(options == null) { options = {} }
+	+namespace("payment")
+		+el().block&attributes(attributes)
+			.wrapper-content
+				.wrapper-inner-content
+					.block-header
+						if options['title']
+							.block-title
+								h1!= options['title']
+						+namespace("tablink")
+							+el()
+								+el("list")(data-tab-group="")
+									for item, index in ["Ипотека", "Военная ипотека", "Рассрочка", "100% оплата"]
+										+el("item")
+											+el("link", "a")(href="#" class="#{ index == 0 ? '__current' : '' }" data-tab=".js-payment-page-#{ index }")!= item
+					.block-content
+						+payment-content({index: 0})
+							mixin _content()
+								+payment-table(paymentCreditTable)
+							mixin _aside()
+								+calculator({title: 'Расчет стоимости ежемесячного платежа и суммы кредита', index: 1, disabledAmount: options['disabledAmount']})
+
+						+payment-content({index: 1})
+							mixin _content()
+								+payment-table(paymentCreditTable)
+							mixin _aside()
+								+calculator({title: 'Расчет стоимости ежемесячного платежа и суммы кредита', index: 2, disabledAmount: options['disabledAmount']})
+
+						+payment-content({index: 2})
+							mixin _content()
+								.block-box
+									p Клиенты компании могут воспользоваться одним из двух вариантов рассрочки платежа.
+									p
+										b Беспроцентная рассрочка на 3 месяца.
+										br
+										| Это схема оплаты возможна как на этапе строительства, так и после ввода дома в эксплуатацию.
+										br
+										| Минимальный первоначальный взнос составляет 10%. В случае, если вносимая сумма превышает 70% стоимости квартиры, предоставляется дополнительная скидка в размере 3%.
+									p #[b Рассрочка платежа до 12 месяцев], но не дольше планового срока ввода объекта в эксплуатацию.
+										br
+										| Первый взнос на студии и однокомнатные квартиры от 30%, на двух- и трехкомнатные квартиры от 20%. 
+										br
+										| На остаток начисляется 12% годовых, что эквивалентно уровню ставок в рамках программ ипотечного кредитования с господдержкой.
+									p Согласно условиям рассрочки, оставшаяся стоимость выплачивается по индивидуально составленному графику. В частности, существует возможность оплаты без промежуточных платежей.
+							mixin _aside()
+								+calculator({title: 'Расчет стоимости ежемесячного платежа', type: 'installment', index: 3, disabledAmount: options['disabledAmount']})
+
+						+payment-content({index: 3, columns: false, hideBox: true})
+							+el("fullpay")
+								+el("fullpay-title")
+									| ООО «Главстрой-СПб» предлагает выгодные условия для тех, кто готов внести 100% стоимости жилья
+									br
+									span.big Цена квартиры в случае полной оплаты сокращается на 5%
+								+el("fullpay-image")
+									+img('example/payment100-bg.jpg')

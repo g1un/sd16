@@ -1,0 +1,13 @@
+mixin main-banner()
+	+namespace("main-banner")
+		+el()
+			.wrapper-content
+				+el("wrapper")
+					+el("image")
+						+img('example/main-banner.jpg')(data-cover-image="")
+					+el("content")
+						+el("inner")
+							+el("title") Самые востребованные
+							+el("subtitle") квартиры на Парнасе
+							+el("text")
+								a(href="#" data-button="transparent-black" data-button-size="middle" data-scrollto="#anchor-about-project") подробнее о проекте

@@ -1,0 +1,38 @@
+.header-top
+	.wrapper-content
+		.header-content
+			.header-content-inner
+				.header-left
+					.header-left-inner(data-clearwhitespace="")
+						.header-nav-button-block
+							a(href="#" data-button="").header-nav-button.js-header-nav-button
+								.header-nav-button-line-wrapper
+									.header-nav-button-line.__first
+									.header-nav-button-line.__second
+									.header-nav-button-line.__third
+						.header-favorite
+							a(href="#").header-favorite-button
+								span Избранное (0)
+						.header-glavstr.js-header-glavstr
+							a(href="#")
+								+img("glavstr.png")
+				.header-center
+					.header-center-inner(data-clearwhitespace="")
+						.header-nav-wrapper.js-header-nav-wrapper
+							.wrapper-content
+								.header-nav-wrapper-content.js-header-nav-wrapper-content
+									-var leftNav  = headerNav.slice( 0, Math.round(headerNav.length/2) );
+									-var rightNav = headerNav.slice( Math.round(headerNav.length/2) );
+									-menuFromArray(leftNav , 'header', '__left')
+									-menuFromArray(rightNav, 'header', '__right')
+				.header-right
+					.header-right-inner(data-clearwhitespace="")
+						.header-callback
+							a(href="#").header-callback-link Перезвоните мне
+						.header-phone
+							a(href="tel:+7 (812) 680-40-40").header-phone-number.js-header-phone-number
+								span (812) 680-40-40
+							a(href="tel:+7 (812) 680-40-40").header-phone-call Позвонить
+								//- span.header-phone-number (812) 680-40-40
+								//- span.header-phone-label Позвонить
++logo("header")

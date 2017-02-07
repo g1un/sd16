@@ -1,0 +1,14 @@
+-var isCurrentElement = function(label) {
+	-var isCurrent = false
+	-var _index = -1
+	-each _curPage, index in currentPageTitle
+		if !Array.isArray(_curPage)
+			-_curPage = [_curPage]
+
+		for curPage in _curPage
+			-if(curPage.toLowerCase() == label.toLowerCase())
+				-isCurrent = true
+				-_index = index
+
+	-return [isCurrent, (_index == currentPageTitle.length - 1), _index ]
+- }

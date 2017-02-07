@@ -1,0 +1,38 @@
+-var __currentModuleName;
+-var getModuleName = function(){ return __currentModuleName; }
+-var __parentName = "";
+
+
+mixin module(moduleName)
+	-var __oldModuleName = __currentModuleName;
+	-__currentModuleName = moduleName;
+
+	-var __elementsCustomAttributes = {}
+	-var setElementAttributes = function(elementName, _attributes){ __elementsCustomAttributes[elementName] = _extend(getElementAttributes(elementName), _attributes); };
+	-var getElementAttributes = function(elementName){ return __elementsCustomAttributes[elementName] || {}; };
+	-var getParentName = function(){ return __parentName ? __parentName + "-" : "" }
+
+	mixin setElementAttributes(elementName, _attributes)
+		-setElementAttributes(elementName, _attributes)
+
+	mixin element(elementName, elementTag)
+		-if(elementTag == null) elementTag = 'div';
+		-var __oldParentName = __parentName;
+		-__parentName = elementName;
+		-var customAttibute = getElementAttributes(elementName);
+		-customAttibute = _extend(customAttibute, attributes);
+		#{ elementTag }(class="#{ __currentModuleName + ( elementName ? '-' + elementName : '' ) }")&attributes(customAttibute)
+			block
+		-__parentName = __oldParentName
+
+	mixin el(elementName, elementTag)
+		+element(elementName, elementTag)&attributes(attributes)
+			block
+
+	mixin child(childName, childTag)
+		+element(getParentName() + childName, childTag)&attributes(attributes)
+			block
+
+	block
+
+	-__currentModuleName = __oldModuleName;

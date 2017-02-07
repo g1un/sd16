@@ -1,0 +1,27 @@
+-var lastTextIndex = 1
+
+-var getText = function(countWords, useRu) {
+	if !(countWords > 0)
+		-countWords = 10
+	-var result = ""
+	-var dict = Lorem
+	if (useRu)
+		-dict = Loremru
+
+	for i in range(countWords)
+		-i = parseInt(i)
+		-lastTextIndex = lastTextIndex + ( (20 % (i == 0 ? lastTextIndex : i)) + 1)
+		-if(lastTextIndex > 5000)
+			-lastTextIndex = Math.round(lastTextIndex/32.123)
+		if i != 0
+			-result += ' '
+		-var _length = dict.length - 1
+		-var key2 = ( (countWords + 1) * ( lastTextIndex ) )
+		-var id = key2 % _length
+		-result += dict[ id ]
+		if i == 0
+			-result = result.split('')
+			-result[0] = (result[0] + '').toUpperCase()
+			-result = result.join('')
+	-return result
+- }

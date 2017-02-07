@@ -1,0 +1,51 @@
+.reserve
+	&-info
+		margin-bottom 25px
+	&-info-item
+		display inline-block
+		vertical-align top
+	&-info-item ._em
+		font-weight 700
+		color #004481
+		margin-right 20px
+	&-sex-radios
+		padding-top 5px
+		.radio
+			margin 0 0 5px
+			float left
+			& ~ .radio
+				margin-left 5px
+			label
+				padding 0
+				&:before
+					display none
+				span
+					font-size 20px
+					line-height 24px
+					text-transform uppercase
+					padding 12px 5px
+					min-width 50px
+					display block
+					size auto 50px
+					text-align center
+					border 1px solid #fff
+			input:checked + label,
+			input.-checked + label
+				span
+					background #cddff0
+					border-color #cddff0
+	&-real-adress
+		position: relative;
+		z-index 0
+	&-real-adress.disabled .reserve-real-adress-locker
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: block;
+		background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=") center repeat;
+		z-index: 99999;
+		cursor: default;
+		.popup-box &
+			background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/uH7JgAJFgOC2jI9yQAAAABJRU5ErkJggg==") center repeat;/*rgba(#e7f0f7, 0.7)*/

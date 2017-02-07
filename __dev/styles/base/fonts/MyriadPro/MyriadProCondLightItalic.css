@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'MyriadProCond';
+    font-weight: 300;
+    font-style: italic;
+    src: url('fonts/MyriadProCondLightItalic.eot');
+    src: url('fonts/MyriadProCondLightItalic.eot') format('embedded-opentype'),
+         url('fonts/MyriadProCondLightItalic.woff2') format('woff2'),
+         url('fonts/MyriadProCondLightItalic.woff') format('woff'),
+         url('fonts/MyriadProCondLightItalic.ttf') format('truetype'),
+         url('fonts/MyriadProCondLightItalic.svg#MyriadProCondLightItalic') format('svg');
+}

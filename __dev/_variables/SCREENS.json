@@ -1,0 +1,9 @@
+[
+	["WIDE_DESKTOP", 1741],
+	["DESKTOP", 1740],
+	["SMALL_DESKTOP", 1270],
+	["TABLET", 1024],
+	["SMALL_TABLET", 760],
+	["PHONE", 600],
+	["SMALL_PHONE", 470]
+]

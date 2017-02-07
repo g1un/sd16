@@ -1,0 +1,62 @@
+.construction-progress
+	position relative
+	z-index 0
+	.block-header
+		position absolute
+		pos 45px 0 _
+		z-index 1
+	&-filter
+		margin-top 25px
+		&-item
+			&,
+			&.form-item
+				margin 0 3px
+				display inline-block
+				vertical-align middle
+	.gallery
+		margin _ -20px
+	// &-gallery
+	// 	margin _ -20px
+	// 	position relative
+	// 	z-index 0
+	// 	&-item
+	// 		display block
+	// 		position relative
+	// 		overflow hidden
+	// 		background #fff
+	// 		&:before
+	// 			display block
+	// 			padding-top 46.2%
+	// 			content ''
+	// 		img
+	// 			position absolute
+	// 			pos 0
+	// 			max-size none
+	// 			margin auto
+	// 			size auto 100%
+	// 			&[data-cover-image="fill"]
+	// 				size 100% auto
+	// 	html.js &-list > &-item ~ &-item
+	// 		display none
+	+MEDIA("TABLET")
+		.block-header
+			position static
+			margin-bottom 10px
+		&-filter
+			.ui-selectmenu-button
+				padding 12px 45px 13px 10px
+				height 45px
+				.span.ui-icon
+					width 45px
+		.gallery
+			margin-top 10px
+	+MEDIA("PHONE")
+		&-filter
+			.form-item
+				&.__month
+					width 160px
+				&.__year
+					width 105px
+	+MEDIA("SMALL_PHONE")
+		.gallery
+			margin _ -10px

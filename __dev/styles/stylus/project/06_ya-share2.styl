@@ -1,0 +1,60 @@
+.ya-share2
+	& &__item
+		font-family inherit
+	& &__list
+		margin-bottom -5px
+	& &__list &__item
+		padding 0
+		margin-right 5px
+		margin-bottom 5px
+		&:before
+			display none
+	&__item
+		z-index auto
+	&__badge,
+	&__icon,
+	&__link
+		display block
+	&__badge
+		padding 5px 10px
+	&__link_more &
+		&__badge
+			padding 0
+			background #fff
+		&__icon
+			padding 4px 9px
+			box-sizing content-box
+			background transparent
+			&:before
+				height 24px
+				margin auto
+	& &__title,
+	& &__badge
+		vertical-align middle
+	&__popup
+		max-height 54px*5
+		overflow auto
+	& &__item_more .ya-share2__popup_direction_bottom
+		top 34px
+	&__link:active &__badge
+		box-shadow inset 0 2px 0 0 rgba(0,0,0,0.1)
+	&__icon:active
+		box-shadow none
+	& &__counter&__counter_visible
+		margin -5px -10px -5px 10px
+		padding 5px 8px
+		font-size 16px
+		background #fff
+		color #242424
+		position relative
+		&:before
+			content ''
+			position absolute
+			pos 0 100% 0 auto
+			size 0
+			border 0
+			border-top 3px solid transparent
+			border-bottom 3px solid transparent
+			border-right 3px solid #fff
+			margin auto
+			background transparent

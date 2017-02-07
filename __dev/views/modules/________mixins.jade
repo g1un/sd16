@@ -1,0 +1,682 @@
+-Array.prototype.last = function() {
+	-return this[this.length-1];
+- }
+
+mixin scriptsBlock()
+	// [ START ] Скрипты библиотек
+
+
+	| <!--[if !IE]><!-->
+	| <script src="#{ libs() + 'jquery/jquery-2.1.4.min.js' }" type="text/javascript"></script>
+	| <!--<![endif]-->
+	| <!--[if IE]>
+	| <script src="#{ libs() + 'jquery/jquery-1.11.3.min.js' }" type="text/javascript"></script>
+	| <![endif]-->
+	| <!--[if lt IE 9]><script type='text/javascript' src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+	-appModules.renderScripts()
+	// [  END  ] Скрипты библиотек
+
+	// [ START ] Скрипты проекта
+	-appProject.renderScripts()
+
+	each _script in scriptFiles
+		+renderScript(__STATIC_DIR + "scripts/" + _script)
+	// [  END  ] Скрипты проекта
+
+
+-var _extend = function(obj1, obj2)
+	-var result = {}
+	-for(key in obj1)
+		-result[key] = obj1[key]
+	-for(key in obj2)
+		-result[key] = obj2[key]
+	-return result
+
+-var pageUrl = function( fileName, isDev ) {
+	-return './' + ( isDev ? devPrefix : '' ) + fileName + '.html'
+- }
+
+-var images = function(file) {
+	if checkUrl(file)
+		-return file
+	-return IMAGE_PATH + file
+- }
+
+-var checkUrl = function(url){
+	if url.indexOf('http') == 0 || url.indexOf('//') == 0
+		-return true
+	-return url.indexOf(__STATIC_DIR) == 0
+- }
+
+-var fileUrl = function(url) {
+	if url.indexOf(__STATIC_DIR) == 0 || url.indexOf('//') == 0 || url.indexOf('http') == 0
+		-return url
+	if url.indexOf('./') == 0
+		-url = url.replace('./', '')
+	-return __STATIC_DIR + url
+- }
+
+-var libs = function(name){
+	if !name
+		-name = ''
+	-name = 'libs/' + name
+	-return fileUrl(name)
+- }
+
+-var LIBS = libs
+-var STYLES = function(name){
+	if !name
+		-name = ''
+	-name = 'styles/' + name
+	-return fileUrl(name)
+- }
+-var SCRIPTS = function(name){
+	if !name
+		-name = ''
+	-name = 'scripts/' + name
+	-return fileUrl(name)
+- }
+-var IMAGES = function(name){
+	if !name
+		-name = ''
+	-name = 'images/' + name
+	-return fileUrl(name)
+- }
+
+mixin space()
+	| &nbsp;
+-if (!Array.prototype.last)
+	-Array.prototype.last = function(){
+		-return this[this.length - 1];
+	- }
+
+-var random = function(min, max){
+	-return Math.round(Math.random() * (max - min) ) + min
+- }
+
+-var CreateID = function() {
+	-var perfix = 'uniqid-'
+	-var lastIndex = 100000
+	-return function() {
+		-lastIndex++
+		-return perfix + lastIndex
+	- }
+- }
+-var createId = CreateID()
+
+-var isCurrentElement = function(label) {
+	-var isCurrent = false
+	-var _index = -1
+	-each _curPage, index in currentPageTitle
+		if !Array.isArray(_curPage)
+			-_curPage = [_curPage]
+
+		for curPage in _curPage
+			-if(curPage.toLowerCase() == label.toLowerCase())
+				-isCurrent = true
+				-_index = index
+
+	-return [isCurrent, (_index == currentPageTitle.length - 1), _index ]
+- }
+
+-var getCurrentTitle = function(){
+	-var current = currentPageTitle[ currentPageTitle.length - 1 ]
+	if Array.isArray(current)
+		-return current[ current.length - 1 ]
+	-return current
+- }
+
+
+-
+	var getRandomDate = function(){
+		var self = function(showDay, showMonth, showYear){
+			var result = [];
+			if(showDay   !== false){ result.push( self.day   ); }
+			if(showMonth !== false){ result.push( self.month ); }
+			if(showYear  !== false){ result.push( self.year  ); }
+
+			return result.join(' ');
+		}
+		self.day = random(1, 28) 
+		self.month = (["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"])[ random(0,11) ]
+		self.year = (new Date()).getFullYear() - 1;
+		self.toString = function(){
+			return self.day + " " + self.month + " " + self.year;
+		}
+
+		return self;
+	}
+
+-var menuFromArray = function(arr, className, moreClass, params)
+	-if (!params)
+		-params = {}
+
+	-var _class = function(str) {
+		-if(str)
+			-str = "-" + str + " _" + str
+		-else
+			-str = ""
+		-return className + "-nav" + str
+	- }
+
+	mixin item-link(item, attrs)
+		#{ isLink ? 'a' : 'span' }&attributes(attrs)
+			if params['itemLabelBefore']
+				-params.itemLabelBefore(item)
+			span(class="#{ _class('label') }")!= item.label
+			if typeof item['labelAfter'] == 'string'
+				!= item.labelAfter
+			if params['itemLabelAfter']
+				if typeof params['itemLabelAfter'] == 'function'
+					-params.itemLabelAfter
+
+	mixin item-wrapper()
+		if params['item-wrapper']
+			div(class="#{ _class('item-wrapper') }")
+				block
+		else
+			block
+
+	mixin item-content(item, hasSub)
+		-isCurrent = isCurrentElement(item.label)
+		-isLink = !(isCurrent[0] && isCurrent[1]) && item['href']
+		-isCurrent = isCurrent[0]
+		-attrs = (item.attrs || {})
+		if attrs.class == null
+			-attrs.class = ''
+		-attrs.class += ' ' + _class('link') + ( isCurrent ? ' __current' : '' )
+		if isLink
+			-attrs.href = (item.href == '#' ? url(item.label) : url(item.href))
+		if params['wrapItemAttrs']
+			-params.wrapItemAttrs({item: item, subLevel: subLevel, isCurrent: isCurrent, isLink: isLink}, attrs)
+		if params['beforeItem']
+			-params['beforeItem'](item, {createClass: _class})
+
+		+item-link(item, attrs)
+
+		if params['afterItem']
+			-params['afterItem'](item, {createClass: _class})
+		block
+
+	mixin item-self(hasSub)
+		if params['item-link-only']
+			block
+		else
+			div(class="#{ _class('item') } #{ ( hasSub ? '__sub-inside' : '' ) }")
+				block
+
+	mixin item(item, hasSub)
+		+item-self(hasSub)
+			+item-wrapper()
+				+item-content(item, hasSub)
+					block
+
+	mixin list(arr, subLevel)
+		div(class="#{ _class( subLevel ? 'sub' : 'list' ) }")
+			-for(var i = 0, _len = arr.length; i < _len; i++)
+				-var item = arr[i]
+				-var hasSub = Array.isArray(arr[i + 1])
+				if item['html']
+					+parseJsonHtml(item)
+				else
+					+item(item, hasSub)
+						if hasSub
+							+menu( arr[++i], (subLevel + 1) )
+
+	mixin menu(arr, subLevel)
+		if subLevel && params['subWrapper']
+			div(class="#{ _class('sub-wrapper') }")
+				+list(arr, subLevel)
+		else
+			+list(arr, subLevel)
+
+	nav(class="#{ _class() } #{ moreClass ? moreClass : '' }")
+		+menu(arr, 0)
+
+
+mixin popup(name, params)
+	-if(!params)
+		-params = {}
+	mixin before-title()
+		//-|
+	mixin after-title()
+		//|
+	mixin content()
+		//|
+	block
+	.popup.js-popup(class="__#{ name } js-popup-#{ name } #{ (params.class ? params.class : '' ) }" data-popup-name="#{ name }")&attributes(attributes)
+		-if(params.hideClose !== true)
+			a(href="#" data-popup-close="").popup-close
+		.popup-box
+			.popup-inner
+				-if(params.title)
+					.popup-title
+						+before-title()
+						.popup-title-text
+							!= params.title
+						+after-title()
+				-if(params.subtitle)
+					.popup-subtitle!= params.subtitle
+				.popup-content
+					+content()
+
+-var breadcrumbs = function(sep, params){
+	if params == null
+		-params = {}
+	if params['main'] == null
+		-params['main'] = 'Главная'
+
+	-var list = [  ]
+	if params['main']
+		-list.push({label: params['main'], url: 'main.html'})
+
+	-var addHandle = function(el) {
+		-if(Array.isArray(el))
+			-each _el in el
+				if Array.isArray(_el)
+					-list.push({label: _el[0], url: _el[1]})
+				else
+					-list.push({label: _el, url: _el})
+		-else
+			-list.push({label: el, url: el})
+		-return _breadcrumbs
+	- }
+
+	-var renderHandle = function(lastLink) {
+		nav.breadcrumbs
+			div.breadcrumbs-list
+				-var isFirst = true
+				-var isLast = false
+				-each item, index in list
+					-isLast = (index == (list.length - 1))
+					-if (!isFirst)
+						div.breadcrumbs-sep!= sep
+					-else
+						-isFirst = false
+					div.breadcrumbs-item
+						if isLast
+							if params['hideLast'] != true
+								span.breadcrumbs-link.__current!= item.label
+						else
+							a(href="#{ url(item.url) }").breadcrumbs-link!= item.label
+		-return _breadcrumbs
+	- }
+
+
+	-var _breadcrumbs = {}
+	-_breadcrumbs.add = addHandle
+	-_breadcrumbs.render = renderHandle
+
+
+	-return _breadcrumbs
+- }
+
+-var getImage = function(width, height, min, max) {
+	-if( !min && min != 0 )
+		-min = 5
+	-if( !max && max != 0 )
+		-max = 8
+	-var hex = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+	-hex = [ '4', '6', '8', 'a', 'c']
+	-var getColor = function() {
+		-var tmp = ''
+		-for(var i = 0; i < 6; i++)
+			-tmp += hex[random(0, hex.length - 1)]
+		-return tmp
+	- }
+	-var color = getColor()
+	-var text = width + ( width != height ? ('%C3%97' + height) : '' )
+	-var textSize = Math.min(Math.round(height/5), Math.round(width/5))
+	if textSize < 9
+		-textSize = 9
+	-var link = 'https://placeholdit.imgix.net/~text?txtsize=' + textSize + '&bg=' + color + '&txtclr=ffffff&txt=' + text + '&w=' + width + '&h=' + height
+	//- -link = '1223'
+
+	//- -link = placeholditLoader(link)
+	-return link
+- }
+
+mixin pagination(arg1, first, last)
+	-start = 1
+	-end = 10
+	-var list = []
+	-if (Array.isArray(arg1)){
+		-list = arg1
+	- } else {
+		-if(typeof arg1 == 'number'){
+			-end = arg1
+		- }
+		-for(var i = start; i <= end; i++) {
+			-list.push(i)
+		- }
+	- }
+	nav.pagination
+		div.pagination-list
+			-if(first != null) {
+				div.pagination-prev
+					span.pagination-link.__current: span!= first
+			- }
+			each item, index in list
+				div.pagination-item
+					if index == 0
+						span(class="#{ item == '...' ? '__breaker' : '' }").pagination-link.__current: span!= item
+					else
+						a(href="#" class="#{ item == '...' ? '__breaker' : '' }").pagination-link: span!= item
+			- if(last != null) {
+				div.pagination-next
+					a(href="#").pagination-link: span!= last
+			- }
+
+
+mixin logo(className, params)
+	-
+		if(params == null){
+			params = {}
+		}
+	div(class="#{ className }-logo")
+		-var attr = {}
+		if !isCurrentElement('Главная')[0]
+			-attr.href = params.href || 'main.html'
+		#{ isCurrentElement('Главная')[0] ? 'span' : 'a' }&attributes(attr)&attributes(attributes)
+			img(src="#{ params.customImage ? images(params.customImage) : images('logo.png') }", alt="" class="#{ className }-logo-image")
+		block
+
+mixin renderScript(script)
+	-if(script.params && script.params.ISIE)
+		!= "<!--[if IE]>"
+	if script.params && script.params.ISNOTIE
+		!= "<!--[if !IE]><!-->"
+	if typeof script == 'object'
+		if script.async != false
+			script(data-async-name="#{ script.async }" data-async-src="#{ script.src }", type="text/javascript")
+		else
+			script(src="#{ script.src }", type="text/javascript")
+	else
+		script(src="#{ script }", type="text/javascript")
+	if script.params && script.params.ISNOTIE
+		!= "<!--<![endif]-->"
+	if script.params && script.params.ISIE
+		!= "<![endif]-->"
+
+mixin renderStyle(styleSrc)
+	link(href="#{ styleSrc }", rel="stylesheet", type="text/css")
+
+-var getExtFile = function(fileName) {
+	-return fileName.split('.').last()
+- }
+
+-var checkEndDir = function(dir) {
+	if dir[dir.length - 1] != '/'
+		-dir += '/'
+	-return dir
+- }
+
+-var AppModules = function() {
+	-var modules = {}
+	-modules.styles = []
+	-modules.scripts = []
+	-var self = {}
+	-self.addScript = function(scriptSrc, params) {
+		if params == null
+			-params = {}
+
+		-modules.scripts.push({src: fileUrl(scriptSrc), async: (params['async'] ? params['async'] : false), params: params})
+		-return self
+	- }
+	-self.addStyle = function(styleSrc) {
+		-modules.styles.push(styleSrc)
+		-return self
+	- }
+	-self.renderScripts = function() {
+		-each item in modules.scripts
+			+renderScript(item)
+		-return self
+	- }
+	-self.renderStyles = function() {
+		-each item in modules.styles
+			+renderStyle(item)
+		-return self
+	- }
+	-self.addModule = function(directory, files, params){
+		-each file in files
+			case getExtFile(file)
+				when 'js'
+					-self.addScript(checkEndDir(directory) + file, params)
+				when 'css'
+					-self.addStyle(checkEndDir(directory) + file, params)
+	- }
+	-return self
+- }
+-appModules = AppModules()
+
+-appProject = AppModules()
+
+-var Saver = function() {
+	-current = null
+	-self = function(val) {
+		-if(val != null)
+			-current = val
+			-return self
+		-else
+			-return current
+	- }
+	-return self
+- }
+
+mixin repeat(count, saver)
+	-for(var i = 0; i < count; i++)
+		-if(typeof saver == 'function')
+			-saver(i)
+		block
+
+-var range = function(start, end) {
+	if !end
+		-end = start
+		-start = 0
+	else
+		if start < end
+			-end++
+	-var res = []
+	-for(var i = start; (start > end ? i >= end : i < end); (start > end ? i-- : i++))
+		-res.push(i)
+	-return res
+- }
+
+mixin image(url, _class)
+	-
+		if(typeof attr != 'object'){
+			attr = {}
+		}
+	img(src="#{ images(url) }", alt="" class="#{ (_class ? _class : '') }")&attributes(attributes)
+
+mixin img(url, _class)
+	+image(url, _class)&attributes(attributes)
+
+-var lastTextIndex = 1
+
+-var getText = function(countWords, useRu) {
+	if !(countWords > 0)
+		-countWords = 10
+	-var result = ""
+	-var dict = Lorem
+	if (useRu)
+		-dict = Loremru
+
+	for i in range(countWords)
+		-i = parseInt(i)
+		-lastTextIndex = lastTextIndex + ( (20 % (i == 0 ? lastTextIndex : i)) + 1)
+		-if(lastTextIndex > 5000)
+			-lastTextIndex = Math.round(lastTextIndex/32.123)
+		if i != 0
+			-result += ' '
+		-var _length = dict.length - 1
+		-var key2 = ( (countWords + 1) * ( lastTextIndex ) )
+		-var id = key2 % _length
+		-result += dict[ id ]
+		if i == 0
+			-result = result.split('')
+			-result[0] = (result[0] + '').toUpperCase()
+			-result = result.join('')
+	-return result
+- }
+-var getTextru = function(countWords){
+	-return getText(countWords, true);
+- }
+
+
+-var numberWithCommas = function(x, sep) {
+	if !sep
+		-sep = ' '
+	-return (x + "").replace(/[ ]+/, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+- }
+
+mixin rub()
+	-rub()
+
+-var rub = function() {
+	if rubSymbol == true
+		-return ""
+	-return rubSymbol
+- }
+
+-var price = function(val) {
+	-return numberWithCommas(val, '&nbsp;') + "&nbsp;" + rub()
+- }
+
+-var inArray = function(arr, index) {
+	-return arr[index % arr.length]
+- }
+
+-var withoutInArray = function(arr, indexes) {
+	-var tmp = arr.slice(0)
+	-var res = []
+	for i in indexes
+		if i < arr.length
+			-tmp[i] = null
+	for el, index in tmp
+		if el != null
+			-res.push(el)
+	-return res
+- }
+
+mixin realweb(text, realweb1, realweb2)
+	if !text
+		-text = "Сделано&nbsp;в&nbsp;"
+
+	if realweb1 == null && realweb2 == null
+		-realweb1 = "риал"
+		-realweb2 = "веб"
+
+	mixin rw()
+		if realweb1 && realweb2
+			//- | <span class="_blue">#{ realweb1 }</span><!--  --><span class="_red">#{ realweb2 }</span>
+			span._blue!= realweb1
+			span._red!= realweb2
+		else
+			!= realweb1 || realweb2
+
+	span.realweb
+		| !{ text }#[a(href="http://www.realweb.ru/" target="_blank"): +rw()]
+
+
+-var INCLUDE_MODULE = function (moduleName) {
+	-var render = JADE_COMPILE_FILE(MODULE_PATH + moduleName + '.jade')
+	!= render()
+- }
+
+-var MODULE = INCLUDE_MODULE
+
+
+-var cloneObject = function (obj) {
+	-var clone = {};
+	-for(var i in obj)
+		-if(typeof(obj[i])=="object" && obj[i] != null)
+			-clone[i] = cloneObject(obj[i]);
+		-else
+			-clone[i] = obj[i];
+	-return clone;
+- }
+
+
+-var randomDate = function(monthArr) {
+	if monthArr == null
+		-monthArr = strMonths
+
+	-var day = random(1, 28)
+	-var month = random(12)
+	-var year = new Date().getFullYear()
+
+	-return [day, month, year]
+- }
+
+
+mixin wrapper-content()
+	.wrapper-content
+		block
+
+
+-var url = function(pageName) {
+	if pageName == null
+		-return "#"
+	-var result;
+	-for(var key in urlList)
+		if key.toLowerCase() == pageName.toLowerCase()
+			-result = urlList[key]
+			-break
+	-if(result == null)
+		-result = urlList['_default'];
+		-if(result == null)
+			if (pageName.indexOf('http') > -1 || pageName.indexOf('html') > -1 || pageName[0] == '#' )
+				-result = pageName
+			else
+				-result = '#'
+	-else
+		if result.indexOf('html') == -1 && result.indexOf('http') == -1 && result.indexOf('#') != 0
+			-result = result + ".html"
+
+	-return result
+- }
+
+-var getLoopElement = function(arr, index) {
+	if arr.length == 0
+		-return undefined
+	-return arr[ (index % arr.length) ]
+- }
+
+-var __NameSpaceName;
+
+-var getNamespace = function(){
+	-return __NameSpaceName;
+- }
+
+mixin namespace(__name)
+	-var __oldNameSpaceName = __NameSpaceName
+	-__NameSpaceName = __name
+	mixin el(_elname, _eltag)
+		#{ _eltag || 'div' }(class="#{ __NameSpaceName + ( _elname ? '-' + _elname : '' ) }")&attributes(attributes)
+			block
+	block
+	-__NameSpaceName = __oldNameSpaceName
+
+mixin fa(_name)
+	i(class="fa fa-#{ _name }")
+
+mixin parseJsonHtml(item)
+	mixin renderItem(_item)
+		#{ _item.tagname || 'div' }&attributes(_item.attributes || {})
+			if _item['content']
+				+parseJsonHtml(_item['content'])
+
+	if item
+		- if(Array.isArray( item )){
+			- item.forEach(function(_item){
+				+parseJsonHtml(_item)
+			- })
+		- } else if( typeof item == 'object' ) {
+			+renderItem(item)
+		- } else if( typeof item == 'string' ) {
+			!= item
+		- }
+
+
+include _customMixin

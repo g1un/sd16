@@ -1,0 +1,33 @@
+mixin banners()
+	+namespace("banners")
+		+el()
+			.wrapper-content
+				+el("wrapper")
+					+el("list").js-banners-list
+						-var titles = ["Военная ипотека", "Коммерческая недвижимость", "Lorem ipsum dolor", "Molestiae minima suscipit"]
+						-var boxes = [["<span class=\"big\">2.1</span> млн.руб."], ["<span class=\"big\">150 000</span>", "руб./м2"], ["<span class=\"big\">999 999</span>", "руб./м2"], ["<span class=\"big\">99.9</span>", "млн.руб."]]
+						for title, index in titles
+							+el("item")
+								+el("item-inner")
+									+el("item-link", "a")(href="#")
+									+el("item-image")
+										if index < 2
+											+img("example/main-banner-" + (index + 2) + ".jpg")(data-cover-image="")
+										else
+											img(src="#{ getImage(840, 267) }", alt="" data-cover-image="")
+									+el("item-content")
+										+el("item-aside")
+											+el("item-aside-inner")
+												+el("item-title")!= title
+												+el("item-detail")
+													a(href="#" data-button="style2" data-button-size="small" data-button-mod="wide") подробнее
+										+el("item-box")
+											+el("item-box-inner")
+												+el("item-box-line")
+													if index == 0
+														span.icon-star.__left
+													span от
+													if index == 0
+														span.icon-star.__right
+												for line in boxes[index]
+													+el("item-box-line")!= line

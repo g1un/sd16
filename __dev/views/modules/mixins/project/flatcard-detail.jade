@@ -1,0 +1,32 @@
+mixin flatcard-detail()
+	+namespace("flatcard-detail")
+		+el()
+			+el("content").js-flatcard-detail-content
+				+progress()
+				+el("group").__table
+					+el("table")
+						for line in flatcardDetailTable
+							+el("row")
+								+el("cell").__label: span!= line.label
+								+el("cell").__value: span!= line.value
+				+el("group").__price
+					+el("price")
+						+el("price-value") 2 106 340 руб.
+						+el("price-bottom")
+							+el("price-label") Стоимость квартиры с учетом скидок
+							+el("price-payment")
+								a(href="#") Варианты оплаты
+				+el("group")
+					p Сейчас просматривает 2 человека
+
+				+el("group").__buttons
+					+el("buttons")
+						+el('button').__reserve
+							a(href="#" data-button="" data-button-size="huge" data-popup-open="reserve")
+								span Забронировать квартиру
+						+el('button').__favorite
+							a(href="#" data-button="darkgray" data-button-size="huge")
+								+fa('star-o')
+								span Добавить в избранное
+				+el("group").__share
+					+share()

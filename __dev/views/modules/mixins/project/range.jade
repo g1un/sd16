@@ -1,0 +1,12 @@
+mixin range(options)
+	+namespace("range")
+		+el()
+			+el("input")
+				.form-item
+					input(type="text", name="" value="" placeholder="#{ options.min ? options.min : '0' }")
+				.form-label !{ options.label ? options.label + " " : "" }—
+				.form-item
+					input(type="text", name="" value="" placeholder="#{ options.max ? options.max : '9 999 999' }")
+				.form-label !{ options.label ? options.label : "" }
+			+el("line")
+				+bx-ui-slider()

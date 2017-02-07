@@ -1,0 +1,50 @@
+[{
+	"label":"9 очередь",
+	"icon": "placemark-3.png",
+	"trigger": "que9"
+},
+{
+	"label":"11 очередь",
+	"icon": "placemark-10.png",
+	"trigger": "que11"
+},
+{
+	"label":"Квартиры в сданных домах",
+	"icon": "placemark-5.png",
+	"trigger": "rented"
+},
+{
+	"label":"Детский сад",
+	"icon": "child.png",
+	"trigger": "child"
+},
+{
+	"label":"Школа",
+	"icon": "school.png",
+	"trigger": "school"
+},
+{
+	"label":"Кварталы проектируются",
+	"icon": "inprocess.png",
+	"trigger": "under-constr"
+},
+{
+	"label":"10 очередь",
+	"icon": "placemark-17.png",
+	"trigger": "que10"
+},
+{
+	"label":"Дома проектируются",
+	"icon": "placemark-9.png",
+	"trigger": "homesInProject"
+},
+{
+	"label":"Детский сад (предусмотрен проектом)",
+	"icon": "child_inprocess.png",
+	"trigger": "childInProject"
+},
+{
+	"label":"Школа (предусмотрена проектом)",
+	"icon": "school_inprocess.png",
+	"trigger": "schoolInProject"
+}]

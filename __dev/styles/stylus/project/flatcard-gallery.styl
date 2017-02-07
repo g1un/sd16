@@ -1,0 +1,146 @@
+.flatcard-gallery
+	width 50%
+	float left
+	clear()
+	padding-right 10px
+	// &-preview
+	// 	width 135px
+	// 	float left
+	// 	position relative
+	// 	z-index 1
+	// 	overflow hidden
+	// 	max-height 400px
+	// 	overflow auto
+	// 	padding-right 5px
+	// 	margin-right -5px
+	// 	&-item
+	// 		width 100%
+	// 		& ~ &
+	// 			margin-top 20px
+	// 	&-image
+	// 		display block
+	// 		position relative
+	// 		background #fff
+	// 		border 2px solid transparent
+	// 		trans()
+	// 		&:before
+	// 			padding-top 100%
+	// 			content ''
+	// 			display block
+	// 		img
+	// 			position absolute
+	// 			pos 0
+	// 			max-size 100%
+	// 			margin auto
+	// 		&:hover
+	// 			border-color getColor('base') + 20%
+	// 	&-item.__current &-image
+	// 		border-color getColor('base')
+	// 		cursor default
+	&-big
+		width 100%
+		// padding-left 140px
+		// margin-left -130px
+		// float left
+		background #fff
+		&-list
+			position relative
+			&:before
+				padding-top 96.67%
+				content ''
+				display block
+			.slick-dots
+				margin-top 0
+				li
+					margin-top 0
+		&-item
+			position absolute
+			pos 0
+			background #fff
+			display none
+			&.__current
+				display block
+		&-image
+			position absolute
+			pos 0
+			margin auto
+			display block
+			size 80%
+			img
+				position absolute
+				pos 0
+				margin auto
+				max-size 100%
+		&-list
+			background #fff
+
+	&-big
+		margin-left 0
+		padding-left 0
+		// max-width 500px
+		margin auto
+		float none
+		&-list
+			&:before
+				display none
+		&-item
+			position relative
+			display block
+			overflow hidden
+			&:before
+				padding-top 96.67%
+				content ''
+				display block
+		&-image
+			size auto
+			pos 20px
+	+MEDIA("DESKTOP")
+		width 45%
+		// &-preview
+		// 	width 115px
+		// &-big
+		// 	margin-left -110px
+		// 	padding-left 120px
+	+MIN_MEDIA("SMALL_DESKTOP")
+		&-big-list
+			padding-bottom 20px
+	+MEDIA("TABLET")
+		float none
+		width auto
+		padding-right 0
+		padding-bottom 20px
+		background #fff
+		// &-preview
+		// 	display none
+		// &-big
+		// 	margin-left 0
+		// 	padding-left 0
+		// 	max-width 500px
+		// 	margin auto
+		// 	float none
+		// 	&-list
+		// 		&:before
+		// 			display none
+		// 	&-item
+		// 		position relative
+		// 		display block
+		// 		&:before
+		// 			padding-top 96.67%
+		// 			content ''
+		// 			display block
+		// 	&-image
+		// 		size auto
+		// 		pos 20px
+		// &-big
+		// 	max-width 500px
+		&-big
+			&-item
+				max-height 500px
+	+MEDIA("PHONE")
+		margin-top 20px
+		&-big
+			&-image
+				pos 0
+			&-list
+				.slick-dots
+					margin-top 15px

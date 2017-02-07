@@ -1,0 +1,12 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Главная"]
+block content
+	+main-banner()
+	+choose-panel()
+	+banners()
+	+news-block({addClass: '__mobile-slider'})
+	#anchor-about-project
+	+about-block()
+	+flats({addClass: '__mobile-slider'})

@@ -1,0 +1,82 @@
+mixin floor()
+	+namespace("floor")
+		script.
+			window.App = window.App || {};
+			App.floorData = {
+				"flats": {
+					"170161": {
+						"name": "Квартира 195",
+						"price": "4 959 080 р.",
+						"square": "73.73",
+						"state-label": "свободна",
+						"state": "0",
+						"decoration": "с отделкой под ключ"
+					},
+					"170162": {
+						"name": "Квартира 196",
+						"price": "0 р.",
+						"square": "35.94",
+						"state-label": "Продана",
+						"state": "2",
+						"decoration": "с отделкой под ключ"
+					},
+					"170163": {
+						"name": "Квартира 197",
+						"price": "0 р.",
+						"square": "37.44",
+						"state-label": "Продана",
+						"state": "2",
+						"decoration": "с отделкой под ключ"
+					},
+					"170164": {
+						"name": "Квартира 198",
+						"price": "0 р.",
+						"square": "40.37",
+						"state-label": "Продана",
+						"state": "2",
+						"decoration": "с отделкой под ключ"
+					},
+					"170165": {
+						"name": "Квартира 199",
+						"price": "5 338 301 р.",
+						"square": "82.88",
+						"state-label": "свободна",
+						"state": "0",
+						"decoration": "с отделкой под ключ"
+					}
+				}
+			};
+
+		+el().block
+			.wrapper-content
+				.block-header.__title-only
+					.block-title квартира 261 на карте секции 2
+				.block-content
+					+el("content")
+						+floor-info({select: true})
+						+el("content-inner")
+							+el("image")
+								+uitooltip({addClass: 'js-floor-tooltip'})
+									+el("title")(data-type="title")
+									+el("bottom")
+										+el("table")
+											for row, index in floorTooltipTable
+												+el("table-row")(data-type="#{ row.type }")
+													+el("table-cell")
+														span(data-type="cell-label")!= row.label
+													+el("table-cell")
+														if index == 0 || index == 3
+															b: span(data-type="cell-value")
+														else
+															span(data-type="cell-value")
+
+
+								+el("compas")
+									+img("elements/compas.png")
+								+img("example/floor.png")(usemap="#floorMap")
+								map(id="floorMap" name="floorMap" data-usemaplight="floor").js-floor-map.
+									<area shape="poly" data-usetooltip=".js-floor-tooltip" data-id="170161" class="__free_flat __selected" coords="622,224,623,36,684,37,711,52,718,69,778,69,804,83,813,98,813,112,893,112,892,409,804,409,804,257,710,257,710,288,670,288,670,224">
+									<area shape="poly" data-usetooltip=".js-floor-tooltip" data-id="170162" class="__sold_flat __disabled" coords="618,294,714,294,714,260,799,260,799,422,809,423,801,436,773,453,721,453,721,449,618,449">
+									<area shape="poly" data-usetooltip=".js-floor-tooltip" data-id="170163" class="__sold_flat __disabled" coords="443,294,613,294,613,463,650,462,640,480,613,494,462,494,462,449,444,449">
+									<area shape="poly" data-usetooltip=".js-floor-tooltip" data-id="170164" class="__sold_flat __disabled" coords="333,294,438,294,438,463,460,463,459,495,394,495,356,522,327,526,311,520,224,396,333,316">
+									<area shape="poly" data-usetooltip=".js-floor-tooltip" data-id="170165" class="__free_flat" coords="39,302,185,197,179,185,178,169,191,140,251,96,320,96,320,141,328,141,328,314,217,393,300,511,228,562" href="/planirovki-i-ceny/11-ochered-9-korpus/17-floor/2-section/199/">

@@ -1,0 +1,25 @@
+mixin popup(name, params)
+	-if(!params)
+		-params = {}
+	mixin before-title()
+		//-|
+	mixin after-title()
+		//|
+	mixin content()
+		//|
+	block
+	.popup.js-popup(class="__#{ name } js-popup-#{ name } #{ (params.class ? params.class : '' ) }" data-popup-name="#{ name }")&attributes(attributes)
+		.popup-box
+			-if(params.hideClose !== true)
+				a(href="#" data-popup-close="").popup-close
+			.popup-inner
+				-if(params.title)
+					.popup-title
+						+before-title()
+						.popup-title-text
+							!= params.title
+						+after-title()
+				-if(params.subtitle)
+					.popup-subtitle!= params.subtitle
+				.popup-content
+					+content()

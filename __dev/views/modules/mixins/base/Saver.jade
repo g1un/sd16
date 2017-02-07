@@ -1,0 +1,11 @@
+-var Saver = function() {
+	-current = null
+	-self = function(val) {
+		-if(val != null)
+			-current = val
+			-return self
+		-else
+			-return current
+	- }
+	-return self
+- }

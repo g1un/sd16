@@ -1,0 +1,32 @@
+mixin flatbox(flat)
+	+module("flatbox")
+		block
+		+el()&attributes(attributes)
+			+el("inner")
+				+el("image", "a")(href="#{ flat.image }" data-lightbox="flatbox-#{ createId() }")
+					img(src="#{ flat.image }", alt="")
+				+el("content")
+					+el("detail")
+						+el("detail-row")
+							+el("detail-cell")
+								span Квартиры
+							+el("detail-cell")
+								span
+									a(href="#")!= flat.count
+						+el("detail-row")
+							+el("detail-cell")
+								span Этажи
+							+el("detail-cell")
+								span!= flat.floor
+						+el("detail-row")
+							+el("detail-cell")
+								span Площади
+							+el("detail-cell")
+								span от !{ flat.size } м#[sup 2]
+						+el("detail-row")
+							+el("detail-cell")
+								span Стоимость
+							+el("detail-cell")
+								span от !{price(flat.price)}
+					+el("more")
+						+el("more-link", "a")(href="#") Узнать больше →

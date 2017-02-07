@@ -1,0 +1,12 @@
+mixin logo(className, params)
+	-
+		if(params == null){
+			params = {}
+		}
+	div(class="#{ className }-logo")
+		-var attr = {}
+		if !isCurrentElement('Главная')[0]
+			-attr.href = params.href || 'main.html'
+		#{ isCurrentElement('Главная')[0] ? 'span' : 'a' }&attributes(attr)&attributes(attributes)
+			img(src="#{ params.customImage ? images(params.customImage) : images('logo.png') }", alt="" class="#{ className }-logo-image")
+		block

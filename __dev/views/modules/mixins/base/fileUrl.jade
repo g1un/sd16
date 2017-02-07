@@ -1,0 +1,7 @@
+-var fileUrl = function(url) {
+	if url.indexOf(__STATIC_DIR) == 0 || url.indexOf('//') == 0 || url.indexOf('http') == 0
+		-return url
+	if url.indexOf('./') == 0
+		-url = url.replace('./', '')
+	-return __STATIC_DIR + url
+- }

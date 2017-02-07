@@ -1,0 +1,1013 @@
+// BASE
+TITLE_CLASS = 'title'
+
+// Paths
+IMAGES_PATH = 'images/'
+LIBS_PATH = 'scripts/libs/'
+STYLES_PATH = 'styles/'
+
+// LAYOUT
+WRAPPER_PADDING = 20px
+WRAPPER_WIDTH = 910px
+
+WRAPPER_MIN_WIDTH = WRAPPER_WIDTH[0]
+WRAPPER_MAX_WIDTH = WRAPPER_WIDTH[1]
+
+// TEXT
+BASE_SIZE = 14px
+FONT_SIZE = BASE_SIZE
+LINE_HEIGHT = 1.3
+FONT_COLOR = #000
+
+// MAIN_COLOR = #cb123e // Старый цвет
+
+MAIN_COLOR = #1e77c7
+MAIN_COLOR2 = #7ccd32
+
+LINK_COLOR = #0056a3
+LINK_COLOR_HOVER = LINK_COLOR + 20%
+
+TEXT_LINK_COLOR = LINK_COLOR
+TEXT_LINK_COLOR_HOVER = TEXT_LINK_COLOR + 20%
+
+SELECT_COLOR = MAIN_COLOR
+
+// OTHER
+TRANS_SPEED = 0.2s
+
+
+
+HEADER_HEIGHT = 52px
+relative-prop(arg1, args...)
+	_allIsNumber = true
+	_props = ()
+	_values = ()
+	baseProp = false
+	if length(arg1) == 1
+		baseProp = arg1
+	else
+		args = arguments
+
+	for arg in args
+		if(!isNumber(arg[1]))
+			_allIsNumber = false
+		else
+			push(_values, arg[1])
+			push(_props, arg[0])
+	if baseProp != false && _allIsNumber
+		add-property(baseProp, _values)
+	else
+		for _propValue, index in _values
+			_propName = ( baseProp != false ?  baseProp + '-' : '' ) + _props[index]
+			add-property(_propName, _propValue)
+
+content-center(w = 100%, h = w, important = false )
+	important = (important == true ? !important : )
+	position relative
+	width w important
+	height h important
+
+	> *
+		position absolute
+		top 0 important
+		bottom 0 important
+		left 0 important
+		right 0 important
+		margin auto important
+		max-height 100%
+		max-width 100%
+size(width, height = width)
+	relative-prop('width' width, 'height' height)
+
+max-size(width, height = width)
+	relative-prop('max-width' width, 'max-height' height)
+min-size(width, height = width)
+	relative-prop('min-width' width, 'min-height' height)
+
+pos(top, right = top, bottom = top, left = right)
+	relative-prop('top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// top top
+	// right right
+	// left left
+	// bottom bottom
+
+
+isNumber(val)
+	if( !(val < 0 || val >= 0) && val != 'auto' && val != 'none' )
+		false
+	else
+		true
+
+
+margin(top, right = top, bottom = top, left = right)
+	relative-prop('margin', 'top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// if(isNumber(top) && isNumber(right) && isNumber(bottom) && isNumber(left))
+	// 	margin arguments
+	// else
+	// 	if(isNumber(top))
+	// 		margin-top top
+	// 	if(isNumber(right))
+	// 		margin-right right
+	// 	if(isNumber(left))
+	// 		margin-left left
+	// 	if(isNumber(bottom))
+	// 		margin-bottom bottom
+
+
+padding(top, right = top, bottom = top, left = right)
+	relative-prop('padding', 'top' top, 'right' right, 'bottom' bottom, 'left' left )
+	// if(isNumber(top) && isNumber(right) && isNumber(bottom) && isNumber(left))
+	// 	padding arguments
+	// else
+	// 	if(isNumber(top))
+	// 		padding-top top
+	// 	if(isNumber(right))
+	// 		padding-right right
+	// 	if(isNumber(left))
+	// 		padding-left left
+	// 	if(isNumber(bottom))
+	// 		padding-bottom bottom
+
+border-box()
+	box-sizing padding-box
+	box-sizing border-box
+	
+background-clip()
+	background-clip padding-box
+
+
+// in css -> columns(5)
+columns(count)
+	.column-{count}
+		width floor( (95% / count), 1 )
+		display inline-block
+		vertical-align top
+
+// in css -> width-perc(15)
+width-perc(perc)
+	.perc-{perc}
+		width: (perc)%
+		
+anim-link(type = $type_anim_link)
+	position relative
+	text-decoration none !important
+	overflow hidden
+	
+	if( type == 1)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+		
+	if (type == 2)
+		&:after,
+		&:before
+			content ''
+			display block
+			position absolute
+			bottom 0
+			size(50%, 0)
+			max-width 50%
+			border-bottom 1px solid
+			trans()
+		&:after
+			right 0
+		&:before
+			left 0
+			
+		&:hover
+			text-decoration none
+			&:after,
+			&:before
+				size(0)
+	
+	if( type == 3)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+
+opacity(val)
+	if val > 1
+		val = val/100
+	opacity val
+	zoom 1
+	-ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity="' + val*100 + '")')
+
+
+gr(startColor, endColor)
+	background: -moz-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,startColor), color-stop(100%, endColor));
+	background: -webkit-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -o-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -ms-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: linear-gradient(to bottom,  startColor 0%, endColor 100%);
+
+Button(params, btnName = '')
+	_bg = params.background
+	_color = params.color
+	_bgHover = params.hover.background
+	_colorHover = params.hover.color
+	_bgActive = params.active.background
+	_colorActive = params.active.color
+	_colorName = ''
+	if(btnName != '')
+		_colorName = '="' + btnName + '"'
+		btnName = '.__' + btnName
+	else
+		_colorName = ""
+
+	&{btnName},
+	&[data-button-color{ _colorName }]
+		background-color _bg
+		color _color
+
+	&{btnName}:hover,
+	&{btnName}:focus,
+	&[data-button-color{ _colorName }]:hover,
+	&[data-button-color{ _colorName }]:focus
+		if(_bgHover)
+			background-color _bgHover
+		if(_colorHover)
+			color _colorHover
+	&{btnName}:active,
+	&[data-button-color{ _colorName }]:active
+		if(_bgActive)
+			background-color _bgActive
+		if(_colorActive)
+			color _colorActive
+
+	&{btnName}[disabled],
+	&{btnName}.disabled,
+	&{btnName}.__loading
+		background-color _bg !important
+		color _color !important
+
+	&[data-button-color{ _colorName }].__border,
+	&{btnName}.__border
+		background-color transparent
+		color _bg
+		_borderColor = _bg
+		if( params.border && params.border['border-color'] )
+			_borderColor = params.border['border-color']
+		border 2px solid _borderColor
+		&:hover,
+		&:focus
+			_borderColor = _bgHover
+			if( params.border && params.border.hover && params.border.hover['border-color'] )
+				_borderColor = params.border.hover['border-color']
+			color _colorHover
+			border-color _bgHover
+			background-color _bgHover
+		&:active
+			_borderColor = _bgActive
+			if( params.border && params.border.active && params.border.active['border-color'] )
+				_borderColor = params.border.active['border-color']
+			color _colorActive
+			border-color _bgActive
+			background-color _bgActive
+		&[disabled],
+		&.__loading,
+		&.disabled
+			background-color #fff !important
+			border-color _bg !important
+Buttons(styles)
+	for _btnName, _btnParams in styles
+		if(_btnName == 'default')
+			_btnName = ''
+		Button(_btnParams, _btnName )
+
+
+replace(expr, str, val)
+	expr = "'" + clone(expr) + "'"
+	// return typeof(expr)
+	for e, i in expr
+		if str == e
+			expr[i] = val
+	return expr
+
+catStr(str, start, end = false)
+	// res = ''
+	res = ''
+	_str = "'" + str + "'"
+	return _str[0][0]
+	return length(_str[0][0])
+	for i in _str
+		res = res + ' ' + i
+		if i >= start
+			if(end == false || i < end)
+				res = res + _str[i]
+	return res
+
+rem(val)
+	return (round((val/BASE_SIZE)*1000)/1000)rem
+
+ifLandscape(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth) and (orientation: landscape)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth) and (orientation: landscape)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth) and (orientation: landscape)
+					{block}
+			else
+				@media screen and (orientation: landscape)
+					{block}
+
+screenWidth(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth)
+					{block}
+
+STYLES(file)
+	return STYLES_PATH + file
+LIBS(file)
+	return LIBS_PATH + file
+IMAGES(file)
+	return IMAGES_PATH + file
+
+// in css -> images("test.png")
+images(file)
+	return url( IMAGES( file ) )
+$button()
+	[type="submit"],
+	[type="button"],
+	[type="reset"],
+	button
+		{block}
+
+$textInput(onlyInput = false)
+	if(onlyInput)
+		[type="text"], textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"]
+			{block}
+	else
+		[type="text"], select, textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.ui-selectmenu-button
+			{block}
+
+
+$textbox(onlyInput = false)
+	+$textInput(onlyInput)
+		{block}
+
+$hN(n)
+	h{ n },
+	.{ TITLE_CLASS }-{n}
+		{block}
+
+$title()
+	h{ 1 },
+	.{ TITLE_CLASS }-{1},
+	h{ 2 },
+	.{ TITLE_CLASS }-{2},
+	h{ 3 },
+	.{ TITLE_CLASS }-{3},
+	h{ 4 },
+	.{ TITLE_CLASS }-{4},
+	h{ 5 },
+	.{ TITLE_CLASS }-{5},
+	h{ 6 },
+	.{ TITLE_CLASS }-{6}
+		{block}
+
+$h1()
+	+$hN(1)
+		{block}
+$h2()
+	+$hN(2)
+		{block}
+$h3()
+	+$hN(3)
+		{block}
+$h4()
+	+$hN(4)
+		{block}
+$h5()
+	+$hN(5)
+		{block}
+$h6()
+	+$hN(6)
+		{block}
+$title-1()
+	.{ TITLE_CLASS }-1
+		{block}
+$title-2()
+	.{ TITLE_CLASS }-2
+		{block}
+$title-3()
+	.{ TITLE_CLASS }-3
+		{block}
+$title-4()
+	.{ TITLE_CLASS }-4
+		{block}
+$title-5()
+	.{ TITLE_CLASS }-5
+		{block}
+$title-6()
+	.{ TITLE_CLASS }-6
+		{block}
+$title-all()
+	.{ TITLE_CLASS }-1,
+	.{ TITLE_CLASS }-2,
+	.{ TITLE_CLASS }-3,
+	.{ TITLE_CLASS }-4,
+	.{ TITLE_CLASS }-5,
+	.{ TITLE_CLASS }-6
+		{block}
+$h-all()
+	h1,h2,h3,h4,h5,h6
+		{block}
+
+
+$big()
+	.big
+		{block}
+$small()
+	small,
+	.small
+		{block}
+$bold()
+	.bold,
+	b,
+	strong
+		{block}
+$italic()
+	i,
+	.italic
+		{block}
+
+
+$_noopacity()
+	html.modernizr-no-opacity &
+		{block}
+
+$_nofilter()
+	html.modernizr-no-cssfilters &
+		{block}
+$$clear
+	&:after
+		content ''
+		display table
+		clear both
+		border-spacing 0
+		border-collapse collapse
+		border 0
+
+clear(arg = false)
+	if (arg != false)
+		clear arg
+	else
+		@extend $$clear
+
+$$resetStyle
+	font inherit
+	color inherit
+	margin 0
+	padding 0
+	background transparent
+	border 0
+	outline none
+	border-radius 0
+
+resetStyle()
+	&
+		@extend $$resetStyle
+
+resetTitle()
+	&
+		+$title()
+			resetStyle()
+
+$$reset-button
+	padding 0
+	margin 0
+	border 0
+	box-shadow none
+	background transparent
+	outline none
+	text-decoration none
+	display inline-block
+	vertical-align top
+	cursor pointer
+	text-align center
+	user-select none
+
+reset-button()
+	@extend $$reset-button
+
+$$trans
+	transition all TRANS_SPEED
+
+trans(_speed = false)
+	if(!_speed)
+		@extend $$trans
+	else
+		transition all _speed
+
+trans-none()
+	transition all 0s
+base-font()
+	font-family 'Open Sans', Century Gothic,CenturyGothic,AppleGothic,Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+	font-size FONT_SIZE
+	color FONT_COLOR
+	font-weight 500
+
+html, body
+	margin 0
+	padding 0
+	border 0
+	font inherit
+	vertical-align baseline
+main *
+	font inherit
+	color inherit
+	border-box()
+main
+	&,
+	div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike,  sub, sup, tt, var,
+	u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed,
+	figure, figcaption, footer, header, hgroup,
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video
+		margin 0
+		padding 0
+		border 0
+		font inherit
+		vertical-align baseline
+	&,
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section
+		display block
+	nav
+		ul
+			&,
+			li,
+			ul
+				padding 0
+				margin 0
+				list-style none
+			li
+				&:before
+					content none
+	blockquote, q
+		quotes none
+
+	blockquote:before, blockquote:after,
+	q:before, q:after
+		content ''
+	table
+		border-collapse collapse
+		border-spacing 0
+
+	*:focus
+		&,
+		*
+			outline 0
+	ins
+		text-decoration none
+
+
++$button()
+	-webkit-appearance none
+	border-radius 0
+	cursor pointer
+
++$textInput(true)
+	-webkit-appearance none
+	border-radius 0
+
+
+script
+	display none !important
+
+ul[data-carusel]
+	list-style none
+	& > li:before
+		display none
+html,body
+	if(unit(WRAPPER_WIDTH[0]) == 'px')
+		min-width WRAPPER_WIDTH[0] + (WRAPPER_PADDING*2)
+	else
+		min-width 100%
+
+html
+	base-font()
+	line-height LINE_HEIGHT
+	size(100%, 100%)
+	height: 100%;
+
+body
+	min-height 100%
+	position relative
+	font-size 1rem
+
+.wrapper-content
+	if length(WRAPPER_WIDTH) == 2
+		min-width WRAPPER_WIDTH[0] + WRAPPER_PADDING*2
+		max-width WRAPPER_WIDTH[1] + WRAPPER_PADDING*2
+	else
+		width WRAPPER_WIDTH[0]
+	border-box()
+	margin 0 auto
+	padding 0 WRAPPER_PADDING
+
+
+.table
+	display table
+	width 100%
+	table-layout fixed
+
+	&-cell
+		display table-cell
+		vertical-align top
+
+	&-row,
+	&-rows
+		display table-row
+
+	&-column,
+	&-columns
+		display table-column
+
+main
+	+$bold()
+		font-weight 700
+
+	+$italic()
+		font-style italic
+
+	a
+		color LINK_COLOR
+		&:hover
+			color LINK_COLOR_HOVER
+	img
+		max-width 100%
+
+	+$big()
+		font-size 120%
+		font-size 1.2em
+	+$small()
+		font-size 80%
+		font-size 0.8em
+
+.clear,
+.clearfix
+	clear()
+
+.hidden
+	display none !important
+
+.close-content
+	position fixed
+	top 0
+	left 0
+	z-index 5
+	size(100%, 100%)
+	opacity(20)
+	background #000
+
+.align-top
+	vertical-align top !important
+.align-middle
+	vertical-align middle !important
+.align-bottom
+	vertical-align bottom !important
+.align-left
+	text-align left !important
+.align-right
+	text-align right !important
+.align-center
+	text-align center !important
+
+.trans
+	trans()
+
+.no-trans
+	transition none !important
+
+.bold 
+	font-weight bold
+
+.italic 
+	font-style italic
+
+.underline
+	text-decoration underline
+
+.uppercase,
+.upper
+	text-transform uppercase
+
+.lowercase,
+.lower
+	text-transform lowercase
+
+.normalcase
+	text-transform none
+
+.left,
+.to-left
+	float left
+	left 0
+	
+.right,
+.to-right
+	float right
+	right 0
+
+.nowrap
+	white-space nowrap
+
+
+$$fullWidth
+	width 100%
+.columns
+	margin _ -22px
+	clear()
+.column
+	width 100%
+	float left
+	padding _ 22px
+	for k in 1 2 3 4 5 6 7 8 9 10 11
+		for i in 1..k
+			&.__{ i }-{ k }
+				if i == k
+					@extend $$fullWidth
+				else
+					width (round( (i*100/k)*1000 )/1000)%
+// .text
+// 	base-font()
+// 	font-size 16px
+// 	line-height 24px
+// 	color #000
+// 	ul
+// 		list-style disc
+// 		float none
+// 			li
+// 				padding-left 5px
+// 				list-style square outside
+// 		li
+// 			margin 5px 0 5px 18px
+// 			position relative
+
+
+// 	ol
+// 		list-style decimal outside
+// 		float none
+// 		margin-left 20px
+		
+// 	img
+// 		max-width 100%
+// 		&.left
+// 			margin-right 10px
+// 		&.right
+// 			margin-left 10px
+		
+// 	p,
+// 	img,
+// 	ul,
+// 	ol
+// 		margin-bottom 20px
+		
+// 	table
+// 		position relative
+// 		margin-bottom 7px
+// 		width 100%
+		
+// 	th
+// 		font-weight bold
+// 		background #ccc
+// 		background rgba(0, 0, 0, 0.1)
+// 		text-align left
+// 	td,
+// 	th
+// 		padding 5px 7px
+// 		border 1px solid #666
+
+
+// .bold 
+// 	font-weight bold
+
+// .italic 
+// 	font-style italic
+
+// .decoration 
+// 	text-decoration underline
+
+// .uppercase,
+// .upper
+// 	text-transform uppercase
+
+// .lowercase,
+// .lower
+// 	text-transform lowercase
+	
+// .center
+// 	text-align center
+	
+// .left,
+// .to-left
+// 	float left
+// 	left 0
+	
+// .right,
+// .to-right
+// 	float right
+// 	right 0
+
+// .align-right
+// 	text-align: right
+// .align-center
+// 	text-align: center
+// .align-left
+// 	text-align: left
+// .nowrap
+// 	white-space nowrap
+
+
++$textbox()
+	border 1px solid #ccc
+	width 100%
+	padding 6px 10px
+	font-size 14px
+	border-box()
+	line-height normal
+	border-radius 0
+	box-shadow none
+	background #fff
+
+	.error &,
+	&.error
+		border-color #f0b8b8
+		box-shadow 0 0 5px rgba(219,42,42, 0.20)
+
+		.ui-select-wrapper.error .ui-selectmenu-button
+			border-color #f0b8b8
+
+	&:hover
+		border-color #ccc - 10%
+	&:focus
+		border-color #ccc - 20%
++$textbox(true)
+	-webkit-appearance none
+	border-radius 0
+main
+	.req
+		font-size: 12px;
+		color: #db2a2a;
+		position: relative;
+		top: -5px;
+
+.form
+	position relative
+	&-item
+		&.width-50
+			padding-right: 13px;
+			border-box()
+		&-right
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			top: -2px;
+			margin-left: 28px;
+			&-number, &-date
+				display: inline-block;
+				vertical-align: middle;
+				margin-left 20px
+				input[type="text"]
+					width 100%
+			&-number
+				margin-left 15px
+				width 50px
+			&-date
+				width 145px
+
+		margin-bottom 18px
+		&-column
+			width 210px
+			margin-left 26px
+			&:first-of-type
+				margin-left 0
+		&.error
+			.ui-select-wrapper
+				.ui-selectmenu-button
+					border 1px solid #f0b8b8 !important
+
+	&-column-line
+		margin: 30px -30px 0;
+		padding: 20px 30px;
+		border-top: 1px solid #dae3e4;
+		& + .form-column-line
+			margin-top 0
+	&-attention
+		color #686868
+		font-size 12px
+		margin-bottom: 25px;
+		margin-top: 27px;
+		text-align left
+	textarea
+		height 168px
+
+	label
+		font-size 14px
+		text-align left
+		color #000
+		display block
+		margin-bottom 10px
+	input,
+	textarea
+		& + label
+			display inline-block
+			vertical-align middle
+			margin-bottom 0
+			margin-left 10px
+
+	&.compact
+		input,
+		textarea
+			width 60%
+
+	&.error
+		input,
+		textarea
+			border 1px solid #f0b8b8 !important
+			box-shadow 0 0 5px rgba(219,42,42, 0.20) !important
+
+
+.error-msg
+	margin-top 10px
+	display inline-block
+	margin-left 10px
+	color #db2a2a
+	font-size 14px
+	text-align left
+
+
+// .bx-core-window,
+// .bxcompprop-content,
+// .adm-workarea
+// 	select[multiple],
+// 	select
+// 		-webkit-appearance listbox
+
+// 	select,
+// 	select
+// 		-webkit-appearance menulist
+
+// 	input[type="radio"]
+// 		-webkit-appearance radio
+
+// 	input[type="checkbox"]
+// 		-webkit-appearance checkbox

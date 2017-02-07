@@ -1,0 +1,181 @@
+.flatcard-detail
+	float left
+	width 50%
+	padding-right 162px
+	margin-right -152px
+	.progress
+		float right
+		text-align right
+		.progress-bar
+			margin-right 0
+			margin-left auto
+	&-content
+		background getColor('light')
+		padding 35px 20px (35px + 34px + 20px)
+		position relative
+	&-group
+		margin-bottom 30px
+		p
+			color #74787b
+			color rgba(0, 0, 0, 0.7)
+		&:last-of-type
+			margin-bottom 0
+		&.__buttons
+			margin-top -15px
+		&.__share
+			margin-top -10px
+			position absolute
+			pos _ 20px 35px
+	&-table
+		display table
+	&-row
+		display table-row
+	&-cell
+		display table-cell
+		vertical-align top
+		color #242424
+		font-size 16px
+		line-height 18px
+		font-weight 300
+		padding 6px 0
+		> span
+			background getColor('light')
+			// padding-left 10px
+			// display inline-block
+			// vertical-align top
+		&:first-child
+			padding-right 15px
+			padding-left 0
+			text-align left
+			overflow hidden
+			&:before
+				float right
+				content "______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+				white-space nowrap
+				width 0
+				line-height 18px
+				direction rtl
+				margin-bottom -5px
+				letter-spacing -5px
+				float left
+				direction ltr
+				color getColor('light') - 10%
+			> span
+				padding-right 10px
+				padding-left 0
+		&.__value
+			font-weight 700
+	&-buttons
+		display table
+		width 100%
+	&-button
+		display table-cell
+		&:first-child
+			padding-right 20px
+		[data-button]
+			display block
+			padding _ 10px
+			width 100%
+		.fa
+			line-height inherit
+			font-size 32px
+
+	&-price
+		&-value
+			font-size 44px
+			line-height 50px
+			font-weight 900
+		&-bottom
+			margin-top 5px
+			font-size 16px
+			line-height 20px
+			font-weight 300
+		&-label,
+		&-payment
+			display inline-block
+			vertical-align top
+		&-label
+			margin-right 25px
+
+	+MEDIA("DESKTOP")
+		padding-right 120px
+		margin-right -110px
+		width 55%
+		&-button
+			&:first-child
+				padding-right 10px
+			[data-button]
+				font-size 14px
+			.fa
+				font-size 26px
+	+MEDIA("SMALL_DESKTOP")
+		padding-right 0
+		margin-right 0
+	+MEDIA("TABLET")
+		float none
+		width auto
+		margin _ -20px
+		&-content
+			padding-top (105px + 20px + 91px + 20px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+		&-group
+			&.__buttons
+				position absolute
+				pos 20px 20px _
+				margin 0
+				margin-left 50%
+			&.__price
+				position absolute
+				pos 20px 20px _
+				margin 0
+				margin-right 50%
+		&-price
+			&-label,
+			&-payment
+				display block
+				margin 0
+			&-payment
+				margin-top 10px
+		&-buttons,
+		&-button
+			display block
+		&-button
+			&:first-child
+				padding 0
+	+MEDIA("SMALL_TABLET")
+		&-price
+			&-value
+				font-size 32px
+				line-height 40px
+		&-group
+			&.__buttons
+				margin-left 48%
+	+MEDIA("PHONE")
+		&-group
+			&.__buttons
+				pos 115px 0 _
+				margin 0
+				background BACKGROUND_COLOR
+				padding-bottom 10px
+			&.__price
+				pos 0 0 _
+				padding _ 20px 20px
+				margin 0
+				background #fff
+		&-content
+			padding-top (115px + 20px + 162px + 20px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+			margin _ 0
+			padding _ 20px
+		&-price
+			&-value
+				color #000000
+		.progress
+			display none
+	+MEDIA("SMALL_PHONE")
+		margin _ -10px
+		&-content
+			padding _ 20px
+			padding-top (115px + 20px + 140px + 10px); /* priceHeight + priceMargin + buttonsHeight + buttonsMargin */
+			padding-bottom 140px
+		&-cell
+			&.__value
+				width 1256px

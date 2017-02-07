@@ -1,0 +1,161 @@
+html {
+	font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.25;
+}
+
+html,
+body {
+	margin: 0;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a {
+	color: #1082c5;
+	text-decoration: none;
+	transition: all 0.3s;
+	transition-property: color, background, border-color, box-shadow, filter;
+}
+a:hover {
+	color: #59afe2;
+	text-decoration: underline;
+}
+
+.doc-item-file {
+	margin: 0 0 20px;
+	border: 1px solid #ccc;
+}
+
+.doc-item-file-title {
+	font-size: 20px;
+	margin: 0;
+	padding: 20px;
+	background: #666;
+	color: #fff;
+	display: block;
+}
+a.doc-item-file-title {
+	background: #eee;
+	color: #666;
+	text-decoration: none;
+}
+a.doc-item-file-title:hover,
+.doc-item-file.__open a.doc-item-file-title {
+	background: #666;
+	color: #fff;
+}
+.doc-item-file.__open a.doc-item-file-title:hover{
+	background: #aaa;
+	color: #fff;
+}
+
+.doc-item {
+	margin: 0;
+	padding: 20px;
+	display: block;
+}
+.doc-item-file.__open .doc-item {
+	display: block;
+}
+.doc-item ~ .doc-item {
+	border-top: 1px solid #ccc;
+}
+
+.doc-item-name {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.doc-item-description {
+	font-style: italic;
+	margin-bottom: 20px
+}
+.doc-item-name + .doc-item-description {
+	margin-top: -15px;
+}
+
+.doc-item-params {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+}
+.doc-item-params-head,
+.doc-item-params-item {
+	display: table-row;
+}
+.doc-item-params-head > *,
+.doc-item-params-item > * {
+	display: table-cell;
+	vertical-align: top;
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+.doc-item-params-head {
+	background: #eee;
+}
+.doc-item-params p {
+	margin: 0;
+}
+.doc-item-params * + p {
+	margin-top: 10px;
+}
+.doc-item-examples-title {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.doc-item-example ~ .doc-item-example {
+	marign-top: 20px;
+}
+.doc-item-type {
+	font-size: 80%;
+	color: #777;
+}
+.doc-item-type:before {
+	content: '\005b'
+}
+.doc-item-type:after {
+	content: '\005d'
+}
+
+.doc-item-file-contents {
+	margin: 20px 0 10px;
+}
+.doc-item-file-contents-item {
+	display: inline-block;
+	vertical-align: top;
+	width: 33.3%;
+	padding-right: 20px;
+	margin-right: -6px;
+	margin-bottom: 10px;
+}
+
+
+.nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 250px;
+	overflow: auto;
+	padding: 20px;
+}
+.nav-item {
+	margin-bottom: 5px;
+	padding-left: 10px;
+}
+.nav-item-namespace ~ .nav-item-namespace {
+	margin-top: 30px;
+}
+.nav-item.__title {
+	margin-bottom: 10px;
+	padding-left: 0;
+}
+.nav + #content {
+	margin-left: 250px;
+	padding-left: 20px;
+}

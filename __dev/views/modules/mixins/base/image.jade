@@ -1,0 +1,6 @@
+mixin image(url, _class)
+	-
+		if(typeof attr != 'object'){
+			attr = {}
+		}
+	img(src="#{ images(url) }", alt="" class="#{ (_class ? _class : '') }")&attributes(attributes)

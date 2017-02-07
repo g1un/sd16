@@ -1,0 +1,74 @@
+.block
+	margin 35px _ 70px
+	&-header
+		text-align center
+		margin-bottom 25px
+	&-title
+		margin-bottom 10px
+		font-size 30px
+		line-height 40px
+		font-weight 700
+		color #242424
+		text-transform uppercase
+		resetTitle()
+	&-subtitle
+		font-size 10px
+		line-height 14px
+		font-weight 700
+		text-transform uppercase
+	&-box
+		background #fff
+		padding 35px 20px
+		margin 10px _
+		&:first-child
+			margin-top 0
+		&.__wide-padding
+			padding 40px 30px
+	&-text
+		* + &
+			margin-top 65px
+	&-content
+		clear()
+		&.__bg-white
+			background #fff
+	&-back-link
+		margin-bottom 20px
+	&-aside
+		float right
+		width 550px
+		position relative
+		z-index 1
+	&-aside-content
+		float left
+		padding-right 560px
+		margin-right -550px
+		width 100%
+
+	&[data-block-mod*="slim-padding"]
+		> .wrapper-content
+			padding _ 10px
+	&.__page
+		margin-top 27px
+
+	+MEDIA("SMALL_DESKTOP")
+		&-aside
+			width 500px
+		&-aside-content
+			padding-right 510px
+			margin-right -500px
+
+	+MEDIA("TABLET")
+		margin-bottom 50px
+		&-aside,
+		&-aside-content
+			float none
+			width auto
+			padding 0
+			margin 0
+		&-aside
+			margin-top 20px
+	+MEDIA("PHONE")
+		&-box
+			padding 20px 10px
+			&.__wide-padding
+				padding 25px 15px

@@ -1,0 +1,1513 @@
+
+$iconsCount = 19
+$$icons = {
+	's-___': 256px 124px -256px -124px 1px 1px 257px 253px 'images/icons/__sprite.png'
+	's-callback': 106px 179px -106px -179px 32px 32px 257px 253px 'images/icons/__sprite.png'
+	's-callback__small': 76px 123px -76px -123px 16px 16px 257px 253px 'images/icons/__sprite.png'
+	's-checkbox-arrow': 121px 232px -121px -232px 11px 8px 257px 253px 'images/icons/__sprite.png'
+	's-favorite': 119px 0px -119px 0px 64px 64px 257px 253px 'images/icons/__sprite.png'
+	's-favorite__small': 158px 179px -158px -179px 32px 32px 257px 253px 'images/icons/__sprite.png'
+	's-map-target': 119px 84px -119px -84px 50px 50px 257px 253px 'images/icons/__sprite.png'
+	's-map-target__small': 76px 83px -76px -83px 20px 20px 257px 253px 'images/icons/__sprite.png'
+	's-map-target_marker': 0px 83px 0px -83px 56px 76px 257px 253px 'images/icons/__sprite.png'
+	's-menu-close': 203px 124px -203px -124px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-menu': 0px 0px 0px 0px 99px 63px 257px 253px 'images/icons/__sprite.png'
+	's-menu__small': 210px 179px -210px -179px 33px 21px 257px 253px 'images/icons/__sprite.png'
+	's-popup-close': 53px 179px -53px -179px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-popup-close__black': 0px 179px 0px -179px 33px 33px 257px 253px 'images/icons/__sprite.png'
+	's-select-arrow': 49px 232px -49px -232px 16px 10px 257px 253px 'images/icons/__sprite.png'
+	's-select-arrow__white': 85px 232px -85px -232px 16px 10px 257px 253px 'images/icons/__sprite.png'
+	's-share': 0px 232px 0px -232px 29px 21px 257px 253px 'images/icons/__sprite.png'
+	's-star__left': 203px 62px -203px -62px 54px 42px 257px 253px 'images/icons/__sprite.png'
+	's-star__right': 203px 0px -203px 0px 54px 42px 257px 253px 'images/icons/__sprite.png'
+}
+$spritesCount = 6
+$$sprite = {
+	's-___': 82px 28px -82px -28px 1px 1px 93px 62px 'images/sprites/__sprite.png'
+	's-arrow-tab-active': 41px 41px -41px -41px 11px 8px 93px 62px 'images/sprites/__sprite.png'
+	's-arrow-tab': 82px 0px -82px 0px 11px 8px 93px 62px 'images/sprites/__sprite.png'
+	's-type-list': 0px 0px 0px 0px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+	's-type-preview': 41px 0px -41px 0px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+	's-type-table': 0px 41px 0px -41px 21px 21px 93px 62px 'images/sprites/__sprite.png'
+}
+// BASE
+TITLE_CLASS = 'title'
+
+// Paths
+IMAGES_PATH = 'images/'
+LIBS_PATH = 'scripts/libs/'
+STYLES_PATH = 'styles/'
+
+DEFAULT_WIDTH = 1200px
+
+MEDIA_MARGIN = 30px
+
+// LAYOUT
+WRAPPER_PADDING = 20px
+WRAPPER_PADDING_PHONE = 10px
+WRAPPER_WIDTH = 1200px
+
+WRAPPER_MIN_WIDTH = 300px
+WRAPPER_MAX_WIDTH = WRAPPER_WIDTH + (WRAPPER_PADDING*2)
+
+// TEXT
+BASE_SIZE = 16px
+
+MOBILE_SIZE = 16px
+
+FONT_SIZE = BASE_SIZE
+LINE_HEIGHT = 30px
+LINE_HEIGHT = unit(round(LINE_HEIGHT/FONT_SIZE, 3), '')
+
+FONT_COLOR = #242424
+
+
+MAIN_COLOR = #006298
+
+LINK_COLOR = MAIN_COLOR
+LINK_COLOR_HOVER = MAIN_COLOR + 40%
+
+LINK_COLOR_INVERT = FONT_COLOR
+LINK_COLOR_INVERT_HOVER = LINK_COLOR
+
+TEXT_LINK_COLOR = LINK_COLOR
+TEXT_LINK_COLOR_HOVER = LINK_COLOR_HOVER
+
+SELECT_COLOR = MAIN_COLOR
+
+
+ERROR_COLOR = #FF5959
+ERROR_BORDER_COLOR = #FF5959
+
+GOOD_COLOR = #44cd5e
+GOOD_BORDER_COLOR = #44cd5e
+
+BACKGROUND_COLOR = #f5f5f5
+
+// OTHER
+TRANS_SPEED = 0.2s
+
+FORM_ITEM_MARGIN = 20px
+
+COLUMN_MARGIN = 20px
+
+ENABLE_REM_POLYFILL = false
+
+
+BASE_WIDTH = 2560
+
+
+SCREENS = VARS.SCREENS
+
+
+COLORS = {
+	base: MAIN_COLOR,
+	light: #e7f0f7,
+	banners-item-box: #667c87,
+	button-style2: {
+		background: #f9a62c,
+		color: #000000
+	},
+	similarFlatButton: #b7312c,
+	progress: #d5e1ef
+}
+
+
+getColor(name, subname = false)
+	if subname
+		return COLORS[name][subname];
+	else
+		return COLORS[name];
+
+
+INPUT_SIZE = {
+	default: {
+		font-size: 16px,
+		height: 60px
+	}
+}
+__customthis = false
+this()
+	// p(__customthis)
+	if __customthis != false
+		return __customthis
+	return selector()
+
+reset-this()
+	__customthis = false
+
+set-this(_selector)
+	__customthis = _selector
+
+// __options = {
+// 	type: 'set-options',
+// 	value: {BASE_SIZE: BASE_SIZE, RESPONSIVE_START_WIDTH: RESPONSIVE_START_WIDTH, RESPONSIVE_END_WIDTH: RESPONSIVE_END_WIDTH, RESPONSIVE_AUTO_ACCURACY: RESPONSIVE_AUTO_ACCURACY}
+// }
+// __addAdaptiveProperty(__options)
+
+add-adaptive-property(prop, value)
+	if ENABLE_REM_POLYFILL
+		__add = {type: 'add', value: {selector: selector(), property: prop, value: value}}
+		// __addAdaptiveProperty(__add)
+		if(__ADAPTIVE_PROPERTIES[selector()] == null)
+			__ADAPTIVE_PROPERTIES[selector()] = 0
+		push(__ADAPTIVE_PROPERTIES[selector()], {property: prop, value: value})
+
+set-html-font-size(val)
+	html
+		font-size val
+
+set-polyfill-adaptive(val)
+	if !ENABLE_REM_POLYFILL
+		return
+	for _selector, props in __ADAPTIVE_PROPERTIES
+		// p(_selector)
+		{ selector('html.modernizr-no-cssremunit', _selector) }
+			for prop in props
+				if prop != 0
+					if length(prop['value']) > 1
+						_newValues = ()
+						for _val, index in prop['value']
+							push(_newValues, unrem(_val, val))
+						add-property( prop['property'], _newValues )
+						// { prop['property'] } _newValues
+					else
+						add-property( prop['property'], unrem(prop['value'], val) )
+
+
+__INLINE_MEDIA_LIST = ( 0 )
+
+_on-width(args...)
+	push(__INLINE_MEDIA_LIST, {selector: selector(), query: args})
+	return
+
+render_on-width()
+	for query in __INLINE_MEDIA_LIST
+		p(query)
+
+content-center(w = 100%, h = w, important = false )
+	important = (important == true ? !important : )
+	position relative
+	width w important
+	height h important
+
+	> *
+		position absolute
+		top 0 important
+		bottom 0 important
+		left 0 important
+		right 0 important
+		margin auto important
+		max-height 100%
+		max-width 100%
+
+
+isNumber(val)
+	if( !(val < 0 || val >= 0) && val != 'auto' && val != 'none' )
+		false
+	else
+		true
+
+allIsNumber(vals)
+	all = true
+	for _val in vals
+		all = all && isNumber(_val)
+	return all
+
+border-box()
+	box-sizing padding-box
+	box-sizing border-box
+	
+background-clip()
+	background-clip padding-box
+
+
+
+// in css -> width-perc(15)
+width-perc(perc)
+	.perc-{perc}
+		width: (perc)%
+		
+anim-link(type = $type_anim_link)
+	position relative
+	text-decoration none !important
+	overflow hidden
+	
+	if( type == 1)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+		
+	if (type == 2)
+		&:after,
+		&:before
+			content ''
+			display block
+			position absolute
+			bottom 0
+			size(50%, 0)
+			max-width 50%
+			border-bottom 1px solid
+			trans()
+		&:after
+			right 0
+		&:before
+			left 0
+			
+		&:hover
+			text-decoration none
+			&:after,
+			&:before
+				size(0)
+	
+	if( type == 3)
+		&:after
+			content ''
+			display block
+			position absolute
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			size(100%, 0)
+			max-width 100%
+			border-bottom 1px solid
+			trans()
+			
+		&:hover
+			&:after
+				size(0)
+
+Button(params, btnName = '')
+	_bg = params.background
+	_color = params.color
+	_bgHover = params.hover.background
+	_colorHover = params.hover.color
+	_bgActive = params.active.background
+	_colorActive = params.active.color
+	_colorName = ''
+	if(btnName != '')
+		_colorName = '="' + btnName + '"'
+		btnName = '.__' + btnName
+	else
+		_colorName = ""
+
+	&{btnName},
+	&[data-button-color{ _colorName }]
+		background-color _bg
+		color _color
+
+	&{btnName}:hover,
+	&{btnName}:focus,
+	&[data-button-color{ _colorName }]:hover,
+	&[data-button-color{ _colorName }]:focus
+		if(_bgHover)
+			background-color _bgHover
+		if(_colorHover)
+			color _colorHover
+	&{btnName}:active,
+	&[data-button-color{ _colorName }]:active
+		if(_bgActive)
+			background-color _bgActive
+		if(_colorActive)
+			color _colorActive
+
+	&{btnName}[disabled],
+	&{btnName}.disabled,
+	&{btnName}.__loading
+		background-color _bg !important
+		color _color !important
+
+	&[data-button-color{ _colorName }].__border,
+	&{btnName}.__border
+		background-color transparent
+		color _bg
+		_borderColor = _bg
+		if( params.border && params.border['border-color'] )
+			_borderColor = params.border['border-color']
+		border 2px solid _borderColor
+		&:hover,
+		&:focus
+			_borderColor = _bgHover
+			if( params.border && params.border.hover && params.border.hover['border-color'] )
+				_borderColor = params.border.hover['border-color']
+			color _colorHover
+			border-color _bgHover
+			background-color _bgHover
+		&:active
+			_borderColor = _bgActive
+			if( params.border && params.border.active && params.border.active['border-color'] )
+				_borderColor = params.border.active['border-color']
+			color _colorActive
+			border-color _bgActive
+			background-color _bgActive
+		&[disabled],
+		&.__loading,
+		&.disabled
+			background-color #fff !important
+			border-color _bg !important
+Buttons(styles)
+	for _btnName, _btnParams in styles
+		if(_btnName == 'default')
+			_btnName = ''
+		Button(_btnParams, _btnName )
+
+
+replace(expr, str, val)
+	expr = "'" + clone(expr) + "'"
+	// return typeof(expr)
+	for e, i in expr
+		if str == e
+			expr[i] = val
+	return expr
+
+catStr(str, start, end = false)
+	// res = ''
+	res = ''
+	_str = "'" + str + "'"
+	return _str[0][0]
+	return length(_str[0][0])
+	for i in _str
+		res = res + ' ' + i
+		if i >= start
+			if(end == false || i < end)
+				res = res + _str[i]
+	return res
+
+rem(val)
+	// p(selector())
+	// p(called-from)
+	// p(val)
+	// _selector = selector()
+	// add-adaptive-property
+
+	_rem = (round((val/BASE_SIZE)*1000)/1000)rem
+	if ENABLE_REM_POLYFILL
+		if __ADAPTIVE_PROPERTIES__DEFAULTS[current-property[0]]
+			add-property(current-property[0], val)
+			add-adaptive-property(current-property[0], _rem)
+
+	return _rem
+
+unrem(val, _size = BASE_SIZE)
+	if(unit(val) == 'rem')
+		return (round((val*_size)*10)/10)px
+	else
+		return val
+
+isRem(val)
+	// p(val)
+	// p(typeof(val) + ' ' + (typeof(val) == 'unit'))
+	// // p(unit(val))
+	// // return
+	if(typeof(val) != 'unit')
+		return false
+	if(unit(val) != 'rem')
+		return false
+	return true
+
+remExis(values)
+	for val in values
+		if(isRem(val))
+			return true
+	return false
+
+allIsRem(values)
+	for val in values
+		if(!isRem(val))
+			return false
+	return true
+
+ifLandscape(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth) and (orientation: landscape)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth) and (orientation: landscape)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth) and (orientation: landscape)
+					{block}
+			else
+				@media screen and (orientation: landscape)
+					{block}
+
+screenWidth(minWidth = 0, maxWidth = 0)
+	if(minWidth > 0 && maxWidth > 0)
+		@media screen and (min-width: minWidth) and (max-width: maxWidth)
+			{block}
+	else
+		if(minWidth > 0)
+			@media screen and (min-width: minWidth)
+				{block}
+		else
+			if(maxWidth > 0)
+				@media screen and (max-width: maxWidth)
+					{block}
+
+STYLES(file)
+	return STYLES_PATH + file
+LIBS(file)
+	return LIBS_PATH + file
+IMAGES(file)
+	return IMAGES_PATH + file
+
+// in css -> images("test.png")
+images(file)
+	return url( IMAGES( file ) )
+
+
+autoResponse()
+	_lastFont = {}
+
+	_countResponse = ( 0 )
+	_start = RESPONSIVE_END_WIDTH
+	_end = RESPONSIVE_START_WIDTH
+
+	_lastWidth = (0)
+	for i in _start.._end
+		newSize =  BASE_SIZE*(i/RESPONSIVE_START_WIDTH)
+		newSize = round( newSize*RESPONSIVE_AUTO_ACCURACY )/RESPONSIVE_AUTO_ACCURACY
+		newSize = round( newSize*10 )/10
+		if(!_lastFont[newSize])
+			_countResponse[0] = _countResponse[0] + 1
+			_lastFont[newSize] = true
+			if _lastWidth[0] == 0
+				@media screen and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			else
+				@media screen and (min-width: ( (_lastWidth[0])px) ) and (max-width: ( (i - 1)px) ) and (min-aspect-ratio: 14/9)
+					set-html-font-size(newSize)
+			_lastWidth[0] = i
+	p('\nTotal breakpoints: ' + _countResponse[0] + '\n')
+
+
+_Sprite($$arr, name, spriteName, width = false, height = false)
+	$sprite = $$arr[ 's-' + spriteName]
+	if $sprite == null
+		p( '\n\n\n    ' + name + ' "' + spriteName + '" not found in: \n\n    ' + selector() + '\n\n\n')
+		return
+	else
+		_isDefaultWidth = false
+		_isDefaultHeight = false
+
+		_defaultWidth = $sprite[4]
+		_defaultHeight = $sprite[5]
+
+		if width == false
+			width = _defaultWidth
+			_isDefaultWidth = true
+
+		if height == false
+			height = _defaultHeight
+			_isDefaultHeight = true
+
+		_widthKoef = width/_defaultWidth
+		_heightKoef = height/_defaultHeight
+
+		if _isDefaultHeight && !_isDefaultWidth
+			_heightKoef = _widthKoef
+			height = height*_heightKoef
+
+		if !_isDefaultHeight && _isDefaultWidth
+			_widthKoef = _heightKoef
+			width = width*_widthKoef
+
+		// width = round(width*_widthKoef*1000)/1000
+		// height = round(height*_heightKoef*1000)/1000
+
+		_backgroundWidth = $sprite[6]
+		_backgroundHeight = $sprite[7]
+
+		_backgroundWidth = _backgroundWidth*_widthKoef
+		_backgroundHeight = _backgroundHeight*_heightKoef
+
+		_positionLeft = $sprite[2]
+		_positionTop = $sprite[3]
+
+		_positionLeft = _positionLeft*_widthKoef
+		_positionTop = _positionTop*_heightKoef
+
+		background-image url($sprite[8])
+		width (width)
+		height (height)
+		background-position (_positionLeft) (_positionTop)
+		background-size (_backgroundWidth) (_backgroundHeight)
+		background-repeat no-repeat
+
+sprite(spriteName, width = false, height = false)
+	_Sprite($$sprite, 'sprite', spriteName, width, height)
+
+icon(spriteName, width = false, height = false)
+	_Sprite($$icons, 'icon', spriteName, width, height)
+
+px64()
+	_color = (0 0 0)
+	for item, index in arguments
+		_color[index] = item
+	p(_color)
+	s(__px64(_color))
+
+
+
+MEDIA( type, onlyThis = false )
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if(onlyThis && _currentIndex != 0 && _currentIndex != (length(SCREENS) - 1))
+		@media screen and (min-width: unit(SCREENS[ _currentIndex + 1 ][1] + 1, 'px')) and (max-width: unit(_currentValue, 'px'))
+			{block}
+	else
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+MIN_MEDIA(type)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if index < (length(SCREENS) - 2) && _screen[0] == type
+			_currentIndex = index
+			_currentValue = (SCREENS[index + 1][1] + 1)
+
+	_type = 'min-width'
+
+	CURRENT_MEDIA_WIDTH = _currentValue
+
+	if _currentIndex != -1
+		@media screen and ({_type}: unit(_currentValue, 'px'))
+			{block}
+
+	CURRENT_MEDIA_WIDTH = 0
+
+MEDIA_WIDTH(type, margin)
+	_currentIndex = -1
+	_currentValue = 0
+	for _screen, index in SCREENS
+		if _screen[0] == type
+			_currentIndex = index
+			_currentValue = _screen[1]
+	if _currentIndex == -1
+		error("SCREEN " + type + " not found in " + SCREENS)
+	_type = _currentIndex == 0 ? 'min-width' : 'max-width'
+	if margin
+		return _currentValue - MEDIA_MARGIN
+	else
+		return _currentValue
+
+
+reset-wrapper-content(inner = true)
+	_values = 
+		padding-left 0
+		padding-right 0
+		max-width none
+		min-width 0
+		width auto
+	_selector = '.wrapper-content'
+
+	if(true)
+		> .wrapper-content
+			{_values}
+	else
+		.wrapper-content
+			{_values}
+
+
+
+// in css -> text-ellipsis(100px) or text-ellipsis(80%)
+_text-overflow(width_value = 'none')
+	white-space: nowrap
+	text-overflow: ellipsis
+	line-height: normal;
+	overflow: hidden
+	if width_value != 'none'
+		width: width_value
+	else
+		max-width 100%
+
+
+getInputSize(sizes)
+	_lineHeight = 1.2
+	return {
+		font-size: sizes['font-size'],
+		line-height: _lineHeight,
+		height: sizes['height'],
+		padding-top: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2),
+		padding-bottom: round((sizes['height'] - (sizes['font-size']*_lineHeight))/2)
+	}
+$button()
+	[type="submit"],
+	[type="button"],
+	[type="reset"],
+	button
+		{block}
+
+button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button')
+
+all_button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button, [data-button]')
+
+textbox(onlyInput = false)
+	if onlyInput
+		return selector('&', '[type="text"], textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .input-style')
+	return selector('&', '[type="text"], select, textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .ui-selectmenu-button, .input-style')
+
+$textbox(onlyInput = false)
+	if(onlyInput)
+		[type="text"], textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.input-style
+			{block}
+	else
+		[type="text"], select, textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.ui-selectmenu-button,
+		.input-style
+			{block}
+
+$hN(n)
+	h{ n },
+	.{ TITLE_CLASS }-{n}
+		{block}
+
+$title()
+	h{ 1 },
+	.{ TITLE_CLASS }-{1},
+	h{ 2 },
+	.{ TITLE_CLASS }-{2},
+	h{ 3 },
+	.{ TITLE_CLASS }-{3},
+	h{ 4 },
+	.{ TITLE_CLASS }-{4},
+	h{ 5 },
+	.{ TITLE_CLASS }-{5},
+	h{ 6 },
+	.{ TITLE_CLASS }-{6}
+		{block}
+
+$h1()
+	+$hN(1)
+		{block}
+$h2()
+	+$hN(2)
+		{block}
+$h3()
+	+$hN(3)
+		{block}
+$h4()
+	+$hN(4)
+		{block}
+$h5()
+	+$hN(5)
+		{block}
+$h6()
+	+$hN(6)
+		{block}
+$title-1()
+	.{ TITLE_CLASS }-1
+		{block}
+$title-2()
+	.{ TITLE_CLASS }-2
+		{block}
+$title-3()
+	.{ TITLE_CLASS }-3
+		{block}
+$title-4()
+	.{ TITLE_CLASS }-4
+		{block}
+$title-5()
+	.{ TITLE_CLASS }-5
+		{block}
+$title-6()
+	.{ TITLE_CLASS }-6
+		{block}
+$title-all()
+	.{ TITLE_CLASS }-1,
+	.{ TITLE_CLASS }-2,
+	.{ TITLE_CLASS }-3,
+	.{ TITLE_CLASS }-4,
+	.{ TITLE_CLASS }-5,
+	.{ TITLE_CLASS }-6
+		{block}
+$h-all()
+	h1,h2,h3,h4,h5,h6
+		{block}
+
+
+$big()
+	.big
+		{block}
+$small()
+	small,
+	.small
+		{block}
+$bold()
+	.bold,
+	b,
+	strong
+		{block}
+$italic()
+	i,
+	.italic
+		{block}
+
+
+$_noopacity()
+	html.modernizr-no-opacity &
+		{block}
+
+$_nofilter()
+	html.modernizr-no-cssfilters &
+		{block}
+$$clear
+	&:after
+		content ''
+		display table
+		clear both
+		border-spacing 0
+		border-collapse collapse
+		border 0
+
+clear(arg = false)
+	if (arg != false)
+		clear arg
+	else
+		@extend $$clear
+
+$$resetTitle
+	font inherit
+	color inherit
+	border 0
+	outline none
+	border-radius 0
+	text-transform inherit
+$$resetStyle
+	@extends $$resetTitle
+	margin 0
+	padding 0
+	background transparent
+
+resetStyle()
+	&
+		@extend $$resetStyle
+
+resetTitle()
+	&
+		+$title()
+			&
+				@extend $$resetStyle
+
+$$reset-button
+	padding 0
+	margin 0
+	border 0
+	box-shadow none
+	background transparent
+	outline none
+	text-decoration none
+	display inline-block
+	vertical-align top
+	cursor pointer
+	text-align center
+	user-select none
+
+reset-button()
+	@extend $$reset-button
+
+$$trans
+	transition all TRANS_SPEED
+
+trans(_speed = false)
+	if(!_speed)
+		@extend $$trans
+	else
+		transition all _speed
+
+trans-none()
+	transition all 0s
+size(_width, _height = _width)
+	if isNumber(_width)
+		if isRem(_width) && ENABLE_REM_POLYFILL
+			width unrem(_width)
+			add-adaptive-property('width', _width)
+		width _width
+	if isNumber(_height)
+		if isRem(_height) && ENABLE_REM_POLYFILL
+			height unrem(_height)
+			add-adaptive-property('height', _height)
+		height _height
+	// relative-prop('width' width, 'height' height)
+
+max-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			max-width unrem(width)
+			add-adaptive-property('max-width', width)
+		max-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			max-height unrem(height)
+			add-adaptive-property('max-height', height)
+		max-height height
+
+	// relative-prop('max-width' width, 'max-height' height)
+
+min-size(width, height = width)
+	if isNumber(width)
+		if isRem(width) && ENABLE_REM_POLYFILL
+			min-width unrem(width)
+			add-adaptive-property('min-width', width)
+		min-width width
+	if isNumber(height)
+		if isRem(height) && ENABLE_REM_POLYFILL
+			min-height unrem(height)
+			add-adaptive-property('min-height', height)
+		min-height height
+	// relative-prop('min-width' width, 'min-height' height)
+
+pos(top, right = top, bottom = top, left = right)
+	if isNumber(top)
+		if isRem(top) && ENABLE_REM_POLYFILL
+			top unrem(top)
+			add-adaptive-property('top', top, true)
+		top top
+	if isNumber(right)
+		if isRem(right) && ENABLE_REM_POLYFILL
+			right unrem(right)
+			add-adaptive-property('right', right)
+		right right
+	if isNumber(left)
+		if isRem(left) && ENABLE_REM_POLYFILL
+			left unrem(left)
+			add-adaptive-property('left', left)
+		left left
+	if isNumber(bottom)
+		if isRem(bottom) && ENABLE_REM_POLYFILL
+			bottom unrem(bottom)
+			add-adaptive-property('bottom', bottom)
+		bottom bottom
+	// relative-prop('top' top, 'right' right, 'bottom' bottom, 'left' left )
+
+margin()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		add-adaptive-property('margin', arguments)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('margin-top', top)
+			if !allIsNumber(arguments)
+				margin-top unrem(top)
+
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('margin-right', right)
+			if !allIsNumber(arguments)
+				margin-right unrem(right)
+
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('margin-bottom', bottom)
+			if !allIsNumber(arguments)
+				margin-bottom unrem(bottom)
+
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('margin-left', left)
+			if !allIsNumber(arguments)
+				margin-left unrem(left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		margin arguments
+	else
+		if isNumber(top)
+			margin-top top
+		if isNumber(right)
+			margin-right right
+		if isNumber(bottom)
+			margin-bottom bottom
+		if isNumber(left)
+			margin-left left
+
+padding()
+	if length(arguments) == 4
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[3]
+
+	if length(arguments) == 3
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[2]
+		left = arguments[1]
+
+	if length(arguments) == 2
+		top = arguments[0]
+		right = arguments[1]
+		bottom = arguments[0]
+		left = arguments[1]
+
+	if length(arguments) == 1
+		top = arguments[0]
+		right = arguments[0]
+		bottom = arguments[0]
+		left = arguments[0]
+
+	if( (allIsNumber(arguments)) && allIsRem(arguments) ) && ENABLE_REM_POLYFILL
+		if allIsRem(arguments)
+			add-adaptive-property('padding', arguments)
+			padding unrem(top) unrem(right) unrem(bottom) unrem(left)
+		else
+			if isRem(top)
+				padding-top unrem(top)
+			if isRem(right)
+				padding-right unrem(right)
+			if isRem(left)
+				padding-left unrem(left)
+			if isRem(bottom)
+				padding-bottom unrem(bottom)
+	elseif ENABLE_REM_POLYFILL
+		if isNumber(top) && isRem(top)
+			add-adaptive-property('padding-top', top)
+		if isNumber(right) && isRem(right)
+			add-adaptive-property('padding-right', right)
+		if isNumber(bottom) && isRem(bottom)
+			add-adaptive-property('padding-bottom', bottom)
+		if isNumber(left) && isRem(left)
+			add-adaptive-property('padding-left', left)
+
+	if allIsRem(arguments) && allIsNumber(arguments)
+		padding arguments
+	else
+		if isNumber(top)
+			padding-top top
+		if isNumber(right)
+			padding-right right
+		if isNumber(bottom)
+			padding-bottom bottom
+		if isNumber(left)
+			padding-left left
+
+opacity(val)
+	if( val >= 0 )
+		if val > 1
+			val = val/100
+		zoom 1
+		-ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity="' + val*100 + '")')
+		filter unquote('alpha(opacity=' + val*100 + ')')
+		opacity val
+	else
+		opacity val
+
+gr(startColor, endColor)
+	background: -moz-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,startColor), color-stop(100%, endColor));
+	background: -webkit-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -o-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: -ms-linear-gradient(top,  startColor 0%, endColor 100%);
+	background: linear-gradient(to bottom,  startColor 0%, endColor 100%);
+
+// font-size(val)
+// 	if(typeof(val) == 'unit' && unit(val) == 'rem')
+// 		add-adaptive-property('font-size', val)
+// 		add-property('font-size', unrem(val))
+// 	add-property('font-size', val)
+
+base-font()
+	font-1()
+	font-weight 300
+	font-size FONT_SIZE
+	color FONT_COLOR
+font-1()
+	font-family 'MuseoSansCyrl', Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif
+
+html, body
+	margin 0
+	padding 0
+	border 0
+	font inherit
+	vertical-align baseline
+main *,
+main *:before,
+main *:after
+	font inherit
+	color inherit
+	border-box()
+main
+	&,
+	div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike,  sub, sup, tt, var,
+	u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed,
+	figure, figcaption, footer, header, hgroup,
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video
+		margin 0
+		padding 0
+		border 0
+		font inherit
+		vertical-align baseline
+	&,
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section
+		display block
+	nav
+		ul
+			&,
+			li,
+			ul
+				padding 0
+				margin 0
+				list-style none
+			li
+				&:before
+					content none
+	blockquote, q
+		quotes none
+
+	blockquote:before, blockquote:after,
+	q:before, q:after
+		content ''
+	table
+		border-collapse collapse
+		border-spacing 0
+
+	*:focus
+		&,
+		*
+			outline 0
+	ins
+		text-decoration none
+
+
+main
+	+$button()
+		-webkit-appearance none
+		border-radius 0
+		cursor pointer
+	/{ textbox(true) }
+		-webkit-appearance none
+		border-radius 0
+		margin 0
+
+
+script
+	display none !important
+
+ul[data-carusel]
+	list-style none
+	& > li:before
+		display none
+.table
+	display table
+	width 100%
+	table-layout fixed
+
+	&-cell
+		display table-cell
+		vertical-align top
+
+	&-row,
+	&-rows
+		display table-row
+
+	&-column,
+	&-columns
+		display table-column
+
+main
+	+$bold()
+		font-weight 700
+
+	+$italic()
+		font-style italic
+
+	a
+		color LINK_COLOR
+		&:hover
+			color LINK_COLOR_HOVER
+	img
+		max-width 100%
+		height auto
+
+	+$big()
+		font-size 120%
+		font-size 1.2em
+	+$small()
+		font-size 80%
+		font-size 0.8em
+
+.clear,
+.clearfix
+	clear()
+
+.hidden
+	display none !important
+
+.close-content
+	position fixed
+	top 0
+	left 0
+	z-index 5
+	size(100%, 100%)
+	opacity(20)
+	background #000
+
+.align-top
+	vertical-align top !important
+.align-middle
+	vertical-align middle !important
+.align-bottom
+	vertical-align bottom !important
+.align-left
+	text-align left !important
+.align-right
+	text-align right !important
+.align-center
+	text-align center !important
+
+.trans
+	trans()
+
+.no-trans
+	transition none !important
+
+.bold 
+	font-weight bold
+
+.italic 
+	font-style italic
+
+.underline
+	text-decoration underline
+
+.uppercase,
+.upper
+	text-transform uppercase
+
+.lowercase,
+.lower
+	text-transform lowercase
+
+.normalcase
+	text-transform none
+
+.left,
+.to-left
+	float left
+	left 0
+	
+.right,
+.to-right
+	float right
+	right 0
+
+.nowrap
+	white-space nowrap
+
+
+$$fullWidth
+	width 100%
+.columns
+	margin _ (-(COLUMN_MARGIN))
+	clear()
+	&.__inline
+		> .column
+			display inline-block
+			vertical-align top
+			margin-right -6px
+			float none
+.column
+	width 100%
+	float left
+	padding _ COLUMN_MARGIN
+	for k in 1 2 3 4 5 6 7 8 9 10 11
+		for i in 1..k
+			&.__{ i }-{ k }
+				if i == k
+					@extend $$fullWidth
+				else
+					width (round( (i*100/k)*1000 )/1000)%
+
+[contenteditable]
+	cursor text
+// .text
+// 	base-font()
+// 	font-size 16px
+// 	line-height 24px
+// 	color #000
+// 	ul
+// 		list-style disc
+// 		float none
+// 			li
+// 				padding-left 5px
+// 				list-style square outside
+// 		li
+// 			margin 5px 0 5px 18px
+// 			position relative
+
+
+// 	ol
+// 		list-style decimal outside
+// 		float none
+// 		margin-left 20px
+		
+// 	img
+// 		max-width 100%
+// 		&.left
+// 			margin-right 10px
+// 		&.right
+// 			margin-left 10px
+		
+// 	p,
+// 	img,
+// 	ul,
+// 	ol
+// 		margin-bottom 20px
+		
+// 	table
+// 		position relative
+// 		margin-bottom 7px
+// 		width 100%
+		
+// 	th
+// 		font-weight bold
+// 		background #ccc
+// 		background rgba(0, 0, 0, 0.1)
+// 		text-align left
+// 	td,
+// 	th
+// 		padding 5px 7px
+// 		border 1px solid #666
+
+
+// .bold 
+// 	font-weight bold
+
+// .italic 
+// 	font-style italic
+
+// .decoration 
+// 	text-decoration underline
+
+// .uppercase,
+// .upper
+// 	text-transform uppercase
+
+// .lowercase,
+// .lower
+// 	text-transform lowercase
+	
+// .center
+// 	text-align center
+	
+// .left,
+// .to-left
+// 	float left
+// 	left 0
+	
+// .right,
+// .to-right
+// 	float right
+// 	right 0
+
+// .align-right
+// 	text-align: right
+// .align-center
+// 	text-align: center
+// .align-left
+// 	text-align: left
+// .nowrap
+// 	white-space nowrap
+
+
+// /{ textbox() }
+// 	border 1px solid #ccc
+// 	width 100%
+// 	padding 6px 10px
+// 	font-size 14px
+// 	border-box()
+// 	line-height normal
+// 	border-radius 0
+// 	box-shadow none
+// 	background #fff
+
+// 	.error &,
+// 	&.error
+// 		border-color #f0b8b8
+// 		box-shadow 0 0 5px rgba(219,42,42, 0.20)
+
+// 		.ui-select-wrapper.error .ui-selectmenu-button
+// 			border-color #f0b8b8
+
+// 	&:hover
+// 		border-color #ccc - 10%
+// 	&:focus
+// 		border-color #ccc - 20%
+// /{ textbox() }
+// 	-webkit-appearance none
+// 	border-radius 0
+main
+	.req
+		font-size: 12px;
+		color: #db2a2a;
+		position: relative;
+		top: -5px;
+
+.form
+	position relative
+	&-item
+		&.width-50
+			padding-right: 13px;
+			border-box()
+		&-right
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			top: -2px;
+			margin-left: 28px;
+			&-number, &-date
+				display: inline-block;
+				vertical-align: middle;
+				margin-left 20px
+				input[type="text"]
+					width 100%
+			&-number
+				margin-left 15px
+				width 50px
+			&-date
+				width 145px
+
+		margin-bottom 18px
+		&-column
+			width 210px
+			margin-left 26px
+			&:first-of-type
+				margin-left 0
+		&.error
+			.ui-select-wrapper
+				.ui-selectmenu-button
+					border 1px solid #f0b8b8 !important
+
+	&-column-line
+		margin: 30px -30px 0;
+		padding: 20px 30px;
+		border-top: 1px solid #dae3e4;
+		& + .form-column-line
+			margin-top 0
+	&-attention
+		color #686868
+		font-size 12px
+		margin-bottom: 25px;
+		margin-top: 27px;
+		text-align left
+	textarea
+		height 168px
+
+	label
+		font-size 14px
+		text-align left
+		color #000
+		display block
+		margin-bottom 10px
+	input,
+	textarea
+		& + label
+			display inline-block
+			vertical-align middle
+			margin-bottom 0
+			margin-left 10px
+
+	&.compact
+		input,
+		textarea
+			width 60%
+
+	&.error
+		input,
+		textarea
+			border 1px solid #f0b8b8 !important
+			box-shadow 0 0 5px rgba(219,42,42, 0.20) !important
+
+
+.error-msg
+	margin-top 10px
+	display inline-block
+	margin-left 10px
+	color #db2a2a
+	font-size 14px
+	text-align left
+
+
+// .bx-core-window,
+// .bxcompprop-content,
+// .adm-workarea
+// 	select[multiple],
+// 	select
+// 		-webkit-appearance listbox
+
+// 	select,
+// 	select
+// 		-webkit-appearance menulist
+
+// 	input[type="radio"]
+// 		-webkit-appearance radio
+
+// 	input[type="checkbox"]
+// 		-webkit-appearance checkbox

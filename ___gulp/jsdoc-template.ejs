@@ -1,0 +1,263 @@
+<?
+
+var parseParamName = function(_name){
+	var reg = /\[\s*(\S+)\s*=\s*(\S+)\s*\]/;
+	var res = reg.exec(_name);
+	if( res ){
+		return {
+			name: res[1],
+			default: res[2],
+			value: res[2]
+		}
+	}
+	return {
+		name: _name,
+		default: 'undefined',
+		value: 'undefined'
+	};
+}
+
+var itemParseType = function(item){
+	if(item.type !== 'property') return;
+	if( !item.raw && !item.raw.tags && !item.raw.tags.length ) return;
+	item.raw.tags.forEach(function(tag){
+		if(tag.type === 'type'){
+			?><span class="doc-item-type"><?= tag.types.join(' | ')?></span><?
+		}
+	})
+}
+
+var addContents = function(_namespace, items){
+	items.forEach(function(comment){
+		if (comment.ignore){
+			return;
+		}
+		?>
+			<script>
+				if(window['doccontents'] == null){ window['doccontents'] = []; }
+				if( window['doccontents']["<?= _namespace.replace(/[.]/g, '_') ?>"] == null ){ window['doccontents']["<?= _namespace.replace(/[.]/g, '_') ?>"] = []; }
+
+				window['doccontents']["<?= _namespace.replace(/[.]/g, '_') ?>"].push({
+					namespace: "<?= _namespace.replace(/[.]/g, '_') ?>",
+					name: "<? if (comment.isMethod || comment.isFunction || comment.isClass) { ?> <?= comment.name ?>()<? } else { ?><?= comment.name ?><? } ?>",
+					target: "<?= (_namespace + '---' + comment.name).replace(/[.]/g, '_')?>"
+				})
+			</script>
+		<?
+	})
+}
+var escapeHTML = function(s) { 
+	return s.replace(/&/g, '&amp;')
+			.replace(/"/g, '&quot;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;');
+}
+
+var parseAtLink = function(s){
+	var reg = ".*\\{@link[ ]*(.+?)[ ]*\\}.*";
+	var replaceReg = "\\{@link[ ]*$[ ]*\\}";
+	var replaceReg2 = "\\{@link[ ]*$1[ ]*\\|[ ]*$2[ ]*\\}";
+
+	var result = (new RegExp(reg, "g")).exec(s);
+	if(result == null) return s;
+	var resultStr = s;
+	for(var i = 1; i < result.length; i++){
+		var item = result[i].split("|");
+		item = item.map(function(_tmp){ return _tmp.trim() });
+		if(item.length == 2){
+			var _replace = replaceReg2.replace('$1', item[0]);
+			_replace = _replace.replace('$2', item[1]);
+			_replace = new RegExp(_replace)
+			resultStr = resultStr.replace( _replace, '<a href="' + item[0] + '"' + (item[0][0] != '#' ? ' target="_blank"' : '') + '>' + (item[1]) + '</a>' );
+		} else {
+			var _replace = new RegExp(replaceReg.replace('$', item[0]));
+			resultStr = resultStr.replace( _replace, '<a href="' + item[0] + '"' + (item[0][0] != '#' ? ' target="_blank"' : '') + '>' + (item[0]) + '</a>' );
+		}
+	}
+	return resultStr;
+}
+
+var parseSelfLink = function(s, fileName){
+	var reg = '\\@\\{\\s*(\\S+)\\s*\\}';
+	var replaceReg = '\\@\\{\\s*$\\s*\\}';
+
+	var result = (new RegExp(reg, "g")).exec(s);
+	if(result == null) return s;
+	var resultStr = s;
+	for(var i = 1; i < result.length; i++){
+		var item = result[i];
+		var _replace = new RegExp(replaceReg.replace('$', item));
+		resultStr = resultStr.replace( _replace, '<a href="#' + fileName.replace(/[.]/g, '_') + "---" + item.replace(/[.]/g, '_') + '">' + item + '</a>' );
+	}
+	return resultStr;
+}
+
+var parseValue = function(s, fileName){
+	s = parseAtLink(s);
+	s = parseSelfLink(s, fileName);
+	return s;
+}
+
+?>
+<? docfiles.forEach(function(doc) { ?>
+	<?
+		var file = doc.filename;
+		file = file.split('\\').pop();
+		var removeReg = /[0-9]+[_]+/;
+		file  = file.replace(removeReg, '');
+		var fileName = file.replace('.js', '');
+	?>
+	<script>
+		console.debug( '<?= file ?>', (<?= JSON.stringify(docfiles)?>) );
+	</script>
+	<? if(doc.javadoc.length > 0) { ?>
+		<div class="doc-item-file" id="<?= (fileName ).replace(/[.]/g, '_') ?>">
+			<? addContents( file.replace('.js', ''), doc.javadoc ) ?>
+			<div class="doc-item-file-title"><?= parseValue(file, fileName) ?></div>
+
+			<? doc.javadoc.forEach(function(comment) { ?>
+				<? if (!comment.ignore) { ?>
+					<div class="doc-item" id="<?= (fileName + '---' + comment.name).replace(/[.]/g, '_') ?>">
+						<? if (comment.author || comment.version) { ?>
+							<div class="doc-item-top">
+								<? if (comment.version) { ?>
+									<div class="doc-item-version">
+										Version: <?= parseValue(comment.version, fileName) ?>
+									</div>
+								<? } ?>
+
+								<? if (comment.author) { ?>
+									<div class="doc-item-author">
+									   Author: <span><?= parseValue(comment.author, fileName) ?></span>
+									</div>
+								<? } ?>
+							</div>
+						<? } ?>
+
+						
+
+						<? if (comment.name) { ?>
+							<div class="doc-item-name">
+								<? itemParseType(parseValue(comment, fileName)); ?>
+								<? if (comment.deprecated) { ?>
+								<del>
+								<? } ?>
+									<? if (comment.isMethod || comment.isFunction || comment.isClass) { ?>
+										<?= parseValue(comment.name, fileName) ?>(<?= parseValue(comment.paramStr, fileName) ?>)
+									<? } else { ?>
+										<?= parseValue(comment.name, fileName) ?>
+									<? } ?>
+								<? if (comment.deprecated) { ?>
+								</del>
+								<? } ?>
+								<? if (comment.deprecated) { ?>**Deprecated**<? } ?>
+							</div>
+						<? } ?>
+
+						<? if (comment.description) { ?>
+							<div class="doc-item-description">
+								<?= parseValue(comment.description, fileName) ?>
+							</div>
+						<? } ?>
+
+						<? if (comment.see) { ?>
+							<div class="doc-item-see">
+								See: <?= parseValue(comment.see, fileName) ?>
+							</div>
+						<? } ?>
+
+						<? if (comment.paramTags && comment.paramTags.length) { ?>
+							<div class="doc-item-params">
+								<div class="doc-item-params-head">
+									<div class="doc-item-params-name">Параметр</div>
+									<div class="doc-item-params-default">Значение по умолчанию</div>
+									<div class="doc-item-params-description">Описание</div>
+								</div>
+								<? comment.paramTags.forEach(function(param){ ?>
+									<? var _paramName = parseParamName(param.name); ?>
+									<div class="doc-item-params-item">
+										<div class="doc-item-params-name"><?= parseValue(_paramName.name + ( param.optional ? '' : '*' ), fileName) ?></div>
+										<div class="doc-item-params-default"><?= parseValue(( param.optional ? _paramName.default : '—' ), fileName) ?></div>
+										<div class="doc-item-params-description">
+											<p>Тип: <?= parseValue(param.types ? param.types.join(' | ') : '<is empty>', fileName) ?></p>
+											<? if(param.description){ ?>
+												<p><?= parseValue(param.description || '', fileName) ?></p>
+											<? } ?>
+										</div>  
+									</div>
+								<? }) ?>
+							</div>
+						<? } ?>
+						<? if (comment.propertyTags && comment.propertyTags.length) { ?>
+							<? var propResult = comment.name + " = {" ?>
+							<? var maxLength = 0; ?>
+							<?
+								comment.propertyTags.forEach(function(prop, index){
+									var _paramName = parseParamName(prop.name);
+									maxLength = Math.max(maxLength, _paramName.name.length + ((_paramName.value || 'undefined').length) );
+								})
+							?>
+							<? comment.propertyTags.sort(function(a,b){ if(a.name < b.name) return -1;if(a.name > b.name) return 1; return 0;}).forEach(function(prop, index){ ?>
+								<? var _paramName = parseParamName(prop.name); ?>
+								<? var currentLength = _paramName.name.length + ((_paramName.value || 'undefined').length) ?>
+								<? var spaces = "  "; ?>
+								<? for(var i = currentLength; i < maxLength; i++){ spaces += " "; } ?>
+								<? propResult += "\r\n\t" + _paramName.name ?>
+								<? propResult += ": "?>
+								<? propResult += _paramName.value || 'undefined' ?>
+								<? propResult +=  (index < comment.propertyTags.length - 1 ? ',' : '') ?>
+								<? propResult += " " + spaces + (index < comment.propertyTags.length - 1 ? '' : ' ') + "// [" ?>
+								<? propResult += prop.types ? prop.types.join(' | ') : '--is empty--' ?>
+								<? propResult += "] " ?>
+								<? propResult += (prop.description || '') ?>
+							<? }) ?>
+							<? propResult += "\r\n}" ?>
+							<div class="doc-item-props">
+								<pre>
+								<code class="hljs javascript"><?= parseValue(escapeHTML(propResult), fileName) ?></code>
+								</pre>
+							</div>
+							<div class="doc-item-params __prop">
+								<div class="doc-item-params-head">
+									<div class="doc-item-params-name">Параметр</div>
+									<div class="doc-item-params-value">Значение</div>
+									<div class="doc-item-params-description">Описание</div>
+								</div>
+								<? comment.propertyTags.sort(function(a,b){ if(a.name < b.name) return -1;if(a.name > b.name) return 1; return 0;}).forEach(function(prop){ ?>
+									<? var _paramName = parseParamName(prop.name); ?>
+									<div class="doc-item-params-item">
+										<div class="doc-item-params-name"><?= parseValue(_paramName.name, fileName) ?></div>
+										<div class="doc-item-params-value"><?= parseValue(_paramName.value || 'undefined', fileName) ?></div>
+										<div class="doc-item-params-description">
+											<p>Тип: <?= parseValue(prop.types ? prop.types.join(' | ') : '<is empty>', fileName) ?></p>
+											<? if(prop.description){ ?>
+												<p><?= parseValue(prop.description || '', fileName) ?></p>
+											<? } ?>
+										</div>  
+									</div>
+								<? }) ?>
+							</div>
+						<? } ?>
+
+						<? if (comment.raw && comment.raw.tags && comment.raw.tags.length ) { ?>
+							<? var examples = comment.raw.tags.filter(function(tag){
+								return tag.type === 'example';
+							}) ?>
+							<? if(examples.length){ ?>
+								<div class="doc-item-examples">
+									<div class="doc-item-examples-title">Примеры:</div>
+									<? examples.forEach(function(tag){ ?>
+										<div class="doc-item-example">
+											<pre><code class="hljs javascript"><?= parseValue(escapeHTML(tag.string), fileName) ?></code></pre>
+										</div>
+									<? }) ?>
+								</div>
+							<? } ?>
+						<? } ?>
+					</div>
+				<? } ?>
+			<? }) ?>
+		</div>
+	<? } ?>
+
+<? }) ?>

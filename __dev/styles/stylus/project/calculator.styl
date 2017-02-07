@@ -1,0 +1,106 @@
+.calculator
+	clear()
+	&-line
+		float left
+		width 100%
+		clear()
+		margin-bottom 20px
+		.form-input.__has-label .form-input
+			&-wrapper,
+			&-label
+				display inline-block
+				vertical-align middle
+			&-wrapper
+				padding-right 75px
+				margin-right -63px
+				width 100%
+			&-label
+				width 58px
+		.form-item
+			margin 0
+			&.__has-slider
+				display table
+				width 100%
+				> *
+					display table-cell
+					vertical-align middle
+				.form-input
+					width 210px
+					padding-right 15px
+		.form-label
+			text-transform uppercase
+			font-weight 700
+			font-size 14px
+		// &.__queue,
+		// &.__object
+		// 	width 50%
+		// &.__queue
+		// 	padding-right 10px
+		// &.__object
+		// 	padding-left 10px
+	.form-submit
+		margin-top 20px
+		float left
+		width 100%
+	+MEDIA("SMALL_DESKTOP")
+		&-line
+			margin-bottom 25px
+			float none
+			&:after
+				display none
+			.form-item.__has-slider
+				display block
+				> *
+					display block
+				.form-input
+					width auto
+					padding-right 0
+			.form-slider
+				padding 1px 0
+				margin 19px 0
+			.form-input
+				&.__has-label
+					max-width 195px
+			// &.__queue,
+			// &.__object
+			// 	width auto
+			// 	padding 0
+	+MEDIA("TABLET")
+		&-line
+			float left
+			&:after
+				display table
+			// &.__queue,
+			// &.__object
+			// 	width 50%
+			// &.__queue
+			// 	padding-right 10px
+			// &.__object
+			// 	padding-left 10px
+			.form-item
+				&.__has-slider
+					display table
+					width 100%
+					> *
+						display table-cell
+						vertical-align middle
+					.form-input
+						width 250px
+						padding-right 30px
+	+MEDIA("PHONE")
+		&-line
+			.form-item.__has-slider
+				display block
+				> *
+					display block
+				.form-input
+					width auto
+					padding-right 0
+	// +MEDIA("SMALL_PHONE")
+	// 		&.__queue,
+	// 		&.__object
+	// 			width 100%
+	// 		&.__queue
+	// 			padding-right 0
+	// 		&.__object
+	// 			padding-left 0

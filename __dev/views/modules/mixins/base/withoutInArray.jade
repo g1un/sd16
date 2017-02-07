@@ -1,0 +1,11 @@
+-var withoutInArray = function(arr, indexes) {
+	-var tmp = arr.slice(0)
+	-var res = []
+	for i in indexes
+		if i < arr.length
+			-tmp[i] = null
+	for el, index in tmp
+		if el != null
+			-res.push(el)
+	-return res
+- }

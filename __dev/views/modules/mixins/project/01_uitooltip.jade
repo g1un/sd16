@@ -1,0 +1,7 @@
+mixin uitooltip(options)
+	-if(options == null){
+		-options = {}
+	-}
+	+namespace("uitooltip")
+		+el()(class="#{ options['addClass'] ? options['addClass'] : '' }")
+			block

@@ -1,0 +1,14 @@
+mixin documentation(options)
+	-if(options == null) { options = {} }
+	+namespace("documentation")
+		+el().js-documentation.block.__page&attributes(attributes)
+			+el("content-height").js-documentation-content-height
+			.wrapper-content
+				.block-header
+					if options['title']
+						.block-title
+							h1!= options['title']
+				.block-content
+					+el("list").js-documentation-list(data-clearwhitespace="")
+						for item in documentsFilesList
+							+documents(item)

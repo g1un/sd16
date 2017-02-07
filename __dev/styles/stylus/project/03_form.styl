@@ -1,0 +1,257 @@
+_$formItemMargin = 20px
+
+.form-controls
+	margin-top _$formItemMargin
+	> .form-submit,
+	> .form-reset
+		display inline-block
+		vertical-align middle
+		margin 0 _
+	> * + .form-submit,
+	> * + .form-reset
+		margin-left 15px
+	+MEDIA("PHONE")
+		> .form-submit,
+		> .form-reset
+			display block
+			text-align center
+		> * + .form-submit,
+		> * + .form-reset
+			margin-left 0
+			margin-top 20px
+
+.error-msg
+	&,
+	.form-item &
+		display block
+		color ERROR_COLOR
+		margin-top (5px)
+		margin-left 16px
+		font-size (12px)
+		line-height (14px)
+
+.form-title
+	font-size 24px
+	line-height 1
+	font-weight 700
+	color #000
+	margin-bottom 20px
+	font-2()
+	* + &
+		margin-top 30px
+	& + .form-subtitle
+		margin-top 15px
+	&.__big
+		font-size 26px
+
+.form-subitem
+	font-size 10px
+	margin-bottom 12px
+	p
+		margin 0
+		* + p
+			margin-top 10px
+	.form-item + &
+		margin-top -12px
+	.form-item &
+		margin-top 8px
+		margin-bottom 0
+
+.form-info
+	margin-bottom (_$formItemMargin)
+	.form-item + &
+		margin-top (-(_$formItemMargin/2))
+	p
+		text-align left
+		margin 0
+		font-size 10px
+		line-height 12px
+		color #404040
+		font-weight 300
+	* + p
+		margin-top 10px
+
+.form-subtitle
+	font-size 18px
+	line-height 24px
+	font-weight 400
+	color #000
+	margin-bottom (_$formItemMargin/2)
+	* + &
+		margin-top (_$formItemMargin*1.5)
+
+.form-item
+	margin-bottom (_$formItemMargin)
+	_inputSize = getInputSize( INPUT_SIZE['default'] );
+
+	/{ textbox() }
+		border 1px solid #e5e6e7
+		width 100%
+
+		background #fff
+		border-color #fff
+		font-size _inputSize['font-size'];
+		line-height _inputSize['line-height'];
+		_paddingTop = (_inputSize['padding-top'] - 1px);
+		_paddingBottom = (_inputSize['padding-bottom'] - 1px);
+		padding (_paddingTop) (15px) _paddingBottom;
+		height _inputSize['height'];
+
+		font-weight 300
+		color #343435
+		trans()
+		transition-property color, background, border, transform, filter, box-shadow
+		display block
+		&:hover
+			border-color #ccc
+			color #343435
+		&:focus
+			background #fff
+			color #343435
+			border-color #eee - 20%
+	
+	select.__colored,
+	select.__colored + .ui-selectmenu-wrapper .ui-selectmenu-button
+		background getColor('base')
+		color #fff
+		font-weight 900
+		border-color transparent
+		&:hover
+			background getColor('base') + 10%
+		&:focus
+			background #fff
+			color getColor('base')
+
+	textarea
+		resize none
+		_height = round((_inputSize['font-size']*_inputSize['line-height']) * 4) + ( _inputSize['padding-top'] + _inputSize['padding-bottom'] + 2 );
+		height _height
+		overflow auto
+
+	&.column
+		padding _ (_$formItemMargin/2)
+		display block
+		margin-right 0
+	> .form-line
+		margin-bottom (-(_$formItemMargin))
+	
+	> [data-button],
+	> [type="submit"]
+		display block
+		width 100%
+
+/{ textbox() }
+	main &.error,
+	main .error &
+		border-color ERROR_BORDER_COLOR
+		color ERROR_COLOR
+		box-shadow none
+		&::-webkit-input-placeholder
+			color ERROR_COLOR
+		&::-moz-placeholder
+			color ERROR_COLOR
+		&::placeholder
+			color ERROR_COLOR
+		&:-ms-input-placeholder
+			color ERROR_COLOR
+		&:-moz-placeholder
+			color ERROR_COLOR
+		&:placeholder
+			color ERROR_COLOR
+
+/{ textbox() }
+	main &.good,
+	main .good &
+		border-color GOOD_BORDER_COLOR
+		color GOOD_COLOR
+		box-shadow none
+		&::-webkit-input-placeholder
+			color GOOD_COLOR
+		&::-moz-placeholder
+			color GOOD_COLOR
+		&::placeholder
+			color GOOD_COLOR
+		&:-ms-input-placeholder
+			color GOOD_COLOR
+		&:-moz-placeholder
+			color GOOD_COLOR
+		&:placeholder
+			color GOOD_COLOR
+
+.form-line
+	&.columns
+		margin (-(_$formItemMargin)) (-( _$formItemMargin/2 )) (_$formItemMargin)
+		> .form-item.column
+			margin-right 0
+			margin-bottom 0
+			margin-top (_$formItemMargin)
+	> .form-item,
+	> .form-submit
+		display inline-block
+		vertical-align top
+		margin-right (_$formItemMargin - 3px)
+		margin-bottom (_$formItemMargin)
+		margin-top 0
+	&[data-clearwhitespace="cleared"]
+		> .form-item,
+		> .form-submit
+			margin-right (_$formItemMargin)
+	> .error-msg
+		margin-bottom (_$formItemMargin)
+		margin-top (-(_$formItemMargin/2))
+
+.form-label
+	margin-bottom 5px
+	font-weight 400
+	display block
+	font-size (16px)
+	line-height (20px)
+
+.form-item
+	position relative
+	.ui-state-default
+		a,
+		a:link
+			color LINK_COLOR
+			text-decoration underline
+			&:hover
+				color LINK_COLOR_HOVER
+main
+	[type="radio"],
+	[type="checkbox"]
+		&,
+		label &
+			display block
+			position absolute
+			pos auto
+			margin 0
+			cursor pointer
+		& + label,
+		label & + span
+			display inline-block
+			vertical-align top
+			max-width 100%
+			padding-left 22px
+			text-align left
+			cursor pointer
+			font-size 14px
+			line-height 16px
+			.error &
+				color ERROR_COLOR
+
+
+.form-submit
+	margin-top 20px
+.form-reset
+	text-align center
+	margin-top (_$formItemMargin*1.5)
+	/{ all_button() }
+		reset-button()
+		font-size (16px)
+		line-height (20px)
+		font-weight 300
+		color getColor('base')
+		&:hover
+			color getColor('base') + 20%
+		&:active
+			color getColor('base') - 10%

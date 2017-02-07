@@ -1,0 +1,133 @@
+.table
+	display table
+	width 100%
+	table-layout fixed
+
+	&-cell
+		display table-cell
+		vertical-align top
+
+	&-row,
+	&-rows
+		display table-row
+
+	&-column,
+	&-columns
+		display table-column
+
+main
+	+$bold()
+		font-weight 700
+
+	+$italic()
+		font-style italic
+
+	a
+		color LINK_COLOR
+		&:hover
+			color LINK_COLOR_HOVER
+	img
+		max-width 100%
+		height auto
+
+	+$big()
+		font-size 120%
+		font-size 1.2em
+	+$small()
+		font-size 80%
+		font-size 0.8em
+
+.clear,
+.clearfix
+	clear()
+
+.hidden
+	display none !important
+
+.close-content
+	position fixed
+	top 0
+	left 0
+	z-index 5
+	size(100%, 100%)
+	opacity(20)
+	background #000
+
+.align-top
+	vertical-align top !important
+.align-middle
+	vertical-align middle !important
+.align-bottom
+	vertical-align bottom !important
+.align-left
+	text-align left !important
+.align-right
+	text-align right !important
+.align-center
+	text-align center !important
+
+.trans
+	trans()
+
+.no-trans
+	transition none !important
+
+.bold 
+	font-weight bold
+
+.italic 
+	font-style italic
+
+.underline
+	text-decoration underline
+
+.uppercase,
+.upper
+	text-transform uppercase
+
+.lowercase,
+.lower
+	text-transform lowercase
+
+.normalcase
+	text-transform none
+
+.left,
+.to-left
+	float left
+	left 0
+	
+.right,
+.to-right
+	float right
+	right 0
+
+.nowrap
+	white-space nowrap
+
+
+$$fullWidth
+	width 100%
+.columns
+	margin _ (-(COLUMN_MARGIN))
+	clear()
+	&.__inline
+		> .column
+			display inline-block
+			vertical-align top
+			margin-right -6px
+			float none
+.column
+	width 100%
+	float left
+	padding _ COLUMN_MARGIN
+	for k in 1 2 3 4 5 6 7 8 9 10 11
+		for i in 1..k
+			&.__{ i }-{ k }
+				if i == k
+					@extend $$fullWidth
+				else
+					width (round( (i*100/k)*1000 )/1000)%
+
+[contenteditable]
+	cursor text

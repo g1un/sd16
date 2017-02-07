@@ -1,0 +1,52 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Галерея"]
+block content
+	+namespace("gallery")
+		+el("page").block.js-gallery-page
+			.block-header
+				.wrapper-content
+					.block-title Галерея
+					+el("filter")
+						form(action="")
+							+el("filter-item").__category.form-item
+								select(name="").__colored
+									option(value="-1") Ход строительства
+									+repeat(5)
+										option!= getText(2)
+							+el("filter-item").form-item
+								select(name="").__colored
+									option(value="-1") Очередь
+									for i in range(1, 20)
+										option!= i
+							+el("filter-item").form-item
+								select(name="").__colored
+									option(value="-1") Корпус
+									for i in range(1, 20)
+										option!= i
+							+el("filter-item").form-item
+								select(name="").__colored
+									option(value="-1") Все
+									option(value="0") январь
+									option(value="1") февраль
+									option(value="2") март
+									option(value="3") апрель
+									option(value="4") май
+									option(value="5") июнь
+									option(value="6") июль
+									option(value="7") август
+									option(value="8") сентябрь
+									option(value="9") октябрь
+									option(value="10") ноябрь
+									option(value="11") декабрь
+							+el("filter-item").form-item
+								select(name="").__colored
+									option(value="2012") 2012
+									option(value="2013") 2013
+									option(value="2014") 2014
+									option(value="2015") 2015
+									option(value="2016") 2016
+			.wrapper-content
+				.block-content
+					+gallery({'hide-content': true, share: true})

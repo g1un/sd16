@@ -1,0 +1,20 @@
+mixin payment-content(params)
+	-if(params == null){ params = {} }
+	if params['columns'] !== false
+		block
+	+namespace("payment")
+		+el("content").js-payment-content
+			+el("page")(class="#{ params['index'] != null ? 'js-payment-page-' + params['index'] : '' }").tab-page
+				if params['columns'] === false
+					if params['hideBox'] === true
+						block
+					else
+						.block-box.__wide-padding
+							block
+				else
+					+el("aside-content")
+						+el("aside-content-inner").js-payment-aside-content-inner
+							+_content()
+					+el("aside-block")
+						+el("aside-block-inner").js-payment-aside-block-inner
+							+_aside()

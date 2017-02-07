@@ -1,0 +1,18 @@
+mixin realweb(text, realweb1, realweb2)
+	if !text
+		-text = "Сделано&nbsp;в&nbsp;"
+
+	if realweb1 == null && realweb2 == null
+		-realweb1 = "риал"
+		-realweb2 = "веб"
+
+	mixin rw()
+		if realweb1 && realweb2
+			//- | <span class="_blue">#{ realweb1 }</span><!--  --><span class="_red">#{ realweb2 }</span>
+			span._blue!= realweb1
+			span._red!= realweb2
+		else
+			!= realweb1 || realweb2
+
+	span.realweb
+		| !{ text }#[a(href="http://www.realweb.ru/" target="_blank"): +rw()]

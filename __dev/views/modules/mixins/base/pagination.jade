@@ -1,0 +1,30 @@
+mixin pagination(arg1, first, last)
+	-start = 1
+	-end = 10
+	-var list = []
+	-if (Array.isArray(arg1)){
+		-list = arg1
+	- } else {
+		-if(typeof arg1 == 'number'){
+			-end = arg1
+		- }
+		-for(var i = start; i <= end; i++) {
+			-list.push(i)
+		- }
+	- }
+	nav.pagination
+		div.pagination-list
+			-if(first != null) {
+				div.pagination-prev
+					span.pagination-link.__current: span!= first
+			- }
+			each item, index in list
+				div.pagination-item
+					if index == 0
+						span(class="#{ item == '...' ? '__breaker' : '' }").pagination-link.__current: span!= item
+					else
+						a(href="#" class="#{ item == '...' ? '__breaker' : '' }").pagination-link: span!= item
+			- if(last != null) {
+				div.pagination-next
+					a(href="#").pagination-link: span!= last
+			- }

@@ -1,0 +1,213 @@
+.building
+	&-content
+		clear()
+	
+	&-title
+		display none
+		color #7f7f7f
+		font-size 16px
+		line-height 20px
+		font-weight 300
+		padding 10px 0 10px 25px
+	&-image
+		float left
+		width 64.23%
+		position relative
+		&:before
+			padding-top 75.3%
+			content ''
+			display block
+		img
+			position absolute
+			display block
+			margin auto
+			pos 0
+			max-size 100%
+	&-info
+		width 35.77%
+		float right
+		padding-left 10px
+		&-inner
+			background #e7f0f7
+			padding 30px
+		&,
+		p
+			font-size 16px
+			line-height 24px
+		p
+			margin 0 0 15px
+		* + p
+			margin-top 15px
+	&-table
+		display table
+		width 100%
+		table-layout fixed
+		margin-bottom 35px
+		font-size 16px
+		line-height 24px
+		margin-top -6px
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			padding 6px 0
+			& ~ &
+				padding-left 10px
+			&:first-child
+				padding-right 15px
+				overflow hidden
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					font-size 9px
+					letter-spacing -4px
+					color getColor('light') - 7%
+				span
+					padding-right 3px
+					background getColor('light')
+	&-button
+		margin-top 40px
+	
+	&-top
+		position relative
+	&-floors
+		// position absolute
+		// pos 0
+		display none
+		&-arrow
+			// position absolute
+			display none
+			// pos _ 0
+			// size auto 60px
+			// background #006298
+			// z-index 1
+			// &.__up
+			// 	top 0
+			// &.__down
+			// 	bottom 0
+			// &:after
+			// 	content ''
+			// 	display block
+			// 	position absolute
+			// 	size 32px 17px
+			// 	background images('elements/arrows-vertical__small.png') 0 0 no-repeat
+			// 	pos 0
+			// 	margin auto
+			// &.__up
+			// 	&:after
+			// 		background-position 0 0
+			// &.__down
+			// 	&:after
+			// 		background-position 0 -17px
+		// &.__scroll-top &-arrow.__up
+		// 	display block
+		// &.__scroll-bottom &-arrow.__down
+		// 	display block
+		// &-list
+		// 	position absolute
+		// 	pos 0
+		// 	overflow auto
+
+	&-floor
+		display table
+		width 100%
+		// background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat; /* #000000 0.45 */
+		background getColor('base')
+		color #fff
+		& ~ &
+			margin-top 2px
+		&-cell
+			display table-cell
+			text-align right
+			font-size 14px
+			font-weight 700
+			line-height 20px
+			padding 20px 0
+			&:first-child
+				text-align left
+				padding-left 20px
+		&-item
+			display inline-block
+			vertical-align middle
+			width 25%
+			margin-left -6px
+			padding _ 5px
+			text-align center
+			font-size 16px
+			white-space nowrap
+			span
+				display inline-block
+				vertical-align middle
+			._type
+				font-size 14px
+				line-height 16px
+				text-align center
+				padding 3px 0
+				size 22px
+				background #fff
+				color #006298
+				font-weight 300
+				margin-right 3px
+				border-radius 50%
+			._empty
+				font-weight 300
+				opacity 0.7
+		&.__sold &-item
+			width 100%
+
+
+	+MEDIA("TABLET")
+		&-content
+			margin _ -20px
+		&-image,
+		&-info
+			float none
+			width auto
+			padding 0
+		&-image
+			display none
+			&:before
+				display none
+			img
+				position static
+		&-floors
+			display block
+			// &,
+			// &-list
+			// 	position static
+			// &-arrow
+			// 	display none
+		&-title
+			display block
+		&-top
+			margin-top 10px
+		// 	height 460px
+	+MEDIA("PHONE")
+		&-stock
+			display none
+		&-button
+			margin _ -30px
+			[data-button]
+				display block
+				width 100%
+	+MEDIA("SMALL_PHONE")
+		&-content
+			margin _ -10px
+		&-info
+			&-inner
+				padding _ 20px 0
+		&-button
+			margin _ -20px
+		&-image
+			height 310px
+			overflow hidden
+			img
+				position absolute
+				pos _ -1000px
+				margin auto
+				max-size none
+				size auto 100%

@@ -1,0 +1,109 @@
+.uitooltip
+	position absolute
+	z-index 3
+	background #fff
+	padding 15px
+	margin-top -50px
+	margin-left -10px
+	filter drop-shadow(0 0 5px rgba(0, 0, 0, 0.3))
+	display none
+	max-width 250px
+	font-size 16px
+	line-height 1.1
+	&:before
+		position absolute
+		content ''
+		border-top 10px solid transparent
+		border-bottom 10px solid transparent
+		border-left 10px solid #fff
+		left 100%
+		top 40px
+	&-title
+		font-size 20px
+		font-weight 600
+		margin-bottom 10px
+	&,
+	p
+		font-size 14px
+	p
+		margin 0
+		line-height 1.1
+	* + p
+		margin-top 5px
+	&-bottom
+		margin 15px -13px -13px
+		// background getColor('base')
+		// color #fff
+		background #fff
+		color getColor('base')
+		border-top 1px solid #eee
+		padding 13px
+		a
+			color getColor('base')
+			text-decoration underline
+	&-settlement
+		margin-top 5px
+		text-align center
+	&-sold
+		text-align center
+	&-left
+		display table
+		width 100%
+		> *
+			display table-cell
+			vertical-align middle
+		&-count
+			padding-left 10px
+			font-size 200%
+			font-size 2em
+			font-weight 600
+	&-table
+		display table
+		width 100%
+		table-layout fixed
+		* + &
+			margin-top 5px
+		&-row
+			display table-row
+		&-cell
+			display table-cell
+			vertical-align top
+			padding 5px 0
+			& ~ &
+				padding-left 5px
+			&:first-child
+				padding-right 15px
+				overflow hidden
+				&:before
+					float left
+					direction ltr
+					content "___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+					white-space nowrap
+					width 0
+					letter-spacing -4px
+					color getColor('light') - 7%
+					font-size 85%
+					font-size 0.85em
+					.uitooltip-bottom &
+						color getColor('base') + 10%
+				span
+					padding-right 5px
+					background getColor('light')
+					.uitooltip-bottom &
+						background #fff
+	&.__building
+		width 180px
+		.uitooltip
+			&-table
+				table-layout initial
+				&-cell ~ .uitooltip-table-cell
+					text-align right
+					width 1%
+	
+	&.__from-right
+		margin-left 10px
+		&:before
+			left auto
+			right 100%
+			border-left 0
+			border-right 10px solid #fff

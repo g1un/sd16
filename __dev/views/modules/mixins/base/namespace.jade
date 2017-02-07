@@ -1,0 +1,14 @@
+-var __NameSpaceName;
+
+-var getNamespace = function(){
+	-return __NameSpaceName;
+- }
+
+mixin namespace(__name)
+	-var __oldNameSpaceName = __NameSpaceName
+	-__NameSpaceName = __name
+	mixin el(_elname, _eltag)
+		#{ _eltag || 'div' }(class="#{ __NameSpaceName + ( _elname ? '-' + _elname : '' ) }")&attributes(attributes)
+			block
+	block
+	-__NameSpaceName = __oldNameSpaceName

@@ -1,0 +1,16 @@
+mixin parseJsonHtml(item)
+	mixin renderItem(_item)
+		#{ _item.tagname || 'div' }&attributes(_item.attributes || {})
+			if _item['content']
+				+parseJsonHtml(_item['content'])
+
+	if item
+		- if(Array.isArray( item )){
+			- item.forEach(function(_item){
+				+parseJsonHtml(_item)
+			- })
+		- } else if( typeof item == 'object' ) {
+			+renderItem(item)
+		- } else if( typeof item == 'string' ) {
+			!= item
+		- }

@@ -1,0 +1,22 @@
+mixin floor-info(options)
+	-if(options == null){
+		-options = {}
+	-}
+	+namespace("floor-info")
+		+el().js-floor-info
+			+el("inner")
+				for item, index in [["4", "Корпус"], ["2", "Секция"], ["16", "Этаж"]]
+					+el("item")
+						if options['select']
+							// You can use attribute 'disabled=""' or class "__disabled" for disabled style
+							if index %2 == 0
+								+el("item-arrow", "a")(href="#" disabled="").__up
+							else
+								+el("item-arrow", "a")(href="#").__up.__disabled
+						+el("item-inner")
+							+el("item-content")
+								+el("item-title")!= item[0]
+								+el("item-label")!= item[1]
+						if options['select']
+							+el("item-arrow", "a")(href="#").__down
+				block

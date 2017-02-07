@@ -1,0 +1,212 @@
+.floor-info
+	float right
+	width 152px
+	position relative
+	z-index 1
+	&-inner
+		margin-bottom -20px
+	&-item
+		display block
+		margin-bottom 20px
+		position relative
+		&-inner
+			display table
+			background getColor("base")
+			color #fff
+			font-size 18px
+			line-height 30px
+			font-weight 900
+			text-transform uppercase
+			size 152px
+			a&
+				&:hover
+					background getColor("base") + 10%
+					color #fff
+				&:active
+					background getColor("base") - 20%
+					color #ccc
+		& ~ & &-arrow ~ &-inner
+			margin 70px _
+		&-content
+			display table-cell
+			vertical-align middle
+			text-align center
+			padding _ 10px
+		&-title
+			font-size 72px
+			line-height 80px
+		&-label
+			font-size 10px
+			line-height 14px
+		&.__similarflat
+			.floor-info-item-inner
+				background getColor("similarFlatButton")
+			a.floor-info-item-inner
+				&:hover
+					background getColor("similarFlatButton") + 10%
+					color #fff
+				&:active
+					background getColor("similarFlatButton") - 20%
+					color #ccc
+		&-arrow
+			position absolute
+			pos _ 0
+			background #888b8d
+			display none
+			z-index 1
+			height 70px
+			overflow hidden
+			&:after
+				content ''
+				display block
+				position absolute
+				pos 0
+				margin auto
+				size 42px 22px
+				background images('elements/arrows-vertical.png') 0 0 no-repeat
+				trans()
+				transition-property opacity
+			&.__up
+				bottom 100%
+				&:after
+					background-position 0 0
+			&.__down
+				top 100%
+				&:after
+					background-position 0 -22px
+			&:hover
+				background #888b8d + 10%
+			&:active
+				background #888b8d - 20%
+				&:after
+					opacity 0.7
+			&.__disabled,
+			&[disabled]
+				background #888b8d
+				opacity 0.3
+				cursor default
+				&:after
+					opacity 1
+		&:hover &-arrow
+			display block
+
+
+	+MEDIA("DESKTOP")
+		width 110px
+		&-item
+			&-inner
+				size 110px
+				font-size 14px
+				line-height 20px
+			&-title
+				font-size 55px
+				line-height 65px
+			&-label
+				font-size 10px
+				line-height 14px
+	+MEDIA("SMALL_DESKTOP")
+		.flatcard-top &
+			float none
+			width auto
+			text-align right
+			margin-left auto
+			margin-right 0
+			margin-bottom 10px
+			&-inner
+				margin _ -5px 0
+				clear()
+			&-item
+				display block
+				float left
+				margin-bottom 0
+				width 25%
+				padding _ 5px
+				&-inner
+					width 100%
+					height 50px
+				&-title,
+				&-label
+					display inline-block
+					vertical-align middle
+					margin _ 5px
+				&-title
+					font-size 40px
+					line-height 50px
+				&-arrow
+					pos _ 5px
+	+MEDIA("TABLET")
+		.floor &
+			float none
+			width auto
+			text-align right
+			margin-left auto
+			margin-right 0
+			margin-bottom 10px
+			&-inner
+				margin 60px -5px
+				clear()
+			&-item
+				display block
+				float left
+				margin-bottom 0
+				width 33.3%
+				padding _ 5px
+				&-inner
+					width 100%
+					height 50px
+				&-title,
+				&-label
+					display inline-block
+					vertical-align middle
+					margin _ 5px
+				&-title
+					font-size 40px
+					line-height 50px
+				&-arrow
+					pos _ 5px
+					height 60px
+					display block
+					html.modernizr-csscalc &
+						width calc(100% - 10px)
+						display table
+					&:before
+						display none
+			// html.modernizr-csscalc &-item:hover .floor-info-item-arrow
+			// 	display table
+			// 	width calc(100% - 10px)
+			// 	vertical-align middle
+			// 	&:before
+			// 		display none
+		&-item
+			& ~ & &-arrow ~ &-inner
+				margin 0 _
+	+MEDIA("PHONE")
+		.flatcard-top &,
+		.floor &
+			&-item
+				font-size 8px
+				line-height 11px
+				&-inner
+					height 35px
+				&-title
+					font-size 18px
+					line-height 20px
+				&-inner,
+				&-label
+					font-size 8px
+					line-height 11px
+		.floor &
+			&-inner
+				margin 30px _
+			&-item
+				&-arrow
+					height 30px
+					&:after
+						size 32px 17px
+						background-image images('elements/arrows-vertical__small.png')
+					&.__up
+						&:after
+							background-position 0 0
+					&.__down
+						&:after
+							background-position 0 -17px

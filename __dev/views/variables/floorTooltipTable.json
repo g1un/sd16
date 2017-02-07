@@ -1,0 +1,16 @@
+[{
+	"label":"Площадь",
+	"type":"square"
+},
+{
+	"label":"Отделка",
+	"type":"decoration"
+},
+{
+	"label":"Статус",
+	"type":"state-label"
+},
+{
+	"label":"Стоимость",
+	"type":"price"
+}]

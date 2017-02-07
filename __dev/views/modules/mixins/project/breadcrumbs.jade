@@ -1,0 +1,4 @@
+mixin breadcrumbs()
+	.breadcrumbs-wrapper
+		.wrapper-content
+			-breadcrumbs('', {hideLast: true}).add(currentPageTitle).render()

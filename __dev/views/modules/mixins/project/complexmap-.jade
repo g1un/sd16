@@ -1,0 +1,41 @@
+mixin complexmap(options)
+	-if(options == null){
+		-options = {}
+	- }
+	+namespace("complexmap")
+		+el().block
+			.wrapper-content
+				.block-header.__title-only
+					.block-title расположение квартиры на карте проекта
+				.block-content.__bg-white
+					+el("content")
+						+el("content-inner")
+							+uitooltip({addClass: 'js-complexmap-tooltip __noleave'})
+								+el("title")
+									span(data-type="queue")
+									|  очередь
+								+el("text")
+									p(data-type="name")
+									p *Срок сдачи:
+									p(data-type="time") *Срок сдачи:
+								+el("bottom")
+									+el("left")(data-type="left")
+										+el("left-label")(data-type="left-label") осталось квартир
+										+el("left-count")
+											a(href="#" data-type="left-count")
+									+el("sold")(data-type="sold") Все квартиры проданы
+									+el("settlement")(data-type="settlement") Корпус заселяется
+							+el("map-block")(data-usemaparea=".js-complexmap-map-inner").maparea.js-complexmap-map-block
+								+el("map-inner")(style="width: 1120px; height: 385px;").js-complexmap-map-inner
+									+img("birdmap/bird_map.png").complexmap-image(usemap="#complexmap-map")
+									+img("birdmap/bird_map_icons.png").complexmap-icons
+									+complexmap-map()
+									.complexmap-selected-pointer
+
+							+el("legend")(data-clearwhitespace="")
+								for item in birdmapLegendList
+									+el("legend-item")
+										+el("legend-item-link", "a")(href="#" data-complexmap-trigger-element="#{ item.trigger }")
+											+el("legend-item-icon")
+												+img("birdmap/legend/" + item.icon)
+											+el("legend-item-label")!= item.label

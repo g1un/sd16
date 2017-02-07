@@ -1,0 +1,133 @@
+$button()
+	[type="submit"],
+	[type="button"],
+	[type="reset"],
+	button
+		{block}
+
+button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button')
+
+all_button()
+	return selector('&', '[type="submit"], [type="button"], [type="reset"], button, [data-button]')
+
+textbox(onlyInput = false)
+	if onlyInput
+		return selector('&', '[type="text"], textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .input-style')
+	return selector('&', '[type="text"], select, textarea, [type="password"], [type="date"], [type="datetine"], [type="email"], [type="number"], [type="search"], [type="time"], [type="tel"], [type="month"], [type="week"], .ui-selectmenu-button, .input-style')
+
+$textbox(onlyInput = false)
+	if(onlyInput)
+		[type="text"], textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.input-style
+			{block}
+	else
+		[type="text"], select, textarea,
+		[type="password"], [type="date"],
+		[type="datetine"], [type="email"],
+		[type="number"], [type="search"],
+		[type="time"], [type="tel"],
+		[type="month"], [type="week"],
+		.ui-selectmenu-button,
+		.input-style
+			{block}
+
+$hN(n)
+	h{ n },
+	.{ TITLE_CLASS }-{n}
+		{block}
+
+$title()
+	h{ 1 },
+	.{ TITLE_CLASS }-{1},
+	h{ 2 },
+	.{ TITLE_CLASS }-{2},
+	h{ 3 },
+	.{ TITLE_CLASS }-{3},
+	h{ 4 },
+	.{ TITLE_CLASS }-{4},
+	h{ 5 },
+	.{ TITLE_CLASS }-{5},
+	h{ 6 },
+	.{ TITLE_CLASS }-{6}
+		{block}
+
+$h1()
+	+$hN(1)
+		{block}
+$h2()
+	+$hN(2)
+		{block}
+$h3()
+	+$hN(3)
+		{block}
+$h4()
+	+$hN(4)
+		{block}
+$h5()
+	+$hN(5)
+		{block}
+$h6()
+	+$hN(6)
+		{block}
+$title-1()
+	.{ TITLE_CLASS }-1
+		{block}
+$title-2()
+	.{ TITLE_CLASS }-2
+		{block}
+$title-3()
+	.{ TITLE_CLASS }-3
+		{block}
+$title-4()
+	.{ TITLE_CLASS }-4
+		{block}
+$title-5()
+	.{ TITLE_CLASS }-5
+		{block}
+$title-6()
+	.{ TITLE_CLASS }-6
+		{block}
+$title-all()
+	.{ TITLE_CLASS }-1,
+	.{ TITLE_CLASS }-2,
+	.{ TITLE_CLASS }-3,
+	.{ TITLE_CLASS }-4,
+	.{ TITLE_CLASS }-5,
+	.{ TITLE_CLASS }-6
+		{block}
+$h-all()
+	h1,h2,h3,h4,h5,h6
+		{block}
+
+
+$big()
+	.big
+		{block}
+$small()
+	small,
+	.small
+		{block}
+$bold()
+	.bold,
+	b,
+	strong
+		{block}
+$italic()
+	i,
+	.italic
+		{block}
+
+
+$_noopacity()
+	html.modernizr-no-opacity &
+		{block}
+
+$_nofilter()
+	html.modernizr-no-cssfilters &
+		{block}

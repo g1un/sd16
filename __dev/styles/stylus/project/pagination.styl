@@ -1,0 +1,86 @@
+.pagination
+	position relative
+	padding 22px (91px+79px+10px) 23px
+	margin-top 10px
+	&-list
+		text-align center
+	&-item
+		display inline-block
+		vertical-align top
+	&-link
+		display block
+		font-size 16px
+		line-height 25px
+		padding 5px
+		min-width 35px
+		color getColor('base')
+		&:hover
+			color #000
+			background #eee
+		&.__current
+			color #000
+			background #fff
+	&-prev,
+	&-next
+		.pagination-link
+			display block
+			position absolute
+			size 79px
+			background #006394
+			span
+				display none
+			&:after
+				size 22px 42px
+				content ''
+				position absolute
+				pos 0
+				margin auto
+				background images('elements/slider-arrows.png') 0 0 no-repeat
+				trans()
+			&:hover
+				background #006394 + 10%
+			&:active
+				background #006394 - 20%
+				&:after
+					opacity 0.8
+			&.__current
+				background #006394
+				opacity 0.5
+				cursor default
+				&:after
+					opacity 1
+	&-next
+		.pagination-link
+			right 0
+			top 0
+			&:after
+				background-position -22px 0
+	&-prev
+		.pagination-link
+			right (79px+12px)
+			top 0
+			&:after
+				background-position 0 0
+	+MEDIA("TABLET")
+		padding 12px (60px+10px) 13px
+		&-prev,
+		&-next
+			.pagination-link
+				size 60px
+				&:after
+					size 17px 32px
+					background-image images('elements/slider-arrows__small.png')
+		&-next
+			.pagination-link
+				&:after
+					background-position -17px 0
+		&-prev
+			.pagination-link
+				left 0
+				top 0
+				&:after
+					background-position 0 0
+	+MEDIA("SMALL_PHONE")
+		&-prev,
+		&-next
+			display none

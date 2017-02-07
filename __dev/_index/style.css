@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body {
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #363636;
+    max-width: 940px;
+    min-width: 240px;
+    margin: 0 auto;
+    background: #fff;
+}
+.content {
+    position: relative;
+    height: 100%;
+}
+/* стили для текстового блока
+========================================================================== */
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    line-height: normal;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+h2 {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: normal;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+h3 {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.block-text {
+    font-size: 14px;
+    margin-bottom: 40px;
+    position: relative;
+    line-height: 20px;
+}
+.block-text p, .block-text ul, .block-text ol, .block-text img {
+    margin-bottom: 18px;
+}  
+.block-text img{
+    max-width: 100%;
+}
+.block-text ul li {
+    margin-left: 18px;
+    margin-bottom: 10px;
+    list-style: disc;
+    float: none;
+}
+.block-text ol li {
+    margin-left: 23px;
+    margin-bottom: 10px;
+    list-style: decimal;
+    float: none;
+}
+.block-text li a {
+    padding: 0;
+}
+.block-text table {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.block-text table th {
+    font-weight: bold;  
+    text-align: left;
+    background: #eee;
+}
+.block-text table a {
+    font-weight: bold;
+}
+
+.block-text table th,.block-text table td {
+    padding: 8px 10px;
+    border: 1px solid #dedede;
+}
+.block-text .bottom_img_text {
+    position: absolute;
+    bottom: 0;
+    right: -266px;
+}
+
+.block-text a {
+    text-decoration: underline;
+}
+.block-text a:hover {
+    text-decoration: none;
+}
+/* layout
+========================================================================== */
+.right {
+    float: right;
+    top: 10px;
+    position: relative;
+    text-align: right;
+}
+.left{
+    float: left;
+}
+.right a {
+    white-space: nowrap;
+}
+.clear{
+    clear: both;
+    display: block;
+}
+header{
+    margin-bottom: 35px;
+    position: relative;
+}
+a {
+    color: #008ec4;
+}
+a:hover {
+    color: #ae4a4b;
+}
+
+#filter {
+    padding: 0;
+    border: 0;
+}
+
+#filter-input {
+    font-size: 16px;
+    padding: 5px 10px;
+    width: 100%;
+    -webkit-box-sizing: padding-box;
+    -moz-box-sizing: padding-box;
+    box-sizing: padding-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+.__blank td {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+.look-link {
+    display: none;
+}
+/* .table-pages td.__links {
+    padding-left: 40px;
+}
+.look-link {
+    position: absolute;
+    width: 20px;
+    margin-left: -30px;
+    margin-top: 5px;
+}
+.look-link:hover {
+    opacity: 0.8;
+}
+.look-link img {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+} */
+
+@media screen and (max-width: 600px){
+    body,
+    .block-text,
+    #filter-input {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    header img {
+        width: 140px;
+    }
+}

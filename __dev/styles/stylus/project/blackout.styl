@@ -1,0 +1,31 @@
+.blackout
+	position absolute
+	pos 0
+	background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk2AQAALgAtFVIVl0AAAAASUVORK5CYII=') center repeat /* rgba(0, 0, 0, 0.7) */
+	background rgba(0, 0, 0, 0.7)
+	z-index 9
+	transition opacity TRANS_SPEED
+	transform translate3d(0,0,0)
+	&.__show
+		display block
+	html.modernizr-csspointerevents.modernizr-opacity &.__show
+		pointer-events all
+		opacity 1
+
+	&
+		display none
+		html.modernizr-csspointerevents.modernizr-opacity &
+			display block
+			pointer-events none
+			opacity 0
+	+MEDIA("TABLET")
+		&[data-blackout-name="choose-flat-filter"]
+			display none
+			html.modernizr-csspointerevents.modernizr-opacity &
+				display block
+				pointer-events none
+				opacity 0
+
+	&[data-blackout-name="choose-flat-filter"]
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=') center repeat
+		background rgba(0, 0, 0, 0.1)

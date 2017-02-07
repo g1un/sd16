@@ -1,0 +1,7 @@
+mixin about-block()
+	.block(data-block-mod="slim-padding").about-block
+		.wrapper-content
+			.block-content
+				.about-list(data-clearwhitespace="")
+					for item in aboutList
+						+about-item(item)

@@ -1,0 +1,71 @@
+.payment
+	&-content,
+	&-page
+		clear()
+	&-aside-content
+		float left
+		width 67.4%
+		padding-right 10px
+		&-inner
+			background #fff
+	&-aside-block
+		float right
+		width 32.6%
+		padding-left 10px
+		&-inner
+			background getColor('light')
+			padding 40px 30px
+	&-page
+		.block-box
+			margin-bottom 0
+			&:first-child
+				margin-top 0
+	.block-title
+		margin-bottom 17px
+
+	&-fullpay
+		position relative
+		&-title
+			position absolute
+			pos 25px 30px _
+			text-align center
+			color #006298
+			font-size 24px
+			line-height 1.4
+			+$big()
+				color #fff
+				font-size 1.25
+				font-weight 700
+		&-image
+			img
+				display block
+
+	+MEDIA("TABLET")
+		&-aside-content,
+		&-aside-block
+			float none
+			width auto
+			padding 0
+		&-aside-block
+			&-inner
+				margin _ -20px
+				padding _ 20px
+		&-fullpay
+			margin-top 20px
+			&-title
+				margin-bottom 20px
+				position static
+				pos auto
+				color inherit
+				+$big()
+					color inherit
+	+MEDIA("PHONE")
+		&-fullpay
+			&-title
+				font-size 18px
+	+MEDIA("SMALL_PHONE")
+		&-aside-content
+			margin _ -10px
+		&-aside-block
+			&-inner
+				margin _ -10px

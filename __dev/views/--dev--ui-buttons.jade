@@ -1,0 +1,43 @@
+extends layouts/_default
+
+block vars
+	-var currentPageTitle = ["Buttons"]
+	-var hideHeader = true
+	-var hideFooter = true
+block content
+	.wrapper-content
+		-var buttons = {}
+		-buttons.colors = []
+		for _, buttonName in VARS.BUTTONS
+			-buttons.colors.push( buttonName == 'default' ? '' : buttonName )
+		-buttons.size = ['small', '', 'middle', 'big']
+		-buttons.mods = ['wide', 'border']
+
+		mixin button(_color, _size, _mod)
+			button(data-button="#{ _color }" data-button-size="#{ _size }" data-button-mod="#{ _mod != '' ? _mod.join(' ') : '' }" style="margin: 5px 0")&attributes(attributes)
+				if block
+					block
+				else
+					if _color == ''
+						| def
+					else
+						!= _color
+					if _size == ''
+						| , def
+					else
+						!= ', ' + _size
+					if _mod != ''
+						!= ', ' + _mod.join('&')
+
+		for color in buttons.colors
+			for size in buttons.size
+				+button(color, size, '')
+				+button(color, size, '')(class="__loading")
+				for mod in buttons.mods
+					+button(color, size, [mod])
+					+button(color, size, [mod])(class="__loading")
+				+button(color, size, buttons.mods)
+				+button(color, size, buttons.mods)(class="__loading")
+				hr
+
+		+button(color, '', '')(disabled="") Disabled

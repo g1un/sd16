@@ -1,0 +1,93 @@
+.documents
+	.documentation-list &
+		display inline-block
+		vertical-align top
+		width 20%
+		margin-right -6px
+		margin-top -5px
+		padding 5px
+	.documentation-list[data-clearwhitespace="cleared"] &
+		margin-right 0
+	&-title
+		font-size 20px
+		line-height 30px
+		font-weight 900
+		color #242424
+		border-bottom 1px dotted #c3cfe5
+		padding 22px 25px
+		min-height 105px
+	&-list
+		.accordion-content &
+			margin -13px -23px
+	._hidden
+		display none
+	&.__open,
+	&.__accordion-open
+		._hidden
+			display block
+		.documents
+			&-content
+				height auto
+
+	&-more
+		margin-top 20px
+		&-button
+			display block
+			color getColor('base')
+			background getColor('light')
+			font-size 18px
+			line-height 1.33
+			padding 28px 30px
+			text-align center
+			font-weight 900
+			text-transform uppercase
+			&:before
+				content attr(data-label)
+				display inline-block
+				vertical-align middle
+			&:after
+				content ''
+				display inline-block
+				vertical-align middle
+				size 16px 10px
+				background images('elements/select-arrow.png') 0 -10px no-repeat
+				margin-left 10px
+			&:hover
+				color getColor('base') + 10%
+				background getColor('light') + 20%
+			.documents.__open &,
+			.documents.__accordion-open &
+				&:before
+					content attr(data-label-open)
+				&:after
+					background-position 0 0
+
+	&.__hasHidden &-more
+		display block
+
+	+MEDIA("DESKTOP")
+		.documentation-list &
+			width 25%
+	+MEDIA("SMALL_DESKTOP")
+		.documentation-list &
+			width 33.3%
+	+MEDIA("TABLET")
+		.documentation-list &
+			width 50%
+	+MEDIA("SMALL_TABLET")
+		&-title
+			font-size 16px
+			line-height 26px
+			padding 18px 25px
+			min-height (18px*2 + 26px*2)
+		&-more
+			&-button
+				padding 20px 25px
+				font-size 16px
+	+MEDIA("PHONE")
+		&-more
+			margin-top 10px
+		&-title
+			min-height 0
+		.documentation-list &
+			width 100%

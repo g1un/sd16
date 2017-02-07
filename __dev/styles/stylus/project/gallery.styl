@@ -1,0 +1,151 @@
+.gallery
+	position relative
+	&-slider
+		overflow hidden
+	&-item
+		position relative
+		overflow hidden
+		&:before
+			padding-top 46.2%
+			content ''
+			display block
+		img
+			position absolute
+			pos 0
+			size 100%
+			// &[data-cover-image="not-fill"]
+			// 	size auto 100%
+	&-content
+		position absolute
+		pos _ 0 0
+		background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkKAIAAHgAdO2k22kAAAAASUVORK5CYII=') center repeat /* rgba(0, 0, 0, 0.45) */
+		color #ffffff
+		.wrapper-content
+			padding 0
+		&-wrapper
+			padding 60px 120px 60px 60px
+		&-inner
+			display table
+			> *
+				display table-cell
+				vertical-align top
+		&-title
+			font-size 30px
+			line-height 30px
+			font-weight 700
+			padding 7px 0
+			padding-right 25px
+			text-transform uppercase
+		&-text
+			&,
+			p
+				font-size 16px
+				line-height 30px
+			p
+				margin 0
+			* + p
+				margin-top 30px
+	&-filter
+		margin-top 25px
+		&-item
+			&,
+			&.form-item
+				margin 0 3px 6px
+				display inline-block
+				vertical-align middle
+	&-page
+		position relative
+		z-index 0
+		&,
+		.gallery
+			margin 0
+		.block-header
+			position absolute
+			pos 45px 90px _
+			z-index 1
+		> .wrapper-content
+			padding _ 0
+	&-share
+		position absolute
+		right 10px
+		bottom 10px
+		.ya-share2 .ya-share2__item_more .ya-share2__popup
+			top auto
+			bottom 100%
+	html.js &-slider > &-item ~ &-item
+		display none
+	+MEDIA("TABLET")
+		&-content
+			position relative
+			background getColor('light')
+			color #242424
+			&-inner
+				&,
+				& > *
+					display block
+			&-title
+				padding 0
+				margin-bottom 10px
+		&-filter
+			.ui-selectmenu-button
+				padding 12px 45px 13px 10px
+				height 45px
+				.span.ui-icon
+					width 45px
+		&-page
+			.block-title
+				display none
+			.block-header
+				position static
+				margin-bottom 10px
+			.gallery-share
+				position static
+				.share
+					text-align center
+					white-space normal
+					.share-links
+						text-align left
+			.gallery-filter-item
+				width 25%
+				margin _ -3px
+				padding _ 4px
+			.gallery-filter-item.__category
+				display block
+				width 100%
+				margin 0 0 10px
+				select
+					display block
+				.ui-selectmenu-wrapper
+					.ui-selectmenu-button
+						background #fff
+						color #242424
+						font-weight 400
+						&:hover
+							background #eee
+							color #242424
+						.ui-icon
+							background #dee7ee
+							&:after
+								background-image url("images/elements/select-arrow.png")
+	+MEDIA("SMALL_TABLET")
+		&-page
+			.gallery-filter-item
+				width 50%
+	+MEDIA("PHONE")
+		&-content
+			&-wrapper
+				padding 20px
+		&-page
+			.gallery-share
+				.share
+					padding 20px 18px
+					.share-label
+						display inline-block
+						vertical-align top
+						padding 10px
+						margin 0
+					.share-links
+						padding 0
+				.share-links,
+				.share.__minimizable.__open .share-links
+					display block

@@ -1,0 +1,5 @@
+mixin repeat(count, saver)
+	-for(var i = 0; i < count; i++)
+		-if(typeof saver == 'function')
+			-saver(i)
+		block

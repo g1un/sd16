@@ -1,0 +1,141 @@
+.news
+	&-list
+		margin -5px -5px 20px
+		.news-item,
+		.news-subscribe
+			width 33.30%
+			margin 0
+			padding 5px
+			display inline-block
+			vertical-align top
+			margin-right -6px
+			&-inner
+				margin 0
+		.news-subscribe
+			&-inner
+				display table
+				width 100%
+			&-content
+				display table-cell
+				vertical-align middle
+		&[data-clearwhitespace="cleared"]
+			.news-item
+				margin-right 0
+
+	&-item
+		&-inner
+			padding-right 40px
+		&-date
+			font-size 16px
+			line-height 20px
+			font-weight 300
+			margin-bottom 15px
+		&-title
+			font-size 20px
+			line-height 30px
+			font-weight 900
+			overflow hidden
+			margin-bottom 30px
+			a
+				color inherit
+		&-text
+			height 30px*6
+			overflow hidden
+			&,
+			p
+				font-size 16px
+				line-height 30px
+			p
+				margin 0
+			* + p
+				margin-top 30px
+		&-detail
+			margin-top 15px
+			font-size 16px
+			font-weight 300
+	
+	&-subscribe
+		&-inner
+			background getColor('light')
+		&-content
+			padding 40px 40px 55px
+		&-title
+			resetTitle()
+			font-size 20px
+			line-height 30px
+			font-weight 900
+			color #242424
+			margin-bottom 15px
+		&-text
+			margin-bottom 20px
+			&,
+			p
+				font-size 16px
+				line-height 1.88
+			p
+				margin 0
+			* + p
+				margin-top 30px
+		&-form
+			clear()
+			.form-item,
+			.form-submit
+				margin 0
+				float left
+			.form-item
+				width 100%
+				padding-right 195px
+				margin-right -195px
+			.form-submit
+				width 195px
+				position relative
+				z-index 1
+				[data-button]
+					display block
+					padding _ 10px
+					width 100%
+
+	+MEDIA("DESKTOP")
+		&-list
+			.news-item,
+			.news-subscribe
+				width 50%
+	+MEDIA("TABLET", true)
+		&-list &
+			&-subscribe
+				&-form
+					.form-item
+						padding-right 0
+						margin-right 0
+						float none
+					.form-submit
+						margin 10px auto
+						float none
+
+	+MEDIA("SMALL_TABLET")
+		&-list
+			.news-item,
+			.news-subscribe
+				display block
+				width auto
+				margin-right 0
+
+	+MEDIA("PHONE")
+		&-subscribe
+			&-form
+				.form-item
+					padding-right 0
+					margin-right 0
+					float none
+				.form-submit
+					margin 10px auto
+					float none
+
+	+MEDIA("SMALL_PHONE")
+		&-list
+			margin _ -(WRAPPER_PADDING_PHONE)
+		&-item,
+		&-list &-item,
+		&-list[data-clearwhitespace="cleared"] &-item,
+		&-list &-subscribe
+			padding _ 0

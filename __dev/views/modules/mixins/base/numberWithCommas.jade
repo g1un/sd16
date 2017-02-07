@@ -1,0 +1,5 @@
+-var numberWithCommas = function(x, sep) {
+	if !sep
+		-sep = ' '
+	-return (x + "").replace(/[ ]+/, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+- }

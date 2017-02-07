@@ -1,0 +1,7 @@
+mixin numeric(mode2)
+	+namespace("numeric")
+		+el()(class="#{ mode2 ? '__mode-2' : '__mode-1' }")
+			+el("down", "a")(href="#" disabled="" data-disabled="")
+			+el("input").form-item
+				input(type="text")
+			+el("up", "a")(href="#")

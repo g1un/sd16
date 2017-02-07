@@ -1,0 +1,26 @@
+mixin flat(item)
+	+namespace("flat")
+		+el().js-flat
+			+el("inner").js-flat-inner
+				+el("aside")
+					+el("image", "a")(href="#")
+						+img(item.image)
+				+el("content").js-flat-content
+					+el("content-inner").js-flat-content-inner
+						+el("title")
+							a(href="#")!= item.title
+						+el("info")
+							+el("info-table")
+								for info in item.info
+									+el("info-row")
+										+el("info-cell").__left
+											span!= info.label
+										+el("info-cell").__right
+											span!= info.value
+						+el("info-toggle")
+							+el("info-toggle-link", "a")(href="#" data-label="Показать детали" data-shown-label="Скрыть детали").js-flat-info-toggle-link
+						+el("price")
+							+el("price-value")!= price( random(2000000, 5000000) )
+							+el("price-label") Стоимость квартиры с учетом скидок
+						+el("button")
+							a(href="#" data-button="" data-button-size="huge") Забронировать квартиру

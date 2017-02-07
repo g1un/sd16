@@ -1,0 +1,9 @@
+mixin page-title(text)
+	if text == null
+		-text = currentPageTitle[currentPageTitle.length - 1]
+		if Array.isArray(text)
+			-text = text[0]
+	.page-title-wrapper
+		.wrapper-content
+			block
+			.page-title: h1!= text

@@ -1,0 +1,33 @@
+.progress
+	&[data-mod*="vertical"]
+		.progress
+			&-bar
+				width 82px
+				&-value
+					display block
+					size 100% 10px
+					& ~ .progress-bar-value
+						margin-top 1px
+	&[data-mod*="horizontal"]
+		.progress
+			&-bar
+				height 20px
+				direction rtl
+				text-align left
+				&-value
+					size 20px 100%
+					display inline-block
+					vertical-align top
+	&-bar
+		position relative
+		text-align left
+		&-value
+			background getColor('progress')
+			&.__current
+				background getColor('base')
+	&-label
+		font-weight 300
+		font-size 16px
+		line-height 18px
+	&-label ~ &-bar
+		margin-top 15px

@@ -1,0 +1,24 @@
+-var getImage = function(width, height, min, max) {
+	-if( !min && min != 0 )
+		-min = 5
+	-if( !max && max != 0 )
+		-max = 8
+	-var hex = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+	-hex = [ '4', '6', '8', 'a', 'c']
+	-var getColor = function() {
+		-var tmp = ''
+		-for(var i = 0; i < 6; i++)
+			-tmp += hex[random(0, hex.length - 1)]
+		-return tmp
+	- }
+	-var color = getColor()
+	-var text = width + ( width != height ? ('%C3%97' + height) : '' )
+	-var textSize = Math.min(Math.round(height/5), Math.round(width/5))
+	if textSize < 9
+		-textSize = 9
+	-var link = 'https://placeholdit.imgix.net/~text?txtsize=' + textSize + '&bg=' + color + '&txtclr=ffffff&txt=' + text + '&w=' + width + '&h=' + height
+	//- -link = '1223'
+
+	//- -link = placeholditLoader(link)
+	-return link
+- }

@@ -1,0 +1,13 @@
+{
+	"@header": [
+		"html5shiv.min.js",
+		"excanvas.js"
+	],
+	"other": [
+		"jquery.maskedinput.min.js",
+		"jquery.placeholder.js",
+		"jquery.ui.combobox.js",
+		"jquery.ui.touch-punch.min.js",
+		"modernizr-custom.3.3.1.js"
+	]
+}

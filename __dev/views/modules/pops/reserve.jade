@@ -1,0 +1,283 @@
++popup('reserve', {title:'Забронировать квартиру'})
+	mixin content()
+		form(action="" method="post" enctype="multipart/form-data" class="js-form-flat-reserve").
+			<input type="hidden" name="bxajaxid" id="bxajaxid_e80de8aafd8af59af47fb3f4d03a9066_Ar8Szp" value="e80de8aafd8af59af47fb3f4d03a9066">
+			<input type="hidden" name="AJAX_CALL" value="Y">
+			<script type="text/javascript">
+			function _processform_Ar8Szp() {
+				var obForm = top.BX('bxajaxid_e80de8aafd8af59af47fb3f4d03a9066_Ar8Szp').form;
+				top.BX.bind(obForm, 'submit', function() {
+					BX.ajax.submitComponentForm(this, 'comp_e80de8aafd8af59af47fb3f4d03a9066', true)
+				});
+				top.BX.removeCustomEvent('onAjaxSuccess', _processform_Ar8Szp);
+			}
+			if (top.BX('bxajaxid_e80de8aafd8af59af47fb3f4d03a9066_Ar8Szp'))
+				_processform_Ar8Szp();
+			else
+				top.BX.addCustomEvent('onAjaxSuccess', _processform_Ar8Szp);
+			</script>
+			<input type="hidden" name="sessid" id="sessid_1" value="e3049e59aeff8e93a20b41014133e7fd">
+			<div class="pattern-bg reserve-info">
+				<div class="reserve-info-item">Квартира
+					<span class="_em">73</span>
+				</div>
+				<div class="reserve-info-item">Секция
+					<span class="_em">1</span>
+				</div>
+				<div class="reserve-info-item">Этаж
+					<span class="_em">6</span>
+				</div>
+				<div class="reserve-info-item">Корпус
+					<span class="_em">4</span>
+				</div>
+				<div class="reserve-info-item">Очередь
+					<span class="_em">11</span>
+				</div>
+				<input name="REQUEST[OBJECT_FLAT]" type="hidden" value="11_4_1_6_73">
+				<input name="REQUEST[OBJECT_SECTION]" type="hidden" value="1">
+				<input name="REQUEST[OBJECT_FLOOR]" type="hidden" value="6">
+				<input name="REQUEST[OBJECT_KORPUS]" type="hidden" value="4">
+				<input name="REQUEST[OBJECT_QUEUE]" type="hidden" value="11">
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Телефон</label>
+					<input type="text" name="REQUEST[USER_PHONE]" id="" placeholder="+7 (___) ___-__-__" value="" data-mask="+7 (999) 999-99-99">
+				</div>
+				<div class="form-item column __1-2 ">
+					<label class="form-label">E-mail</label>
+					<input type="text" name="REQUEST[USER_EMAIL]" id="" placeholder="Например: ivanov@mail.ru" value="">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __4-5 ">
+					<label class="form-label">Фамилия </label>
+					<input type="text" name="REQUEST[USER_FIO_SURNAME]" id="" placeholder="Например: Иванов" value="">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __4-5 ">
+					<label class="form-label">Имя</label>
+					<input type="text" name="REQUEST[USER_FIO_NAME]" id="" placeholder="Например: Иван" value="">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __4-5 ">
+					<label class="form-label">Отчество</label>
+					<input type="text" name="REQUEST[USER_FIO_SECOND]" id="" placeholder="Например: Иванович" value="">
+				</div>
+				<div class="form-item column reserve-sex __1-5  ">
+					<label class="form-label">Пол</label>
+					<div class="reserve-sex-radios">
+						<div class="radio">
+							<input type="radio" name="REQUEST[USER_SEX]" value="М" id="sex-1-1" checked="" class="js-radio __checked" data-ui-checked="true">
+							<label for="sex-1-1" class="__checked">
+								<span>М</span>
+							</label>
+						</div>
+						<div class="radio">
+							<input type="radio" name="REQUEST[USER_SEX]" value="Ж" id="sex-1-2" class="js-radio" data-ui-checked="false">
+							<label for="sex-1-2">
+								<span>Ж</span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Дата рождения</label>
+					<input type="text" name="REQUEST[USER_BIRTDAY_DATE]" value="" id="" placeholder="Например: 24.10.1980" data-mask="99.99.9999">
+				</div>
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Место рождения</label>
+					<input type="text" name="REQUEST[USER_BIRTDAY_DATE_PLACE]" value="" id="" placeholder="Например: СССР, Ленинград">
+				</div>
+			</div>
+			<div class="form-text">
+				<p>
+					<b>Данная услуга доступна только гражданам РФ, если вы не являетесь таковым, позвоните по номеру +7 (812) 680-40-40 для получения консультации.</b>
+				</p>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Паспорт РФ №</label>
+					<input type="text" name="REQUEST[PASSPORT_NUM]" value="" id="" placeholder="00 000000">
+				</div>
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Кем выдан</label>
+					<input type="text" name="REQUEST[PASSPORT_ISSUED]" value="" id="" placeholder="Например: ТП №00 по СПб и ЛО">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Код подразделения</label>
+					<input type="text" name="REQUEST[PASSPORT_DIVISION_CODE]" value="" id="" placeholder="12345">
+				</div>
+				<div class="form-item column __1-2 ">
+					<label class="form-label">Дата выдачи</label>
+					<input type="text" name="REQUEST[PASSPORT_ISSUED_DATE]" value="" id="" placeholder="Например: 24.10.1980">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __4-5  ">
+					<label class="form-label">
+						<span class="_big">Скан паспорта</span>
+					</label>
+					<div class="form-text">
+						<p>Допустимые форматы файла: jpg, pdf, png размером не более 800 Kb Файл 1 - это скан страницы с фотографией, файл 2 - это скан страницы с пропиской. Справа вы можете посмотреть примеры необходимых файлов.</p>
+					</div>
+					<div class="file-input js-file-input">
+						<input type="file" name="PASSPORT_COPY" value="" id="">
+						<div class="file-input-button js-file-input-button">
+							<span>Выбрать файл 1 (с фото)</span>
+						</div>
+					</div>
+					<div class="file-input js-file-input">
+						<input type="file" name="PASSPORT_COPY_2" value="" id="">
+						<div class="file-input-button js-file-input-button">
+							<span>Выбрать файл 1 (с пропиской)</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-item column __1-5 reserve-example-passport">
+					<a href="https://sevdol.ru/images/elements/example-passport-1_big.jpg" class="example-preview" target="_blank">
+						<img src="https://sevdol.ru/images/elements/example-passport-1.png" alt="">
+					</a>
+					<a href="https://sevdol.ru/images/elements/example-passport-2_big.jpg" class="example-preview" target="_blank">
+						<img src="https://sevdol.ru/images/elements/example-passport-2.png" alt="">
+					</a>
+				</div>
+			</div>
+			<div class="form-title __dotted">
+				<span>Адрес регистрации</span>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Индекс</label>
+					<input type="text" size="10" name="REQUEST[ADDRESS_INDEX]" value="" id="" placeholder="Например: 123456">
+				</div>
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Страна</label>
+					<input type="text" name="REQUEST[ADDRESS_COUNTRY]" value="" id="" placeholder="Например: Россия">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Область</label>
+					<input type="text" name="REQUEST[ADDRESS_AREA]" value="" id="" placeholder="Например: Ленинградская">
+				</div>
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Район</label>
+					<input type="text" name="REQUEST[ADDRESS_DISTRICT]" value="" id="" placeholder="Например: Ломоносовский">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Город</label>
+					<input type="text" name="REQUEST[ADDRESS_CITY]" value="" id="" placeholder="Например: Сосновый Бор">
+				</div>
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Район города</label>
+					<input type="text" name="REQUEST[ADDRESS_CITY_DISTRICT]" value="" id="" placeholder="">
+				</div>
+			</div>
+			<div class="form-line columns">
+				<div class="form-item column __1-2  ">
+					<label class="form-label">Улица</label>
+					<input type="text" name="REQUEST[ADDRESS_STREET]" value="" id="" placeholder="Например: проспект Наумова">
+				</div>
+				<div class="form-item column __1-2 ">
+					<div class="form-line columns">
+						<div class="form-item column __1-3 ">
+							<label class="form-label">Дом</label>
+							<input type="text" name="REQUEST[ADDRESS_HOME]" value="" id="">
+						</div>
+						<div class="form-item column __1-3 ">
+							<label class="form-label">Корпус</label>
+							<input type="text" name="REQUEST[ADDRESS_KORPUS]" value="" id="">
+						</div>
+						<div class="form-item column __1-3 ">
+							<label class="form-label">Квартира</label>
+							<input type="text" name="REQUEST[ADDRESS_FLAT]" value="" id="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-item reserve-reg-check">
+				<div class="checkbox">
+					<input type="checkbox" name="REQUEST[ADDRESS_COPY_FLAG]" value="Y" id="reg-adress-1" class="js-reserve-real-adress-check js-checkbox" checked="checked" onchange="$('.js-reserve-real-adress')[ this.checked ? 'addClass' : 'removeClass' ]('disabled');">
+					<label for="reg-adress-1">
+						<span>Фактический адрес совпадает с регистрацией</span>
+					</label>
+				</div>
+			</div>
+			<div class="reserve-real-adress js-reserve-real-adress disabled">
+				<div class="reserve-real-adress-locker"></div>
+				<div class="form-title __dotted">
+					<span>Фактический адрес</span>
+				</div>
+				<div class="form-line columns">
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Индекс</label>
+						<input type="text" size="10" name="REQUEST[ADDRESS_COPY_INDEX]" value="" id="" placeholder="Например: 123456">
+					</div>
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Страна</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_COUNTRY]" value="" id="" placeholder="Например: Россия">
+					</div>
+				</div>
+				<div class="form-line columns">
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Область</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_AREA]" value="" id="" placeholder="Например: Ленинградская">
+					</div>
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Район</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_DISTRICT]" value="" id="" placeholder="Например:Ломоносовский">
+					</div>
+				</div>
+				<div class="form-line columns">
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Город</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_CITY]" value="" id="" placeholder="Например: Сосновый Бор">
+					</div>
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Район города</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_CITY_DISTRICT]" value="" id="" placeholder="">
+					</div>
+				</div>
+				<div class="form-line columns">
+					<div class="form-item column __1-2  ">
+						<label class="form-label">Улица</label>
+						<input type="text" name="REQUEST[ADDRESS_COPY_STREET]" value="" id="" placeholder="Например: проспект Наумова">
+					</div>
+					<div class="form-item column __1-2 ">
+						<div class="form-line columns">
+							<div class="form-item column __1-3 ">
+								<label class="form-label">Дом</label>
+								<input type="text" name="REQUEST[ADDRESS_COPY_HOME]" value="" id="">
+							</div>
+							<div class="form-item column __1-3 ">
+								<label class="form-label">Корпус</label>
+								<input type="text" name="REQUEST[ADDRESS_COPY_KORPUS]" value="" id="">
+							</div>
+							<div class="form-item column __1-3 ">
+								<label class="form-label">Квартира</label>
+								<input type="text" name="REQUEST[ADDRESS_COPY_FLAT]" value="" id="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-item reserve-reg-check ">
+				<div class="checkbox ">
+					<input type="checkbox" name="REQUEST[USER_AGREE]" value="Y" id="reg-agree-1" class="js-checkbox" data-ui-checked="false">
+					<label for="reg-agree-1">
+						<span>Согласен на передачу и обработку информации</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-submit">
+				<input type="submit" value="Забронировать квартиру" class="button">
+			</div>
